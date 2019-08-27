@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  <meta charset="utf-8">
   <meta name="baidu-site-verification" content="L6Lm9d5Crl">
   
   
@@ -49,10 +49,10 @@
           isCategory: false,
           open_in_new: true
       }
-  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </script>
 </head></html>
 <body>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+  <div id="container">
     <div class="left-col">
     <div class="overlay"></div>
 <div class="intrude-less">
@@ -187,7 +187,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/小记/" style="font-size: 10px;">小记</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a>
+                        <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/小记/" style="font-size: 10px;">小记</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a>
                     </div>
                 </section>
                 
@@ -253,6 +253,70 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-虚树" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/08/27/虚树/" class="article-date">
+      <time datetime="2019-08-27T11:00:51.000Z" itemprop="datePublished">2019-08-27</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/27/虚树/">虚树</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="虚树"><a href="#虚树" class="headerlink" title="虚树"></a>虚树</h2><p>用途：在树上做DP时，有时候我们并不需要从某些点进行转移，只需要从某些关键点便可求得答案，多余的点会增加算法的时间复杂度。虚树就是在原来的树基础上去掉多余点、只保留关键点，关键点包括指定的点以及他们的最近公共祖先(LCA)。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>首先，将某一非指定点作为虚树的根，将其放入栈中；然后，求出树上点的dfs序，将指定的点按dfs序从小到大排序后，依次放入栈中。在将点放入栈时，分情况讨论：<br>1.如果栈中元素个数小于等于1个，直接入栈，返回；否则求出栈顶元素与入栈元素的LCA。<br>2.如果栈顶元素为LCA，直接返回，元素不需要入栈；如果栈顶元素不为LCA，循环判断栈中元素个数大于1且第二个元素dfs序不小于LCA的dfs序，将栈顶元素和栈中第二个元素建边并将栈顶元素出栈，否则跳出循环；<br>3.如果在循环结束，栈顶元素不为LCA，将栈顶元素与LCA建边，栈顶元素出栈，再将LCA入栈；<br>4.将指定点入栈。<br><img src="/images/%E8%99%9A%E6%A0%91.jpg" alt="虚树"></p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><h3 id="SDOI2011-消耗战"><a href="#SDOI2011-消耗战" class="headerlink" title="[SDOI2011]消耗战"></a>[SDOI2011]消耗战</h3><p>交题地址：<a href="https://www.luogu.org/problem/P2495" target="_blank" rel="noopener">消耗战</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f3f3f3f3f</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">250005</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, k;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to;</span><br><span class="line">	ll w;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;Edge&gt;G[N];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;T[N];</span><br><span class="line"><span class="keyword">int</span> p[N], Stack[N];</span><br><span class="line"><span class="keyword">int</span> dfn[N], deep[N], fa[N], son[N], sz[N], top[N];</span><br><span class="line"><span class="keyword">int</span> cnt, tp;</span><br><span class="line">ll num[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> f)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	sz[u] = <span class="number">1</span>;</span><br><span class="line">	fa[u] = f;</span><br><span class="line">	<span class="keyword">for</span>(Edge e : G[u])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> v = e.to;</span><br><span class="line">		<span class="keyword">if</span>(v == f) <span class="keyword">continue</span>;</span><br><span class="line">		deep[v] = deep[u]+<span class="number">1</span>;</span><br><span class="line">		num[v] = min(num[u], e.w);</span><br><span class="line">		dfs1(v, u);</span><br><span class="line">		sz[u] += sz[v];</span><br><span class="line">		<span class="keyword">if</span>(sz[v] &gt; sz[son[u]]) son[u] = v;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> f)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	top[u] = f;</span><br><span class="line">	dfn[u] = ++cnt;</span><br><span class="line">	<span class="keyword">if</span>(!son[u]) <span class="keyword">return</span>;</span><br><span class="line">	dfs2(son[u], f);</span><br><span class="line">	<span class="keyword">for</span>(Edge e : G[u])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(!top[e.to]) dfs2(e.to, e.to);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LCA</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(top[u] != top[v])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(deep[top[u]] &lt; deep[top[v]]) swap(u, v);</span><br><span class="line">		u = fa[top[u]];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(deep[u] &lt; deep[v]) swap(u, v);</span><br><span class="line">	<span class="keyword">return</span> v;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> dfn[a] &lt; dfn[b];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(tp == <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		Stack[++tp] = u;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> lca = LCA(u, Stack[tp]);</span><br><span class="line">	<span class="keyword">if</span>(lca == Stack[tp]) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">while</span>(tp &gt; <span class="number">1</span> &amp;&amp; dfn[Stack[tp<span class="number">-1</span>]] &gt;= dfn[lca])</span><br><span class="line">	&#123;</span><br><span class="line">		T[Stack[tp<span class="number">-1</span>]].push_back(Stack[tp]);</span><br><span class="line">		tp--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(lca != Stack[tp])</span><br><span class="line">	&#123;</span><br><span class="line">		T[lca].push_back(Stack[tp]);</span><br><span class="line">		Stack[tp] = lca;</span><br><span class="line">	&#125;</span><br><span class="line">	Stack[++tp] = u;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">solve</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(T[u].size() == <span class="number">0</span>) <span class="keyword">return</span> num[u];</span><br><span class="line">	ll sum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> v : T[u]) sum += solve(v);</span><br><span class="line">	T[u].clear();</span><br><span class="line">	<span class="keyword">return</span> min(sum, num[u]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> u, v;</span><br><span class="line">	ll w;</span><br><span class="line">	<span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n))</span><br><span class="line">	&#123;</span><br><span class="line">		num[<span class="number">1</span>] = INF;</span><br><span class="line">		cnt = <span class="number">0</span>;</span><br><span class="line">		<span class="built_in">memset</span>(top, <span class="number">0</span>, <span class="keyword">sizeof</span>(top));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) G[i].clear();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d%d%lld"</span>, &amp;u, &amp;v, &amp;w);</span><br><span class="line">			G[u].push_back((Edge)&#123;v, w&#125;);</span><br><span class="line">			G[v].push_back((Edge)&#123;u, w&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">		deep[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">		dfs1(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">		dfs2(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;m);</span><br><span class="line">		<span class="keyword">while</span>(m--)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;k);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;p[i]);</span><br><span class="line">			sort(p, p+k, cmp);</span><br><span class="line">			Stack[tp = <span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++) insert(p[i]);</span><br><span class="line">			<span class="keyword">while</span>(tp &gt; <span class="number">0</span>) T[Stack[tp<span class="number">-1</span>]].push_back(Stack[tp]), tp--;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, solve(<span class="number">1</span>));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图论/">图论</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
   
     <article id="post-斯坦纳树-Steiner-Tree" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -705,6 +769,6 @@ MathJax.Hub.Queue(function() {
 </script>
 
 
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </div>
 </body>
 </html>
