@@ -9,18 +9,18 @@
   
   <title>斯坦纳树(Steiner Tree) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="斯坦纳树(Steiner Tree)用途：在图中求包含特定点的生成树，可以包含额外的点，最小生成树属于最小斯坦纳的一种。算法复杂度O($n*k^3$)，n为图顶点个数，k为需要包含的特殊点个数。  求解最小斯坦纳树求解最小斯坦纳树使用动态规划思想，用dp[S][u]表示以u为根节点、状态S的最小花费，S的二进制各位表示是否包含各点。转移方式有两种：1.将S分为两部分:dp[S][u] = min(">
+  <meta name="description" content="斯坦纳树(Steiner Tree)用途：在图中求包含特定点的生成树，可以包含额外的点，最小生成树属于最小斯坦纳的一种。算法复杂度O($n*3^k$)，n为图顶点个数，k为需要包含的特殊点个数。  求解最小斯坦纳树求解最小斯坦纳树使用动态规划思想，用dp[S][u]表示以u为根节点、状态S的最小花费，S的二进制各位表示是否包含各点。转移方式有两种：1.将S分为两部分:dp[S][u] = min(">
 <meta name="keywords" content="图论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="斯坦纳树(Steiner Tree)">
 <meta property="og:url" content="https://kestrelcjx.github.io/2019/08/26/斯坦纳树-Steiner-Tree/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="斯坦纳树(Steiner Tree)用途：在图中求包含特定点的生成树，可以包含额外的点，最小生成树属于最小斯坦纳的一种。算法复杂度O($n*k^3$)，n为图顶点个数，k为需要包含的特殊点个数。  求解最小斯坦纳树求解最小斯坦纳树使用动态规划思想，用dp[S][u]表示以u为根节点、状态S的最小花费，S的二进制各位表示是否包含各点。转移方式有两种：1.将S分为两部分:dp[S][u] = min(">
+<meta property="og:description" content="斯坦纳树(Steiner Tree)用途：在图中求包含特定点的生成树，可以包含额外的点，最小生成树属于最小斯坦纳的一种。算法复杂度O($n*3^k$)，n为图顶点个数，k为需要包含的特殊点个数。  求解最小斯坦纳树求解最小斯坦纳树使用动态规划思想，用dp[S][u]表示以u为根节点、状态S的最小花费，S的二进制各位表示是否包含各点。转移方式有两种：1.将S分为两部分:dp[S][u] = min(">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-26T16:57:06.041Z">
+<meta property="og:updated_time" content="2019-09-02T14:23:13.960Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="斯坦纳树(Steiner Tree)">
-<meta name="twitter:description" content="斯坦纳树(Steiner Tree)用途：在图中求包含特定点的生成树，可以包含额外的点，最小生成树属于最小斯坦纳的一种。算法复杂度O($n*k^3$)，n为图顶点个数，k为需要包含的特殊点个数。  求解最小斯坦纳树求解最小斯坦纳树使用动态规划思想，用dp[S][u]表示以u为根节点、状态S的最小花费，S的二进制各位表示是否包含各点。转移方式有两种：1.将S分为两部分:dp[S][u] = min(">
+<meta name="twitter:description" content="斯坦纳树(Steiner Tree)用途：在图中求包含特定点的生成树，可以包含额外的点，最小生成树属于最小斯坦纳的一种。算法复杂度O($n*3^k$)，n为图顶点个数，k为需要包含的特殊点个数。  求解最小斯坦纳树求解最小斯坦纳树使用动态规划思想，用dp[S][u]表示以u为根节点、状态S的最小花费，S的二进制各位表示是否包含各点。转移方式有两种：1.将S分为两部分:dp[S][u] = min(">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -294,7 +294,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="斯坦纳树-Steiner-Tree"><a href="#斯坦纳树-Steiner-Tree" class="headerlink" title="斯坦纳树(Steiner Tree)"></a>斯坦纳树(Steiner Tree)</h2><p>用途：在图中求包含特定点的生成树，可以包含额外的点，最小生成树属于最小斯坦纳的一种。<br>算法复杂度O($n*k^3$)，n为图顶点个数，k为需要包含的特殊点个数。</p>
+        <h2 id="斯坦纳树-Steiner-Tree"><a href="#斯坦纳树-Steiner-Tree" class="headerlink" title="斯坦纳树(Steiner Tree)"></a>斯坦纳树(Steiner Tree)</h2><p>用途：在图中求包含特定点的生成树，可以包含额外的点，最小生成树属于最小斯坦纳的一种。<br>算法复杂度O($n*3^k$)，n为图顶点个数，k为需要包含的特殊点个数。</p>
 <hr>
 <h3 id="求解最小斯坦纳树"><a href="#求解最小斯坦纳树" class="headerlink" title="求解最小斯坦纳树"></a>求解最小斯坦纳树</h3><p>求解最小斯坦纳树使用动态规划思想，用dp[S][u]表示以u为根节点、状态S的最小花费，S的二进制各位表示是否包含各点。<br>转移方式有两种：<br>1.将S分为两部分:<code>dp[S][u] = min(dp[S][u], dp[S0][u]+dp[S^S0][u])</code>通过枚举各种转移状态即可。<br>2.通过边u-v转移:<code>dp[S][u] = min(dp[S][u], dp[S][v]+w[u][v])</code>通过最短路算法进行转移。</p>
 <h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> all = <span class="number">1</span>&lt;&lt;k;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> S = <span class="number">0</span>; S &lt; all; S++)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> u = <span class="number">0</span>; u &lt; n; u++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> S0 = (S<span class="number">-1</span>)&amp;S; S0; S0 = (S0<span class="number">-1</span>)&amp;S)</span><br><span class="line">		&#123;</span><br><span class="line">			dis[S][u] = min(dis[S][u], dis[S0][u]+dis[S^S0][u]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	dijk(dis[S]);<span class="comment">//使用djik最短路算法进行松弛</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -314,7 +314,7 @@
         <p><span>本文标题:</span><a href="/2019/08/26/斯坦纳树-Steiner-Tree/">斯坦纳树(Steiner Tree)</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Kestrel 的个人博客">Kestrel</a></p>
         <p><span>发布时间:</span>2019年08月26日 - 23时57分</p>
-        <p><span>最后更新:</span>2019年08月27日 - 00时57分</p>
+        <p><span>最后更新:</span>2019年09月02日 - 22时23分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/08/26/斯坦纳树-Steiner-Tree/" title="斯坦纳树(Steiner Tree)">https://kestrelcjx.github.io/2019/08/26/斯坦纳树-Steiner-Tree/</a>
             <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2019/08/26/斯坦纳树-Steiner-Tree/　　作者: Kestrel" title></span>
