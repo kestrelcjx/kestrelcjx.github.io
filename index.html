@@ -456,11 +456,17 @@
           
         <h3 id="初始化与清理"><a href="#初始化与清理" class="headerlink" title="初始化与清理"></a>初始化与清理</h3><h4 id="用构造器确保初始化"><a href="#用构造器确保初始化" class="headerlink" title="用构造器确保初始化"></a>用构造器确保初始化</h4><h4 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h4><ul>
 <li>区分重载方法：重载方法名称相同，参数数量、类型或顺序不同，但无法以返回值不同实现重载。</li>
-<li>涉及基本类型的方法重载：基本类型从一个“较小”的类型自动提升至一个“较大”的类型。<br>char略有不同，如果没有char参数的方法，将直接提升至int。<h4 id="默认构造器"><a href="#默认构造器" class="headerlink" title="默认构造器"></a>默认构造器</h4>如果不提供构造器，将自动创建一个无参数的默认构造器，如果提供了构造器，则不会自动创建。<h4 id="this关键字"><a href="#this关键字" class="headerlink" title="this关键字"></a>this关键字</h4></li>
+<li>涉及基本类型的方法重载：基本类型从一个“较小”的类型自动提升至一个“较大”的类型。<br>char略有不同，如果没有char参数的方法，将直接提升至int。</li>
+</ul>
+<h4 id="默认构造器"><a href="#默认构造器" class="headerlink" title="默认构造器"></a>默认构造器</h4><p>如果不提供构造器，将自动创建一个无参数的默认构造器，如果提供了构造器，则不会自动创建。</p>
+<h4 id="this关键字"><a href="#this关键字" class="headerlink" title="this关键字"></a>this关键字</h4><ul>
 <li>使用对象调用方法，编译器会暗自将“所操作对象的引用”作为第一个参数传递给方法。</li>
 <li>使用this关键字在方法内部获得当前对象的引用，但只能在方法内部使用。</li>
 <li>在构造器中可以使用this()调用重载的其他构造器。</li>
-<li>static方法中，不能使用this，且不能调用非静态方法。<h4 id="清理：终结处理和垃圾回收"><a href="#清理：终结处理和垃圾回收" class="headerlink" title="清理：终结处理和垃圾回收"></a>清理：终结处理和垃圾回收</h4>Java中的对象创建在堆中，对象不再使用时必须有垃圾回收器回收所占用内存。<br>发生垃圾回收时，会使用对象的finalize()方法（Object类中的protected方法）。<br>垃圾回收一边回收空间，一边使堆中的对象紧凑排列。</li>
+<li>static方法中，不能使用this，且不能调用非静态方法。</li>
+</ul>
+<h4 id="清理：终结处理和垃圾回收"><a href="#清理：终结处理和垃圾回收" class="headerlink" title="清理：终结处理和垃圾回收"></a>清理：终结处理和垃圾回收</h4><p>Java中的对象创建在堆中，对象不再使用时必须有垃圾回收器回收所占用内存。<br>发生垃圾回收时，会使用对象的finalize()方法（Object类中的protected方法）。<br>垃圾回收一边回收空间，一边使堆中的对象紧凑排列。</p>
+<ul>
 <li>对象可能不被垃圾回收</li>
 <li>垃圾回收并不等于析构</li>
 <li>垃圾回收只与内存有关</li>
@@ -468,9 +474,9 @@
 <p>垃圾回收机制：</p>
 <ol>
 <li>引用记数是一种简单但速度很慢的垃圾回收技术。每个对象都含有一个引用记数器，<br>当有引用连接至对象时，引用记数加1。当离开作用域或被设置为null时，引用记数减1。<br>垃圾回收器会在含有全部对象的列表上遍历，当发现某个对象引用记数为0时，就释放<br>其所占用的空间（但是，引用记数模式通常会在记数值为0时立即释放对象）。引用记数<br>常用来说明垃圾收集的工作方式，但似乎从未被应用于如何一种Java虚拟机实现中。</li>
-<li>另一种垃圾回收：从堆栈和静态存储区开始，遍历所有的引用，找到所有“活”的对象<br>。对于发现的每个引用，必须追踪它所引用的对象，然后是此对象包含的所有引用，直到<br>“根源于堆栈和静态存储区的引用”所形成得到网络全部被访问为止。在这种方式下，Java虚拟机<br>将采用一种自适应的垃圾回收技术，至于如何处理找到的存活对象，取决于不同的Java虚拟机实现。<br>（例如：“停止-复制”、“标记-清扫”）<h4 id="成员初始化"><a href="#成员初始化" class="headerlink" title="成员初始化"></a>成员初始化</h4></li>
+<li>另一种垃圾回收：从堆栈和静态存储区开始，遍历所有的引用，找到所有“活”的对象<br>。对于发现的每个引用，必须追踪它所引用的对象，然后是此对象包含的所有引用，直到<br>“根源于堆栈和静态存储区的引用”所形成得到网络全部被访问为止。在这种方式下，Java虚拟机<br>将采用一种自适应的垃圾回收技术，至于如何处理找到的存活对象，取决于不同的Java虚拟机实现。<br>（例如：“停止-复制”、“标记-清扫”）</li>
 </ol>
-<h4 id="构造器初始化"><a href="#构造器初始化" class="headerlink" title="构造器初始化"></a>构造器初始化</h4><ul>
+<h4 id="成员初始化"><a href="#成员初始化" class="headerlink" title="成员初始化"></a>成员初始化</h4><h4 id="构造器初始化"><a href="#构造器初始化" class="headerlink" title="构造器初始化"></a>构造器初始化</h4><ul>
 <li>在类的内部，变量定义的先后顺序决定了初始化的顺序。即使变量定义散步于方法定义之间，<br>它们仍旧会在方法（包括构造器）被调用之前得到初始化。</li>
 <li>静态初始化只有在必要时刻才会进行。如果不创建对象，也不引用对象的静态变量，那么不会进行初始化。<br>初始化顺序是先静态对象，而后是非静态对象。</li>
 <li>显示的静态初始化（静态块）</li>
@@ -483,10 +489,11 @@
 <li>当用new Dog()创建对象时，首先将在堆上为Dog对象分配足够的存储空间。</li>
 <li>这块存储空间会被清零，这就自动地将Dog对象中的所有基本类型数据都设置为默认值，而引用类型为null。</li>
 <li>执行所有出现于字段处的初始化动作。</li>
-<li>执行构造器。<h4 id="数组初始化"><a href="#数组初始化" class="headerlink" title="数组初始化"></a>数组初始化</h4>可变参数列表（类似数组）<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span>... args)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> len = args.length;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> x : args) &#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>执行构造器。</li>
 </ol>
+<h4 id="数组初始化"><a href="#数组初始化" class="headerlink" title="数组初始化"></a>数组初始化</h4><p>可变参数列表（类似数组）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span>... args)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> len = args.length;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> x : args) &#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h4 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
       
     </div>
