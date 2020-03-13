@@ -254,6 +254,271 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-《Thinking-in-Java》第八章" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/13/《Thinking-in-Java》第八章/" class="article-date">
+      <time datetime="2020-03-13T07:22:36.000Z" itemprop="datePublished">2020-03-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/13/《Thinking-in-Java》第八章/">《Thinking in Java》第八章.md</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-《Thinking-in-Java》第七章" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/13/《Thinking-in-Java》第七章/" class="article-date">
+      <time datetime="2020-03-13T07:22:29.000Z" itemprop="datePublished">2020-03-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/13/《Thinking-in-Java》第七章/">《Thinking in Java》第七章.md</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-《Thinking-in-Java》第六章" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/13/《Thinking-in-Java》第六章/" class="article-date">
+      <time datetime="2020-03-13T07:22:24.000Z" itemprop="datePublished">2020-03-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/13/《Thinking-in-Java》第六章/">《Thinking in Java》第六章.md</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-《Thinking-in-Java》第五章" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/13/《Thinking-in-Java》第五章/" class="article-date">
+      <time datetime="2020-03-13T07:21:59.000Z" itemprop="datePublished">2020-03-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/13/《Thinking-in-Java》第五章/">《Thinking in Java》第五章.md</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="初始化与清理"><a href="#初始化与清理" class="headerlink" title="初始化与清理"></a>初始化与清理</h3><h4 id="用构造器确保初始化"><a href="#用构造器确保初始化" class="headerlink" title="用构造器确保初始化"></a>用构造器确保初始化</h4><h4 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h4><ul>
+<li>区分重载方法：重载方法名称相同，参数数量、类型或顺序不同，但无法以返回值不同实现重载。</li>
+<li>涉及基本类型的方法重载：基本类型从一个“较小”的类型自动提升至一个“较大”的类型。<br>char略有不同，如果没有char参数的方法，将直接提升至int。<h4 id="默认构造器"><a href="#默认构造器" class="headerlink" title="默认构造器"></a>默认构造器</h4>如果不提供构造器，将自动创建一个无参数的默认构造器，如果提供了构造器，则不会自动创建。<h4 id="this关键字"><a href="#this关键字" class="headerlink" title="this关键字"></a>this关键字</h4></li>
+<li>使用对象调用方法，编译器会暗自将“所操作对象的引用”作为第一个参数传递给方法。</li>
+<li>使用this关键字在方法内部获得当前对象的引用，但只能在方法内部使用。</li>
+<li>在构造器中可以使用this()调用重载的其他构造器。</li>
+<li>static方法中，不能使用this，且不能调用非静态方法。<h4 id="清理：终结处理和垃圾回收"><a href="#清理：终结处理和垃圾回收" class="headerlink" title="清理：终结处理和垃圾回收"></a>清理：终结处理和垃圾回收</h4>Java中的对象创建在堆中，对象不再使用时必须有垃圾回收器回收所占用内存。<br>发生垃圾回收时，会使用对象的finalize()方法（Object类中的protected方法）。<br>垃圾回收一边回收空间，一边使堆中的对象紧凑排列。</li>
+<li>对象可能不被垃圾回收</li>
+<li>垃圾回收并不等于析构</li>
+<li>垃圾回收只与内存有关</li>
+</ul>
+<p>垃圾回收机制：</p>
+<ol>
+<li>引用记数是一种简单但速度很慢的垃圾回收技术。每个对象都含有一个引用记数器，<br>当有引用连接至对象时，引用记数加1。当离开作用域或被设置为null时，引用记数减1。<br>垃圾回收器会在含有全部对象的列表上遍历，当发现某个对象引用记数为0时，就释放<br>其所占用的空间（但是，引用记数模式通常会在记数值为0时立即释放对象）。引用记数<br>常用来说明垃圾收集的工作方式，但似乎从未被应用于如何一种Java虚拟机实现中。</li>
+<li>另一种垃圾回收：从堆栈和静态存储区开始，遍历所有的引用，找到所有“活”的对象<br>。对于发现的每个引用，必须追踪它所引用的对象，然后是此对象包含的所有引用，直到<br>“根源于堆栈和静态存储区的引用”所形成得到网络全部被访问为止。在这种方式下，Java虚拟机<br>将采用一种自适应的垃圾回收技术，至于如何处理找到的存活对象，取决于不同的Java虚拟机实现。<br>（例如：“停止-复制”、“标记-清扫”）<h4 id="成员初始化"><a href="#成员初始化" class="headerlink" title="成员初始化"></a>成员初始化</h4></li>
+</ol>
+<h4 id="构造器初始化"><a href="#构造器初始化" class="headerlink" title="构造器初始化"></a>构造器初始化</h4><ul>
+<li>在类的内部，变量定义的先后顺序决定了初始化的顺序。即使变量定义散步于方法定义之间，<br>它们仍旧会在方法（包括构造器）被调用之前得到初始化。</li>
+<li>静态初始化只有在必要时刻才会进行。如果不创建对象，也不引用对象的静态变量，那么不会进行初始化。<br>初始化顺序是先静态对象，而后是非静态对象。</li>
+<li>显示的静态初始化（静态块）</li>
+<li>非静态实例化初始化<br>与静态初始化子句相似，但少了static关键字，它保证无论调用哪个显示构造器，都会执行其中的初始化。</li>
+</ul>
+<p>总结一下对象的创建过程，假设有一个名为Dog的类：</p>
+<ol>
+<li>即使没有显示地使用static关键字，构造器实际上也是静态方法。因此，当首次创建类型为Dog<br>的对象时（构造器可以看成是静态方法），或者Dog类静态方法/静态域首次被访问时，Java解释器必须查找类路径，<br>以定位Dog.class文件。</li>
+<li>然后载入Dog.class，有关静态初始化的所有动作都会被执行。因此，静态初始化只在Class对象<br>首次加载时进行一次。</li>
+<li>当用new Dog()创建对象时，首先将在堆上为Dog对象分配足够的存储空间。</li>
+<li>这块存储空间会被清零，这就自动地将Dog对象中的所有基本类型数据都设置为默认值，而引用类型为null。</li>
+<li>执行所有出现于字段处的初始化动作。</li>
+<li>执行构造器。<h4 id="数组初始化"><a href="#数组初始化" class="headerlink" title="数组初始化"></a>数组初始化</h4>可变参数列表（类似数组）<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span>... args)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> len = args.length;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> x : args) &#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-《Thinking-in-Java》第四章" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -727,244 +992,10 @@
 
 
   
-    <article id="post-FWT" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2019/06/08/FWT/" class="article-date">
-      <time datetime="2019-06-08T15:40:54.000Z" itemprop="datePublished">2019-06-08</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/08/FWT/">快速沃尔什变换(FWT)</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="快速沃尔什变换-FWT"><a href="#快速沃尔什变换-FWT" class="headerlink" title="快速沃尔什变换(FWT)"></a>快速沃尔什变换(FWT)</h2><p>用途：求<br>$$C(i) = \sum_{i=j@k}A(j)*B(k)$$<br>其中@为位运算或(|), 与(&amp;), 异或(^)中一种,算法复杂度O($n\log(n)$)。</p>
-<hr>
-<h3 id="1-或运算"><a href="#1-或运算" class="headerlink" title="1. 或运算"></a>1. 或运算</h3><p>令
-$$FWT[A] = (A_1, A_2…)$$<br>其中<br>$$A_i = \sum_{i=i|j}A[j]$$<br>用A0表示A的前一半，A1表示A的后一半，那么如果已经求得FWT[A0]和FWT[A1]，则可以得到<br><code>FWT[A] = (FWT[A0], FWT[A0]+FWT[A1]) (‘+’ 对应位相加) 当A长度为1时，FWT[A] = A</code>(A0最高<br>位为0，对FWT[A]后一半能贡献，而A1最高位为1，对FWT[A]前一半不能贡献)。所以，就可以<br>通过迭代分治，在O(nlogn)求得FWT[A]。<br>并且，由<br>$$C(i) = \sum_{i=j|k}A(j)*B(k)$$<br>得到<code>FWT[C] = FWT[A]*FWT[B] (‘*’ 对应位相乘)</code>，所以能在求得FWT[A]和FWT[B]基础上，在<br>O(n)求得FWT[C]。<br>最后，需要将FWT[C]恢复为C。通过观察求FWT[A]的过程，发现只需要将FWT[C]的后半部分减<br>去FWT[C]的前半部分<code>IFWT[C] = (IFWT[C0], IFWT[C1]-IFWT[C0]) 当C长度为1时，IFWT[C] = C</code><br>就可以得到C。所以，同样能通过逆向迭代分治，在O(nlogn)求得C。</p>
-<h3 id="2-与运算"><a href="#2-与运算" class="headerlink" title="2. 与运算"></a>2. 与运算</h3><p>FWT的与运算和或运算非常类似，只需改变FWT[A]中元素含义，让FWT[A]中<br>$$A_i = \sum_{i=i\&amp;j}A[j]$$<br>同样我们能发现<code>FWT[A] = (FWT[A0]+FWT[A1], FWT[A1])</code>,同时<code>FWT[C] = FWT[A]*FWT[B]</code><br>所以同样能求得FWT[C],最后由<code>IFWT[C] = (IFWT[C0]-IFWT[C1], IFWT[C1])</code>,求得C</p>
-<h3 id="3-异或运算"><a href="#3-异或运算" class="headerlink" title="3. 异或运算"></a>3. 异或运算</h3><p>FWT的异或运算相比或运算和与运算有些不同，我们设i&amp;j所得结果中1的个数的奇偶表示i&amp;j的<br>奇偶性(偶：0；奇：1)，那么会有<code>(i&amp;k的奇偶性)^(j&amp;k的奇偶性) = (i^j)&amp;k的奇偶性</code>，那么，令<br>$$A_i = \sum_{i\&amp;k=0}A[k]-\sum_{i\&amp;k=1}A[k]$$<br>其中i&amp;k=0表示i&amp;k为偶性，i&amp;k=1表示i&amp;k为奇性，我们能发现仍然有<code>FWT[C] = FWT[A]*FWT[B]</code><br>假设不考虑二进制最高位已经求得FWT[A0]和FWT[A1],要求FWT[A]。那么再多考虑最高位，A0中<br>最高位为0，FWT[A0]仍然能直接贡献到FWT[A0]和FWT[A1]；而A1最高位为1，FWT[A1]能直<br>接贡献到FWT[A0]，但贡献到FWT[A1]时，因为有了最高位1，i&amp;k的奇偶性改变。所以，有<br><code>FWT[A] = (FWT[A0]+FWT[A1], FWT[A0]-FWT[A1])</code>最后求得FWT[C]后，由<br><code>IFWT[C] = ((IFWT[C0]+IFWT[C1])/2, (IFWT[C0]-IFWT[C1])/2)</code>,恢复得到C</p>
-<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100005</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line">ll inv;</span><br><span class="line">ll a[N];</span><br><span class="line">ll b[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(ll *num, <span class="keyword">int</span> flag)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>, m = <span class="number">1</span>; i &lt;= n; i &lt;&lt;= <span class="number">1</span>, m &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j += i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = j; k &lt; j+m; k++)</span><br><span class="line">            &#123;</span><br><span class="line">                ll x = num[k], y = num[k+m];</span><br><span class="line">                <span class="keyword">if</span>(flag == <span class="number">-1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">//xor num[k] = (x+y)%mod*inv2%mod, num[k+m] = ((x-y)%mod+mod)%mod*inv2%mod;</span></span><br><span class="line">                    <span class="comment">//and num[k] = ((x-y)%mod+mod)%mod;</span></span><br><span class="line">                    <span class="comment">//or num[k+m] = ((y-x)%mod+mod)%mod;</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">//xor num[k] = (x+y)%mod, num[k+m] = ((x-y)%mod+mod)%mod;</span></span><br><span class="line">                    <span class="comment">//and num[k] = (x+y)%mod;</span></span><br><span class="line">                    <span class="comment">//or num[k+m] = (x+y)%mod;</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ll q_pow(ll x, ll y)</span><br><span class="line">&#123;</span><br><span class="line">    ll ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(y)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(y&amp;<span class="number">1</span>) ans = ans*x%mod;</span><br><span class="line">        x = x*x%mod;</span><br><span class="line">        y &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    inv = q_pow(<span class="number">2L</span>L, mod<span class="number">-2</span>);</span><br><span class="line">    <span class="keyword">int</span> k;</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;k))</span><br><span class="line">    &#123;</span><br><span class="line">        n = (<span class="keyword">int</span>)q_pow(<span class="number">2L</span>L, (ll)k);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;a[i]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;b[i]);</span><br><span class="line">        FWT(a, <span class="number">1</span>);</span><br><span class="line">        FWT(b, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) b[i] = b[i]*a[i];</span><br><span class="line">        FWT(b, <span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, b[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数论/">数论</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-你好-Hexo" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/06/07/你好-Hexo/" class="article-date">
-      <time datetime="2019-06-07T14:25:15.000Z" itemprop="datePublished">2019-06-07</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/07/你好-Hexo/">我的第一篇博客</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><p><em>斜体</em><br><strong>粗体</strong><br><strong><em>加粗斜体</em></strong><br><del>删除线</del></p>
-<blockquote>
-<p>文字引用<br><code>行内代码</code></p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>$$ x^{x^z}=(1+{\rm e}^x)^{-2xy^w} $$<br>$$ sqrt() $$<br>分割线</p>
-<h2 id="方法一：—"><a href="#方法一：—" class="headerlink" title="方法一：—"></a>方法一：—</h2><p>方法二：+++<br>+++<br>方法三：***</p>
-<hr>
-<ol>
-<li>有序列表项</li>
-</ol>
-<ul>
-<li>无序列表项</li>
-</ul>
-<ul>
-<li>无序列表项</li>
-</ul>
-<ul>
-<li>无序列表项</li>
-</ul>
-<p>表格</p>
-<table>
-<thead>
-<tr>
-<th>表头1</th>
-<th>表头2</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>内容11</td>
-<td>内容12</td>
-</tr>
-<tr>
-<td>内容21</td>
-<td>内容22</td>
-</tr>
-</tbody></table>
-<p><a href="https://www.baidu.com/" title="百度一下" target="_blank" rel="noopener">百度搜索</a><br><a href="https://www.baidu.com/" target="_blank" rel="noopener">https://www.baidu.com/</a></p>
-<p>$$f(x_1,x_x,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2$$<br>$$f(x_1,x_x,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2$$<br>$$f(x) = 3x + 7$$<br>$$a = b + c$$<br>$$\frac{\partial u}{\partial t}<br>= h^2 \left( \frac{\partial^2 u}{\partial x^2} +<br>\frac{\partial^2 u}{\partial y^2} +<br>\frac{\partial^2 u}{\partial z^2}\right)$$</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小记/">小记</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/06/07/hello-world/" class="article-date">
-      <time datetime="2019-06-07T13:55:23.961Z" itemprop="datePublished">2019-06-07</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/07/hello-world/">Hello World</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 </div>

@@ -7,20 +7,20 @@
   
   
   
-  <title>《Thinking in Java》第三章 | Hexo</title>
+  <title>《Thinking in Java》第五章.md | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="操作符更简单的打印语句静态导入import static 使用Java操作符优先级赋值算数操作符一元减号用于转变数据的符号，而一元加号只是为了与一元减号相对应，但是它唯一的作用仅仅是将较小类型的操作数提升为int。 自动递增和递减关系操作符逻辑操作符与C/C++不同的是，不可将一个非布尔值当作布尔值在逻辑表达式中使用。 12boolean flag = 1 &amp;amp;&amp;amp; 1	//ERROR">
+  <meta name="description" content="初始化与清理用构造器确保初始化方法重载 区分重载方法：重载方法名称相同，参数数量、类型或顺序不同，但无法以返回值不同实现重载。 涉及基本类型的方法重载：基本类型从一个“较小”的类型自动提升至一个“较大”的类型。char略有不同，如果没有char参数的方法，将直接提升至int。默认构造器如果不提供构造器，将自动创建一个无参数的默认构造器，如果提供了构造器，则不会自动创建。this关键字 使用对象调用">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《Thinking in Java》第三章">
-<meta property="og:url" content="https://kestrelcjx.github.io/2020/03/09/《Thinking-in-Java》第三章/index.html">
+<meta property="og:title" content="《Thinking in Java》第五章.md">
+<meta property="og:url" content="https://kestrelcjx.github.io/2020/03/13/《Thinking-in-Java》第五章/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="操作符更简单的打印语句静态导入import static 使用Java操作符优先级赋值算数操作符一元减号用于转变数据的符号，而一元加号只是为了与一元减号相对应，但是它唯一的作用仅仅是将较小类型的操作数提升为int。 自动递增和递减关系操作符逻辑操作符与C/C++不同的是，不可将一个非布尔值当作布尔值在逻辑表达式中使用。 12boolean flag = 1 &amp;amp;&amp;amp; 1	//ERROR">
+<meta property="og:description" content="初始化与清理用构造器确保初始化方法重载 区分重载方法：重载方法名称相同，参数数量、类型或顺序不同，但无法以返回值不同实现重载。 涉及基本类型的方法重载：基本类型从一个“较小”的类型自动提升至一个“较大”的类型。char略有不同，如果没有char参数的方法，将直接提升至int。默认构造器如果不提供构造器，将自动创建一个无参数的默认构造器，如果提供了构造器，则不会自动创建。this关键字 使用对象调用">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-09T03:18:48.570Z">
+<meta property="og:updated_time" content="2020-03-13T09:02:59.258Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《Thinking in Java》第三章">
-<meta name="twitter:description" content="操作符更简单的打印语句静态导入import static 使用Java操作符优先级赋值算数操作符一元减号用于转变数据的符号，而一元加号只是为了与一元减号相对应，但是它唯一的作用仅仅是将较小类型的操作数提升为int。 自动递增和递减关系操作符逻辑操作符与C/C++不同的是，不可将一个非布尔值当作布尔值在逻辑表达式中使用。 12boolean flag = 1 &amp;amp;&amp;amp; 1	//ERROR">
+<meta name="twitter:title" content="《Thinking in Java》第五章.md">
+<meta name="twitter:description" content="初始化与清理用构造器确保初始化方法重载 区分重载方法：重载方法名称相同，参数数量、类型或顺序不同，但无法以返回值不同实现重载。 涉及基本类型的方法重载：基本类型从一个“较小”的类型自动提升至一个“较大”的类型。char略有不同，如果没有char参数的方法，将直接提升至int。默认构造器如果不提供构造器，将自动创建一个无参数的默认构造器，如果提供了构造器，则不会自动创建。this关键字 使用对象调用">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -254,11 +254,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-《Thinking-in-Java》第三章" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-《Thinking-in-Java》第五章" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/09/《Thinking-in-Java》第三章/" class="article-date">
-      <time datetime="2020-03-09T02:52:49.000Z" itemprop="datePublished">2020-03-09</time>
+      <a href="/2020/03/13/《Thinking-in-Java》第五章/" class="article-date">
+      <time datetime="2020-03-13T07:21:59.000Z" itemprop="datePublished">2020-03-13</time>
 </a>
 
     </div>
@@ -272,7 +272,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      《Thinking in Java》第三章
+      《Thinking in Java》第五章.md
     </h1>
   
 
@@ -294,16 +294,40 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h3><h4 id="更简单的打印语句"><a href="#更简单的打印语句" class="headerlink" title="更简单的打印语句"></a>更简单的打印语句</h4><p>静态导入import static</p>
-<h4 id="使用Java操作符"><a href="#使用Java操作符" class="headerlink" title="使用Java操作符"></a>使用Java操作符</h4><h4 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h4><h4 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h4><h4 id="算数操作符"><a href="#算数操作符" class="headerlink" title="算数操作符"></a>算数操作符</h4><p>一元减号用于转变数据的符号，而一元加号只是为了与一元减号相对应，<br>但是它唯一的作用仅仅是将较小类型的操作数提升为int。</p>
-<h4 id="自动递增和递减"><a href="#自动递增和递减" class="headerlink" title="自动递增和递减"></a>自动递增和递减</h4><h4 id="关系操作符"><a href="#关系操作符" class="headerlink" title="关系操作符"></a>关系操作符</h4><h4 id="逻辑操作符"><a href="#逻辑操作符" class="headerlink" title="逻辑操作符"></a>逻辑操作符</h4><p>与C/C++不同的是，不可将一个非布尔值当作布尔值在逻辑表达式中使用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">boolean flag = 1 &amp;&amp; 1	//ERROR</span><br><span class="line">if(1)	//ERROR</span><br></pre></td></tr></table></figure>
+        <h3 id="初始化与清理"><a href="#初始化与清理" class="headerlink" title="初始化与清理"></a>初始化与清理</h3><h4 id="用构造器确保初始化"><a href="#用构造器确保初始化" class="headerlink" title="用构造器确保初始化"></a>用构造器确保初始化</h4><h4 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h4><ul>
+<li>区分重载方法：重载方法名称相同，参数数量、类型或顺序不同，但无法以返回值不同实现重载。</li>
+<li>涉及基本类型的方法重载：基本类型从一个“较小”的类型自动提升至一个“较大”的类型。<br>char略有不同，如果没有char参数的方法，将直接提升至int。<h4 id="默认构造器"><a href="#默认构造器" class="headerlink" title="默认构造器"></a>默认构造器</h4>如果不提供构造器，将自动创建一个无参数的默认构造器，如果提供了构造器，则不会自动创建。<h4 id="this关键字"><a href="#this关键字" class="headerlink" title="this关键字"></a>this关键字</h4></li>
+<li>使用对象调用方法，编译器会暗自将“所操作对象的引用”作为第一个参数传递给方法。</li>
+<li>使用this关键字在方法内部获得当前对象的引用，但只能在方法内部使用。</li>
+<li>在构造器中可以使用this()调用重载的其他构造器。</li>
+<li>static方法中，不能使用this，且不能调用非静态方法。<h4 id="清理：终结处理和垃圾回收"><a href="#清理：终结处理和垃圾回收" class="headerlink" title="清理：终结处理和垃圾回收"></a>清理：终结处理和垃圾回收</h4>Java中的对象创建在堆中，对象不再使用时必须有垃圾回收器回收所占用内存。<br>发生垃圾回收时，会使用对象的finalize()方法（Object类中的protected方法）。<br>垃圾回收一边回收空间，一边使堆中的对象紧凑排列。</li>
+<li>对象可能不被垃圾回收</li>
+<li>垃圾回收并不等于析构</li>
+<li>垃圾回收只与内存有关</li>
+</ul>
+<p>垃圾回收机制：</p>
+<ol>
+<li>引用记数是一种简单但速度很慢的垃圾回收技术。每个对象都含有一个引用记数器，<br>当有引用连接至对象时，引用记数加1。当离开作用域或被设置为null时，引用记数减1。<br>垃圾回收器会在含有全部对象的列表上遍历，当发现某个对象引用记数为0时，就释放<br>其所占用的空间（但是，引用记数模式通常会在记数值为0时立即释放对象）。引用记数<br>常用来说明垃圾收集的工作方式，但似乎从未被应用于如何一种Java虚拟机实现中。</li>
+<li>另一种垃圾回收：从堆栈和静态存储区开始，遍历所有的引用，找到所有“活”的对象<br>。对于发现的每个引用，必须追踪它所引用的对象，然后是此对象包含的所有引用，直到<br>“根源于堆栈和静态存储区的引用”所形成得到网络全部被访问为止。在这种方式下，Java虚拟机<br>将采用一种自适应的垃圾回收技术，至于如何处理找到的存活对象，取决于不同的Java虚拟机实现。<br>（例如：“停止-复制”、“标记-清扫”）<h4 id="成员初始化"><a href="#成员初始化" class="headerlink" title="成员初始化"></a>成员初始化</h4></li>
+</ol>
+<h4 id="构造器初始化"><a href="#构造器初始化" class="headerlink" title="构造器初始化"></a>构造器初始化</h4><ul>
+<li>在类的内部，变量定义的先后顺序决定了初始化的顺序。即使变量定义散步于方法定义之间，<br>它们仍旧会在方法（包括构造器）被调用之前得到初始化。</li>
+<li>静态初始化只有在必要时刻才会进行。如果不创建对象，也不引用对象的静态变量，那么不会进行初始化。<br>初始化顺序是先静态对象，而后是非静态对象。</li>
+<li>显示的静态初始化（静态块）</li>
+<li>非静态实例化初始化<br>与静态初始化子句相似，但少了static关键字，它保证无论调用哪个显示构造器，都会执行其中的初始化。</li>
+</ul>
+<p>总结一下对象的创建过程，假设有一个名为Dog的类：</p>
+<ol>
+<li>即使没有显示地使用static关键字，构造器实际上也是静态方法。因此，当首次创建类型为Dog<br>的对象时（构造器可以看成是静态方法），或者Dog类静态方法/静态域首次被访问时，Java解释器必须查找类路径，<br>以定位Dog.class文件。</li>
+<li>然后载入Dog.class，有关静态初始化的所有动作都会被执行。因此，静态初始化只在Class对象<br>首次加载时进行一次。</li>
+<li>当用new Dog()创建对象时，首先将在堆上为Dog对象分配足够的存储空间。</li>
+<li>这块存储空间会被清零，这就自动地将Dog对象中的所有基本类型数据都设置为默认值，而引用类型为null。</li>
+<li>执行所有出现于字段处的初始化动作。</li>
+<li>执行构造器。<h4 id="数组初始化"><a href="#数组初始化" class="headerlink" title="数组初始化"></a>数组初始化</h4>可变参数列表（类似数组）<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span>... args)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> len = args.length;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> x : args) &#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="直接常量"><a href="#直接常量" class="headerlink" title="直接常量"></a>直接常量</h4><h4 id="按位操作符"><a href="#按位操作符" class="headerlink" title="按位操作符"></a>按位操作符</h4><h4 id="移位操作符"><a href="#移位操作符" class="headerlink" title="移位操作符"></a>移位操作符</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;=</span><br><span class="line">&gt;&gt;=			//逻辑右移，最高位补符号位</span><br><span class="line">&gt;&gt;&gt;=		//最高位补0</span><br></pre></td></tr></table></figure>
-
-<p>如果对char、byte或short类型进行移位处理，它们会被转换为int类型。<br>移位操作只对数值右端的低5位有效(因为2的5次方为32，而int类型只有32位)，<br>long为低6位有效（2的6次方64）。根本原因是Java中规定，没有任何移位操作符可以让一个数字丢弃所有的位。</p>
-<h4 id="三元操作符if-else"><a href="#三元操作符if-else" class="headerlink" title="三元操作符if-else"></a>三元操作符if-else</h4><h4 id="字符串操作符-和"><a href="#字符串操作符-和" class="headerlink" title="字符串操作符+和+="></a>字符串操作符+和+=</h4><h4 id="使用操作符时常犯的错误"><a href="#使用操作符时常犯的错误" class="headerlink" title="使用操作符时常犯的错误"></a>使用操作符时常犯的错误</h4><h4 id="类型转换操作符"><a href="#类型转换操作符" class="headerlink" title="类型转换操作符"></a>类型转换操作符</h4><h4 id="Java没有sizeof"><a href="#Java没有sizeof" class="headerlink" title="Java没有sizeof"></a>Java没有sizeof</h4><h4 id="操作符小结"><a href="#操作符小结" class="headerlink" title="操作符小结"></a>操作符小结</h4><p>在char、byte和short中，进行算术运算会转换为int类型。</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
+</li>
+</ol>
+<h4 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
       
     </div>
     
@@ -311,13 +335,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2020/03/09/《Thinking-in-Java》第三章/">《Thinking in Java》第三章</a></p>
+        <p><span>本文标题:</span><a href="/2020/03/13/《Thinking-in-Java》第五章/">《Thinking in Java》第五章.md</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Kestrel 的个人博客">Kestrel</a></p>
-        <p><span>发布时间:</span>2020年03月09日 - 10时52分</p>
-        <p><span>最后更新:</span>2020年03月09日 - 11时18分</p>
+        <p><span>发布时间:</span>2020年03月13日 - 15时21分</p>
+        <p><span>最后更新:</span>2020年03月13日 - 17时02分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/03/09/《Thinking-in-Java》第三章/" title="《Thinking in Java》第三章">https://kestrelcjx.github.io/2020/03/09/《Thinking-in-Java》第三章/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/09/《Thinking-in-Java》第三章/　　作者: Kestrel" title></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/03/13/《Thinking-in-Java》第五章/" title="《Thinking in Java》第五章.md">https://kestrelcjx.github.io/2020/03/13/《Thinking-in-Java》第五章/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/13/《Thinking-in-Java》第五章/　　作者: Kestrel" title></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -328,18 +352,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2020/03/10/《Thinking-in-Java》第四章/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/03/13/《Thinking-in-Java》第六章/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          《Thinking in Java》第四章
+          《Thinking in Java》第六章.md
         
       </div>
     </a>
   
   
-    <a href="/2020/03/07/《Thinking-in-Java》第二章/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">《Thinking in Java》第二章</div>
+    <a href="/2020/03/10/《Thinking-in-Java》第四章/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《Thinking in Java》第四章</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -351,7 +375,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#操作符"><span class="toc-number">1.</span> <span class="toc-text">操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#更简单的打印语句"><span class="toc-number">1.1.</span> <span class="toc-text">更简单的打印语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用Java操作符"><span class="toc-number">1.2.</span> <span class="toc-text">使用Java操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#优先级"><span class="toc-number">1.3.</span> <span class="toc-text">优先级</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#赋值"><span class="toc-number">1.4.</span> <span class="toc-text">赋值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算数操作符"><span class="toc-number">1.5.</span> <span class="toc-text">算数操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自动递增和递减"><span class="toc-number">1.6.</span> <span class="toc-text">自动递增和递减</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关系操作符"><span class="toc-number">1.7.</span> <span class="toc-text">关系操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#逻辑操作符"><span class="toc-number">1.8.</span> <span class="toc-text">逻辑操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#直接常量"><span class="toc-number">1.9.</span> <span class="toc-text">直接常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#按位操作符"><span class="toc-number">1.10.</span> <span class="toc-text">按位操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#移位操作符"><span class="toc-number">1.11.</span> <span class="toc-text">移位操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三元操作符if-else"><span class="toc-number">1.12.</span> <span class="toc-text">三元操作符if-else</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串操作符-和"><span class="toc-number">1.13.</span> <span class="toc-text">字符串操作符+和+=</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用操作符时常犯的错误"><span class="toc-number">1.14.</span> <span class="toc-text">使用操作符时常犯的错误</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类型转换操作符"><span class="toc-number">1.15.</span> <span class="toc-text">类型转换操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Java没有sizeof"><span class="toc-number">1.16.</span> <span class="toc-text">Java没有sizeof</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#操作符小结"><span class="toc-number">1.17.</span> <span class="toc-text">操作符小结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">1.18.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化与清理"><span class="toc-number">1.</span> <span class="toc-text">初始化与清理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#用构造器确保初始化"><span class="toc-number">1.1.</span> <span class="toc-text">用构造器确保初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法重载"><span class="toc-number">1.2.</span> <span class="toc-text">方法重载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#默认构造器"><span class="toc-number">1.3.</span> <span class="toc-text">默认构造器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#this关键字"><span class="toc-number">1.4.</span> <span class="toc-text">this关键字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#清理：终结处理和垃圾回收"><span class="toc-number">1.5.</span> <span class="toc-text">清理：终结处理和垃圾回收</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#成员初始化"><span class="toc-number">1.6.</span> <span class="toc-text">成员初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#构造器初始化"><span class="toc-number">1.7.</span> <span class="toc-text">构造器初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数组初始化"><span class="toc-number">1.8.</span> <span class="toc-text">数组初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#枚举类型"><span class="toc-number">1.9.</span> <span class="toc-text">枚举类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">1.10.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -424,13 +448,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2020/03/10/《Thinking-in-Java》第四章/" title="上一篇: 《Thinking in Java》第四章">
+            <a href="/2020/03/13/《Thinking-in-Java》第六章/" title="上一篇: 《Thinking in Java》第六章.md">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2020/03/07/《Thinking-in-Java》第二章/" title="下一篇: 《Thinking in Java》第二章">
+            <a href="/2020/03/10/《Thinking-in-Java》第四章/" title="下一篇: 《Thinking in Java》第四章">
                 <i class="fa fa-angle-right"></i>
             </a>
         
