@@ -2,8 +2,7 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <!-- <meta name="baidu-site-verification" content="L6Lm9d5Crl"> -->
-  <meta name="baidu-site-verification" content="ebZfcndmZy" />
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl">
   
   
   
@@ -284,7 +283,18 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h3><h4 id="创建内部类"><a href="#创建内部类" class="headerlink" title="创建内部类"></a>创建内部类</h4><h4 id="链接到外部类"><a href="#链接到外部类" class="headerlink" title="链接到外部类"></a>链接到外部类</h4><h4 id="使用-this与-new"><a href="#使用-this与-new" class="headerlink" title="使用.this与.new"></a>使用.this与.new</h4><h4 id="内部类与向上转型"><a href="#内部类与向上转型" class="headerlink" title="内部类与向上转型"></a>内部类与向上转型</h4><h4 id="在方法和作用域内的内部类"><a href="#在方法和作用域内的内部类" class="headerlink" title="在方法和作用域内的内部类"></a>在方法和作用域内的内部类</h4><h4 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h4><h4 id="嵌套类"><a href="#嵌套类" class="headerlink" title="嵌套类"></a>嵌套类</h4><h4 id="为什么需要内部类"><a href="#为什么需要内部类" class="headerlink" title="为什么需要内部类"></a>为什么需要内部类</h4><h4 id="内部类的继承"><a href="#内部类的继承" class="headerlink" title="内部类的继承"></a>内部类的继承</h4><h4 id="内部类可以被覆盖吗"><a href="#内部类可以被覆盖吗" class="headerlink" title="内部类可以被覆盖吗"></a>内部类可以被覆盖吗</h4><h4 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h4><h4 id="内部类标识符"><a href="#内部类标识符" class="headerlink" title="内部类标识符"></a>内部类标识符</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
+        <h3 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h3><h4 id="创建内部类"><a href="#创建内部类" class="headerlink" title="创建内部类"></a>创建内部类</h4><h4 id="链接到外部类"><a href="#链接到外部类" class="headerlink" title="链接到外部类"></a>链接到外部类</h4><p>内部类拥有外围类的所有元素的访问权限。</p>
+<h4 id="使用-this与-new"><a href="#使用-this与-new" class="headerlink" title="使用.this与.new"></a>使用.this与.new</h4><p>如果需要生成外部类对象的引用，可以使用外部类名字后面紧跟原点和this（外部类.this）。<br>生成内部类对象，需要在new表达式中提供对其他外部类对象的引用（外部类对象.new）。</p>
+<h4 id="内部类与向上转型"><a href="#内部类与向上转型" class="headerlink" title="内部类与向上转型"></a>内部类与向上转型</h4><h4 id="在方法和作用域内的内部类"><a href="#在方法和作用域内的内部类" class="headerlink" title="在方法和作用域内的内部类"></a>在方法和作用域内的内部类</h4><h4 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h4><p>如果定义一个匿名内部类，并且希望它使用一个在其外部定义的对象，<br>那么编译器会要求参数引用是final的。如果有匿名类的基类构造器传入参数，<br>该参数可以不为final。</p>
+<h4 id="嵌套类"><a href="#嵌套类" class="headerlink" title="嵌套类"></a>嵌套类</h4><ul>
+<li>要创建嵌套类的对象，并不需要其外围类的对象。</li>
+<li>不能从嵌套类的对象中访问非静态的外围类对象。</li>
+</ul>
+<h4 id="为什么需要内部类"><a href="#为什么需要内部类" class="headerlink" title="为什么需要内部类"></a>为什么需要内部类</h4><h4 id="内部类的继承"><a href="#内部类的继承" class="headerlink" title="内部类的继承"></a>内部类的继承</h4><p>因为内部类的构造器必须连接到指向其外围类对象的引用，所以在继承内部类的时候，<br>那个指向外围类的对象的“密码”引用必须被初始化。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WithInner</span> </span>&#123;</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InheritInner</span> <span class="keyword">extends</span> <span class="title">WithInner</span>.<span class="title">Inner</span> </span>&#123;</span><br><span class="line">	InheritInner(WithInner wi) &#123;</span><br><span class="line">		wi.<span class="keyword">super</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="内部类可以被覆盖吗"><a href="#内部类可以被覆盖吗" class="headerlink" title="内部类可以被覆盖吗"></a>内部类可以被覆盖吗</h4><h4 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h4><h4 id="内部类标识符"><a href="#内部类标识符" class="headerlink" title="内部类标识符"></a>内部类标识符</h4><p>每个类都会产生一个.class文件，内部类class文件名称为：外部类名$内部类名.class</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
       
     </div>
     
@@ -345,7 +355,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><h4 id="抽象类与抽象方法"><a href="#抽象类与抽象方法" class="headerlink" title="抽象类与抽象方法"></a>抽象类与抽象方法</h4><h4 id="接口-1"><a href="#接口-1" class="headerlink" title="接口"></a>接口</h4><h4 id="完全解耦"><a href="#完全解耦" class="headerlink" title="完全解耦"></a>完全解耦</h4><h4 id="Java中的多重继承"><a href="#Java中的多重继承" class="headerlink" title="Java中的多重继承"></a>Java中的多重继承</h4><h4 id="通过继承来扩展接口"><a href="#通过继承来扩展接口" class="headerlink" title="通过继承来扩展接口"></a>通过继承来扩展接口</h4><h4 id="适配接口"><a href="#适配接口" class="headerlink" title="适配接口"></a>适配接口</h4><h4 id="接口中的域"><a href="#接口中的域" class="headerlink" title="接口中的域"></a>接口中的域</h4><h4 id="嵌套接口"><a href="#嵌套接口" class="headerlink" title="嵌套接口"></a>嵌套接口</h4><h4 id="接口与工厂"><a href="#接口与工厂" class="headerlink" title="接口与工厂"></a>接口与工厂</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
+        <h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><h4 id="抽象类与抽象方法"><a href="#抽象类与抽象方法" class="headerlink" title="抽象类与抽象方法"></a>抽象类与抽象方法</h4><p>包含抽象方法的类叫做抽象类，但也可以创建没有抽象方法的抽象类，抽象类中可以具有实现的方法。<br>static和abstract不能同时使用；<br>private和abstract不能同时使用；<br>final和abstract不能同时使用。</p>
+<h4 id="接口-1"><a href="#接口-1" class="headerlink" title="接口"></a>接口</h4><p>interface只能使用默认或public访问权限修饰（除了嵌套接口），interface接口中，<br>方法被定义为是public的，但如果不使用public修饰接口，方法只能得到包访问权限。<br>不能实例化接口和抽象类。<br>JDK8后，interface接口可以有默认实现(“default void fun(){}”)。</p>
+<h4 id="完全解耦"><a href="#完全解耦" class="headerlink" title="完全解耦"></a>完全解耦</h4><h4 id="Java中的多重继承"><a href="#Java中的多重继承" class="headerlink" title="Java中的多重继承"></a>Java中的多重继承</h4><p>Java中，类只能使用单继承，但接口可以使用多继承。<br>继承一个接口，并再继承该接口的一个实现，可以不用在新类中在实现接口。<br>继承多个接口，并且接口中含有方法名相同，但不能构成重载时，会发生错误。</p>
+<h4 id="通过继承来扩展接口"><a href="#通过继承来扩展接口" class="headerlink" title="通过继承来扩展接口"></a>通过继承来扩展接口</h4><h4 id="适配接口"><a href="#适配接口" class="headerlink" title="适配接口"></a>适配接口</h4><h4 id="接口中的域"><a href="#接口中的域" class="headerlink" title="接口中的域"></a>接口中的域</h4><p>接口中的域都自动是static和final的，并且不能是“空final”。</p>
+<h4 id="嵌套接口"><a href="#嵌套接口" class="headerlink" title="嵌套接口"></a>嵌套接口</h4><h4 id="接口与工厂"><a href="#接口与工厂" class="headerlink" title="接口与工厂"></a>接口与工厂</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
       
     </div>
     

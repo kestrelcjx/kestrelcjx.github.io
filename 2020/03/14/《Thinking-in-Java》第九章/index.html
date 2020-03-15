@@ -9,18 +9,18 @@
   
   <title>《Thinking in Java》第九章 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="接口抽象类与抽象方法接口完全解耦Java中的多重继承通过继承来扩展接口适配接口接口中的域嵌套接口接口与工厂总结">
+  <meta name="description" content="接口抽象类与抽象方法包含抽象方法的类叫做抽象类，但也可以创建没有抽象方法的抽象类，抽象类中可以具有实现的方法。static和abstract不能同时使用；private和abstract不能同时使用；final和abstract不能同时使用。 接口interface只能使用默认或public访问权限修饰（除了嵌套接口），interface接口中，方法被定义为是public的，但如果不使用publi">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《Thinking in Java》第九章">
 <meta property="og:url" content="https://kestrelcjx.github.io/2020/03/14/《Thinking-in-Java》第九章/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="接口抽象类与抽象方法接口完全解耦Java中的多重继承通过继承来扩展接口适配接口接口中的域嵌套接口接口与工厂总结">
+<meta property="og:description" content="接口抽象类与抽象方法包含抽象方法的类叫做抽象类，但也可以创建没有抽象方法的抽象类，抽象类中可以具有实现的方法。static和abstract不能同时使用；private和abstract不能同时使用；final和abstract不能同时使用。 接口interface只能使用默认或public访问权限修饰（除了嵌套接口），interface接口中，方法被定义为是public的，但如果不使用publi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-15T07:26:52.917Z">
+<meta property="og:updated_time" content="2020-03-15T09:05:43.954Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Thinking in Java》第九章">
-<meta name="twitter:description" content="接口抽象类与抽象方法接口完全解耦Java中的多重继承通过继承来扩展接口适配接口接口中的域嵌套接口接口与工厂总结">
+<meta name="twitter:description" content="接口抽象类与抽象方法包含抽象方法的类叫做抽象类，但也可以创建没有抽象方法的抽象类，抽象类中可以具有实现的方法。static和abstract不能同时使用；private和abstract不能同时使用；final和abstract不能同时使用。 接口interface只能使用默认或public访问权限修饰（除了嵌套接口），interface接口中，方法被定义为是public的，但如果不使用publi">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -294,7 +294,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><h4 id="抽象类与抽象方法"><a href="#抽象类与抽象方法" class="headerlink" title="抽象类与抽象方法"></a>抽象类与抽象方法</h4><h4 id="接口-1"><a href="#接口-1" class="headerlink" title="接口"></a>接口</h4><h4 id="完全解耦"><a href="#完全解耦" class="headerlink" title="完全解耦"></a>完全解耦</h4><h4 id="Java中的多重继承"><a href="#Java中的多重继承" class="headerlink" title="Java中的多重继承"></a>Java中的多重继承</h4><h4 id="通过继承来扩展接口"><a href="#通过继承来扩展接口" class="headerlink" title="通过继承来扩展接口"></a>通过继承来扩展接口</h4><h4 id="适配接口"><a href="#适配接口" class="headerlink" title="适配接口"></a>适配接口</h4><h4 id="接口中的域"><a href="#接口中的域" class="headerlink" title="接口中的域"></a>接口中的域</h4><h4 id="嵌套接口"><a href="#嵌套接口" class="headerlink" title="嵌套接口"></a>嵌套接口</h4><h4 id="接口与工厂"><a href="#接口与工厂" class="headerlink" title="接口与工厂"></a>接口与工厂</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
+        <h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><h4 id="抽象类与抽象方法"><a href="#抽象类与抽象方法" class="headerlink" title="抽象类与抽象方法"></a>抽象类与抽象方法</h4><p>包含抽象方法的类叫做抽象类，但也可以创建没有抽象方法的抽象类，抽象类中可以具有实现的方法。<br>static和abstract不能同时使用；<br>private和abstract不能同时使用；<br>final和abstract不能同时使用。</p>
+<h4 id="接口-1"><a href="#接口-1" class="headerlink" title="接口"></a>接口</h4><p>interface只能使用默认或public访问权限修饰（除了嵌套接口），interface接口中，<br>方法被定义为是public的，但如果不使用public修饰接口，方法只能得到包访问权限。<br>不能实例化接口和抽象类。<br>JDK8后，interface接口可以有默认实现(“default void fun(){}”)。</p>
+<h4 id="完全解耦"><a href="#完全解耦" class="headerlink" title="完全解耦"></a>完全解耦</h4><h4 id="Java中的多重继承"><a href="#Java中的多重继承" class="headerlink" title="Java中的多重继承"></a>Java中的多重继承</h4><p>Java中，类只能使用单继承，但接口可以使用多继承。<br>继承一个接口，并再继承该接口的一个实现，可以不用在新类中在实现接口。<br>继承多个接口，并且接口中含有方法名相同，但不能构成重载时，会发生错误。</p>
+<h4 id="通过继承来扩展接口"><a href="#通过继承来扩展接口" class="headerlink" title="通过继承来扩展接口"></a>通过继承来扩展接口</h4><h4 id="适配接口"><a href="#适配接口" class="headerlink" title="适配接口"></a>适配接口</h4><h4 id="接口中的域"><a href="#接口中的域" class="headerlink" title="接口中的域"></a>接口中的域</h4><p>接口中的域都自动是static和final的，并且不能是“空final”。</p>
+<h4 id="嵌套接口"><a href="#嵌套接口" class="headerlink" title="嵌套接口"></a>嵌套接口</h4><h4 id="接口与工厂"><a href="#接口与工厂" class="headerlink" title="接口与工厂"></a>接口与工厂</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
       
     </div>
     
@@ -305,7 +309,7 @@
         <p><span>本文标题:</span><a href="/2020/03/14/《Thinking-in-Java》第九章/">《Thinking in Java》第九章</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Kestrel 的个人博客">Kestrel</a></p>
         <p><span>发布时间:</span>2020年03月14日 - 15时30分</p>
-        <p><span>最后更新:</span>2020年03月15日 - 15时26分</p>
+        <p><span>最后更新:</span>2020年03月15日 - 17时05分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/03/14/《Thinking-in-Java》第九章/" title="《Thinking in Java》第九章">https://kestrelcjx.github.io/2020/03/14/《Thinking-in-Java》第九章/</a>
             <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/14/《Thinking-in-Java》第九章/　　作者: Kestrel" title></span>
