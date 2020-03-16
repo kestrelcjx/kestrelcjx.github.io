@@ -7,22 +7,22 @@
   
   
   
-  <title>虚树 | Hexo</title>
+  <title>《Thinking in Java》第十一章 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="虚树用途：在树上做DP时，有时候我们并不需要从某些点进行转移，只需要从某些关键点便可求得答案，多余的点会增加算法的时间复杂度。虚树就是在原来的树基础上去掉多余点、只保留关键点，关键点包括指定的点以及他们的最近公共祖先(LCA)。 实现首先，将某一非指定点作为虚树的根，将其放入栈中；然后，求出树上点的dfs序，将指定的点按dfs序从小到大排序后，依次放入栈中。在将点放入栈时，分情况讨论：1.如果栈中">
-<meta name="keywords" content="图论">
+  <meta name="description" content="持有对象泛型和类型安全的容器Java容器不支持基本类型，应当使用相应的包装类。 基本概念java容器类库的用途是“保存对象”，并将其划分为不同的概念：  COllection。一个独立元素的序列，这些元素都服从一条或多条规则。 Map。一组成对的“键值对”对象，允许你使用键来查找值。  添加一组元素Arrays.asList返回的列表底层以数组实现，不支持插入删除。 容器的打印List有两种类型的">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="虚树">
-<meta property="og:url" content="https://kestrelcjx.github.io/2019/08/27/虚树/index.html">
+<meta property="og:title" content="《Thinking in Java》第十一章">
+<meta property="og:url" content="https://kestrelcjx.github.io/2020/03/16/《Thinking-in-Java》第十一章/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="虚树用途：在树上做DP时，有时候我们并不需要从某些点进行转移，只需要从某些关键点便可求得答案，多余的点会增加算法的时间复杂度。虚树就是在原来的树基础上去掉多余点、只保留关键点，关键点包括指定的点以及他们的最近公共祖先(LCA)。 实现首先，将某一非指定点作为虚树的根，将其放入栈中；然后，求出树上点的dfs序，将指定的点按dfs序从小到大排序后，依次放入栈中。在将点放入栈时，分情况讨论：1.如果栈中">
+<meta property="og:description" content="持有对象泛型和类型安全的容器Java容器不支持基本类型，应当使用相应的包装类。 基本概念java容器类库的用途是“保存对象”，并将其划分为不同的概念：  COllection。一个独立元素的序列，这些元素都服从一条或多条规则。 Map。一组成对的“键值对”对象，允许你使用键来查找值。  添加一组元素Arrays.asList返回的列表底层以数组实现，不支持插入删除。 容器的打印List有两种类型的">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://kestrelcjx.github.io/images/%E8%99%9A%E6%A0%91.jpg">
-<meta property="og:updated_time" content="2019-08-27T12:33:29.767Z">
+<meta property="og:image" content="https://kestrelcjx.github.io/images/Collection.jpg">
+<meta property="og:updated_time" content="2020-03-16T03:49:25.588Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="虚树">
-<meta name="twitter:description" content="虚树用途：在树上做DP时，有时候我们并不需要从某些点进行转移，只需要从某些关键点便可求得答案，多余的点会增加算法的时间复杂度。虚树就是在原来的树基础上去掉多余点、只保留关键点，关键点包括指定的点以及他们的最近公共祖先(LCA)。 实现首先，将某一非指定点作为虚树的根，将其放入栈中；然后，求出树上点的dfs序，将指定的点按dfs序从小到大排序后，依次放入栈中。在将点放入栈时，分情况讨论：1.如果栈中">
-<meta name="twitter:image" content="https://kestrelcjx.github.io/images/%E8%99%9A%E6%A0%91.jpg">
+<meta name="twitter:title" content="《Thinking in Java》第十一章">
+<meta name="twitter:description" content="持有对象泛型和类型安全的容器Java容器不支持基本类型，应当使用相应的包装类。 基本概念java容器类库的用途是“保存对象”，并将其划分为不同的概念：  COllection。一个独立元素的序列，这些元素都服从一条或多条规则。 Map。一组成对的“键值对”对象，允许你使用键来查找值。  添加一组元素Arrays.asList返回的列表底层以数组实现，不支持插入删除。 容器的打印List有两种类型的">
+<meta name="twitter:image" content="https://kestrelcjx.github.io/images/Collection.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -256,11 +256,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-虚树" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-《Thinking-in-Java》第十一章" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/08/27/虚树/" class="article-date">
-      <time datetime="2019-08-27T11:00:51.000Z" itemprop="datePublished">2019-08-27</time>
+      <a href="/2020/03/16/《Thinking-in-Java》第十一章/" class="article-date">
+      <time datetime="2020-03-16T02:13:29.000Z" itemprop="datePublished">2020-03-16</time>
 </a>
 
     </div>
@@ -274,7 +274,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      虚树
+      《Thinking in Java》第十一章
     </h1>
   
 
@@ -286,7 +286,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图论/">图论</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -296,10 +296,36 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="虚树"><a href="#虚树" class="headerlink" title="虚树"></a>虚树</h2><p>用途：在树上做DP时，有时候我们并不需要从某些点进行转移，只需要从某些关键点便可求得答案，多余的点会增加算法的时间复杂度。虚树就是在原来的树基础上去掉多余点、只保留关键点，关键点包括指定的点以及他们的最近公共祖先(LCA)。</p>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>首先，将某一非指定点作为虚树的根，将其放入栈中；然后，求出树上点的dfs序，将指定的点按dfs序从小到大排序后，依次放入栈中。在将点放入栈时，分情况讨论：<br>1.如果栈中元素个数小于等于1个，直接入栈，返回；否则求出栈顶元素与入栈元素的LCA。<br>2.如果栈顶元素为LCA，直接返回，元素不需要入栈；如果栈顶元素不为LCA，循环判断栈中元素个数大于1且第二个元素dfs序不小于LCA的dfs序，将栈顶元素和栈中第二个元素建边并将栈顶元素出栈，否则跳出循环；<br>3.如果在循环结束，栈顶元素不为LCA，将栈顶元素与LCA建边，栈顶元素出栈，再将LCA入栈；<br>4.将指定点入栈。<br><img src="/images/%E8%99%9A%E6%A0%91.jpg" alt="虚树"></p>
-<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><h3 id="SDOI2011-消耗战"><a href="#SDOI2011-消耗战" class="headerlink" title="[SDOI2011]消耗战"></a>[SDOI2011]消耗战</h3><p>交题地址：<a href="https://www.luogu.org/problem/P2495" target="_blank" rel="noopener">消耗战</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f3f3f3f3f</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">250005</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, k;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to;</span><br><span class="line">	ll w;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;Edge&gt;G[N];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;T[N];</span><br><span class="line"><span class="keyword">int</span> p[N], Stack[N];</span><br><span class="line"><span class="keyword">int</span> dfn[N], deep[N], fa[N], son[N], sz[N], top[N];</span><br><span class="line"><span class="keyword">int</span> cnt, tp;</span><br><span class="line">ll num[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> f)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	sz[u] = <span class="number">1</span>;</span><br><span class="line">	fa[u] = f;</span><br><span class="line">	<span class="keyword">for</span>(Edge e : G[u])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> v = e.to;</span><br><span class="line">		<span class="keyword">if</span>(v == f) <span class="keyword">continue</span>;</span><br><span class="line">		deep[v] = deep[u]+<span class="number">1</span>;</span><br><span class="line">		num[v] = min(num[u], e.w);</span><br><span class="line">		dfs1(v, u);</span><br><span class="line">		sz[u] += sz[v];</span><br><span class="line">		<span class="keyword">if</span>(sz[v] &gt; sz[son[u]]) son[u] = v;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> f)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	top[u] = f;</span><br><span class="line">	dfn[u] = ++cnt;</span><br><span class="line">	<span class="keyword">if</span>(!son[u]) <span class="keyword">return</span>;</span><br><span class="line">	dfs2(son[u], f);</span><br><span class="line">	<span class="keyword">for</span>(Edge e : G[u])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(!top[e.to]) dfs2(e.to, e.to);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LCA</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(top[u] != top[v])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(deep[top[u]] &lt; deep[top[v]]) swap(u, v);</span><br><span class="line">		u = fa[top[u]];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(deep[u] &lt; deep[v]) swap(u, v);</span><br><span class="line">	<span class="keyword">return</span> v;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> dfn[a] &lt; dfn[b];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(tp == <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		Stack[++tp] = u;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> lca = LCA(u, Stack[tp]);</span><br><span class="line">	<span class="keyword">if</span>(lca == Stack[tp]) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">while</span>(tp &gt; <span class="number">1</span> &amp;&amp; dfn[Stack[tp<span class="number">-1</span>]] &gt;= dfn[lca])</span><br><span class="line">	&#123;</span><br><span class="line">		T[Stack[tp<span class="number">-1</span>]].push_back(Stack[tp]);</span><br><span class="line">		tp--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(lca != Stack[tp])</span><br><span class="line">	&#123;</span><br><span class="line">		T[lca].push_back(Stack[tp]);</span><br><span class="line">		Stack[tp] = lca;</span><br><span class="line">	&#125;</span><br><span class="line">	Stack[++tp] = u;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">solve</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(T[u].size() == <span class="number">0</span>) <span class="keyword">return</span> num[u];</span><br><span class="line">	ll sum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> v : T[u]) sum += solve(v);</span><br><span class="line">	T[u].clear();</span><br><span class="line">	<span class="keyword">return</span> min(sum, num[u]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> u, v;</span><br><span class="line">	ll w;</span><br><span class="line">	<span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n))</span><br><span class="line">	&#123;</span><br><span class="line">		num[<span class="number">1</span>] = INF;</span><br><span class="line">		cnt = <span class="number">0</span>;</span><br><span class="line">		<span class="built_in">memset</span>(top, <span class="number">0</span>, <span class="keyword">sizeof</span>(top));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) G[i].clear();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d%d%lld"</span>, &amp;u, &amp;v, &amp;w);</span><br><span class="line">			G[u].push_back((Edge)&#123;v, w&#125;);</span><br><span class="line">			G[v].push_back((Edge)&#123;u, w&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">		deep[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">		dfs1(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">		dfs2(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;m);</span><br><span class="line">		<span class="keyword">while</span>(m--)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;k);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;p[i]);</span><br><span class="line">			sort(p, p+k, cmp);</span><br><span class="line">			Stack[tp = <span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++) insert(p[i]);</span><br><span class="line">			<span class="keyword">while</span>(tp &gt; <span class="number">0</span>) T[Stack[tp<span class="number">-1</span>]].push_back(Stack[tp]), tp--;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, solve(<span class="number">1</span>));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="持有对象"><a href="#持有对象" class="headerlink" title="持有对象"></a>持有对象</h3><h4 id="泛型和类型安全的容器"><a href="#泛型和类型安全的容器" class="headerlink" title="泛型和类型安全的容器"></a>泛型和类型安全的容器</h4><p>Java容器不支持基本类型，应当使用相应的包装类。</p>
+<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>java容器类库的用途是“保存对象”，并将其划分为不同的概念：</p>
+<ol>
+<li>COllection。一个独立元素的序列，这些元素都服从一条或多条规则。</li>
+<li>Map。一组成对的“键值对”对象，允许你使用键来查找值。</li>
+</ol>
+<h4 id="添加一组元素"><a href="#添加一组元素" class="headerlink" title="添加一组元素"></a>添加一组元素</h4><p>Arrays.asList返回的列表底层以数组实现，不支持插入删除。</p>
+<h4 id="容器的打印"><a href="#容器的打印" class="headerlink" title="容器的打印"></a>容器的打印</h4><h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><p>有两种类型的List：</p>
+<ol>
+<li>基本的ArrayList，它长于随机访问元素，但是在List的中间插入和移除元素时较慢。</li>
+<li>LinkedList，它通过代价较低的在List中间进行的插入和删除操作，提供了优化的顺序访问。<br>LinkedList在随机访问方面相对比较慢，但是它的特性集较ArrayList更大。</li>
+</ol>
+<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>Java的Iterator只能单向移动，这个Iterator只能用来：</p>
+<ol>
+<li>使用方法iterator()要求容器返回一个Iterator。</li>
+<li>使用next()获得序列的下一个元素。</li>
+<li>使用hasNext()检查序列中是否还有元素。</li>
+<li>使用remove()将迭代器新近返回的元素删除。</li>
+</ol>
+<h4 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h4><h4 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h4><h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4><ol>
+<li>HashSet使用散列函数</li>
+<li>TreeSet将元素存储在红黑树数据结构中</li>
+<li>LinkedHash因为查询速度的原因也使用了散列，但是看起来它使用了链表来维护元素的插入顺序。</li>
+</ol>
+<h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><p>Map的遍历：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Integer, String&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, String&gt;();</span><br><span class="line">...</span><br><span class="line"><span class="keyword">for</span>(Integer i : map.keySet()) &#123;</span><br><span class="line">	String str = map.get(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(Map.Entry entry : map.entrySet()) &#123;</span><br><span class="line">	<span class="keyword">int</span> i = entry.getKey();</span><br><span class="line">	String str = map.getValue();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h4><h4 id="Collection和Iterator"><a href="#Collection和Iterator" class="headerlink" title="Collection和Iterator"></a>Collection和Iterator</h4><h4 id="Foreach和迭代器"><a href="#Foreach和迭代器" class="headerlink" title="Foreach和迭代器"></a>Foreach和迭代器</h4><p>foreach语句可以用于数组或其他任何Iterable</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><img src="/images/Collection.jpg" alt="简单的容器分类"><br>4种容器：Map、List、Set、Queue</p>
+
       
     </div>
     
@@ -307,13 +333,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/08/27/虚树/">虚树</a></p>
+        <p><span>本文标题:</span><a href="/2020/03/16/《Thinking-in-Java》第十一章/">《Thinking in Java》第十一章</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Kestrel 的个人博客">Kestrel</a></p>
-        <p><span>发布时间:</span>2019年08月27日 - 19时00分</p>
-        <p><span>最后更新:</span>2019年08月27日 - 20时33分</p>
+        <p><span>发布时间:</span>2020年03月16日 - 10时13分</p>
+        <p><span>最后更新:</span>2020年03月16日 - 11时49分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/08/27/虚树/" title="虚树">https://kestrelcjx.github.io/2019/08/27/虚树/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2019/08/27/虚树/　　作者: Kestrel" title></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/03/16/《Thinking-in-Java》第十一章/" title="《Thinking in Java》第十一章">https://kestrelcjx.github.io/2020/03/16/《Thinking-in-Java》第十一章/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/16/《Thinking-in-Java》第十一章/　　作者: Kestrel" title></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -324,18 +350,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2020/03/07/《Thinking-in-Java》第一章/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          《Thinking in Java》第一章
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/26/斯坦纳树-Steiner-Tree/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">斯坦纳树(Steiner Tree)</div>
+    <a href="/2020/03/14/《Thinking-in-Java》第十章/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《Thinking in Java》第十章</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -347,7 +364,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#虚树"><span class="toc-number">1.</span> <span class="toc-text">虚树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现"><span class="toc-number">1.1.</span> <span class="toc-text">实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#练习"><span class="toc-number">2.</span> <span class="toc-text">练习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SDOI2011-消耗战"><span class="toc-number">2.1.</span> <span class="toc-text">[SDOI2011]消耗战</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#持有对象"><span class="toc-number">1.</span> <span class="toc-text">持有对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#泛型和类型安全的容器"><span class="toc-number">1.1.</span> <span class="toc-text">泛型和类型安全的容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基本概念"><span class="toc-number">1.2.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加一组元素"><span class="toc-number">1.3.</span> <span class="toc-text">添加一组元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#容器的打印"><span class="toc-number">1.4.</span> <span class="toc-text">容器的打印</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#List"><span class="toc-number">1.5.</span> <span class="toc-text">List</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#迭代器"><span class="toc-number">1.6.</span> <span class="toc-text">迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LinkedList"><span class="toc-number">1.7.</span> <span class="toc-text">LinkedList</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Stack"><span class="toc-number">1.8.</span> <span class="toc-text">Stack</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Set"><span class="toc-number">1.9.</span> <span class="toc-text">Set</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Map"><span class="toc-number">1.10.</span> <span class="toc-text">Map</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Queue"><span class="toc-number">1.11.</span> <span class="toc-text">Queue</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Collection和Iterator"><span class="toc-number">1.12.</span> <span class="toc-text">Collection和Iterator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Foreach和迭代器"><span class="toc-number">1.13.</span> <span class="toc-text">Foreach和迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">1.14.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -420,13 +437,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2020/03/07/《Thinking-in-Java》第一章/" title="上一篇: 《Thinking in Java》第一章">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2019/08/26/斯坦纳树-Steiner-Tree/" title="下一篇: 斯坦纳树(Steiner Tree)">
+            <a href="/2020/03/14/《Thinking-in-Java》第十章/" title="下一篇: 《Thinking in Java》第十章">
                 <i class="fa fa-angle-right"></i>
             </a>
         
