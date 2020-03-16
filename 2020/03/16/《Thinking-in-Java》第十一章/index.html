@@ -9,19 +9,19 @@
   
   <title>《Thinking in Java》第十一章 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="持有对象泛型和类型安全的容器Java容器不支持基本类型，应当使用相应的包装类。 基本概念java容器类库的用途是“保存对象”，并将其划分为不同的概念：  COllection。一个独立元素的序列，这些元素都服从一条或多条规则。 Map。一组成对的“键值对”对象，允许你使用键来查找值。  添加一组元素Arrays.asList返回的列表底层以数组实现，不支持插入删除。 容器的打印List有两种类型的">
+  <meta name="description" content="持有对象泛型和类型安全的容器Java容器不支持基本类型，应当使用相应的包装类。 基本概念java容器类库的用途是“保存对象”，并将其划分为不同的概念：  Collection。一个独立元素的序列，这些元素都服从一条或多条规则。 Map。一组成对的“键值对”对象，允许你使用键来查找值。  添加一组元素Arrays.asList返回的列表底层以数组实现，不支持插入删除。 容器的打印List有两种类型的">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《Thinking in Java》第十一章">
 <meta property="og:url" content="https://kestrelcjx.github.io/2020/03/16/《Thinking-in-Java》第十一章/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="持有对象泛型和类型安全的容器Java容器不支持基本类型，应当使用相应的包装类。 基本概念java容器类库的用途是“保存对象”，并将其划分为不同的概念：  COllection。一个独立元素的序列，这些元素都服从一条或多条规则。 Map。一组成对的“键值对”对象，允许你使用键来查找值。  添加一组元素Arrays.asList返回的列表底层以数组实现，不支持插入删除。 容器的打印List有两种类型的">
+<meta property="og:description" content="持有对象泛型和类型安全的容器Java容器不支持基本类型，应当使用相应的包装类。 基本概念java容器类库的用途是“保存对象”，并将其划分为不同的概念：  Collection。一个独立元素的序列，这些元素都服从一条或多条规则。 Map。一组成对的“键值对”对象，允许你使用键来查找值。  添加一组元素Arrays.asList返回的列表底层以数组实现，不支持插入删除。 容器的打印List有两种类型的">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://kestrelcjx.github.io/images/Collection.jpg">
-<meta property="og:updated_time" content="2020-03-16T03:49:25.588Z">
+<meta property="og:updated_time" content="2020-03-16T03:52:35.745Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Thinking in Java》第十一章">
-<meta name="twitter:description" content="持有对象泛型和类型安全的容器Java容器不支持基本类型，应当使用相应的包装类。 基本概念java容器类库的用途是“保存对象”，并将其划分为不同的概念：  COllection。一个独立元素的序列，这些元素都服从一条或多条规则。 Map。一组成对的“键值对”对象，允许你使用键来查找值。  添加一组元素Arrays.asList返回的列表底层以数组实现，不支持插入删除。 容器的打印List有两种类型的">
+<meta name="twitter:description" content="持有对象泛型和类型安全的容器Java容器不支持基本类型，应当使用相应的包装类。 基本概念java容器类库的用途是“保存对象”，并将其划分为不同的概念：  Collection。一个独立元素的序列，这些元素都服从一条或多条规则。 Map。一组成对的“键值对”对象，允许你使用键来查找值。  添加一组元素Arrays.asList返回的列表底层以数组实现，不支持插入删除。 容器的打印List有两种类型的">
 <meta name="twitter:image" content="https://kestrelcjx.github.io/images/Collection.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -299,7 +299,7 @@
         <h3 id="持有对象"><a href="#持有对象" class="headerlink" title="持有对象"></a>持有对象</h3><h4 id="泛型和类型安全的容器"><a href="#泛型和类型安全的容器" class="headerlink" title="泛型和类型安全的容器"></a>泛型和类型安全的容器</h4><p>Java容器不支持基本类型，应当使用相应的包装类。</p>
 <h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>java容器类库的用途是“保存对象”，并将其划分为不同的概念：</p>
 <ol>
-<li>COllection。一个独立元素的序列，这些元素都服从一条或多条规则。</li>
+<li>Collection。一个独立元素的序列，这些元素都服从一条或多条规则。</li>
 <li>Map。一组成对的“键值对”对象，允许你使用键来查找值。</li>
 </ol>
 <h4 id="添加一组元素"><a href="#添加一组元素" class="headerlink" title="添加一组元素"></a>添加一组元素</h4><p>Arrays.asList返回的列表底层以数组实现，不支持插入删除。</p>
@@ -336,7 +336,7 @@
         <p><span>本文标题:</span><a href="/2020/03/16/《Thinking-in-Java》第十一章/">《Thinking in Java》第十一章</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Kestrel 的个人博客">Kestrel</a></p>
         <p><span>发布时间:</span>2020年03月16日 - 10时13分</p>
-        <p><span>最后更新:</span>2020年03月16日 - 11时49分</p>
+        <p><span>最后更新:</span>2020年03月16日 - 11时52分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/03/16/《Thinking-in-Java》第十一章/" title="《Thinking in Java》第十一章">https://kestrelcjx.github.io/2020/03/16/《Thinking-in-Java》第十一章/</a>
             <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/16/《Thinking-in-Java》第十一章/　　作者: Kestrel" title></span>
