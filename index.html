@@ -254,6 +254,120 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-《Thinking-in-Java》第十六章" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/18/《Thinking-in-Java》第十六章/" class="article-date">
+      <time datetime="2020-03-18T06:49:02.000Z" itemprop="datePublished">2020-03-18</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/18/《Thinking-in-Java》第十六章/">《Thinking in Java》第十六章</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-《Thinking-in-Java》第十五章" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/18/《Thinking-in-Java》第十五章/" class="article-date">
+      <time datetime="2020-03-18T06:48:52.000Z" itemprop="datePublished">2020-03-18</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/18/《Thinking-in-Java》第十五章/">《Thinking in Java》第十五章</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-《Thinking-in-Java》第十四章" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -643,7 +757,7 @@
 <li>替换操作</li>
 <li>reset()</li>
 </ol>
-<h4 id="扫描输入"><a href="#扫描输入" class="headerlink" title="扫描输入"></a>扫描输入</h4><h4 id="StringTokenizer"><a href="#StringTokenizer" class="headerlink" title="StringTokenizer"></a>StringTokenizer</h4><p>在Java引入正则表达式（J2SE1.4）和Scanner（JavaSE5）之前，分割字符串的<br>唯一方法是使用StringTOkenizer来分词。</p>
+<h4 id="扫描输入"><a href="#扫描输入" class="headerlink" title="扫描输入"></a>扫描输入</h4><h4 id="StringTokenizer"><a href="#StringTokenizer" class="headerlink" title="StringTokenizer"></a>StringTokenizer</h4><p>在Java引入正则表达式（J2SE1.4）和Scanner（JavaSE5）之前，分割字符串的<br>唯一方法是使用StringTokenizer来分词。</p>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
       
     </div>
@@ -1142,211 +1256,9 @@
 
 
   
-    <article id="post-《Thinking-in-Java》第六章" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/13/《Thinking-in-Java》第六章/" class="article-date">
-      <time datetime="2020-03-13T07:22:24.000Z" itemprop="datePublished">2020-03-13</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/13/《Thinking-in-Java》第六章/">《Thinking in Java》第六章</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="访问权限控制"><a href="#访问权限控制" class="headerlink" title="访问权限控制"></a>访问权限控制</h3><h4 id="包：库单元"><a href="#包：库单元" class="headerlink" title="包：库单元"></a>包：库单元</h4><p>如果未设置源文件所属包，则会位于未命名包（默认包）中。<br>当编写一个Java源代码文件时，此文件通常被称为编译单元。<br>每个编译单元都必须有一个后缀.java，而在编译单元内则有一个public类，<br>该类的名称必须与文件的名称相同（包括大小写，但不包括后缀名.java）。<br>每个编译单元只能由一个pubic类（也可以没有）。<br>创建包时，按照惯例，package名称第一部分是类创建者的反顺序的Internet域名<br>（例如：com.kestrelcjx.xxx）。package名称将分解为机器上的一个目录。<br>Java解释器的运行过程如下：首先，找出环境变量CLASSPATH。CLASSPATH包含一个或<br>多个目录，用作.class文件的根目录。从根目录开始，解释器获取包的名称并将<br>每个句号替换为反斜杠，以从CLASSPATH根肿产生一个路径名称。得到的路径会与CLASSPATH路径<br>中的各个不同项相连接，解释器就在这些目录中查找与你所创建类的名称相关的.class文件。</p>
-<h4 id="Java访问权限修饰词"><a href="#Java访问权限修饰词" class="headerlink" title="Java访问权限修饰词"></a>Java访问权限修饰词</h4><table>
-<thead>
-<tr>
-<th>修饰符</th>
-<th>本类</th>
-<th>包内</th>
-<th>子类</th>
-<th>其他包</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>private</td>
-<td>*</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>friendly(default)</td>
-<td>*</td>
-<td>*</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>protected</td>
-<td>*</td>
-<td>*</td>
-<td>*</td>
-<td></td>
-</tr>
-<tr>
-<td>public</td>
-<td>*</td>
-<td>*</td>
-<td>*</td>
-<td>*</td>
-</tr>
-</tbody></table>
-<h4 id="接口和实现"><a href="#接口和实现" class="headerlink" title="接口和实现"></a>接口和实现</h4><h4 id="类的访问权限"><a href="#类的访问权限" class="headerlink" title="类的访问权限"></a>类的访问权限</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-《Thinking-in-Java》第五章" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/13/《Thinking-in-Java》第五章/" class="article-date">
-      <time datetime="2020-03-13T07:21:59.000Z" itemprop="datePublished">2020-03-13</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/13/《Thinking-in-Java》第五章/">《Thinking in Java》第五章</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="初始化与清理"><a href="#初始化与清理" class="headerlink" title="初始化与清理"></a>初始化与清理</h3><h4 id="用构造器确保初始化"><a href="#用构造器确保初始化" class="headerlink" title="用构造器确保初始化"></a>用构造器确保初始化</h4><h4 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h4><ul>
-<li>区分重载方法：重载方法名称相同，参数数量、类型或顺序不同，但无法以返回值不同实现重载。</li>
-<li>涉及基本类型的方法重载：基本类型从一个“较小”的类型自动提升至一个“较大”的类型。<br>char略有不同，如果没有char参数的方法，将直接提升至int。</li>
-</ul>
-<h4 id="默认构造器"><a href="#默认构造器" class="headerlink" title="默认构造器"></a>默认构造器</h4><p>如果不提供构造器，将自动创建一个无参数的默认构造器，如果提供了构造器，则不会自动创建。</p>
-<h4 id="this关键字"><a href="#this关键字" class="headerlink" title="this关键字"></a>this关键字</h4><ul>
-<li>使用对象调用方法，编译器会暗自将“所操作对象的引用”作为第一个参数传递给方法。</li>
-<li>使用this关键字在方法内部获得当前对象的引用，但只能在方法内部使用。</li>
-<li>在构造器中可以使用this()调用重载的其他构造器。</li>
-<li>static方法中，不能使用this，且不能调用非静态方法。</li>
-</ul>
-<h4 id="清理：终结处理和垃圾回收"><a href="#清理：终结处理和垃圾回收" class="headerlink" title="清理：终结处理和垃圾回收"></a>清理：终结处理和垃圾回收</h4><p>Java中的对象创建在堆中，对象不再使用时必须有垃圾回收器回收所占用内存。<br>发生垃圾回收时，会使用对象的finalize()方法（Object类中的protected方法）。<br>垃圾回收一边回收空间，一边使堆中的对象紧凑排列。</p>
-<ul>
-<li>对象可能不被垃圾回收</li>
-<li>垃圾回收并不等于析构</li>
-<li>垃圾回收只与内存有关</li>
-</ul>
-<p>垃圾回收机制：</p>
-<ol>
-<li>引用记数是一种简单但速度很慢的垃圾回收技术。每个对象都含有一个引用记数器，<br>当有引用连接至对象时，引用记数加1。当离开作用域或被设置为null时，引用记数减1。<br>垃圾回收器会在含有全部对象的列表上遍历，当发现某个对象引用记数为0时，就释放<br>其所占用的空间（但是，引用记数模式通常会在记数值为0时立即释放对象）。引用记数<br>常用来说明垃圾收集的工作方式，但似乎从未被应用于如何一种Java虚拟机实现中。</li>
-<li>另一种垃圾回收：从堆栈和静态存储区开始，遍历所有的引用，找到所有“活”的对象<br>。对于发现的每个引用，必须追踪它所引用的对象，然后是此对象包含的所有引用，直到<br>“根源于堆栈和静态存储区的引用”所形成得到网络全部被访问为止。在这种方式下，Java虚拟机<br>将采用一种自适应的垃圾回收技术，至于如何处理找到的存活对象，取决于不同的Java虚拟机实现。<br>（例如：“停止-复制”、“标记-清扫”）</li>
-</ol>
-<h4 id="成员初始化"><a href="#成员初始化" class="headerlink" title="成员初始化"></a>成员初始化</h4><h4 id="构造器初始化"><a href="#构造器初始化" class="headerlink" title="构造器初始化"></a>构造器初始化</h4><ul>
-<li>在类的内部，变量定义的先后顺序决定了初始化的顺序。即使变量定义散步于方法定义之间，<br>它们仍旧会在方法（包括构造器）被调用之前得到初始化。</li>
-<li>静态初始化只有在必要时刻才会进行。如果不创建对象，也不引用对象的静态变量，那么不会进行初始化。<br>初始化顺序是先静态对象，而后是非静态对象。</li>
-<li>显示的静态初始化（静态块）</li>
-<li>非静态实例化初始化<br>与静态初始化子句相似，但少了static关键字，它保证无论调用哪个显示构造器，都会执行其中的初始化。</li>
-</ul>
-<p>总结一下对象的创建过程，假设有一个名为Dog的类：</p>
-<ol>
-<li>即使没有显示地使用static关键字，构造器实际上也是静态方法。因此，当首次创建类型为Dog<br>的对象时（构造器可以看成是静态方法），或者Dog类静态方法/静态域首次被访问时，Java解释器必须查找类路径，<br>以定位Dog.class文件。</li>
-<li>然后载入Dog.class，有关静态初始化的所有动作都会被执行。因此，静态初始化只在Class对象<br>首次加载时进行一次。</li>
-<li>当用new Dog()创建对象时，首先将在堆上为Dog对象分配足够的存储空间。</li>
-<li>这块存储空间会被清零，这就自动地将Dog对象中的所有基本类型数据都设置为默认值，而引用类型为null。</li>
-<li>执行所有出现于字段处的初始化动作。</li>
-<li>执行构造器。</li>
-</ol>
-<h4 id="数组初始化"><a href="#数组初始化" class="headerlink" title="数组初始化"></a>数组初始化</h4><p>可变参数列表（类似数组）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span>... args)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> len = args.length;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> x : args) &#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
