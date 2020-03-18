@@ -7,20 +7,22 @@
   
   
   
-  <title>《Thinking in Java》第七章 | Kestrel&#39;s Blog</title>
+  <title>《Thinking in Java》第十二章 | Kestrel&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="复用类组合语法继承语法调用子类构造器时，编译器会自动调用父类无参构造器，如果父类没有无参构造器，需要使用super(参数)方法显式调用父类构造器。 代理结合使用组合和继承 确保正确清理首先，执行类的所有特定的清理动作，其顺序同生成顺序相反（通常这就要求基类元素仍旧存活）；然后，调用基类的清理方法。 名称屏蔽如果Java的基类拥有某个已被多次重载的方法名称，那么在导出类中重新定义该方法名称并不会屏蔽">
+  <meta name="description" content="通过异常处理错误概念基本异常当抛出异常后，有几件事会随之发生。首先，同Java中其他对象的创建一样，将使用new在堆上创建异常对象。然后，当前的路径被终止，并且从当前环境中弹出对异常对象的引用。此时，异常处理机制接管程序，并开始寻找一个恰当的地方来继续执行程序。这个恰当的地方就是异常处理程序，它的任务是将程序从错误状态中恢复，以使程序能要么换一种方式运行，要么继续运行下去。  所有标准异常类都有两">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《Thinking in Java》第七章">
-<meta property="og:url" content="https://kestrelcjx.github.io/2020/03/13/《Thinking-in-Java》第七章/index.html">
+<meta property="og:title" content="《Thinking in Java》第十二章">
+<meta property="og:url" content="https://kestrelcjx.github.io/2020/03/17/《Thinking-in-Java》第十二章/index.html">
 <meta property="og:site_name" content="Kestrel&#39;s Blog">
-<meta property="og:description" content="复用类组合语法继承语法调用子类构造器时，编译器会自动调用父类无参构造器，如果父类没有无参构造器，需要使用super(参数)方法显式调用父类构造器。 代理结合使用组合和继承 确保正确清理首先，执行类的所有特定的清理动作，其顺序同生成顺序相反（通常这就要求基类元素仍旧存活）；然后，调用基类的清理方法。 名称屏蔽如果Java的基类拥有某个已被多次重载的方法名称，那么在导出类中重新定义该方法名称并不会屏蔽">
+<meta property="og:description" content="通过异常处理错误概念基本异常当抛出异常后，有几件事会随之发生。首先，同Java中其他对象的创建一样，将使用new在堆上创建异常对象。然后，当前的路径被终止，并且从当前环境中弹出对异常对象的引用。此时，异常处理机制接管程序，并开始寻找一个恰当的地方来继续执行程序。这个恰当的地方就是异常处理程序，它的任务是将程序从错误状态中恢复，以使程序能要么换一种方式运行，要么继续运行下去。  所有标准异常类都有两">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-15T07:05:16.857Z">
+<meta property="og:image" content="https://kestrelcjx.github.io/images/Exception.jpg">
+<meta property="og:updated_time" content="2020-03-18T03:44:56.761Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《Thinking in Java》第七章">
-<meta name="twitter:description" content="复用类组合语法继承语法调用子类构造器时，编译器会自动调用父类无参构造器，如果父类没有无参构造器，需要使用super(参数)方法显式调用父类构造器。 代理结合使用组合和继承 确保正确清理首先，执行类的所有特定的清理动作，其顺序同生成顺序相反（通常这就要求基类元素仍旧存活）；然后，调用基类的清理方法。 名称屏蔽如果Java的基类拥有某个已被多次重载的方法名称，那么在导出类中重新定义该方法名称并不会屏蔽">
+<meta name="twitter:title" content="《Thinking in Java》第十二章">
+<meta name="twitter:description" content="通过异常处理错误概念基本异常当抛出异常后，有几件事会随之发生。首先，同Java中其他对象的创建一样，将使用new在堆上创建异常对象。然后，当前的路径被终止，并且从当前环境中弹出对异常对象的引用。此时，异常处理机制接管程序，并开始寻找一个恰当的地方来继续执行程序。这个恰当的地方就是异常处理程序，它的任务是将程序从错误状态中恢复，以使程序能要么换一种方式运行，要么继续运行下去。  所有标准异常类都有两">
+<meta name="twitter:image" content="https://kestrelcjx.github.io/images/Exception.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Kestrel&#39;s Blog" type="application/atom+xml">
   
@@ -254,11 +256,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-《Thinking-in-Java》第七章" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-《Thinking-in-Java》第十二章" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/13/《Thinking-in-Java》第七章/" class="article-date">
-      <time datetime="2020-03-13T07:22:29.000Z" itemprop="datePublished">2020-03-13</time>
+      <a href="/2020/03/17/《Thinking-in-Java》第十二章/" class="article-date">
+      <time datetime="2020-03-17T03:50:37.000Z" itemprop="datePublished">2020-03-17</time>
 </a>
 
     </div>
@@ -272,7 +274,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      《Thinking in Java》第七章
+      《Thinking in Java》第十二章
     </h1>
   
 
@@ -294,19 +296,45 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="复用类"><a href="#复用类" class="headerlink" title="复用类"></a>复用类</h3><h4 id="组合语法"><a href="#组合语法" class="headerlink" title="组合语法"></a>组合语法</h4><h4 id="继承语法"><a href="#继承语法" class="headerlink" title="继承语法"></a>继承语法</h4><p>调用子类构造器时，编译器会自动调用父类无参构造器，如果父类没有无参构造器，<br>需要使用super(参数)方法显式调用父类构造器。</p>
-<h4 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h4><h4 id="结合使用组合和继承"><a href="#结合使用组合和继承" class="headerlink" title="结合使用组合和继承"></a>结合使用组合和继承</h4><ul>
-<li>确保正确清理<br>首先，执行类的所有特定的清理动作，其顺序同生成顺序相反（通常这就要求基类<br>元素仍旧存活）；然后，调用基类的清理方法。</li>
-<li>名称屏蔽<br>如果Java的基类拥有某个已被多次重载的方法名称，那么在导出类中重新定义该方法名称<br>并不会屏蔽在基类中的任何版本（这一点与C++不同）。</li>
-<li>@Override注解<br>添加@Override注解，表示覆写基类方法，而不是重载，如果基类没有该方法，则会报错。</li>
+        <h3 id="通过异常处理错误"><a href="#通过异常处理错误" class="headerlink" title="通过异常处理错误"></a>通过异常处理错误</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><h4 id="基本异常"><a href="#基本异常" class="headerlink" title="基本异常"></a>基本异常</h4><p>当抛出异常后，有几件事会随之发生。首先，同Java中其他对象的创建一样，<br>将使用new在堆上创建异常对象。然后，当前的路径被终止，并且从当前环境<br>中弹出对异常对象的引用。此时，异常处理机制接管程序，并开始寻找一个<br>恰当的地方来继续执行程序。这个恰当的地方就是异常处理程序，它的任务<br>是将程序从错误状态中恢复，以使程序能要么换一种方式运行，要么继续运行下去。</p>
+<ul>
+<li>所有标准异常类都有两个构造器：一个是默认构造器；一个是接受字符串<br>作为参数，以便能把相关信息放入异常对象的构造器。</li>
+<li>能够抛出任意类型的Throwable对象，它是异常类型的根类。</li>
 </ul>
-<h4 id="在组合与继承之间选择"><a href="#在组合与继承之间选择" class="headerlink" title="在组合与继承之间选择"></a>在组合与继承之间选择</h4><h4 id="protected关键字"><a href="#protected关键字" class="headerlink" title="protected关键字"></a>protected关键字</h4><h4 id="向上转型"><a href="#向上转型" class="headerlink" title="向上转型"></a>向上转型</h4><h4 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h4><ul>
-<li>final数据<br>final标识基本类型，表示常量，不可修改值；<br>final标识对象，引用对象不可变，但可以改变对象本身的值。<br>空白final，指声明为final但不给出初值，那么必须在构造器中赋初值。<br>final参数，意味着在方法中无法更改参数引用所指向的对象。</li>
-<li>final方法<br>final修饰方法，表示把方法锁住，以防任何继承类修改它的含义，确保在继承中是方法<br>行为保持不变，并且不会被覆盖。但是，“覆盖”只有在某方法是基类的接口的一部分时<br>才会出现。即，必须能够将一个对象向上转型为它的基本类型并调用相同方法。如果某方法为private，<br>它就不是基类的接口的一部分。此时如果导出类具有相同名称但未public、protected或<br>包范文权限方法的方法，则并不会覆盖该方法，仅是生成了一个新方法而已。</li>
-<li>final类<br>final修饰类，表示该类不能被继承。</li>
+<h4 id="捕获异常"><a href="#捕获异常" class="headerlink" title="捕获异常"></a>捕获异常</h4><h4 id="创建自定义异常"><a href="#创建自定义异常" class="headerlink" title="创建自定义异常"></a>创建自定义异常</h4><h4 id="异常说明"><a href="#异常说明" class="headerlink" title="异常说明"></a>异常说明</h4><ul>
+<li>异常说明使用了附加的关键字throws，后面接一个所有潜在异常列表。</li>
+<li>代码必须与异常说明保持一致。<br>如果方法里的代码产生了异常却没有进行处理，编译器会发现这问题<br>并提醒你：要么处理这个异常，要么就在异常说明中表明此方法将产生异常。</li>
 </ul>
-<h4 id="初始化及类的加载"><a href="#初始化及类的加载" class="headerlink" title="初始化及类的加载"></a>初始化及类的加载</h4><p>类的代码在初次使用时才被加载，这通常是指加载类的第一个对象之时，但是访问static域或static方法<br>时，也会发生加载。</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
+<h4 id="捕获所有异常"><a href="#捕获所有异常" class="headerlink" title="捕获所有异常"></a>捕获所有异常</h4><ul>
+<li>void printStackTrace()<br>void printStackTrace(PrintStream)<br>void printStackTrace(java.io.PrintWriter)<br>打印Throwable和Throwable的调用栈轨迹。</li>
+<li>Throwable fillStackTrace() 用于在Throwable对象的内部记录栈帧的当前状态。</li>
+<li>printStackTrace()方法提供的信息可以通过getStackTrace()方法来直接访问，<br>这个方法返回一个栈轨迹中的元素所构成的数组，其中每一个元素都表示栈中的一帧。<br>元素0是这个Throwable被创建和抛出之处。</li>
+<li>Throwable的子类在构造器中都可以接受一个cause（因由）对象作为参数。这个cause<br>就用来表示原始异常，这样通过把原始异常传递给新的异常，使得即使在当前位置创建并<br>抛出异常，也能通过这个异常链追踪到异常最初发生的位置。</li>
+</ul>
+<h4 id="Java标准异常"><a href="#Java标准异常" class="headerlink" title="Java标准异常"></a>Java标准异常</h4><p>Throwable这个Java类被用来表示任何可以作为异常被抛出的类。Throwable对象可分为<br>两种类型（指从Throwable继承而得到的类型）：Error用来表示编译时和系统错误（一般<br>不需要关心）；Exception是可以被抛出的基本类型。<br>RuntimeException是运行时异常，它们会自动被java虚拟机抛出，所以不必再异常说明<br>中把它们列出来。它们被称为“不受检查异常”，这种异常属于错误，将被自动捕获。</p>
+<h4 id="使用finally进行清理"><a href="#使用finally进行清理" class="headerlink" title="使用finally进行清理"></a>使用finally进行清理</h4><ul>
+<li>无论是否抛出异常，finally子句都会执行。（break、return，finally也会执行）</li>
+<li>异常丢失</li>
+</ul>
+<h4 id="异常的限制"><a href="#异常的限制" class="headerlink" title="异常的限制"></a>异常的限制</h4><p>当覆盖方法时，只能抛出在基类方法的异常说明里列出的那些异常。</p>
+<h4 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h4><h4 id="异常匹配"><a href="#异常匹配" class="headerlink" title="异常匹配"></a>异常匹配</h4><ul>
+<li>抛出异常时，异常处理系统会按照代码的书写顺序找出“最近”的处理程序。找到匹配的<br>处理程序之后，它就认为异常得到处理，然后就不再继续寻找。</li>
+<li>查找的时候并不要求抛出的异常同处理程序所声明的异常完全匹配。派生类对象也可以<br>匹配其基类的处理程序。</li>
+</ul>
+<h4 id="其他可选方式"><a href="#其他可选方式" class="headerlink" title="其他可选方式"></a>其他可选方式</h4><h4 id="异常使用指南"><a href="#异常使用指南" class="headerlink" title="异常使用指南"></a>异常使用指南</h4><p>应该在下列情况下使用异常：</p>
+<ol>
+<li>当恰当的级别处理问题。（在知道该如何处理的情况下才捕获一场）</li>
+<li>解决问题并且重新调用产生异常的方法。</li>
+<li>进行少许修补，然后绕过一场发生的地方继续执行。</li>
+<li>用别的数据进行计算，以替代方法预计会返回的值。</li>
+<li>把当前运行环境下能做的事情尽量做完，然后把相同的异常抛到更高层。</li>
+<li>把当前运行环境下能做的事情尽量做完，然后把不同的异常抛到更高层。</li>
+<li>终止程序。</li>
+<li>进行简化。</li>
+<li>让类库和程序更安全。</li>
+</ol>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><img src="/images/Exception.jpg" alt="Exception"></p>
+
       
     </div>
     
@@ -314,13 +342,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2020/03/13/《Thinking-in-Java》第七章/">《Thinking in Java》第七章</a></p>
+        <p><span>本文标题:</span><a href="/2020/03/17/《Thinking-in-Java》第十二章/">《Thinking in Java》第十二章</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Kestrel 的个人博客">Kestrel</a></p>
-        <p><span>发布时间:</span>2020年03月13日 - 15时22分</p>
-        <p><span>最后更新:</span>2020年03月15日 - 15时05分</p>
+        <p><span>发布时间:</span>2020年03月17日 - 11时50分</p>
+        <p><span>最后更新:</span>2020年03月18日 - 11时44分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/03/13/《Thinking-in-Java》第七章/" title="《Thinking in Java》第七章">https://kestrelcjx.github.io/2020/03/13/《Thinking-in-Java》第七章/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/13/《Thinking-in-Java》第七章/　　作者: Kestrel" title></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/03/17/《Thinking-in-Java》第十二章/" title="《Thinking in Java》第十二章">https://kestrelcjx.github.io/2020/03/17/《Thinking-in-Java》第十二章/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/17/《Thinking-in-Java》第十二章/　　作者: Kestrel" title></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -331,18 +359,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2020/03/13/《Thinking-in-Java》第八章/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/03/17/《Thinking-in-Java》第十三章/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          《Thinking in Java》第八章
+          《Thinking in Java》第十三章
         
       </div>
     </a>
   
   
-    <a href="/2020/03/13/《Thinking-in-Java》第六章/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">《Thinking in Java》第六章</div>
+    <a href="/2020/03/16/《Thinking-in-Java》第十一章/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《Thinking in Java》第十一章</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -354,7 +382,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#复用类"><span class="toc-number">1.</span> <span class="toc-text">复用类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#组合语法"><span class="toc-number">1.1.</span> <span class="toc-text">组合语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#继承语法"><span class="toc-number">1.2.</span> <span class="toc-text">继承语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代理"><span class="toc-number">1.3.</span> <span class="toc-text">代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结合使用组合和继承"><span class="toc-number">1.4.</span> <span class="toc-text">结合使用组合和继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在组合与继承之间选择"><span class="toc-number">1.5.</span> <span class="toc-text">在组合与继承之间选择</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#protected关键字"><span class="toc-number">1.6.</span> <span class="toc-text">protected关键字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#向上转型"><span class="toc-number">1.7.</span> <span class="toc-text">向上转型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#final关键字"><span class="toc-number">1.8.</span> <span class="toc-text">final关键字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化及类的加载"><span class="toc-number">1.9.</span> <span class="toc-text">初始化及类的加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">1.10.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#通过异常处理错误"><span class="toc-number">1.</span> <span class="toc-text">通过异常处理错误</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#概念"><span class="toc-number">1.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基本异常"><span class="toc-number">1.2.</span> <span class="toc-text">基本异常</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#捕获异常"><span class="toc-number">1.3.</span> <span class="toc-text">捕获异常</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建自定义异常"><span class="toc-number">1.4.</span> <span class="toc-text">创建自定义异常</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#异常说明"><span class="toc-number">1.5.</span> <span class="toc-text">异常说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#捕获所有异常"><span class="toc-number">1.6.</span> <span class="toc-text">捕获所有异常</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Java标准异常"><span class="toc-number">1.7.</span> <span class="toc-text">Java标准异常</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用finally进行清理"><span class="toc-number">1.8.</span> <span class="toc-text">使用finally进行清理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#异常的限制"><span class="toc-number">1.9.</span> <span class="toc-text">异常的限制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#构造器"><span class="toc-number">1.10.</span> <span class="toc-text">构造器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#异常匹配"><span class="toc-number">1.11.</span> <span class="toc-text">异常匹配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他可选方式"><span class="toc-number">1.12.</span> <span class="toc-text">其他可选方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#异常使用指南"><span class="toc-number">1.13.</span> <span class="toc-text">异常使用指南</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">1.14.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -427,13 +455,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2020/03/13/《Thinking-in-Java》第八章/" title="上一篇: 《Thinking in Java》第八章">
+            <a href="/2020/03/17/《Thinking-in-Java》第十三章/" title="上一篇: 《Thinking in Java》第十三章">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2020/03/13/《Thinking-in-Java》第六章/" title="下一篇: 《Thinking in Java》第六章">
+            <a href="/2020/03/16/《Thinking-in-Java》第十一章/" title="下一篇: 《Thinking in Java》第十一章">
                 <i class="fa fa-angle-right"></i>
             </a>
         

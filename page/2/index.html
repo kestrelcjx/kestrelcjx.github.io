@@ -254,6 +254,270 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-《Thinking-in-Java》第四章" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/10/《Thinking-in-Java》第四章/" class="article-date">
+      <time datetime="2020-03-10T10:42:32.000Z" itemprop="datePublished">2020-03-10</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/10/《Thinking-in-Java》第四章/">《Thinking in Java》第四章</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="控制执行流程"><a href="#控制执行流程" class="headerlink" title="控制执行流程"></a>控制执行流程</h3><h4 id="true和false"><a href="#true和false" class="headerlink" title="true和false"></a>true和false</h4><h4 id="if-else"><a href="#if-else" class="headerlink" title="if-else"></a>if-else</h4><h4 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h4><p>逗号操作符：Java里唯一用到逗号操作符的地方就是for循环语句的控制表达式。<br>在Java中，不能像C/C++那样将多条语句写在一行然后用逗号隔开。</p>
+<h4 id="Foreach语法"><a href="#Foreach语法" class="headerlink" title="Foreach语法"></a>Foreach语法</h4><p>数组和任何Iterable对象都可以使用Foreach语法。</p>
+<h4 id="return"><a href="#return" class="headerlink" title="return"></a>return</h4><h4 id="break和continue"><a href="#break和continue" class="headerlink" title="break和continue"></a>break和continue</h4><p>在嵌套for和while循环中，可以在循环前添加标签，并使用break和continue跳到标签处。</p>
+<h4 id="臭名昭著的goto"><a href="#臭名昭著的goto" class="headerlink" title="臭名昭著的goto"></a>臭名昭著的goto</h4><h4 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h4><p>switch语句中，case后的值必须是整数值。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-《Thinking-in-Java》第三章" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/09/《Thinking-in-Java》第三章/" class="article-date">
+      <time datetime="2020-03-09T02:52:49.000Z" itemprop="datePublished">2020-03-09</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/09/《Thinking-in-Java》第三章/">《Thinking in Java》第三章</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h3><h4 id="更简单的打印语句"><a href="#更简单的打印语句" class="headerlink" title="更简单的打印语句"></a>更简单的打印语句</h4><p>静态导入import static(类、变量、方法)</p>
+<h4 id="使用Java操作符"><a href="#使用Java操作符" class="headerlink" title="使用Java操作符"></a>使用Java操作符</h4><h4 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h4><h4 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h4><h4 id="算数操作符"><a href="#算数操作符" class="headerlink" title="算数操作符"></a>算数操作符</h4><p>一元减号用于转变数据的符号，而一元加号只是为了与一元减号相对应，<br>但是它唯一的作用仅仅是将较小类型的操作数提升为int。</p>
+<h4 id="自动递增和递减"><a href="#自动递增和递减" class="headerlink" title="自动递增和递减"></a>自动递增和递减</h4><h4 id="关系操作符"><a href="#关系操作符" class="headerlink" title="关系操作符"></a>关系操作符</h4><h4 id="逻辑操作符"><a href="#逻辑操作符" class="headerlink" title="逻辑操作符"></a>逻辑操作符</h4><p>与C/C++不同的是，不可将一个非布尔值当作布尔值在逻辑表达式中使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">boolean flag = 1 &amp;&amp; 1	//ERROR</span><br><span class="line">if(1)	//ERROR</span><br></pre></td></tr></table></figure>
+
+<h4 id="直接常量"><a href="#直接常量" class="headerlink" title="直接常量"></a>直接常量</h4><h4 id="按位操作符"><a href="#按位操作符" class="headerlink" title="按位操作符"></a>按位操作符</h4><h4 id="移位操作符"><a href="#移位操作符" class="headerlink" title="移位操作符"></a>移位操作符</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;=</span><br><span class="line">&gt;&gt;=			//逻辑右移，最高位补符号位</span><br><span class="line">&gt;&gt;&gt;=		//最高位补0</span><br></pre></td></tr></table></figure>
+
+<p>如果对char、byte或short类型进行移位处理，它们会被转换为int类型。<br>移位操作只对数值右端的低5位有效(因为2的5次方为32，而int类型只有32位)，<br>long为低6位有效（2的6次方64）。根本原因是Java中规定，没有任何移位操作符可以让一个数字丢弃所有的位。</p>
+<h4 id="三元操作符if-else"><a href="#三元操作符if-else" class="headerlink" title="三元操作符if-else"></a>三元操作符if-else</h4><h4 id="字符串操作符-和"><a href="#字符串操作符-和" class="headerlink" title="字符串操作符+和+="></a>字符串操作符+和+=</h4><h4 id="使用操作符时常犯的错误"><a href="#使用操作符时常犯的错误" class="headerlink" title="使用操作符时常犯的错误"></a>使用操作符时常犯的错误</h4><h4 id="类型转换操作符"><a href="#类型转换操作符" class="headerlink" title="类型转换操作符"></a>类型转换操作符</h4><h4 id="Java没有sizeof"><a href="#Java没有sizeof" class="headerlink" title="Java没有sizeof"></a>Java没有sizeof</h4><h4 id="操作符小结"><a href="#操作符小结" class="headerlink" title="操作符小结"></a>操作符小结</h4><p>在char、byte和short中，进行算术运算会转换为int类型。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-《Thinking-in-Java》第二章" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/07/《Thinking-in-Java》第二章/" class="article-date">
+      <time datetime="2020-03-07T15:16:44.000Z" itemprop="datePublished">2020-03-07</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/07/《Thinking-in-Java》第二章/">《Thinking in Java》第二章</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="一切都是对象"><a href="#一切都是对象" class="headerlink" title="一切都是对象"></a>一切都是对象</h3><h4 id="2-1-用引用操纵对象"><a href="#2-1-用引用操纵对象" class="headerlink" title="2.1 用引用操纵对象"></a>2.1 用引用操纵对象</h4><h4 id="2-2-必须由你创建所有对象"><a href="#2-2-必须由你创建所有对象" class="headerlink" title="2.2 必须由你创建所有对象"></a>2.2 必须由你创建所有对象</h4><p>数据存储：</p>
+<ul>
+<li>寄存器</li>
+<li>堆栈</li>
+<li>堆</li>
+<li>常量存储</li>
+<li>非RAM存储</li>
+</ul>
+<p>八个基本数据类型</p>
+<table>
+<thead>
+<tr>
+<th>基本类型</th>
+<th>大小</th>
+<th>包装器类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean</td>
+<td>-</td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>char</td>
+<td>16 bits</td>
+<td>Charactor</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>8 bits</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>16 bits</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>int</td>
+<td>32 bits</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>long</td>
+<td>64 bits</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>float</td>
+<td>32 bits</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>double</td>
+<td>64 bits</td>
+<td>Double</td>
+</tr>
+</tbody></table>
+<p>boolean类型所占存储空间的大小没有明确指定    </p>
+<h4 id="2-3-永远不需要销毁对象"><a href="#2-3-永远不需要销毁对象" class="headerlink" title="2.3 永远不需要销毁对象"></a>2.3 永远不需要销毁对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int x = 1;</span><br><span class="line">&#123;</span><br><span class="line">	int x = 2;	//ERROR</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Java中不能嵌套作用域定义同名变量，编译器会报告变量已经定义过</p>
+<h4 id="2-4-创建新的数据类型：类"><a href="#2-4-创建新的数据类型：类" class="headerlink" title="2.4 创建新的数据类型：类"></a>2.4 创建新的数据类型：类</h4><p>若类的某个成员是基本数据类型，即使没有进行初始化，Java也会确保它获得一个默认值，将其每个为置0；<br>若是类，则初始化为null。局部变量不进行默认初始化。</p>
+<h4 id="2-5-方法、参数和返回值"><a href="#2-5-方法、参数和返回值" class="headerlink" title="2.5 方法、参数和返回值"></a>2.5 方法、参数和返回值</h4><h4 id="2-6-构建一个Java程序"><a href="#2-6-构建一个Java程序" class="headerlink" title="2.6 构建一个Java程序"></a>2.6 构建一个Java程序</h4><h4 id="2-7-你的第一个Java程序"><a href="#2-7-你的第一个Java程序" class="headerlink" title="2.7 你的第一个Java程序"></a>2.7 你的第一个Java程序</h4><h4 id="2-8-注释和嵌入式文档"><a href="#2-8-注释和嵌入式文档" class="headerlink" title="2.8 注释和嵌入式文档"></a>2.8 注释和嵌入式文档</h4><p>Java三种注释方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//单行注释</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * 多行注释</span><br><span class="line"> */</span><br><span class="line"> </span><br><span class="line">/**</span><br><span class="line"> * 文档注释</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<p>可以使用javadoc工具提取源文件的文档注释，生成注释文档（API）</p>
+<h4 id="2-9-编码规范"><a href="#2-9-编码规范" class="headerlink" title="2.9 编码规范"></a>2.9 编码规范</h4><p>类名首字母要大写，如果类名有几个单词构成，那么它们并在一起，其中每个内部单词首字母都采用大写形式。<br>这种分格称为“驼峰风格”。几乎其他所有内容也–方法、字段（成员变量）以及对象引用名称等，都采用这种风格，<br>只是标识符第一个字母小写。</p>
+<h4 id="2-10-总结"><a href="#2-10-总结" class="headerlink" title="2.10 总结"></a>2.10 总结</h4><h4 id="2-11-练习"><a href="#2-11-练习" class="headerlink" title="2.11 练习"></a>2.11 练习</h4>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-《Thinking-in-Java》第一章" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
