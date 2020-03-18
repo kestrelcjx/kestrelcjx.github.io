@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Kestrel&#39;s Blog">
 <meta property="og:description" content="字符串不可变StringString对象是不可变的。String类中每一个看起来会修改String值得方法，实际上都是创建一个全新的String对象，以包含修改后的字符串内容，而最初的String对象则纹丝未动。（String类被final修饰，不可继承） 重载“+”与StringBuilder String重载了“+”和“+=”操作符，用于字符串拼接，拼接时会产生新的String对象。 字符串拼">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-18T06:00:16.117Z">
+<meta property="og:updated_time" content="2020-03-18T06:27:18.448Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Thinking in Java》第十三章">
 <meta name="twitter:description" content="字符串不可变StringString对象是不可变的。String类中每一个看起来会修改String值得方法，实际上都是创建一个全新的String对象，以包含修改后的字符串内容，而最初的String对象则纹丝未动。（String类被final修饰，不可继承） 重载“+”与StringBuilder String重载了“+”和“+=”操作符，用于字符串拼接，拼接时会产生新的String对象。 字符串拼">
@@ -307,7 +307,7 @@
 <li><p>Formatter类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Formatter f = <span class="keyword">new</span> Formatter(System.out);</span><br><span class="line">f.format(<span class="string">"%s The Turtle is at (%d, %d)\n"</span>, <span class="string">"xxx"</span>, <span class="number">1</span>, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>格式化说明符<br><code>%[argument_index$][flags][width][.precision]conversion</code><br>最常见的应用是控制一个域的最小尺寸，这可以通过指定width实现。<br>Formatter对象通过在必要时添加空格，来确保一个域至少达到某个长度。<br>在默认的情况下，数据是右对齐，不过可以通过使用“-”标志来改变对齐方向。<br>与width相对的是precision，它用来指明最大尺寸。width可以应用于各种类型<br>的数据转换，并且其行为方式都一样。precision则不然，不是所有类型的数据<br>都能使用precision，而且，应用于不同类型的数据转换时，precision的意义也<br>不同。</p>
+<li><p>格式化说明符<br><code>%[argument_index$][flags][width][.precision]conversion</code><br>最常见的应用是控制一个域的最小尺寸，这可以通过指定width实现。<br>Formatter对象通过在必要时添加空格，来确保一个域至少达到某个长度。<br>在默认的情况下，数据是右对齐，不过可以通过使用“-”标志来改变对齐方向。<br>与width相对的是precision，它用来指明最大尺寸。width可以应用于各种类型<br>的数据转换，并且其行为方式都一样。precision则不然，不是所有类型的数据<br>都能使用precision，而且，应用于不同类型的数据转换时，precision的意义也<br>不同。在将precision应用于String时，它表示打印String时输出字符的最大数量。<br>而在将precision应用于浮点数时，它表示小数部分要显示出来的位数（默认6位），<br>如果小数位数过多则舍入，太少则在尾部补零。由于整数没有小数部分，所以<br>precision无法应用于整数，如果你对整数应用precision，则会触发异常。</p>
 </li>
 <li><p>Formatter转换</p>
 </li>
@@ -352,7 +352,154 @@
 <td>字符“%”</td>
 </tr>
 </tbody></table>
-<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><h4 id="扫描输入"><a href="#扫描输入" class="headerlink" title="扫描输入"></a>扫描输入</h4><h4 id="StringTokenizer"><a href="#StringTokenizer" class="headerlink" title="StringTokenizer"></a>StringTokenizer</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
+<ul>
+<li>String.format()</li>
+</ul>
+<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><ul>
+<li>创建正则表达式</li>
+</ul>
+<ol>
+<li>字符</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>B</th>
+<th>指定字符B</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\xhh</td>
+<td>十六进制值为oxhh的字符</td>
+</tr>
+<tr>
+<td>\uhhhh</td>
+<td>十六进制表示为oxhhhh的Unicode字符</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>制表符Tab</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行符</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页</td>
+</tr>
+<tr>
+<td>\e</td>
+<td>转义（Escape）</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li>字符类</li>
+</ol>
+<p>.|任意字符<br>[abc]|包含a、b和c的任意字符（和a|b|c作用相同）<br>[^abc]|除了a、b和c之外的任何字符<br>[a-zA-Z]|从a到z或从A到Z的任何字符<br>[abc[hij]]|任意a、b、c、h、i和j字符<br>[a-z&amp;&amp;[hij]]|任意h、i和j（交集）<br>\s|空白符（空格、tab、换行、换页和回车）<br>\S|非空白符<br>\d|数字[0-9]<br>\D|非数字[^0-9]<br>\w|词字符[a-zA-Z0-9]<br>\W|非词字符[^\w]</p>
+<ol start="3">
+<li>逻辑操作符</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>XY</th>
+<th>Y跟在X后面</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>X|Y</td>
+<td>X或Y</td>
+</tr>
+<tr>
+<td>(X)</td>
+<td>捕获组。可以在表达式中用\i引用第i个捕获组</td>
+</tr>
+</tbody></table>
+<ol start="4">
+<li>边界匹配符</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>^</th>
+<th>一行的开始</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$</td>
+<td>一行的结束</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>词的边界</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>非词的边界</td>
+</tr>
+<tr>
+<td>\G</td>
+<td>前一个匹配的结束</td>
+</tr>
+</tbody></table>
+<ol start="5">
+<li>量词<br>贪婪型：尽可能多的匹配<br>勉强型：尽可能少的匹配<br>占有型：当正则表达式被应用于字符串时，它会产生相当多的状态，<br>以便在匹配失败时可以回溯。而“占有的”量词并不保存这些中间状态，<br>因此它们可以防止回溯。它们常常用于防止正则表达式失控，因此可以<br>使正则表达式执行起来更有效。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>贪婪型</th>
+<th>勉强型</th>
+<th>占有型</th>
+<th>如何匹配</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>X?</td>
+<td>X??</td>
+<td>X?+</td>
+<td>一个或零个X</td>
+</tr>
+<tr>
+<td>X*</td>
+<td>X*?</td>
+<td>X*+</td>
+<td>零个或多个X</td>
+</tr>
+<tr>
+<td>X+</td>
+<td>X+?</td>
+<td>X++</td>
+<td>一个或多个X</td>
+</tr>
+<tr>
+<td>X{n}</td>
+<td>X{n}?</td>
+<td>X{n}+</td>
+<td>恰好n次X</td>
+</tr>
+<tr>
+<td>X{n,}</td>
+<td>X{n,}?</td>
+<td>X{n,}+</td>
+<td>至少n次X</td>
+</tr>
+<tr>
+<td>X{n,m}</td>
+<td>X{n,m}?</td>
+<td>X{n,m}+</td>
+<td>X至少n次，且不超过m次</td>
+</tr>
+</tbody></table>
+<ol start="6">
+<li>Pattern标记</li>
+</ol>
+<h4 id="扫描输入"><a href="#扫描输入" class="headerlink" title="扫描输入"></a>扫描输入</h4><h4 id="StringTokenizer"><a href="#StringTokenizer" class="headerlink" title="StringTokenizer"></a>StringTokenizer</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
       
     </div>
     
@@ -363,7 +510,7 @@
         <p><span>本文标题:</span><a href="/2020/03/17/《Thinking-in-Java》第十三章/">《Thinking in Java》第十三章</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Kestrel 的个人博客">Kestrel</a></p>
         <p><span>发布时间:</span>2020年03月17日 - 11时50分</p>
-        <p><span>最后更新:</span>2020年03月18日 - 14时00分</p>
+        <p><span>最后更新:</span>2020年03月18日 - 14时27分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/03/17/《Thinking-in-Java》第十三章/" title="《Thinking in Java》第十三章">https://kestrelcjx.github.io/2020/03/17/《Thinking-in-Java》第十三章/</a>
             <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/17/《Thinking-in-Java》第十三章/　　作者: Kestrel" title></span>
