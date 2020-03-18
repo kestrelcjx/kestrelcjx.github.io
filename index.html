@@ -357,13 +357,12 @@
 <li><p>Formatter类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Formatter f = <span class="keyword">new</span> Formatter(System.out);</span><br><span class="line">f.format(<span class="string">"%s The Turtle is at (%d, %d)\n"</span>, <span class="string">"xxx"</span>, <span class="number">1</span>, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>格式化说明符<br><code>%[argument_index$][flags][width][.precision]conversion</code><br>最常见的应用是控制一个域的最小尺寸，这可以通过指定width实现。<br>Formatter对象通过在必要时添加空格，来确保一个域至少达到某个长度。<br>在默认的情况下，数据是右对齐，不过可以通过使用“-”标志来改变对齐方向。</p>
+<li><p>格式化说明符<br><code>%[argument_index$][flags][width][.precision]conversion</code><br>最常见的应用是控制一个域的最小尺寸，这可以通过指定width实现。<br>Formatter对象通过在必要时添加空格，来确保一个域至少达到某个长度。<br>在默认的情况下，数据是右对齐，不过可以通过使用“-”标志来改变对齐方向。<br>与width相对的是precision，它用来指明最大尺寸。width可以应用于各种类型<br>的数据转换，并且其行为方式都一样。precision则不然，不是所有类型的数据<br>都能使用precision，而且，应用于不同类型的数据转换时，precision的意义也<br>不同。</p>
 </li>
 <li><p>Formatter转换</p>
 </li>
 </ul>
-<p>|
-<em>|</em><br>d|整数型（十进制）<br>c|Unicode字符<br>b|Boolean值<br>s|String<br>f|浮点数（十进制）<br>e|浮点数（科学计数）<br>x|整数（十六进制）<br>h|散列码（十六进制）<br>%|字符“%”</p>
+<p>-|-<br><em>|</em><br>d|整数型（十进制）<br>c|Unicode字符<br>b|Boolean值<br>s|String<br>f|浮点数（十进制）<br>e|浮点数（科学计数）<br>x|整数（十六进制）<br>h|散列码（十六进制）<br>%|字符“%”</p>
 <h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><h4 id="扫描输入"><a href="#扫描输入" class="headerlink" title="扫描输入"></a>扫描输入</h4><h4 id="StringTokenizer"><a href="#StringTokenizer" class="headerlink" title="StringTokenizer"></a>StringTokenizer</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
       
     </div>
