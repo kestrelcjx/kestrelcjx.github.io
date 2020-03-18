@@ -600,6 +600,42 @@
 <ol start="6">
 <li>Pattern标记</li>
 </ol>
+<table>
+<thead>
+<tr>
+<th>编译标记</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pattern.CANON_EQ</td>
+<td>两个字符当且仅当它们的完全规范分解想匹配时，就认为它们是匹配的（默认不考虑规范的等价性）。</td>
+</tr>
+<tr>
+<td>Pattern.CASE_INSENSITIVE(?i)</td>
+<td>不略大小写</td>
+</tr>
+<tr>
+<td>Pattern.COMMENTS(?x)</td>
+<td>忽略空格符，并且以#开始知道行末的注释也会被忽略。</td>
+</tr>
+<tr>
+<td>Pattern.DOTALL(?s)</td>
+<td>“.”匹配所有字符。（默认不匹配行终结符）</td>
+</tr>
+<tr>
+<td>Pattern.MULTILINE(?m)</td>
+<td>匹配表达式^和$匹配一行的开始和结束。（默认匹配完整字符串的开始和结束）</td>
+</tr>
+<tr>
+<td>Pattern.UNICODE_CASE(?u)</td>
+<td>开启大小写不敏感时，unicode也大小写不敏感。（默认大小写不敏感不考虑unicode）</td>
+</tr>
+<tr>
+<td>Pattern.UNIX_LINES(?d)</td>
+<td>“.”、“^”和“$”只识别终结符\n</td>
+</tr>
+</tbody></table>
 <h4 id="扫描输入"><a href="#扫描输入" class="headerlink" title="扫描输入"></a>扫描输入</h4><h4 id="StringTokenizer"><a href="#StringTokenizer" class="headerlink" title="StringTokenizer"></a>StringTokenizer</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
       
     </div>
