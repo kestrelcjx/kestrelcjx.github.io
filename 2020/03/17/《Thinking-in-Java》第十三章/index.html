@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Kestrel&#39;s Blog">
 <meta property="og:description" content="字符串不可变StringString对象是不可变的。String类中每一个看起来会修改String值得方法，实际上都是创建一个全新的String对象，以包含修改后的字符串内容，而最初的String对象则纹丝未动。（String类被final修饰，不可继承） 重载“+”与StringBuilder String重载了“+”和“+=”操作符，用于字符串拼接，拼接时会产生新的String对象。 字符串拼">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-18T06:27:18.448Z">
+<meta property="og:updated_time" content="2020-03-18T06:28:49.265Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Thinking in Java》第十三章">
 <meta name="twitter:description" content="字符串不可变StringString对象是不可变的。String类中每一个看起来会修改String值得方法，实际上都是创建一个全新的String对象，以包含修改后的字符串内容，而最初的String对象则纹丝未动。（String类被final修饰，不可继承） 重载“+”与StringBuilder String重载了“+”和“+=”操作符，用于字符串拼接，拼接时会产生新的String对象。 字符串拼">
@@ -400,7 +400,58 @@
 <ol start="2">
 <li>字符类</li>
 </ol>
-<p>.|任意字符<br>[abc]|包含a、b和c的任意字符（和a|b|c作用相同）<br>[^abc]|除了a、b和c之外的任何字符<br>[a-zA-Z]|从a到z或从A到Z的任何字符<br>[abc[hij]]|任意a、b、c、h、i和j字符<br>[a-z&amp;&amp;[hij]]|任意h、i和j（交集）<br>\s|空白符（空格、tab、换行、换页和回车）<br>\S|非空白符<br>\d|数字[0-9]<br>\D|非数字[^0-9]<br>\w|词字符[a-zA-Z0-9]<br>\W|非词字符[^\w]</p>
+<table>
+<thead>
+<tr>
+<th>.</th>
+<th>任意字符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[abc]</td>
+<td>包含a、b和c的任意字符（和a</td>
+</tr>
+<tr>
+<td>[^abc]</td>
+<td>除了a、b和c之外的任何字符</td>
+</tr>
+<tr>
+<td>[a-zA-Z]</td>
+<td>从a到z或从A到Z的任何字符</td>
+</tr>
+<tr>
+<td>[abc[hij]]</td>
+<td>任意a、b、c、h、i和j字符</td>
+</tr>
+<tr>
+<td>[a-z&amp;&amp;[hij]]</td>
+<td>任意h、i和j（交集）</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>空白符（空格、tab、换行、换页和回车）</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>非空白符</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>数字[0-9]</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>非数字[^0-9]</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>词字符[a-zA-Z0-9]</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>非词字符[^\w]</td>
+</tr>
+</tbody></table>
 <ol start="3">
 <li>逻辑操作符</li>
 </ol>
@@ -510,7 +561,7 @@
         <p><span>本文标题:</span><a href="/2020/03/17/《Thinking-in-Java》第十三章/">《Thinking in Java》第十三章</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Kestrel 的个人博客">Kestrel</a></p>
         <p><span>发布时间:</span>2020年03月17日 - 11时50分</p>
-        <p><span>最后更新:</span>2020年03月18日 - 14时27分</p>
+        <p><span>最后更新:</span>2020年03月18日 - 14时28分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/03/17/《Thinking-in-Java》第十三章/" title="《Thinking in Java》第十三章">https://kestrelcjx.github.io/2020/03/17/《Thinking-in-Java》第十三章/</a>
             <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/17/《Thinking-in-Java》第十三章/　　作者: Kestrel" title></span>
