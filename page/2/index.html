@@ -254,6 +254,146 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-《Thinking-in-Java》第八章" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/13/《Thinking-in-Java》第八章/" class="article-date">
+      <time datetime="2020-03-13T07:22:36.000Z" itemprop="datePublished">2020-03-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/13/《Thinking-in-Java》第八章/">《Thinking in Java》第八章</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><h4 id="再论向上转型"><a href="#再论向上转型" class="headerlink" title="再论向上转型"></a>再论向上转型</h4><h4 id="转机"><a href="#转机" class="headerlink" title="转机"></a>转机</h4><p>将一个方法调用同一个方法主体关联起来称为绑定。若在程序执行前绑定，叫做前期绑定；<br>若在运行时根据对象的类型进行绑定，成为后期绑定（动态绑定或运行时绑定）。<br>Java中除了static方法和final方法（private方法属于final方法）之外，<br>其他方法都是动态绑定的。</p>
+<h4 id="构造器与多态"><a href="#构造器与多态" class="headerlink" title="构造器与多态"></a>构造器与多态</h4><ul>
+<li>基类的构造器总是在导出类的构造过程中被调用，而且按照继承层次逐渐向上链接，<br>以使每个基类的构造器都得到调用。在导出类的构造器主体中，如果没有明确指定调用<br>某个基类构造器，它就会默认调用基类默认无参构造器，如果不存在默认构造器，<br>编译器会报错，则需要显式调用一个带参数的基类构造器。</li>
+<li>继承与清理<br>当覆盖被继承的清理方法时，务必记住调用基类版本的清理方法，避免未清理基类垃圾。</li>
+</ul>
+<h4 id="协变返回类型"><a href="#协变返回类型" class="headerlink" title="协变返回类型"></a>协变返回类型</h4><p>Java SE5中添加了协变返回类型，它表示在导出类中的被覆盖方法可以返回基类方法的<br>返回类型的导出类型，在java早期版本只能具有相同返回类型。</p>
+<h4 id="用继承进行设计"><a href="#用继承进行设计" class="headerlink" title="用继承进行设计"></a>用继承进行设计</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-《Thinking-in-Java》第七章" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/13/《Thinking-in-Java》第七章/" class="article-date">
+      <time datetime="2020-03-13T07:22:29.000Z" itemprop="datePublished">2020-03-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/13/《Thinking-in-Java》第七章/">《Thinking in Java》第七章</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="复用类"><a href="#复用类" class="headerlink" title="复用类"></a>复用类</h3><h4 id="组合语法"><a href="#组合语法" class="headerlink" title="组合语法"></a>组合语法</h4><h4 id="继承语法"><a href="#继承语法" class="headerlink" title="继承语法"></a>继承语法</h4><p>调用子类构造器时，编译器会自动调用父类无参构造器，如果父类没有无参构造器，<br>需要使用super(参数)方法显式调用父类构造器。</p>
+<h4 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h4><h4 id="结合使用组合和继承"><a href="#结合使用组合和继承" class="headerlink" title="结合使用组合和继承"></a>结合使用组合和继承</h4><ul>
+<li>确保正确清理<br>首先，执行类的所有特定的清理动作，其顺序同生成顺序相反（通常这就要求基类<br>元素仍旧存活）；然后，调用基类的清理方法。</li>
+<li>名称屏蔽<br>如果Java的基类拥有某个已被多次重载的方法名称，那么在导出类中重新定义该方法名称<br>并不会屏蔽在基类中的任何版本（这一点与C++不同）。</li>
+<li>@Override注解<br>添加@Override注解，表示覆写基类方法，而不是重载，如果基类没有该方法，则会报错。</li>
+</ul>
+<h4 id="在组合与继承之间选择"><a href="#在组合与继承之间选择" class="headerlink" title="在组合与继承之间选择"></a>在组合与继承之间选择</h4><h4 id="protected关键字"><a href="#protected关键字" class="headerlink" title="protected关键字"></a>protected关键字</h4><h4 id="向上转型"><a href="#向上转型" class="headerlink" title="向上转型"></a>向上转型</h4><h4 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h4><ul>
+<li>final数据<br>final标识基本类型，表示常量，不可修改值；<br>final标识对象，引用对象不可变，但可以改变对象本身的值。<br>空白final，指声明为final但不给出初值，那么必须在构造器中赋初值。<br>final参数，意味着在方法中无法更改参数引用所指向的对象。</li>
+<li>final方法<br>final修饰方法，表示把方法锁住，以防任何继承类修改它的含义，确保在继承中是方法<br>行为保持不变，并且不会被覆盖。但是，“覆盖”只有在某方法是基类的接口的一部分时<br>才会出现。即，必须能够将一个对象向上转型为它的基本类型并调用相同方法。如果某方法为private，<br>它就不是基类的接口的一部分。此时如果导出类具有相同名称但未public、protected或<br>包范文权限方法的方法，则并不会覆盖该方法，仅是生成了一个新方法而已。</li>
+<li>final类<br>final修饰类，表示该类不能被继承。</li>
+</ul>
+<h4 id="初始化及类的加载"><a href="#初始化及类的加载" class="headerlink" title="初始化及类的加载"></a>初始化及类的加载</h4><p>类的代码在初次使用时才被加载，这通常是指加载类的第一个对象之时，但是访问static域或static方法<br>时，也会发生加载。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-《Thinking-in-Java》第六章" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -908,174 +1048,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图论/">图论</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-FWT" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/06/08/FWT/" class="article-date">
-      <time datetime="2019-06-08T15:40:54.000Z" itemprop="datePublished">2019-06-08</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/08/FWT/">快速沃尔什变换(FWT)</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="快速沃尔什变换-FWT"><a href="#快速沃尔什变换-FWT" class="headerlink" title="快速沃尔什变换(FWT)"></a>快速沃尔什变换(FWT)</h2><p>用途：求<br>$$C(i) = \sum_{i=j@k}A(j)*B(k)$$<br>其中@为位运算或(|), 与(&amp;), 异或(^)中一种,算法复杂度O($n\log(n)$)。</p>
-<hr>
-<h3 id="1-或运算"><a href="#1-或运算" class="headerlink" title="1. 或运算"></a>1. 或运算</h3><p>令
-$$FWT[A] = (A_1, A_2…)$$<br>其中<br>$$A_i = \sum_{i=i|j}A[j]$$<br>用A0表示A的前一半，A1表示A的后一半，那么如果已经求得FWT[A0]和FWT[A1]，则可以得到<br><code>FWT[A] = (FWT[A0], FWT[A0]+FWT[A1]) (‘+’ 对应位相加) 当A长度为1时，FWT[A] = A</code>(A0最高<br>位为0，对FWT[A]后一半能贡献，而A1最高位为1，对FWT[A]前一半不能贡献)。所以，就可以<br>通过迭代分治，在O(nlogn)求得FWT[A]。<br>并且，由<br>$$C(i) = \sum_{i=j|k}A(j)*B(k)$$<br>得到<code>FWT[C] = FWT[A]*FWT[B] (‘*’ 对应位相乘)</code>，所以能在求得FWT[A]和FWT[B]基础上，在<br>O(n)求得FWT[C]。<br>最后，需要将FWT[C]恢复为C。通过观察求FWT[A]的过程，发现只需要将FWT[C]的后半部分减<br>去FWT[C]的前半部分<code>IFWT[C] = (IFWT[C0], IFWT[C1]-IFWT[C0]) 当C长度为1时，IFWT[C] = C</code><br>就可以得到C。所以，同样能通过逆向迭代分治，在O(nlogn)求得C。</p>
-<h3 id="2-与运算"><a href="#2-与运算" class="headerlink" title="2. 与运算"></a>2. 与运算</h3><p>FWT的与运算和或运算非常类似，只需改变FWT[A]中元素含义，让FWT[A]中<br>$$A_i = \sum_{i=i\&amp;j}A[j]$$<br>同样我们能发现<code>FWT[A] = (FWT[A0]+FWT[A1], FWT[A1])</code>,同时<code>FWT[C] = FWT[A]*FWT[B]</code><br>所以同样能求得FWT[C],最后由<code>IFWT[C] = (IFWT[C0]-IFWT[C1], IFWT[C1])</code>,求得C</p>
-<h3 id="3-异或运算"><a href="#3-异或运算" class="headerlink" title="3. 异或运算"></a>3. 异或运算</h3><p>FWT的异或运算相比或运算和与运算有些不同，我们设i&amp;j所得结果中1的个数的奇偶表示i&amp;j的<br>奇偶性(偶：0；奇：1)，那么会有<code>(i&amp;k的奇偶性)^(j&amp;k的奇偶性) = (i^j)&amp;k的奇偶性</code>，那么，令<br>$$A_i = \sum_{i\&amp;k=0}A[k]-\sum_{i\&amp;k=1}A[k]$$<br>其中i&amp;k=0表示i&amp;k为偶性，i&amp;k=1表示i&amp;k为奇性，我们能发现仍然有<code>FWT[C] = FWT[A]*FWT[B]</code><br>假设不考虑二进制最高位已经求得FWT[A0]和FWT[A1],要求FWT[A]。那么再多考虑最高位，A0中<br>最高位为0，FWT[A0]仍然能直接贡献到FWT[A0]和FWT[A1]；而A1最高位为1，FWT[A1]能直<br>接贡献到FWT[A0]，但贡献到FWT[A1]时，因为有了最高位1，i&amp;k的奇偶性改变。所以，有<br><code>FWT[A] = (FWT[A0]+FWT[A1], FWT[A0]-FWT[A1])</code>最后求得FWT[C]后，由<br><code>IFWT[C] = ((IFWT[C0]+IFWT[C1])/2, (IFWT[C0]-IFWT[C1])/2)</code>,恢复得到C</p>
-<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100005</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line">ll inv;</span><br><span class="line">ll a[N];</span><br><span class="line">ll b[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(ll *num, <span class="keyword">int</span> flag)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>, m = <span class="number">1</span>; i &lt;= n; i &lt;&lt;= <span class="number">1</span>, m &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j += i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = j; k &lt; j+m; k++)</span><br><span class="line">            &#123;</span><br><span class="line">                ll x = num[k], y = num[k+m];</span><br><span class="line">                <span class="keyword">if</span>(flag == <span class="number">-1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">//xor num[k] = (x+y)%mod*inv2%mod, num[k+m] = ((x-y)%mod+mod)%mod*inv2%mod;</span></span><br><span class="line">                    <span class="comment">//and num[k] = ((x-y)%mod+mod)%mod;</span></span><br><span class="line">                    <span class="comment">//or num[k+m] = ((y-x)%mod+mod)%mod;</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">//xor num[k] = (x+y)%mod, num[k+m] = ((x-y)%mod+mod)%mod;</span></span><br><span class="line">                    <span class="comment">//and num[k] = (x+y)%mod;</span></span><br><span class="line">                    <span class="comment">//or num[k+m] = (x+y)%mod;</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ll q_pow(ll x, ll y)</span><br><span class="line">&#123;</span><br><span class="line">    ll ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(y)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(y&amp;<span class="number">1</span>) ans = ans*x%mod;</span><br><span class="line">        x = x*x%mod;</span><br><span class="line">        y &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    inv = q_pow(<span class="number">2L</span>L, mod<span class="number">-2</span>);</span><br><span class="line">    <span class="keyword">int</span> k;</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;k))</span><br><span class="line">    &#123;</span><br><span class="line">        n = (<span class="keyword">int</span>)q_pow(<span class="number">2L</span>L, (ll)k);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;a[i]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;b[i]);</span><br><span class="line">        FWT(a, <span class="number">1</span>);</span><br><span class="line">        FWT(b, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) b[i] = b[i]*a[i];</span><br><span class="line">        FWT(b, <span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, b[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数论/">数论</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-你好-Hexo" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/06/07/你好-Hexo/" class="article-date">
-      <time datetime="2019-06-07T14:25:15.000Z" itemprop="datePublished">2019-06-07</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/07/你好-Hexo/">我的第一篇博客</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><p><em>斜体</em><br><strong>粗体</strong><br><strong><em>加粗斜体</em></strong><br><del>删除线</del></p>
-<blockquote>
-<p>文字引用<br><code>行内代码</code></p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>$$ x^{x^z}=(1+{\rm e}^x)^{-2xy^w} $$<br>$$ sqrt() $$<br>分割线</p>
-<h2 id="方法一：—"><a href="#方法一：—" class="headerlink" title="方法一：—"></a>方法一：—</h2><p>方法二：+++<br>+++<br>方法三：***</p>
-<hr>
-<ol>
-<li>有序列表项</li>
-</ol>
-<ul>
-<li>无序列表项</li>
-</ul>
-<ul>
-<li>无序列表项</li>
-</ul>
-<ul>
-<li>无序列表项</li>
-</ul>
-<p>表格</p>
-<table>
-<thead>
-<tr>
-<th>表头1</th>
-<th>表头2</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>内容11</td>
-<td>内容12</td>
-</tr>
-<tr>
-<td>内容21</td>
-<td>内容22</td>
-</tr>
-</tbody></table>
-<p><a href="https://www.baidu.com/" title="百度一下" target="_blank" rel="noopener">百度搜索</a><br><a href="https://www.baidu.com/" target="_blank" rel="noopener">https://www.baidu.com/</a></p>
-<p>$$f(x_1,x_x,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2$$<br>$$f(x_1,x_x,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2$$<br>$$f(x) = 3x + 7$$<br>$$a = b + c$$<br>$$\frac{\partial u}{\partial t}<br>= h^2 \left( \frac{\partial^2 u}{\partial x^2} +<br>\frac{\partial^2 u}{\partial y^2} +<br>\frac{\partial^2 u}{\partial z^2}\right)$$</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小记/">小记</a></li></ul>
     </div>
 
       
