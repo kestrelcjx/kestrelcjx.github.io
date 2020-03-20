@@ -254,6 +254,120 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-《Thinking-in-Java》第二十二章" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/21/《Thinking-in-Java》第二十二章/" class="article-date">
+      <time datetime="2020-03-20T17:35:11.000Z" itemprop="datePublished">2020-03-21</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/21/《Thinking-in-Java》第二十二章/">《Thinking in Java》第二十二章</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-《Thinking-in-Java》第二十一章" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/21/《Thinking-in-Java》第二十一章/" class="article-date">
+      <time datetime="2020-03-20T17:34:37.000Z" itemprop="datePublished">2020-03-21</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/21/《Thinking-in-Java》第二十一章/">《Thinking in Java》第二十一章</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-《Thinking-in-Java》第二十章" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1041,195 +1155,6 @@
 </ol>
 <h4 id="扫描输入"><a href="#扫描输入" class="headerlink" title="扫描输入"></a>扫描输入</h4><h4 id="StringTokenizer"><a href="#StringTokenizer" class="headerlink" title="StringTokenizer"></a>StringTokenizer</h4><p>在Java引入正则表达式（J2SE1.4）和Scanner（JavaSE5）之前，分割字符串的<br>唯一方法是使用StringTokenizer来分词。</p>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-《Thinking-in-Java》第十二章" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/17/《Thinking-in-Java》第十二章/" class="article-date">
-      <time datetime="2020-03-17T03:50:37.000Z" itemprop="datePublished">2020-03-17</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/17/《Thinking-in-Java》第十二章/">《Thinking in Java》第十二章</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="通过异常处理错误"><a href="#通过异常处理错误" class="headerlink" title="通过异常处理错误"></a>通过异常处理错误</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><h4 id="基本异常"><a href="#基本异常" class="headerlink" title="基本异常"></a>基本异常</h4><p>当抛出异常后，有几件事会随之发生。首先，同Java中其他对象的创建一样，<br>将使用new在堆上创建异常对象。然后，当前的路径被终止，并且从当前环境<br>中弹出对异常对象的引用。此时，异常处理机制接管程序，并开始寻找一个<br>恰当的地方来继续执行程序。这个恰当的地方就是异常处理程序，它的任务<br>是将程序从错误状态中恢复，以使程序能要么换一种方式运行，要么继续运行下去。</p>
-<ul>
-<li>所有标准异常类都有两个构造器：一个是默认构造器；一个是接受字符串<br>作为参数，以便能把相关信息放入异常对象的构造器。</li>
-<li>能够抛出任意类型的Throwable对象，它是异常类型的根类。</li>
-</ul>
-<h4 id="捕获异常"><a href="#捕获异常" class="headerlink" title="捕获异常"></a>捕获异常</h4><h4 id="创建自定义异常"><a href="#创建自定义异常" class="headerlink" title="创建自定义异常"></a>创建自定义异常</h4><h4 id="异常说明"><a href="#异常说明" class="headerlink" title="异常说明"></a>异常说明</h4><ul>
-<li>异常说明使用了附加的关键字throws，后面接一个所有潜在异常列表。</li>
-<li>代码必须与异常说明保持一致。<br>如果方法里的代码产生了异常却没有进行处理，编译器会发现这问题<br>并提醒你：要么处理这个异常，要么就在异常说明中表明此方法将产生异常。</li>
-</ul>
-<h4 id="捕获所有异常"><a href="#捕获所有异常" class="headerlink" title="捕获所有异常"></a>捕获所有异常</h4><ul>
-<li>void printStackTrace()<br>void printStackTrace(PrintStream)<br>void printStackTrace(java.io.PrintWriter)<br>打印Throwable和Throwable的调用栈轨迹。</li>
-<li>Throwable fillStackTrace() 用于在Throwable对象的内部记录栈帧的当前状态。</li>
-<li>printStackTrace()方法提供的信息可以通过getStackTrace()方法来直接访问，<br>这个方法返回一个栈轨迹中的元素所构成的数组，其中每一个元素都表示栈中的一帧。<br>元素0是这个Throwable被创建和抛出之处。</li>
-<li>Throwable的子类在构造器中都可以接受一个cause（因由）对象作为参数。这个cause<br>就用来表示原始异常，这样通过把原始异常传递给新的异常，使得即使在当前位置创建并<br>抛出异常，也能通过这个异常链追踪到异常最初发生的位置。</li>
-</ul>
-<h4 id="Java标准异常"><a href="#Java标准异常" class="headerlink" title="Java标准异常"></a>Java标准异常</h4><p>Throwable这个Java类被用来表示任何可以作为异常被抛出的类。Throwable对象可分为<br>两种类型（指从Throwable继承而得到的类型）：Error用来表示编译时和系统错误（一般<br>不需要关心）；Exception是可以被抛出的基本类型。<br>RuntimeException是运行时异常，它们会自动被java虚拟机抛出，所以不必再异常说明<br>中把它们列出来。它们被称为“不受检查异常”，这种异常属于错误，将被自动捕获。</p>
-<h4 id="使用finally进行清理"><a href="#使用finally进行清理" class="headerlink" title="使用finally进行清理"></a>使用finally进行清理</h4><ul>
-<li>无论是否抛出异常，finally子句都会执行。（break、return，finally也会执行）</li>
-<li>异常丢失</li>
-</ul>
-<h4 id="异常的限制"><a href="#异常的限制" class="headerlink" title="异常的限制"></a>异常的限制</h4><p>当覆盖方法时，只能抛出在基类方法的异常说明里列出的那些异常。</p>
-<h4 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h4><h4 id="异常匹配"><a href="#异常匹配" class="headerlink" title="异常匹配"></a>异常匹配</h4><ul>
-<li>抛出异常时，异常处理系统会按照代码的书写顺序找出“最近”的处理程序。找到匹配的<br>处理程序之后，它就认为异常得到处理，然后就不再继续寻找。</li>
-<li>查找的时候并不要求抛出的异常同处理程序所声明的异常完全匹配。派生类对象也可以<br>匹配其基类的处理程序。</li>
-</ul>
-<h4 id="其他可选方式"><a href="#其他可选方式" class="headerlink" title="其他可选方式"></a>其他可选方式</h4><h4 id="异常使用指南"><a href="#异常使用指南" class="headerlink" title="异常使用指南"></a>异常使用指南</h4><p>应该在下列情况下使用异常：</p>
-<ol>
-<li>当恰当的级别处理问题。（在知道该如何处理的情况下才捕获一场）</li>
-<li>解决问题并且重新调用产生异常的方法。</li>
-<li>进行少许修补，然后绕过一场发生的地方继续执行。</li>
-<li>用别的数据进行计算，以替代方法预计会返回的值。</li>
-<li>把当前运行环境下能做的事情尽量做完，然后把相同的异常抛到更高层。</li>
-<li>把当前运行环境下能做的事情尽量做完，然后把不同的异常抛到更高层。</li>
-<li>终止程序。</li>
-<li>进行简化。</li>
-<li>让类库和程序更安全。</li>
-</ol>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><img src="/images/Exception.jpg" alt="Exception"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-《Thinking-in-Java》第十一章" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/16/《Thinking-in-Java》第十一章/" class="article-date">
-      <time datetime="2020-03-16T02:13:29.000Z" itemprop="datePublished">2020-03-16</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/16/《Thinking-in-Java》第十一章/">《Thinking in Java》第十一章</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="持有对象"><a href="#持有对象" class="headerlink" title="持有对象"></a>持有对象</h3><h4 id="泛型和类型安全的容器"><a href="#泛型和类型安全的容器" class="headerlink" title="泛型和类型安全的容器"></a>泛型和类型安全的容器</h4><p>Java容器不支持基本类型，应当使用相应的包装类。</p>
-<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>java容器类库的用途是“保存对象”，并将其划分为不同的概念：</p>
-<ol>
-<li>Collection。一个独立元素的序列，这些元素都服从一条或多条规则。</li>
-<li>Map。一组成对的“键值对”对象，允许你使用键来查找值。</li>
-</ol>
-<h4 id="添加一组元素"><a href="#添加一组元素" class="headerlink" title="添加一组元素"></a>添加一组元素</h4><p>Arrays.asList返回的列表底层以数组实现，不支持插入删除。</p>
-<h4 id="容器的打印"><a href="#容器的打印" class="headerlink" title="容器的打印"></a>容器的打印</h4><h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><p>有两种类型的List：</p>
-<ol>
-<li>基本的ArrayList，它长于随机访问元素，但是在List的中间插入和移除元素时较慢。</li>
-<li>LinkedList，它通过代价较低的在List中间进行的插入和删除操作，提供了优化的顺序访问。<br>LinkedList在随机访问方面相对比较慢，但是它的特性集较ArrayList更大。</li>
-</ol>
-<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>Java的Iterator只能单向移动，这个Iterator只能用来：</p>
-<ol>
-<li>使用方法iterator()要求容器返回一个Iterator。</li>
-<li>使用next()获得序列的下一个元素。</li>
-<li>使用hasNext()检查序列中是否还有元素。</li>
-<li>使用remove()将迭代器新近返回的元素删除。</li>
-</ol>
-<h4 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h4><h4 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h4><h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4><ol>
-<li>HashSet使用散列函数</li>
-<li>TreeSet将元素存储在红黑树数据结构中</li>
-<li>LinkedHash因为查询速度的原因也使用了散列，但是看起来它使用了链表来维护元素的插入顺序。</li>
-</ol>
-<h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><p>Map的遍历：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Integer, String&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, String&gt;();</span><br><span class="line">...</span><br><span class="line"><span class="keyword">for</span>(Integer i : map.keySet()) &#123;</span><br><span class="line">	String str = map.get(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(Map.Entry entry : map.entrySet()) &#123;</span><br><span class="line">	<span class="keyword">int</span> i = entry.getKey();</span><br><span class="line">	String str = map.getValue();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h4><h4 id="Collection和Iterator"><a href="#Collection和Iterator" class="headerlink" title="Collection和Iterator"></a>Collection和Iterator</h4><h4 id="Foreach和迭代器"><a href="#Foreach和迭代器" class="headerlink" title="Foreach和迭代器"></a>Foreach和迭代器</h4><p>foreach语句可以用于数组或其他任何Iterable</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><img src="/images/Collection.jpg" alt="简单的容器分类"><br>4种容器：Map、List、Set、Queue</p>
-
       
     </div>
     

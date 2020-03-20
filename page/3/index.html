@@ -254,6 +254,210 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-《Thinking-in-Java》第二章" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/07/《Thinking-in-Java》第二章/" class="article-date">
+      <time datetime="2020-03-07T15:16:44.000Z" itemprop="datePublished">2020-03-07</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/07/《Thinking-in-Java》第二章/">《Thinking in Java》第二章</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="一切都是对象"><a href="#一切都是对象" class="headerlink" title="一切都是对象"></a>一切都是对象</h3><h4 id="2-1-用引用操纵对象"><a href="#2-1-用引用操纵对象" class="headerlink" title="2.1 用引用操纵对象"></a>2.1 用引用操纵对象</h4><h4 id="2-2-必须由你创建所有对象"><a href="#2-2-必须由你创建所有对象" class="headerlink" title="2.2 必须由你创建所有对象"></a>2.2 必须由你创建所有对象</h4><p>数据存储：</p>
+<ul>
+<li>寄存器</li>
+<li>堆栈</li>
+<li>堆</li>
+<li>常量存储</li>
+<li>非RAM存储</li>
+</ul>
+<p>八个基本数据类型</p>
+<table>
+<thead>
+<tr>
+<th>基本类型</th>
+<th>大小</th>
+<th>包装器类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean</td>
+<td>-</td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>char</td>
+<td>16 bits</td>
+<td>Charactor</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>8 bits</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>16 bits</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>int</td>
+<td>32 bits</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>long</td>
+<td>64 bits</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>float</td>
+<td>32 bits</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>double</td>
+<td>64 bits</td>
+<td>Double</td>
+</tr>
+</tbody></table>
+<p>boolean类型所占存储空间的大小没有明确指定    </p>
+<h4 id="2-3-永远不需要销毁对象"><a href="#2-3-永远不需要销毁对象" class="headerlink" title="2.3 永远不需要销毁对象"></a>2.3 永远不需要销毁对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int x = 1;</span><br><span class="line">&#123;</span><br><span class="line">	int x = 2;	//ERROR</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Java中不能嵌套作用域定义同名变量，编译器会报告变量已经定义过</p>
+<h4 id="2-4-创建新的数据类型：类"><a href="#2-4-创建新的数据类型：类" class="headerlink" title="2.4 创建新的数据类型：类"></a>2.4 创建新的数据类型：类</h4><p>若类的某个成员是基本数据类型，即使没有进行初始化，Java也会确保它获得一个默认值，将其每个为置0；<br>若是类，则初始化为null。局部变量不进行默认初始化。</p>
+<h4 id="2-5-方法、参数和返回值"><a href="#2-5-方法、参数和返回值" class="headerlink" title="2.5 方法、参数和返回值"></a>2.5 方法、参数和返回值</h4><h4 id="2-6-构建一个Java程序"><a href="#2-6-构建一个Java程序" class="headerlink" title="2.6 构建一个Java程序"></a>2.6 构建一个Java程序</h4><h4 id="2-7-你的第一个Java程序"><a href="#2-7-你的第一个Java程序" class="headerlink" title="2.7 你的第一个Java程序"></a>2.7 你的第一个Java程序</h4><h4 id="2-8-注释和嵌入式文档"><a href="#2-8-注释和嵌入式文档" class="headerlink" title="2.8 注释和嵌入式文档"></a>2.8 注释和嵌入式文档</h4><p>Java三种注释方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//单行注释</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * 多行注释</span><br><span class="line"> */</span><br><span class="line"> </span><br><span class="line">/**</span><br><span class="line"> * 文档注释</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<p>可以使用javadoc工具提取源文件的文档注释，生成注释文档（API）</p>
+<h4 id="2-9-编码规范"><a href="#2-9-编码规范" class="headerlink" title="2.9 编码规范"></a>2.9 编码规范</h4><p>类名首字母要大写，如果类名有几个单词构成，那么它们并在一起，其中每个内部单词首字母都采用大写形式。<br>这种分格称为“驼峰风格”。几乎其他所有内容也–方法、字段（成员变量）以及对象引用名称等，都采用这种风格，<br>只是标识符第一个字母小写。</p>
+<h4 id="2-10-总结"><a href="#2-10-总结" class="headerlink" title="2.10 总结"></a>2.10 总结</h4><h4 id="2-11-练习"><a href="#2-11-练习" class="headerlink" title="2.11 练习"></a>2.11 练习</h4>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-《Thinking-in-Java》第一章" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/07/《Thinking-in-Java》第一章/" class="article-date">
+      <time datetime="2020-03-07T15:00:55.000Z" itemprop="datePublished">2020-03-07</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/07/《Thinking-in-Java》第一章/">《Thinking in Java》第一章</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="对象导论"><a href="#对象导论" class="headerlink" title="对象导论"></a>对象导论</h3><h4 id="1-1-抽象过程"><a href="#1-1-抽象过程" class="headerlink" title="1.1 抽象过程"></a>1.1 抽象过程</h4><h4 id="1-2-每个对象都有一个接口"><a href="#1-2-每个对象都有一个接口" class="headerlink" title="1.2 每个对象都有一个接口"></a>1.2 每个对象都有一个接口</h4><h4 id="1-3-每个对象都提供服务"><a href="#1-3-每个对象都提供服务" class="headerlink" title="1.3 每个对象都提供服务"></a>1.3 每个对象都提供服务</h4><h4 id="1-4-被隐藏的具体实现"><a href="#1-4-被隐藏的具体实现" class="headerlink" title="1.4 被隐藏的具体实现"></a>1.4 被隐藏的具体实现</h4><h4 id="1-5-复用具体实现"><a href="#1-5-复用具体实现" class="headerlink" title="1.5 复用具体实现"></a>1.5 复用具体实现</h4><h4 id="1-6-继承"><a href="#1-6-继承" class="headerlink" title="1.6 继承"></a>1.6 继承</h4><h4 id="1-7-伴随多态的可互换对象"><a href="#1-7-伴随多态的可互换对象" class="headerlink" title="1.7 伴随多态的可互换对象"></a>1.7 伴随多态的可互换对象</h4><h4 id="1-8-单根继承"><a href="#1-8-单根继承" class="headerlink" title="1.8 单根继承"></a>1.8 单根继承</h4><p>  所有的类都有一个共同的祖先Object类，所有对象（包括数组）都实现了这个类的方法。<br>  Object类包含的方法：</p>
+<ol>
+<li>protected Object clone()    创建并返回此对象的副本</li>
+<li>boolean equals(Object obj)    判断对象是否相等</li>
+<li>protected void finalize()    当垃圾收集确定不再有该对象的引用时，垃圾收集器在对象上调用该类</li>
+<li>Class&lt;?&gt; getClass()        返回此对象的运行时类</li>
+<li>int hashCode()                返回此对象的哈希值</li>
+<li>void notify()                唤醒正在等待此对象监视器的单个线程</li>
+<li>void notifyAll()            唤醒正在等待此对象监视器的所有线程</li>
+<li>String toString()            返回对象的字符串表示形式</li>
+<li>void wait()                导致当前线程等待，直到另一个线程调用该对象的notify()或notifyAll()方法</li>
+<li>void wait(long timeout)    导致当前线程等待，直到另一个线程调用 notify()方法或该对象的 notifyAll()方法，或者指定的时间已过。</li>
+<li>void wait(long timeout, int nanos)导致当前线程等待，直到另一个线程调用该对象的 notify()方法或 notifyAll()方法，或者某些其他线程中断当前线程，或一定量的实时时间。</li>
+</ol>
+<h4 id="1-9-容器"><a href="#1-9-容器" class="headerlink" title="1.9 容器"></a>1.9 容器</h4><h4 id="1-10-对象的创建和生命期"><a href="#1-10-对象的创建和生命期" class="headerlink" title="1.10 对象的创建和生命期"></a>1.10 对象的创建和生命期</h4><h4 id="1-11-异常处理：处理错误"><a href="#1-11-异常处理：处理错误" class="headerlink" title="1.11 异常处理：处理错误"></a>1.11 异常处理：处理错误</h4><h4 id="1-12-并发编程"><a href="#1-12-并发编程" class="headerlink" title="1.12 并发编程"></a>1.12 并发编程</h4><h4 id="1-13-Java与Internet"><a href="#1-13-Java与Internet" class="headerlink" title="1.13 Java与Internet"></a>1.13 Java与Internet</h4><h4 id="1-14-总结"><a href="#1-14-总结" class="headerlink" title="1.14 总结"></a>1.14 总结</h4>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-虚树" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

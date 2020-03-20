@@ -7,20 +7,16 @@
   
   
   
-  <title>《Thinking in Java》第十四章 | Kestrel&#39;s Blog</title>
+  <title>《Thinking in Java》第二十一章 | Kestrel&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="类型信息为什么需要RTTIRun-Time Type Identification（RTTI）运行时类型信息识别 Class对象类型信息在运行时的表示，是由Class对象完成的，它包含了与类有关的信息。Java使用Class对象来执行其RTTI。所有的类都是在对其第一次使用时，动态加载到JVM中的。当程序第一次对类的静态成员进行引用时，就会加载这个类。这个证明构造器也是类的静态方法。为了生成类的对">
-<meta name="keywords" content="Java">
-<meta property="og:type" content="article">
-<meta property="og:title" content="《Thinking in Java》第十四章">
-<meta property="og:url" content="https://kestrelcjx.github.io/2020/03/17/《Thinking-in-Java》第十四章/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="《Thinking in Java》第二十一章">
+<meta property="og:url" content="https://kestrelcjx.github.io/2020/03/21/《Thinking-in-Java》第二十一章/index.html">
 <meta property="og:site_name" content="Kestrel&#39;s Blog">
-<meta property="og:description" content="类型信息为什么需要RTTIRun-Time Type Identification（RTTI）运行时类型信息识别 Class对象类型信息在运行时的表示，是由Class对象完成的，它包含了与类有关的信息。Java使用Class对象来执行其RTTI。所有的类都是在对其第一次使用时，动态加载到JVM中的。当程序第一次对类的静态成员进行引用时，就会加载这个类。这个证明构造器也是类的静态方法。为了生成类的对">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-19T16:52:49.650Z">
+<meta property="og:updated_time" content="2020-03-20T17:34:37.968Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《Thinking in Java》第十四章">
-<meta name="twitter:description" content="类型信息为什么需要RTTIRun-Time Type Identification（RTTI）运行时类型信息识别 Class对象类型信息在运行时的表示，是由Class对象完成的，它包含了与类有关的信息。Java使用Class对象来执行其RTTI。所有的类都是在对其第一次使用时，动态加载到JVM中的。当程序第一次对类的静态成员进行引用时，就会加载这个类。这个证明构造器也是类的静态方法。为了生成类的对">
+<meta name="twitter:title" content="《Thinking in Java》第二十一章">
   
     <link rel="alternative" href="/atom.xml" title="Kestrel&#39;s Blog" type="application/atom+xml">
   
@@ -254,11 +250,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-《Thinking-in-Java》第十四章" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-《Thinking-in-Java》第二十一章" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/17/《Thinking-in-Java》第十四章/" class="article-date">
-      <time datetime="2020-03-17T03:50:58.000Z" itemprop="datePublished">2020-03-17</time>
+      <a href="/2020/03/21/《Thinking-in-Java》第二十一章/" class="article-date">
+      <time datetime="2020-03-20T17:34:37.000Z" itemprop="datePublished">2020-03-21</time>
 </a>
 
     </div>
@@ -272,7 +268,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      《Thinking in Java》第十四章
+      《Thinking in Java》第二十一章
     </h1>
   
 
@@ -283,10 +279,6 @@
         
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -294,37 +286,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="类型信息"><a href="#类型信息" class="headerlink" title="类型信息"></a>类型信息</h3><h4 id="为什么需要RTTI"><a href="#为什么需要RTTI" class="headerlink" title="为什么需要RTTI"></a>为什么需要RTTI</h4><p>Run-Time Type Identification（RTTI）运行时类型信息识别</p>
-<h4 id="Class对象"><a href="#Class对象" class="headerlink" title="Class对象"></a>Class对象</h4><p>类型信息在运行时的表示，是由Class对象完成的，它包含了与类有关的信息。Java使用Class对象来执行其RTTI。<br>所有的类都是在对其第一次使用时，动态加载到JVM中的。当程序第一次对类的静态成员进行引用时，<br>就会加载这个类。这个证明构造器也是类的静态方法。<br>为了生成类的对象，运行这个程序的Java虚拟机（JVM）将使用被称为“类加载器”的子系统。<br>类加载器首先检查这个类的Class对象是否已经加载。如果尚未加载，默认的类加载器就会<br>根据类名查找.class文件。在这个类的字节码被加载时，它们会接受验证，以确保其没有被<br>破坏，并且不包含不良代码（这是Java中用于安全防范目的措施之一）。</p>
-<ul>
-<li>获取Class对象的三种方法<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>&#123;&#125;</span><br><span class="line">Class clazz = Class.forName(<span class="string">"ClassName"</span>);<span class="comment">//通过使用Class的静态方法</span></span><br><span class="line">clazz = ClassName.class;<span class="comment">//通过使用类字面常量</span></span><br><span class="line">clazz = <span class="keyword">new</span> ClassName().getClass();<span class="comment">//通过使用对象的getClass方法</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>当使用”.class”来创建对Class对象的引用时，不会自动地初始化该Class对象。<br>为了使用类而做的准备工作实际包含三个步骤：</p>
-<ol>
-<li>加载。这是由类加载器执行的。该步骤将查找字节码，并从这些字节码创建一个Class对象。</li>
-<li>链接。在链接阶段将验证类中的字节码，为静态域分配存储空间，并且如果必须的话，讲<br>解析这个类创建的对其他类的所有引用。</li>
-<li>初始化。如果该类具有超类，则对其初始化，执行静态初始化器和静态初始化块。<br>初始化被延迟到了对静态方法或者非常数静态域进行首次引用时才执行。但是如果一个域被设置<br>为static和final，但它需要执行其他操作才能获得初值，那就不会进行延迟初始化。</li>
-</ol>
-<ul>
-<li><p>泛化的Class引用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. Class&lt;?&gt;</span><br><span class="line"><span class="number">2</span>. Class&lt;? extends Number&gt;</span><br><span class="line"><span class="number">3</span>. Class&lt;? <span class="keyword">super</span> Integer&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新的转型语法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span> </span>&#123;&#125;</span><br><span class="line">...</span><br><span class="line">Father fa = <span class="keyword">new</span> Son();</span><br><span class="line">Class&lt;Son&gt; sonClass = Son.class;</span><br><span class="line">Son s = sonClass.cast(fa);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h4 id="类型转换前先做检查"><a href="#类型转换前先做检查" class="headerlink" title="类型转换前先做检查"></a>类型转换前先做检查</h4><ul>
-<li>instanceof(对象 instanceof 类名), 返回true或false</li>
-<li>动态instanceof（clazz.isInstance(对象)），返回true或false</li>
-</ul>
-<h4 id="注册工厂"><a href="#注册工厂" class="headerlink" title="注册工厂"></a>注册工厂</h4><p>工厂方法设计模式：将对象的创建工作交给类自己去完成。</p>
-<h4 id="instanceof与Class等价"><a href="#instanceof与Class等价" class="headerlink" title="instanceof与Class等价"></a>instanceof与Class等价</h4><h4 id="反射：运行时的类型信息"><a href="#反射：运行时的类型信息" class="headerlink" title="反射：运行时的类型信息"></a>反射：运行时的类型信息</h4><h4 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">InvocationHandler handler = <span class="keyword">new</span> MyInvocationHandler(...);</span><br><span class="line">Foo f = (Foo) Proxy.newProxyInstance(Foo.class.getClassLoader(),</span><br><span class="line">                                     <span class="keyword">new</span> Class&lt;?&gt;[] &#123; Foo.class &#125;,</span><br><span class="line">                                     handler);</span><br></pre></td></tr></table></figure>
-
-<p>通过静态方法Proxy.newProxyInstance()可以创建动态代理，这个方法需要得到一个类加载器，<br>一个希望该代理实现的接口列表，以及InvocationHandler接口的一个实现。动态代理可以将<br>所有调用重定向到调用处理器，因此通常会向调用处理器的构造器传递一个“实际”的对象的引用，<br>从而得到调用处理器在执行其中介任务时，可以请求转发。</p>
-<h4 id="空对象"><a href="#空对象" class="headerlink" title="空对象"></a>空对象</h4><h4 id="接口与类型信息"><a href="#接口与类型信息" class="headerlink" title="接口与类型信息"></a>接口与类型信息</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
+        
       
     </div>
     
@@ -332,13 +294,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2020/03/17/《Thinking-in-Java》第十四章/">《Thinking in Java》第十四章</a></p>
+        <p><span>本文标题:</span><a href="/2020/03/21/《Thinking-in-Java》第二十一章/">《Thinking in Java》第二十一章</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Kestrel 的个人博客">Kestrel</a></p>
-        <p><span>发布时间:</span>2020年03月17日 - 11时50分</p>
-        <p><span>最后更新:</span>2020年03月20日 - 00时52分</p>
+        <p><span>发布时间:</span>2020年03月21日 - 01时34分</p>
+        <p><span>最后更新:</span>2020年03月21日 - 01时34分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/03/17/《Thinking-in-Java》第十四章/" title="《Thinking in Java》第十四章">https://kestrelcjx.github.io/2020/03/17/《Thinking-in-Java》第十四章/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/17/《Thinking-in-Java》第十四章/　　作者: Kestrel" title></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/03/21/《Thinking-in-Java》第二十一章/" title="《Thinking in Java》第二十一章">https://kestrelcjx.github.io/2020/03/21/《Thinking-in-Java》第二十一章/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/21/《Thinking-in-Java》第二十一章/　　作者: Kestrel" title></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -349,18 +311,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2020/03/18/《Thinking-in-Java》第十五章/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/03/21/《Thinking-in-Java》第二十二章/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          《Thinking in Java》第十五章
+          《Thinking in Java》第二十二章
         
       </div>
     </a>
   
   
-    <a href="/2020/03/17/《Thinking-in-Java》第十三章/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">《Thinking in Java》第十三章</div>
+    <a href="/2020/03/20/《Thinking-in-Java》第二十章/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《Thinking in Java》第二十章</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -372,7 +334,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#类型信息"><span class="toc-number">1.</span> <span class="toc-text">类型信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么需要RTTI"><span class="toc-number">1.1.</span> <span class="toc-text">为什么需要RTTI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Class对象"><span class="toc-number">1.2.</span> <span class="toc-text">Class对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类型转换前先做检查"><span class="toc-number">1.3.</span> <span class="toc-text">类型转换前先做检查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注册工厂"><span class="toc-number">1.4.</span> <span class="toc-text">注册工厂</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#instanceof与Class等价"><span class="toc-number">1.5.</span> <span class="toc-text">instanceof与Class等价</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#反射：运行时的类型信息"><span class="toc-number">1.6.</span> <span class="toc-text">反射：运行时的类型信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#动态代理"><span class="toc-number">1.7.</span> <span class="toc-text">动态代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#空对象"><span class="toc-number">1.8.</span> <span class="toc-text">空对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#接口与类型信息"><span class="toc-number">1.9.</span> <span class="toc-text">接口与类型信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">1.10.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+    
 </div>
 <style>
     .left-col .switch-btn {
@@ -445,13 +407,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2020/03/18/《Thinking-in-Java》第十五章/" title="上一篇: 《Thinking in Java》第十五章">
+            <a href="/2020/03/21/《Thinking-in-Java》第二十二章/" title="上一篇: 《Thinking in Java》第二十二章">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2020/03/17/《Thinking-in-Java》第十三章/" title="下一篇: 《Thinking in Java》第十三章">
+            <a href="/2020/03/20/《Thinking-in-Java》第二十章/" title="下一篇: 《Thinking in Java》第二十章">
                 <i class="fa fa-angle-right"></i>
             </a>
         
