@@ -649,7 +649,14 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><h4 id="数组为什么特殊"><a href="#数组为什么特殊" class="headerlink" title="数组为什么特殊"></a>数组为什么特殊</h4><h4 id="数组是第一级对象"><a href="#数组是第一级对象" class="headerlink" title="数组是第一级对象"></a>数组是第一级对象</h4><p>无论使用哪一个类型的数组，数组标识符其实只是一个引用，指向在堆中创建的一个<br>真实对象，这个（数组）对象用以保存指向其他对象的引用。</p>
+<h4 id="返回一个数组"><a href="#返回一个数组" class="headerlink" title="返回一个数组"></a>返回一个数组</h4><h4 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h4><h4 id="数组与泛型"><a href="#数组与泛型" class="headerlink" title="数组与泛型"></a>数组与泛型</h4><p>通常，数组与泛型不能很好地结合，你不能实例化具有参数类型的数组。<br><code>Peel&lt;Banana&gt;[] peels = new Peel&lt;Banana&gt;[10]; //Illegal</code><br>擦除会移除参数类型信息，而数组必须知道它们所持有的确切类型，以强制保证类型安全。</p>
+<h4 id="创建测试数据"><a href="#创建测试数据" class="headerlink" title="创建测试数据"></a>创建测试数据</h4><h4 id="Arrays实用功能"><a href="#Arrays实用功能" class="headerlink" title="Arrays实用功能"></a>Arrays实用功能</h4><p>在java.util类库中可以找到Arrays类，它有一套用于数组的static实用方法，其中有六个<br>基本方法：equals()用于比较两个数组是否相等（deepEquals()用于多维数组）；<br>fill(), sort(), binarySearch(), toString(), hashCode()<br>Java标准类库提供有static方法System.arraycopy()，用它复制数组比用for循环复制要快很多。</p>
+<ul>
+<li>数组元素的比较<br>Java有两种方法来提供比较功能。第一种是实现java.lang.Comparable接口，使你的类具有<br>“天生”的比较能力。此接口很简单，只有compareTo()一个方法。第二种方法是创建一个实现<br>了Comparator接口的单独的类。</li>
+<li>在已排序的数组中查找<br>如果使用Comparator排序了某个对象数组（基本类型数组无法使用Comparator进行排序），<br>在使用binarySearch()时必须提供同样的Comparator（使用binarySearch()方法的重载版本）。</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
       
     </div>
     
