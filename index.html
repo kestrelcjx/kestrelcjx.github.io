@@ -707,14 +707,14 @@
 <p>Map的性能因子：<br>容量：表中的桶位数<br>初始容量：表在创建时所拥有的桶位数。HashMap和HashSet都具有允许你指定初始容量的构造器<br>尺寸：表中当前存储的项数<br>负载因子：尺寸/容量。HashMap和HashSet都具有允许你指定负载因子的构造器，表示<br>当负载情况达到该负载因子的水平时，容器将自动增加其容量（桶位数），实现方式<br>是使容量大致加倍，并重新将现有对象分布到新的桶位集中（称为再散列）。HashMap的默认负载因子是0.75。</p>
 <h4 id="实用方法"><a href="#实用方法" class="headerlink" title="实用方法"></a>实用方法</h4><table>
     <tr>
-        <td>checkedCollection(Collection<t>, Class<t> type)</t></t></td>
+        <td>checkedCollection(Collection&lt;T&gt;, Class&lt;T&gt; type)</td>
         <td rowspan="7">
             产生Collection或者Collection的具体子类型的动态类型安全的试图。
             在不可能使用静态检查版本时使用这些方法。
         </td>
     </tr>
     <tr>
-        <td>checkedList(List<t>, Class<t> type)</t></t></td>
+        <td>checkedList(List&lt;T&gt;, Class&lt;T&gt; type)</td>
     </tr>
     <tr></tr>
     <tr></tr>
