@@ -588,7 +588,64 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <h3 id="容器深入研究"><a href="#容器深入研究" class="headerlink" title="容器深入研究"></a>容器深入研究</h3><h4 id="完整的容器分类法"><a href="#完整的容器分类法" class="headerlink" title="完整的容器分类法"></a>完整的容器分类法</h4><p><img src="/images/17collection.jpg" alt="容器的完整分类"></p>
+<h4 id="填充容器"><a href="#填充容器" class="headerlink" title="填充容器"></a>填充容器</h4><h4 id="Collection的功能方法"><a href="#Collection的功能方法" class="headerlink" title="Collection的功能方法"></a>Collection的功能方法</h4><table>
+<thead>
+<tr>
+<th>boolean add(T)</th>
+<th>确保容器持有具有泛型类型T的参数。如果没有将此参数添加进容器，则返回false（可选的）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean addAll(Collection&lt;? extends&gt; T)</td>
+<td>添加参数中所有的元素。只要添加了任意元素就返回true（可选的）</td>
+</tr>
+<tr>
+<td>void clear()</td>
+<td>移除容器中的所有元素（可选的）</td>
+</tr>
+<tr>
+<td>boolean contains(T)</td>
+<td>如果容器已经持有具有泛型类型T此参数，则返回true</td>
+</tr>
+<tr>
+<td>Boolean containsAll(Collection&lt;?&gt;)</td>
+<td>如果容器持有此参数中的所有元素，则返回true</td>
+</tr>
+<tr>
+<td>boolean isEmpty()</td>
+<td>容器中没有元素时返回true</td>
+</tr>
+<tr>
+<td>Iterator<t> iterator()</t></td>
+<td>返回一个Iterator<t>，可以用来遍历容器的元素</t></td>
+</tr>
+<tr>
+<td>Boolean remove(Object)</td>
+<td>如果参数在容器中，则移除此元素的一个实例。如果做了移除动作，则返回true（可选的）</td>
+</tr>
+<tr>
+<td>boolean removeAll(Collection&lt;?&gt;)</td>
+<td>移除参数中的所有元素。只要有移除动作发生就返回true（可选的）</td>
+</tr>
+<tr>
+<td>Boolean retainAll(Collection&lt;?&gt;)</td>
+<td>只保存参数中的元素（应用集合论的“交集”概念）。只要Collection发生了改变就返回true（可选的）</td>
+</tr>
+<tr>
+<td>int size()</td>
+<td>返回容器中元素的数量</td>
+</tr>
+<tr>
+<td>Object[] toArray()</td>
+<td>返回一个数组，该数组包含容器中的所有元素</td>
+</tr>
+<tr>
+<td><t> T[] toArray(T[] a)</t></td>
+<td>返回一个数组，该数组包含容器中的所有元素。返回结果的运行时类型与参数数组a的类型相同，而不是单独的Object</td>
+</tr>
+</tbody></table>
+<h4 id="可选操作"><a href="#可选操作" class="headerlink" title="可选操作"></a>可选操作</h4><h4 id="List的功能方法"><a href="#List的功能方法" class="headerlink" title="List的功能方法"></a>List的功能方法</h4><h4 id="Set的存储顺序"><a href="#Set的存储顺序" class="headerlink" title="Set的存储顺序"></a>Set的存储顺序</h4><h4 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h4><h4 id="理解Map"><a href="#理解Map" class="headerlink" title="理解Map"></a>理解Map</h4><h4 id="散列与散列码"><a href="#散列与散列码" class="headerlink" title="散列与散列码"></a>散列与散列码</h4><h4 id="选择接口的不同实现"><a href="#选择接口的不同实现" class="headerlink" title="选择接口的不同实现"></a>选择接口的不同实现</h4><h4 id="实用方法"><a href="#实用方法" class="headerlink" title="实用方法"></a>实用方法</h4><h4 id="持有引用"><a href="#持有引用" class="headerlink" title="持有引用"></a>持有引用</h4><h4 id="Java1-0-1-1的容器"><a href="#Java1-0-1-1的容器" class="headerlink" title="Java1.0/1.1的容器"></a>Java1.0/1.1的容器</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
       
     </div>
     
