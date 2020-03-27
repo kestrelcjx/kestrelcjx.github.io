@@ -716,23 +716,76 @@
     <tr>
         <td>checkedList(List&lt;T&gt;, Class&lt;T&gt; type)</td>
     </tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
+    <tr>
+        <td>checkedMap(Map&lt;K,V&gt;, Class&lt;K&gt; keyType, Class&lt;V&gt; valueType)</td>
+    </tr>
+    <tr>
+        <td>checkedSet(Set&lt;T&gt;, Class&lt;T&gt; type)</td>
+    </tr>
+    <tr>
+        <td>checkedSortedMap(SortedMap&lt;K,V&gt;, Class&lt;K&gt; keyType, Class&lt;V&gt; valueType)</td>
+    </tr>
+    <tr>
+        <td>checkedSortedSet(SortedSet&lt;T&gt;, Class&lt;T&gt; type)</td>
+    </tr>
+    <tr>
+        <td>max(Collection)</td>
+        <td rowspan="2">
+            返回参数Collection中最大或最小的元素--采用Collection内置的自然比较法
+        </td>
+    </tr>
+    <tr>
+        <td>min(Collection)</td>
+    </tr>
+    <tr>
+        <td>max(Collection, Comparator)</td>
+        <td rowspan="2">
+            返回参数Collection中最大或最小的元素--采用Comparator进行比较
+        </td>
+    </tr>
+    <tr>
+        <td>min(Collection, Comparator)</td>
+    </tr>
+    <tr>
+        <td>indexOfSubList(List source, List target)</td>
+        <td>返回target在source中第一次出现的位置，或者在找不到时返回-1</td>
+    </tr>
+    <tr>
+        <td>lastIndexOfSubList(List source, List target)</td>
+        <td>返回target在source中最后一次出现的位置，或者在找不到时返回-1</td>
+    </tr>
+    <tr>
+        <td>replaceAll(List&lt;T&gt;, T oldVal, T newVal)</td>
+        <td>使用newVal替换所有oldVal</td>
+    </tr>
+    <tr>
+        <td>reverse(List)</td>
+        <td>逆转所有元素的次序</td>
+    </tr>
+    <tr>
+        <td>reverseOrder()</td>
+        <td rowspan="2">
+            返回一个Comparator，它可以逆转实现了Comparator&lt;T&gt;的对象集合的自然顺序。
+            第二个版本可以逆转所提供的Comparator的顺序
+        </td>
+    </tr>
+    <tr>
+        <td>reverse(Comparator&lt;T&gt;)</td>
+    </tr>
+    <tr>
+        <td>rotate(List)</td>
+        <td>所有元素向后移动distance个位置，将末尾的元素循环到前面来</td>
+    </tr>
+    <tr>
+        <td>shuffle(List)</td>
+        <td rowspan="2">
+            随机改变指定列表的顺序。第一种形式提供了其自己的随机机制，
+            你可以通过第二种形式提供自己的随机机制。
+        </td>
+    </tr>
+    <tr>
+        <td>shuffle(List, Random)</td>
+    </tr>
     <tr></tr>
     <tr></tr>
     <tr></tr>
