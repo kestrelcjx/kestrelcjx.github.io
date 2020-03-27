@@ -18,7 +18,7 @@
 <meta property="og:description" content="容器深入研究完整的容器分类法 填充容器Collection的功能方法   boolean add(T) 确保容器持有具有泛型类型T的参数。如果没有将此参数添加进容器，则返回false（可选的）    boolean addAll(Collection&amp;lt;? extends&amp;gt; T) 添加参数中所有的元素。只要添加了任意元素就返回true（可选的）   void clear() 移除容器中的">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://kestrelcjx.github.io/images/17collection.jpg">
-<meta property="og:updated_time" content="2020-03-27T12:00:46.713Z">
+<meta property="og:updated_time" content="2020-03-27T12:16:54.327Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Thinking in Java》第十七章">
 <meta name="twitter:description" content="容器深入研究完整的容器分类法 填充容器Collection的功能方法   boolean add(T) 确保容器持有具有泛型类型T的参数。如果没有将此参数添加进容器，则返回false（可选的）    boolean addAll(Collection&amp;lt;? extends&amp;gt; T) 添加参数中所有的元素。只要添加了任意元素就返回true（可选的）   void clear() 移除容器中的">
@@ -494,12 +494,74 @@
     <tr>
         <td>shuffle(List, Random)</td>
     </tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
+    <tr>
+        <td>sort(List&lt;T&gt;)</td>
+        <td>使用List&lt;T&gt;中的自然顺序排序。第二种形式允许提供用于排序的Comparator</td>
+    </tr>
+    <tr>
+        <td>sort(List&lt;T&gt;, Comparator&lt;? super T&gt; c)</td>
+    </tr>
+    <tr>
+        <td>copy(List&lt;? super T&gt; dest, List&lt;? extends T&gt; src)</td>
+        <td>将src中的元素复制到dest</td>
+    </tr>
+    <tr>
+        <td>swap(List, int i, int j)</td>
+        <td>交换list中位置i与位置j的元素。通常比你自己写的代码快</td>
+    </tr>
+    <tr>
+        <td>fill(List&lt;? super T&gt;, T x)</td>
+        <td>用对象x替换list中所有元素</td>
+    </tr>
+    <tr>
+        <td>nCopies(int n, T x)</td>
+        <td>返回大小为n的List&lt;T&gt;，此List不可改变，其中的引用都指向x</td>
+    </tr>
+    <tr>
+        <td>disjoint(Collection, Collection)</td>
+        <td>当两个集合没有任何相同元素时，返回true</td>
+    </tr>
+    <tr>
+        <td>frequency(Collection, Object x)</td>
+        <td>返回Collection中等于x的元素个数</td>
+    </tr>
+    <tr>
+        <td>emptyList()</td>
+        <td rowspan="3">
+            返回不可变的空List、Map或Set。这些方法都是泛型的，因此所产生的
+            结果将被参数化为所希望的类型
+        </td>
+    </tr>
+    <tr>
+        <td>emptyMap()</td>
+    </tr>
+    <tr>
+        <td>emptySet()</td>
+    </tr>
+    <tr>
+        <td>singleton(T x)</td>
+        <td>
+            产生不可变的Set&lt;T&gt;、List&lt;T&gt;或Map&lt;K, V&gt;，它们都只包含基于所给定
+            参数的内容而形成的单一项
+        </td>
+    </tr>
+    <tr>
+        <td>singletonList(T x)</td>
+    </tr>
+    <tr>
+        <td>singletonMap(K key, V value)</td>
+    </tr>
+    <tr>
+        <td>list(Enumeration&lt;T&gt; e)</td>
+        <td>
+            产生一个ArrayList&lt;T&gt;，它包含的元素的顺序，与（旧式的）Enumeration
+            （Iterator的前身）返回这些元素的顺序相同。用来转换遗留的来代码
+        </td>
+    </tr>
+    <tr>
+        <td>enumeration(Collection&lt;T&gt;)</td>
+        <td>为参数生成一个旧式的Enumeration&lt;T&gt;</td>
+    </tr>
 </table>
 
 <h4 id="持有引用"><a href="#持有引用" class="headerlink" title="持有引用"></a>持有引用</h4><h4 id="Java1-0-1-1的容器"><a href="#Java1-0-1-1的容器" class="headerlink" title="Java1.0/1.1的容器"></a>Java1.0/1.1的容器</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
@@ -513,7 +575,7 @@
         <p><span>本文标题:</span><a href="/2020/03/19/《Thinking-in-Java》第十七章/">《Thinking in Java》第十七章</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Kestrel 的个人博客">Kestrel</a></p>
         <p><span>发布时间:</span>2020年03月19日 - 21时31分</p>
-        <p><span>最后更新:</span>2020年03月27日 - 20时00分</p>
+        <p><span>最后更新:</span>2020年03月27日 - 20时16分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/03/19/《Thinking-in-Java》第十七章/" title="《Thinking in Java》第十七章">https://kestrelcjx.github.io/2020/03/19/《Thinking-in-Java》第十七章/</a>
             <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/19/《Thinking-in-Java》第十七章/　　作者: Kestrel" title></span>
