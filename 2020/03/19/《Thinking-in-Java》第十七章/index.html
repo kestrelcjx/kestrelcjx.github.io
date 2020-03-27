@@ -18,7 +18,7 @@
 <meta property="og:description" content="容器深入研究完整的容器分类法 填充容器Collection的功能方法   boolean add(T) 确保容器持有具有泛型类型T的参数。如果没有将此参数添加进容器，则返回false（可选的）    boolean addAll(Collection&amp;lt;? extends&amp;gt; T) 添加参数中所有的元素。只要添加了任意元素就返回true（可选的）   void clear() 移除容器中的">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://kestrelcjx.github.io/images/17collection.jpg">
-<meta property="og:updated_time" content="2020-03-27T12:19:23.907Z">
+<meta property="og:updated_time" content="2020-03-27T12:29:48.776Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Thinking in Java》第十七章">
 <meta name="twitter:description" content="容器深入研究完整的容器分类法 填充容器Collection的功能方法   boolean add(T) 确保容器持有具有泛型类型T的参数。如果没有将此参数添加进容器，则返回false（可选的）    boolean addAll(Collection&amp;lt;? extends&amp;gt; T) 添加参数中所有的元素。只要添加了任意元素就返回true（可选的）   void clear() 移除容器中的">
@@ -564,7 +564,18 @@
     </tr>
 </table>
 
-<h4 id="持有引用"><a href="#持有引用" class="headerlink" title="持有引用"></a>持有引用</h4><h4 id="Java1-0-1-1的容器"><a href="#Java1-0-1-1的容器" class="headerlink" title="Java1.0/1.1的容器"></a>Java1.0/1.1的容器</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
+<ul>
+<li>设定Collection或Map为不可修改 Collections.unmodifiable()…</li>
+<li>Collection或Map的同步控制 Collections.synchronizedSet()…</li>
+<li>快速报错<br>如果在你迭代遍历某个容器的过程中，另一个进程介入其中，并且插入、删除或修改<br>此容器内的某个对象，那么就会出现问题。</li>
+</ul>
+<h4 id="持有引用"><a href="#持有引用" class="headerlink" title="持有引用"></a>持有引用</h4><p>java.lang.ref类库包含了一组类，这些类为垃圾回收提供了更大的灵活性。当存在<br>可能会耗尽内存的大对象的时候，这些类显得特别有用。有三个继承自抽象类Reference<br>的类：SoftReference、WeakReference和PhantomReference。当垃圾回收器正在考察<br>的对象只能通过某个Reference对象才能“可获得”时，上述这些不同的派生类为垃圾回收器<br>提供了不同级别的间接性指示。</p>
+<h4 id="Java1-0-1-1的容器"><a href="#Java1-0-1-1的容器" class="headerlink" title="Java1.0/1.1的容器"></a>Java1.0/1.1的容器</h4><ul>
+<li>Vector和Enumeration</li>
+<li>Stack</li>
+<li>BitSet</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
       
     </div>
     
@@ -575,7 +586,7 @@
         <p><span>本文标题:</span><a href="/2020/03/19/《Thinking-in-Java》第十七章/">《Thinking in Java》第十七章</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Kestrel 的个人博客">Kestrel</a></p>
         <p><span>发布时间:</span>2020年03月19日 - 21时31分</p>
-        <p><span>最后更新:</span>2020年03月27日 - 20时19分</p>
+        <p><span>最后更新:</span>2020年03月27日 - 20时29分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/03/19/《Thinking-in-Java》第十七章/" title="《Thinking in Java》第十七章">https://kestrelcjx.github.io/2020/03/19/《Thinking-in-Java》第十七章/</a>
             <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/19/《Thinking-in-Java》第十七章/　　作者: Kestrel" title></span>

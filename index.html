@@ -856,7 +856,18 @@
     </tr>
 </table>
 
-<h4 id="持有引用"><a href="#持有引用" class="headerlink" title="持有引用"></a>持有引用</h4><h4 id="Java1-0-1-1的容器"><a href="#Java1-0-1-1的容器" class="headerlink" title="Java1.0/1.1的容器"></a>Java1.0/1.1的容器</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
+<ul>
+<li>设定Collection或Map为不可修改 Collections.unmodifiable()…</li>
+<li>Collection或Map的同步控制 Collections.synchronizedSet()…</li>
+<li>快速报错<br>如果在你迭代遍历某个容器的过程中，另一个进程介入其中，并且插入、删除或修改<br>此容器内的某个对象，那么就会出现问题。</li>
+</ul>
+<h4 id="持有引用"><a href="#持有引用" class="headerlink" title="持有引用"></a>持有引用</h4><p>java.lang.ref类库包含了一组类，这些类为垃圾回收提供了更大的灵活性。当存在<br>可能会耗尽内存的大对象的时候，这些类显得特别有用。有三个继承自抽象类Reference<br>的类：SoftReference、WeakReference和PhantomReference。当垃圾回收器正在考察<br>的对象只能通过某个Reference对象才能“可获得”时，上述这些不同的派生类为垃圾回收器<br>提供了不同级别的间接性指示。</p>
+<h4 id="Java1-0-1-1的容器"><a href="#Java1-0-1-1的容器" class="headerlink" title="Java1.0/1.1的容器"></a>Java1.0/1.1的容器</h4><ul>
+<li>Vector和Enumeration</li>
+<li>Stack</li>
+<li>BitSet</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
       
     </div>
     
