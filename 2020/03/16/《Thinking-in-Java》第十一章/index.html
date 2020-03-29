@@ -18,7 +18,7 @@
 <meta property="og:description" content="持有对象泛型和类型安全的容器Java容器不支持基本类型，应当使用相应的包装类。 基本概念java容器类库的用途是“保存对象”，并将其划分为不同的概念：  Collection。一个独立元素的序列，这些元素都服从一条或多条规则。 Map。一组成对的“键值对”对象，允许你使用键来查找值。  添加一组元素Arrays.asList返回的列表底层以数组实现，不支持插入删除。 容器的打印List有两种类型的">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://kestrelcjx.github.io/images/Collection.jpg">
-<meta property="og:updated_time" content="2020-03-16T03:52:35.745Z">
+<meta property="og:updated_time" content="2020-03-29T04:51:49.006Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Thinking in Java》第十一章">
 <meta name="twitter:description" content="持有对象泛型和类型安全的容器Java容器不支持基本类型，应当使用相应的包装类。 基本概念java容器类库的用途是“保存对象”，并将其划分为不同的概念：  Collection。一个独立元素的序列，这些元素都服从一条或多条规则。 Map。一组成对的“键值对”对象，允许你使用键来查找值。  添加一组元素Arrays.asList返回的列表底层以数组实现，不支持插入删除。 容器的打印List有两种类型的">
@@ -296,7 +296,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="持有对象"><a href="#持有对象" class="headerlink" title="持有对象"></a>持有对象</h3><h4 id="泛型和类型安全的容器"><a href="#泛型和类型安全的容器" class="headerlink" title="泛型和类型安全的容器"></a>泛型和类型安全的容器</h4><p>Java容器不支持基本类型，应当使用相应的包装类。</p>
+        <h2 id="持有对象"><a href="#持有对象" class="headerlink" title="持有对象"></a>持有对象</h2><h4 id="泛型和类型安全的容器"><a href="#泛型和类型安全的容器" class="headerlink" title="泛型和类型安全的容器"></a>泛型和类型安全的容器</h4><p>Java容器不支持基本类型，应当使用相应的包装类。</p>
 <h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>java容器类库的用途是“保存对象”，并将其划分为不同的概念：</p>
 <ol>
 <li>Collection。一个独立元素的序列，这些元素都服从一条或多条规则。</li>
@@ -336,7 +336,7 @@
         <p><span>本文标题:</span><a href="/2020/03/16/《Thinking-in-Java》第十一章/">《Thinking in Java》第十一章</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Kestrel 的个人博客">Kestrel</a></p>
         <p><span>发布时间:</span>2020年03月16日 - 10时13分</p>
-        <p><span>最后更新:</span>2020年03月16日 - 11时52分</p>
+        <p><span>最后更新:</span>2020年03月29日 - 12时51分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/03/16/《Thinking-in-Java》第十一章/" title="《Thinking in Java》第十一章">https://kestrelcjx.github.io/2020/03/16/《Thinking-in-Java》第十一章/</a>
             <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/16/《Thinking-in-Java》第十一章/　　作者: Kestrel" title></span>
@@ -373,7 +373,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#持有对象"><span class="toc-number">1.</span> <span class="toc-text">持有对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#泛型和类型安全的容器"><span class="toc-number">1.1.</span> <span class="toc-text">泛型和类型安全的容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基本概念"><span class="toc-number">1.2.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加一组元素"><span class="toc-number">1.3.</span> <span class="toc-text">添加一组元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#容器的打印"><span class="toc-number">1.4.</span> <span class="toc-text">容器的打印</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#List"><span class="toc-number">1.5.</span> <span class="toc-text">List</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#迭代器"><span class="toc-number">1.6.</span> <span class="toc-text">迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LinkedList"><span class="toc-number">1.7.</span> <span class="toc-text">LinkedList</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Stack"><span class="toc-number">1.8.</span> <span class="toc-text">Stack</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Set"><span class="toc-number">1.9.</span> <span class="toc-text">Set</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Map"><span class="toc-number">1.10.</span> <span class="toc-text">Map</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Queue"><span class="toc-number">1.11.</span> <span class="toc-text">Queue</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Collection和Iterator"><span class="toc-number">1.12.</span> <span class="toc-text">Collection和Iterator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Foreach和迭代器"><span class="toc-number">1.13.</span> <span class="toc-text">Foreach和迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">1.14.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#持有对象"><span class="toc-number">1.</span> <span class="toc-text">持有对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#泛型和类型安全的容器"><span class="toc-number">1.0.1.</span> <span class="toc-text">泛型和类型安全的容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基本概念"><span class="toc-number">1.0.2.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加一组元素"><span class="toc-number">1.0.3.</span> <span class="toc-text">添加一组元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#容器的打印"><span class="toc-number">1.0.4.</span> <span class="toc-text">容器的打印</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#List"><span class="toc-number">1.0.5.</span> <span class="toc-text">List</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#迭代器"><span class="toc-number">1.0.6.</span> <span class="toc-text">迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LinkedList"><span class="toc-number">1.0.7.</span> <span class="toc-text">LinkedList</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Stack"><span class="toc-number">1.0.8.</span> <span class="toc-text">Stack</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Set"><span class="toc-number">1.0.9.</span> <span class="toc-text">Set</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Map"><span class="toc-number">1.0.10.</span> <span class="toc-text">Map</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Queue"><span class="toc-number">1.0.11.</span> <span class="toc-text">Queue</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Collection和Iterator"><span class="toc-number">1.0.12.</span> <span class="toc-text">Collection和Iterator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Foreach和迭代器"><span class="toc-number">1.0.13.</span> <span class="toc-text">Foreach和迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">1.0.14.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {

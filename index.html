@@ -527,7 +527,300 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <h2 id="Java-I-O系统"><a href="#Java-I-O系统" class="headerlink" title="Java I/O系统"></a>Java I/O系统</h2><h4 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h4><p>File既能代表一个特定的文件，又能代表一个目录下的一组文件的名称。<br>假如我们想查看一个目录列表，可以用两种方法来使用File对象。如果我们调用不带参数的<br>list()方法，便可以获得此File对象包含的全部列表。然而，如果我们想获得一个受限列表，<br>例如，想得到所有扩展名为.java的文件，那么我们就要用到“目录过滤器”，这个类会告诉<br>我们怎样显示符合条件的File对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DirList</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		File path = <span class="keyword">new</span> File(<span class="string">"."</span>);	<span class="comment">//表示当前目录</span></span><br><span class="line">		String[] list;</span><br><span class="line">		<span class="keyword">if</span>(args.length == <span class="number">0</span>)</span><br><span class="line">			list = path.list();</span><br><span class="line">		<span class="keyword">else</span> </span><br><span class="line">			list = path.list(<span class="keyword">new</span> DirFilter(args[<span class="number">0</span>]));</span><br><span class="line">		Arrays.sort(list, String.CASE_INSENSITIVE_ORDER);</span><br><span class="line">		<span class="keyword">for</span>(String dirItem : list)</span><br><span class="line">			System.out.println(dirItem);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DirFilter</span> <span class="keyword">implements</span> <span class="title">FilenameFilter</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Pattern pattern;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">DirFilter</span><span class="params">(String regex)</span> </span>&#123;</span><br><span class="line">		pattern = Pattern.compile(regex);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">accept</span><span class="params">(File dir, String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> pattern.matcher(name).matches();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="输入和输出"><a href="#输入和输出" class="headerlink" title="输入和输出"></a>输入和输出</h4><p>Java类库中的I/O类分为输入和输出两部分。通过继承，任何自InputStream和Reader派生而来<br>的类都含有名为read()的方法，用于读取单个字节或字节数组。同样，任何自OutputStream<br>或Writer派生而来的类都含有write()的基本方法，用于写入单个字节或字节数组。</p>
+<ul>
+<li>InputStream类型</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ByteArrayInputStream</td>
+<td>允许将内存的缓冲区当作InputStream使用</td>
+</tr>
+<tr>
+<td>StringBufferInputStream</td>
+<td>将String转换成InputStream</td>
+</tr>
+<tr>
+<td>FileInputStream</td>
+<td>用于从文件读取信息</td>
+</tr>
+<tr>
+<td>PipedInputStream</td>
+<td>产生用于写入相关PipedOutputStream的数据。实现“管道化”概念</td>
+</tr>
+<tr>
+<td>SequenceInputStream</td>
+<td>将两个或多个InputStream对象转换成单一InputStream</td>
+</tr>
+<tr>
+<td>FilterInputStream</td>
+<td>抽象类，作为“装饰器”的接口。其中，“装饰器”为其他的InputStream类提供有用的功能</td>
+</tr>
+</tbody></table>
+<ul>
+<li>OutputStream类型</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ByteArrayOutputStream</td>
+<td>在内存中创建缓冲区。所有送往“流”的数据都要放置在此缓冲区</td>
+</tr>
+<tr>
+<td>FileOutputStream</td>
+<td>用于将信息写至文件</td>
+</tr>
+<tr>
+<td>PipedOutputStream</td>
+<td>任何写入其中的信息都会自动作为相关PipedInputStream的输出。实现“管道化”概念</td>
+</tr>
+<tr>
+<td>FilterOutputStream</td>
+<td>抽象类，作为“装饰器”的接口。其中，“装饰器”为其他OutputStream提供有用的功能</td>
+</tr>
+</tbody></table>
+<h4 id="添加属性和有用的接口"><a href="#添加属性和有用的接口" class="headerlink" title="添加属性和有用的接口"></a>添加属性和有用的接口</h4><p>FilterInputStream和FilterOutputStream是用来提供装饰器类接口以控制特定输入流(InputStream)<br>和输出流(OutputStream)的两个类。FilterInputStream和FilterOutputStream分别自I/O类库<br>中的基类InputStream和OutputStream派生而来的，这两个类是装饰器的必要条件（以便能为<br>正在被装饰的对象提供通用接口）。</p>
+<ul>
+<li>FilterInputStream</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DataInputStream</td>
+<td>与DataOutputStream搭配使用，因此我们可以按照可移植方式从流读取基本数据类型（int，char，long等）</td>
+</tr>
+<tr>
+<td>BufferedInputStream</td>
+<td>使用它可以防止每次读取时都得进行实际写操作。代表“使用缓冲区”</td>
+</tr>
+<tr>
+<td>LineNumberInputStream</td>
+<td>跟踪输入流的行号；可调用getLineNumber()和setLineNumber(int)</td>
+</tr>
+<tr>
+<td>PushbackInputStream</td>
+<td>具有“能弹出一个字节的缓冲区”。因此可以将读到的最后一个字符回退</td>
+</tr>
+</tbody></table>
+<ul>
+<li>FilterOutputStream</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DataOutputStream</td>
+<td>与DataOutputStream搭配使用，因此可以按照可移植方式向流中写入基本数据类型（int，char，long等）</td>
+</tr>
+<tr>
+<td>PrintStream</td>
+<td>用于产生格式化输出。其中DataOutputStream处理数据的存储，PrintStream处理显示</td>
+</tr>
+<tr>
+<td>BufferedOutputStream</td>
+<td>使用它以避免每次发送数据时都要进行实际的写操作。代表“使用缓冲区”。可以调用flush()清空缓冲区</td>
+</tr>
+</tbody></table>
+<h4 id="Reader和Writer"><a href="#Reader和Writer" class="headerlink" title="Reader和Writer"></a>Reader和Writer</h4><p>InputStream和OutputStream在以面向字节形式的I/O中提供极有价值的功能，而Reader和Writer<br>则提供兼容Unicode与面向字符的I/O功能。</p>
+<ul>
+<li>数据的来源和去处</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>来源于去处：Java1.0类</th>
+<th>相应的Java1.1类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>InputStream</td>
+<td>Reader(使用适配器：InputStreamReader)</td>
+</tr>
+<tr>
+<td>OutputStream</td>
+<td>Writer(使用适配器：OutputStreamWriter)</td>
+</tr>
+<tr>
+<td>FileInputStream</td>
+<td>FileReader</td>
+</tr>
+<tr>
+<td>FileOutputStream</td>
+<td>FileWriter</td>
+</tr>
+<tr>
+<td>StringBufferedInputStream(已弃用)</td>
+<td>StringReader</td>
+</tr>
+<tr>
+<td>(无相应的类)</td>
+<td>StringWriter</td>
+</tr>
+<tr>
+<td>ByteArrayInputStream</td>
+<td>CharArrayReader</td>
+</tr>
+<tr>
+<td>ByteArrayOutputStream</td>
+<td>CharArrayWriter</td>
+</tr>
+<tr>
+<td>PipedInputStream</td>
+<td>PipedReader</td>
+</tr>
+<tr>
+<td>PipedOutputStream</td>
+<td>PipedWriter</td>
+</tr>
+</tbody></table>
+<ul>
+<li>更改流的行为</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>过滤器：Java1.0类</th>
+<th>相应的Java1.1类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FilterInputStream</td>
+<td>FilterReader</td>
+</tr>
+<tr>
+<td>FilterOutputStream</td>
+<td>FilterWriter(抽象类，没有子类)</td>
+</tr>
+<tr>
+<td>BufferedInputStream</td>
+<td>BufferedReader(也有readLine())</td>
+</tr>
+<tr>
+<td>BufferedOutputStream</td>
+<td>BufferedWriter</td>
+</tr>
+<tr>
+<td>DataInputStream</td>
+<td>使用DataInputStream(除了当需要使用readLine()时以外，这时应该使用BufferedReader)</td>
+</tr>
+<tr>
+<td>PrintStream</td>
+<td>PrintWriter</td>
+</tr>
+<tr>
+<td>LineNumberInputStream(已弃用)</td>
+<td>LineNumberReader</td>
+</tr>
+<tr>
+<td>StreamTokenizer</td>
+<td>StreamTokenizer(使用接受Reader的构造器)</td>
+</tr>
+<tr>
+<td>PushbackInputStream</td>
+<td>PushbackReader</td>
+</tr>
+</tbody></table>
+<h4 id="自我独立的类：RandomAccessFile"><a href="#自我独立的类：RandomAccessFile" class="headerlink" title="自我独立的类：RandomAccessFile"></a>自我独立的类：RandomAccessFile</h4><p>RandomAccessFile适用于由大小已知的记录组成的文件，所以我们可以使用seek()将记录从<br>一处转移到一处，然后读取或者修改记录。文件中记录的大小不一定相同，只要我们能够确定<br>那些记录有多大以及它们在文件中的位置即可。<br>RandomAccessFile不是InputStream和OutputStreamm继承层次结构中的一部分。除了实现了<br>DataInput和DataOutput接口（DataInputStream和DataOuputStream也实现了这两个接口）<br>之外，它和这两个继承层次结构没有任何关联。它甚至不适用InputStream和OutputStream类<br>中已有的任何功能，它是一个完全独立的类。</p>
+<h4 id="I-O流的典型使用方式"><a href="#I-O流的典型使用方式" class="headerlink" title="I/O流的典型使用方式"></a>I/O流的典型使用方式</h4><h4 id="文件读写的实用工具"><a href="#文件读写的实用工具" class="headerlink" title="文件读写的实用工具"></a>文件读写的实用工具</h4><h4 id="标准I-O"><a href="#标准I-O" class="headerlink" title="标准I/O"></a>标准I/O</h4><p>按照标准I/O模型，Java提供了System.in、System.out和System.err。System.out已经事先<br>被包装成了PrintStream对象。System.err同样也是PrintStream，但System.in却是一个没有<br>被包装过的未经加工的InputStream。</p>
+<ul>
+<li>标准I/O重定向</li>
+</ul>
+<p>Java的System类提供了一些简单的静态方法调用，以允许我们对标准输入、输出和错误I/O流<br>进行重定向：</p>
+<ol>
+<li>setIn(InputStream)</li>
+<li>setOut(PrintStream)</li>
+<li>setErr(PrintStream)</li>
+</ol>
+<h4 id="进程控制"><a href="#进程控制" class="headerlink" title="进程控制"></a>进程控制</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OSExecuteException</span> <span class="keyword">extends</span> <span class="title">RuntimException</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">OSExecuteException</span><span class="params">(String why)</span> </span>&#123; <span class="keyword">super</span>(why); &#125;</span><br><span class="line">&#125;</span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OSExcecute</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">comman</span><span class="params">(String command)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">boolean</span> err = <span class="keyword">false</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Process process = <span class="keyword">new</span> ProcessBuilder(command.split(<span class="string">" "</span>)).start();</span><br><span class="line">			BufferedReader results = <span class="keyword">new</span> BufferedReader(</span><br><span class="line">				<span class="keyword">new</span> InputStreamReader(process.getInputStream()));</span><br><span class="line">			String s;</span><br><span class="line">			<span class="keyword">while</span>((s = results.readLine()) != <span class="keyword">null</span>)</span><br><span class="line">				System.out.println(s);</span><br><span class="line">			BufferedReader errors = <span class="keyword">new</span> BufferedReader(</span><br><span class="line">				<span class="keyword">new</span> InputStreamReader(process.getErrorStream));</span><br><span class="line">			<span class="keyword">while</span>((s = errors.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">				System.err.println(s);</span><br><span class="line">				err = <span class="keyword">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">			<span class="keyword">if</span>(!command.startWith(<span class="string">"CMD /C"</span>))</span><br><span class="line">				command(<span class="string">"CMD /C "</span> + command);</span><br><span class="line">			<span class="keyword">else</span> </span><br><span class="line">				<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(err)</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> OSExecuteException(<span class="string">"Errors executing "</span> + command);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OSExecuteDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		OSExecute.command(<span class="string">"javap OSExecuteDemo"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="新I-O"><a href="#新I-O" class="headerlink" title="新I/O"></a>新I/O</h4><p>JDK1.4的java.nio.*包中引入了新的JavaI/O类库，其目的在于提高速度。实际上，旧的I/O<br>包已经使用nio重新实现过，以便充分利用这种速度提高，因此，即使我们不显示地使用nio<br>编写代码，也能从中受益。<br>旧I/O类库中三个类被修改了，用以产生FileChannel。这个三个被修改的类是：FileInputSteam，<br>FileOutputStream以及用于既读又写的RandomAccessFile。注意这些是字节操纵流，与底层的<br>nio性质一致。Reader和Writer这种字符模式类不能用于产生通道；但是java.nio.channels.Channels<br>类提供了实用方法，用以在通道中产生Reader和Writer。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.nio.*;</span><br><span class="line"><span class="keyword">import</span> java.nio.channels.*;</span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GetChannel</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BSIZE = <span class="number">1024</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">// Write a fiel:</span></span><br><span class="line">		FileChannel fc = <span class="keyword">new</span> FileOutputStream(<span class="string">"data.txt"</span>).getChannel();</span><br><span class="line">		fc.write(ByteBuffer.wrap(<span class="string">"Some text "</span>.getBytes()));</span><br><span class="line">		fc.close();</span><br><span class="line">		<span class="comment">// Add to the end of the file:</span></span><br><span class="line">		fc = <span class="keyword">new</span> RandomAccessFile(<span class="string">"data.txt"</span>, <span class="string">"rw"</span>).getChannel();</span><br><span class="line">		fc.position(fc.size());	<span class="comment">// Move to the end</span></span><br><span class="line">		fc.write(ByteBuffer.wrap(<span class="string">"Some more"</span>.getBytes()));</span><br><span class="line">		fc.close();</span><br><span class="line">		<span class="comment">// Read the file:</span></span><br><span class="line">		fc = <span class="keyword">new</span> FileInputStream(<span class="string">"data.txt"</span>).getChannel();</span><br><span class="line">		ByteBuffer buff = ByteBuffer.allocate(BSZIE);</span><br><span class="line">		fc.read(buff);</span><br><span class="line">		buff.flip();</span><br><span class="line">		<span class="keyword">while</span>(buff.hasRemaining())</span><br><span class="line">			System.out.print((<span class="keyword">char</span>)buff.get());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>特殊方法transferTo()和transferFrom()允许我们将一个通道和另一个通道直接相连：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">FileChannel in = <span class="keyword">new</span> FileInputStream(<span class="string">""</span>).getChannel(),</span><br><span class="line">			out = <span class="keyword">new</span> FileOutputStream(<span class="string">""</span>).getChannel();</span><br><span class="line">in.transferTo(<span class="number">0</span>, in.size(), out);</span><br><span class="line"><span class="comment">// Or: out.transferFrom(in, o, in.size());</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>视图缓冲区</li>
+</ul>
+<p><img src="/images/IO1.jpg" alt="IO1"></p>
+<ul>
+<li>字节存放次序：ByteOrder.BIG_ENDIAN(默认)/ByteOrder.LITTLE_ENDIAN</li>
+</ul>
+<p><img src="/images/IO2.jpg" alt="IO2"></p>
+<p>如果我们以short(ByteBuffer.asShortBuffer())形式读取数据，得到的数字是97(00000000 01100001)；<br>但是如果将ByteBuffer更改为低位优先形式，仍以short形式读取数据，得到的数字却是24832(01100001 00000000)。</p>
+<ul>
+<li>缓冲区的细节</li>
+</ul>
+<p>Buffer有数据和可以高效地访问及操纵这些数据的四个索引组成，这四个索引是：mark(标记)、position(位置)，limit(界限)和capacity(容量)。</p>
+<table>
+<thead>
+<tr>
+<th>capacity()</th>
+<th>返回缓冲区容量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>clear()</td>
+<td>清空缓冲区，将position设置为0，limit设置为容量。我们可以调用此方法覆写缓冲区</td>
+</tr>
+<tr>
+<td>flip()</td>
+<td>将limit设置为position，position设置为0。此方法用于准备从缓冲区读取已写入的数据</td>
+</tr>
+<tr>
+<td>limit()</td>
+<td>返回limit值</td>
+</tr>
+<tr>
+<td>limit(int lim)</td>
+<td>设置limit值</td>
+</tr>
+<tr>
+<td>mark()</td>
+<td>将mark设置为position</td>
+</tr>
+<tr>
+<td>position()</td>
+<td>返回position值</td>
+</tr>
+<tr>
+<td>position(int pos)</td>
+<td>设置position值</td>
+</tr>
+<tr>
+<td>remaining()</td>
+<td>返回（limit-position）</td>
+</tr>
+<tr>
+<td>hasRemaining()</td>
+<td>若有介于position和limit之间的元素，则返回true</td>
+</tr>
+</tbody></table>
+<p><img src="/images/IO3.jpg" alt="IO3"></p>
+<h4 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h4><h4 id="对象序列化"><a href="#对象序列化" class="headerlink" title="对象序列化"></a>对象序列化</h4><h4 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h4><h4 id="Preference"><a href="#Preference" class="headerlink" title="Preference"></a>Preference</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
       
     </div>
     
@@ -588,7 +881,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="容器深入研究"><a href="#容器深入研究" class="headerlink" title="容器深入研究"></a>容器深入研究</h3><h4 id="完整的容器分类法"><a href="#完整的容器分类法" class="headerlink" title="完整的容器分类法"></a>完整的容器分类法</h4><p><img src="/images/17collection.jpg" alt="容器的完整分类"></p>
+        <h2 id="容器深入研究"><a href="#容器深入研究" class="headerlink" title="容器深入研究"></a>容器深入研究</h2><h4 id="完整的容器分类法"><a href="#完整的容器分类法" class="headerlink" title="完整的容器分类法"></a>完整的容器分类法</h4><p><img src="/images/17collection.jpg" alt="容器的完整分类"></p>
 <h4 id="填充容器"><a href="#填充容器" class="headerlink" title="填充容器"></a>填充容器</h4><h4 id="Collection的功能方法"><a href="#Collection的功能方法" class="headerlink" title="Collection的功能方法"></a>Collection的功能方法</h4><table>
 <thead>
 <tr>
@@ -928,7 +1221,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><h4 id="数组为什么特殊"><a href="#数组为什么特殊" class="headerlink" title="数组为什么特殊"></a>数组为什么特殊</h4><h4 id="数组是第一级对象"><a href="#数组是第一级对象" class="headerlink" title="数组是第一级对象"></a>数组是第一级对象</h4><p>无论使用哪一个类型的数组，数组标识符其实只是一个引用，指向在堆中创建的一个<br>真实对象，这个（数组）对象用以保存指向其他对象的引用。</p>
+        <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h4 id="数组为什么特殊"><a href="#数组为什么特殊" class="headerlink" title="数组为什么特殊"></a>数组为什么特殊</h4><h4 id="数组是第一级对象"><a href="#数组是第一级对象" class="headerlink" title="数组是第一级对象"></a>数组是第一级对象</h4><p>无论使用哪一个类型的数组，数组标识符其实只是一个引用，指向在堆中创建的一个<br>真实对象，这个（数组）对象用以保存指向其他对象的引用。</p>
 <h4 id="返回一个数组"><a href="#返回一个数组" class="headerlink" title="返回一个数组"></a>返回一个数组</h4><h4 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h4><h4 id="数组与泛型"><a href="#数组与泛型" class="headerlink" title="数组与泛型"></a>数组与泛型</h4><p>通常，数组与泛型不能很好地结合，你不能实例化具有参数类型的数组。<br><code>Peel&lt;Banana&gt;[] peels = new Peel&lt;Banana&gt;[10]; //Illegal</code><br>擦除会移除参数类型信息，而数组必须知道它们所持有的确切类型，以强制保证类型安全。</p>
 <h4 id="创建测试数据"><a href="#创建测试数据" class="headerlink" title="创建测试数据"></a>创建测试数据</h4><h4 id="Arrays实用功能"><a href="#Arrays实用功能" class="headerlink" title="Arrays实用功能"></a>Arrays实用功能</h4><p>在java.util类库中可以找到Arrays类，它有一套用于数组的static实用方法，其中有六个<br>基本方法：equals()用于比较两个数组是否相等（deepEquals()用于多维数组）；<br>fill(), sort(), binarySearch(), toString(), hashCode()<br>Java标准类库提供有static方法System.arraycopy()，用它复制数组比用for循环复制要快很多。</p>
 <ul>
@@ -996,7 +1289,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><h4 id="与C-的比较"><a href="#与C-的比较" class="headerlink" title="与C++的比较"></a>与C++的比较</h4><h4 id="简单泛型"><a href="#简单泛型" class="headerlink" title="简单泛型"></a>简单泛型</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Holder</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> T a;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Holder</span><span class="params">(T a)</span> </span>&#123; <span class="keyword">this</span>.a = a; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T a)</span> </span>&#123; <span class="keyword">this</span>.a = a; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> a; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><h4 id="与C-的比较"><a href="#与C-的比较" class="headerlink" title="与C++的比较"></a>与C++的比较</h4><h4 id="简单泛型"><a href="#简单泛型" class="headerlink" title="简单泛型"></a>简单泛型</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Holder</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> T a;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Holder</span><span class="params">(T a)</span> </span>&#123; <span class="keyword">this</span>.a = a; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T a)</span> </span>&#123; <span class="keyword">this</span>.a = a; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> a; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Generator</span>&lt;<span class="title">T</span>&gt; </span>&#123; <span class="function">T <span class="title">next</span><span class="params">()</span></span>; &#125;</span><br></pre></td></tr></table></figure>
 
@@ -1119,7 +1412,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="类型信息"><a href="#类型信息" class="headerlink" title="类型信息"></a>类型信息</h3><h4 id="为什么需要RTTI"><a href="#为什么需要RTTI" class="headerlink" title="为什么需要RTTI"></a>为什么需要RTTI</h4><p>Run-Time Type Identification（RTTI）运行时类型信息识别</p>
+        <h2 id="类型信息"><a href="#类型信息" class="headerlink" title="类型信息"></a>类型信息</h2><h4 id="为什么需要RTTI"><a href="#为什么需要RTTI" class="headerlink" title="为什么需要RTTI"></a>为什么需要RTTI</h4><p>Run-Time Type Identification（RTTI）运行时类型信息识别</p>
 <h4 id="Class对象"><a href="#Class对象" class="headerlink" title="Class对象"></a>Class对象</h4><p>类型信息在运行时的表示，是由Class对象完成的，它包含了与类有关的信息。Java使用Class对象来执行其RTTI。<br>所有的类都是在对其第一次使用时，动态加载到JVM中的。当程序第一次对类的静态成员进行引用时，<br>就会加载这个类。这个证明构造器也是类的静态方法。<br>为了生成类的对象，运行这个程序的Java虚拟机（JVM）将使用被称为“类加载器”的子系统。<br>类加载器首先检查这个类的Class对象是否已经加载。如果尚未加载，默认的类加载器就会<br>根据类名查找.class文件。在这个类的字节码被加载时，它们会接受验证，以确保其没有被<br>破坏，并且不包含不良代码（这是Java中用于安全防范目的措施之一）。</p>
 <ul>
 <li>获取Class对象的三种方法<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>&#123;&#125;</span><br><span class="line">Class clazz = Class.forName(<span class="string">"ClassName"</span>);<span class="comment">//通过使用Class的静态方法</span></span><br><span class="line">clazz = ClassName.class;<span class="comment">//通过使用类字面常量</span></span><br><span class="line">clazz = <span class="keyword">new</span> ClassName().getClass();<span class="comment">//通过使用对象的getClass方法</span></span><br></pre></td></tr></table></figure>
@@ -1210,7 +1503,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><h4 id="不可变String"><a href="#不可变String" class="headerlink" title="不可变String"></a>不可变String</h4><p>String对象是不可变的。String类中每一个看起来会修改String值得方法，<br>实际上都是创建一个全新的String对象，以包含修改后的字符串内容，<br>而最初的String对象则纹丝未动。（String类被final修饰，不可继承）</p>
+        <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h4 id="不可变String"><a href="#不可变String" class="headerlink" title="不可变String"></a>不可变String</h4><p>String对象是不可变的。String类中每一个看起来会修改String值得方法，<br>实际上都是创建一个全新的String对象，以包含修改后的字符串内容，<br>而最初的String对象则纹丝未动。（String类被final修饰，不可继承）</p>
 <h4 id="重载“-”与StringBuilder"><a href="#重载“-”与StringBuilder" class="headerlink" title="重载“+”与StringBuilder"></a>重载“+”与StringBuilder</h4><ul>
 <li>String重载了“+”和“+=”操作符，用于字符串拼接，拼接时会产生新的String对象。</li>
 <li>字符串拼接时，为了提高效率，避免产生大量垃圾回收的中间对象，可以使用<br>StringBuilder拼接字符串，然后使用toString()方法，返回字符串。<br>（String拼接字符串时，编译器也会使用StringBuilder优化性能）</li>

@@ -283,7 +283,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="通过异常处理错误"><a href="#通过异常处理错误" class="headerlink" title="通过异常处理错误"></a>通过异常处理错误</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><h4 id="基本异常"><a href="#基本异常" class="headerlink" title="基本异常"></a>基本异常</h4><p>当抛出异常后，有几件事会随之发生。首先，同Java中其他对象的创建一样，<br>将使用new在堆上创建异常对象。然后，当前的路径被终止，并且从当前环境<br>中弹出对异常对象的引用。此时，异常处理机制接管程序，并开始寻找一个<br>恰当的地方来继续执行程序。这个恰当的地方就是异常处理程序，它的任务<br>是将程序从错误状态中恢复，以使程序能要么换一种方式运行，要么继续运行下去。</p>
+        <h2 id="通过异常处理错误"><a href="#通过异常处理错误" class="headerlink" title="通过异常处理错误"></a>通过异常处理错误</h2><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><h4 id="基本异常"><a href="#基本异常" class="headerlink" title="基本异常"></a>基本异常</h4><p>当抛出异常后，有几件事会随之发生。首先，同Java中其他对象的创建一样，<br>将使用new在堆上创建异常对象。然后，当前的路径被终止，并且从当前环境<br>中弹出对异常对象的引用。此时，异常处理机制接管程序，并开始寻找一个<br>恰当的地方来继续执行程序。这个恰当的地方就是异常处理程序，它的任务<br>是将程序从错误状态中恢复，以使程序能要么换一种方式运行，要么继续运行下去。</p>
 <ul>
 <li>所有标准异常类都有两个构造器：一个是默认构造器；一个是接受字符串<br>作为参数，以便能把相关信息放入异常对象的构造器。</li>
 <li>能够抛出任意类型的Throwable对象，它是异常类型的根类。</li>
@@ -382,7 +382,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="持有对象"><a href="#持有对象" class="headerlink" title="持有对象"></a>持有对象</h3><h4 id="泛型和类型安全的容器"><a href="#泛型和类型安全的容器" class="headerlink" title="泛型和类型安全的容器"></a>泛型和类型安全的容器</h4><p>Java容器不支持基本类型，应当使用相应的包装类。</p>
+        <h2 id="持有对象"><a href="#持有对象" class="headerlink" title="持有对象"></a>持有对象</h2><h4 id="泛型和类型安全的容器"><a href="#泛型和类型安全的容器" class="headerlink" title="泛型和类型安全的容器"></a>泛型和类型安全的容器</h4><p>Java容器不支持基本类型，应当使用相应的包装类。</p>
 <h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>java容器类库的用途是“保存对象”，并将其划分为不同的概念：</p>
 <ol>
 <li>Collection。一个独立元素的序列，这些元素都服从一条或多条规则。</li>
@@ -472,7 +472,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h3><h4 id="创建内部类"><a href="#创建内部类" class="headerlink" title="创建内部类"></a>创建内部类</h4><h4 id="链接到外部类"><a href="#链接到外部类" class="headerlink" title="链接到外部类"></a>链接到外部类</h4><p>内部类拥有外围类的所有元素的访问权限。</p>
+        <h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><h4 id="创建内部类"><a href="#创建内部类" class="headerlink" title="创建内部类"></a>创建内部类</h4><h4 id="链接到外部类"><a href="#链接到外部类" class="headerlink" title="链接到外部类"></a>链接到外部类</h4><p>内部类拥有外围类的所有元素的访问权限。</p>
 <h4 id="使用-this与-new"><a href="#使用-this与-new" class="headerlink" title="使用.this与.new"></a>使用.this与.new</h4><p>如果需要生成外部类对象的引用，可以使用外部类名字后面紧跟原点和this（外部类.this）。<br>生成内部类对象，需要在new表达式中提供对其他外部类对象的引用（外部类对象.new）。</p>
 <h4 id="内部类与向上转型"><a href="#内部类与向上转型" class="headerlink" title="内部类与向上转型"></a>内部类与向上转型</h4><h4 id="在方法和作用域内的内部类"><a href="#在方法和作用域内的内部类" class="headerlink" title="在方法和作用域内的内部类"></a>在方法和作用域内的内部类</h4><h4 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h4><p>如果定义一个匿名内部类，并且希望它使用一个在其外部定义的对象，<br>那么编译器会要求参数引用是final的。如果有匿名类的基类构造器传入参数，<br>该参数可以不为final。</p>
 <h4 id="嵌套类"><a href="#嵌套类" class="headerlink" title="嵌套类"></a>嵌套类</h4><ul>
@@ -544,7 +544,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><h4 id="抽象类与抽象方法"><a href="#抽象类与抽象方法" class="headerlink" title="抽象类与抽象方法"></a>抽象类与抽象方法</h4><p>包含抽象方法的类叫做抽象类，但也可以创建没有抽象方法的抽象类，抽象类中可以具有实现的方法。<br>static和abstract不能同时使用；<br>private和abstract不能同时使用；<br>final和abstract不能同时使用。</p>
+        <h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><h4 id="抽象类与抽象方法"><a href="#抽象类与抽象方法" class="headerlink" title="抽象类与抽象方法"></a>抽象类与抽象方法</h4><p>包含抽象方法的类叫做抽象类，但也可以创建没有抽象方法的抽象类，抽象类中可以具有实现的方法。<br>static和abstract不能同时使用；<br>private和abstract不能同时使用；<br>final和abstract不能同时使用。</p>
 <h4 id="接口-1"><a href="#接口-1" class="headerlink" title="接口"></a>接口</h4><p>interface只能使用默认或public访问权限修饰（除了嵌套接口），interface接口中，<br>方法被定义为是public的，但如果不使用public修饰接口，方法只能得到包访问权限。<br>不能实例化接口和抽象类。<br>JDK8后，interface接口可以有默认实现(“default void fun(){}”)。</p>
 <h4 id="完全解耦"><a href="#完全解耦" class="headerlink" title="完全解耦"></a>完全解耦</h4><h4 id="Java中的多重继承"><a href="#Java中的多重继承" class="headerlink" title="Java中的多重继承"></a>Java中的多重继承</h4><p>Java中，类只能使用单继承，但接口可以使用多继承。<br>继承一个接口，并再继承该接口的一个实现，可以不用在新类中在实现接口。<br>继承多个接口，并且接口中含有方法名相同，但不能构成重载时，会发生错误。</p>
 <h4 id="通过继承来扩展接口"><a href="#通过继承来扩展接口" class="headerlink" title="通过继承来扩展接口"></a>通过继承来扩展接口</h4><h4 id="适配接口"><a href="#适配接口" class="headerlink" title="适配接口"></a>适配接口</h4><h4 id="接口中的域"><a href="#接口中的域" class="headerlink" title="接口中的域"></a>接口中的域</h4><p>接口中的域都自动是static和final的，并且不能是“空final”。</p>
@@ -609,7 +609,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><h4 id="再论向上转型"><a href="#再论向上转型" class="headerlink" title="再论向上转型"></a>再论向上转型</h4><h4 id="转机"><a href="#转机" class="headerlink" title="转机"></a>转机</h4><p>将一个方法调用同一个方法主体关联起来称为绑定。若在程序执行前绑定，叫做前期绑定；<br>若在运行时根据对象的类型进行绑定，成为后期绑定（动态绑定或运行时绑定）。<br>Java中除了static方法和final方法（private方法属于final方法）之外，<br>其他方法都是动态绑定的。</p>
+        <h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><h4 id="再论向上转型"><a href="#再论向上转型" class="headerlink" title="再论向上转型"></a>再论向上转型</h4><h4 id="转机"><a href="#转机" class="headerlink" title="转机"></a>转机</h4><p>将一个方法调用同一个方法主体关联起来称为绑定。若在程序执行前绑定，叫做前期绑定；<br>若在运行时根据对象的类型进行绑定，成为后期绑定（动态绑定或运行时绑定）。<br>Java中除了static方法和final方法（private方法属于final方法）之外，<br>其他方法都是动态绑定的。</p>
 <h4 id="构造器与多态"><a href="#构造器与多态" class="headerlink" title="构造器与多态"></a>构造器与多态</h4><ul>
 <li>基类的构造器总是在导出类的构造过程中被调用，而且按照继承层次逐渐向上链接，<br>以使每个基类的构造器都得到调用。在导出类的构造器主体中，如果没有明确指定调用<br>某个基类构造器，它就会默认调用基类默认无参构造器，如果不存在默认构造器，<br>编译器会报错，则需要显式调用一个带参数的基类构造器。</li>
 <li>继承与清理<br>当覆盖被继承的清理方法时，务必记住调用基类版本的清理方法，避免未清理基类垃圾。</li>
@@ -676,7 +676,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="复用类"><a href="#复用类" class="headerlink" title="复用类"></a>复用类</h3><h4 id="组合语法"><a href="#组合语法" class="headerlink" title="组合语法"></a>组合语法</h4><h4 id="继承语法"><a href="#继承语法" class="headerlink" title="继承语法"></a>继承语法</h4><p>调用子类构造器时，编译器会自动调用父类无参构造器，如果父类没有无参构造器，<br>需要使用super(参数)方法显式调用父类构造器。</p>
+        <h2 id="复用类"><a href="#复用类" class="headerlink" title="复用类"></a>复用类</h2><h4 id="组合语法"><a href="#组合语法" class="headerlink" title="组合语法"></a>组合语法</h4><h4 id="继承语法"><a href="#继承语法" class="headerlink" title="继承语法"></a>继承语法</h4><p>调用子类构造器时，编译器会自动调用父类无参构造器，如果父类没有无参构造器，<br>需要使用super(参数)方法显式调用父类构造器。</p>
 <h4 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h4><h4 id="结合使用组合和继承"><a href="#结合使用组合和继承" class="headerlink" title="结合使用组合和继承"></a>结合使用组合和继承</h4><ul>
 <li>确保正确清理<br>首先，执行类的所有特定的清理动作，其顺序同生成顺序相反（通常这就要求基类<br>元素仍旧存活）；然后，调用基类的清理方法。</li>
 <li>名称屏蔽<br>如果Java的基类拥有某个已被多次重载的方法名称，那么在导出类中重新定义该方法名称<br>并不会屏蔽在基类中的任何版本（这一点与C++不同）。</li>
@@ -749,7 +749,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="访问权限控制"><a href="#访问权限控制" class="headerlink" title="访问权限控制"></a>访问权限控制</h3><h4 id="包：库单元"><a href="#包：库单元" class="headerlink" title="包：库单元"></a>包：库单元</h4><p>如果未设置源文件所属包，则会位于未命名包（默认包）中。<br>当编写一个Java源代码文件时，此文件通常被称为编译单元。<br>每个编译单元都必须有一个后缀.java，而在编译单元内则有一个public类，<br>该类的名称必须与文件的名称相同（包括大小写，但不包括后缀名.java）。<br>每个编译单元只能由一个pubic类（也可以没有）。<br>创建包时，按照惯例，package名称第一部分是类创建者的反顺序的Internet域名<br>（例如：com.kestrelcjx.xxx）。package名称将分解为机器上的一个目录。<br>Java解释器的运行过程如下：首先，找出环境变量CLASSPATH。CLASSPATH包含一个或<br>多个目录，用作.class文件的根目录。从根目录开始，解释器获取包的名称并将<br>每个句号替换为反斜杠，以从CLASSPATH根肿产生一个路径名称。得到的路径会与CLASSPATH路径<br>中的各个不同项相连接，解释器就在这些目录中查找与你所创建类的名称相关的.class文件。</p>
+        <h2 id="访问权限控制"><a href="#访问权限控制" class="headerlink" title="访问权限控制"></a>访问权限控制</h2><h4 id="包：库单元"><a href="#包：库单元" class="headerlink" title="包：库单元"></a>包：库单元</h4><p>如果未设置源文件所属包，则会位于未命名包（默认包）中。<br>当编写一个Java源代码文件时，此文件通常被称为编译单元。<br>每个编译单元都必须有一个后缀.java，而在编译单元内则有一个public类，<br>该类的名称必须与文件的名称相同（包括大小写，但不包括后缀名.java）。<br>每个编译单元只能由一个pubic类（也可以没有）。<br>创建包时，按照惯例，package名称第一部分是类创建者的反顺序的Internet域名<br>（例如：com.kestrelcjx.xxx）。package名称将分解为机器上的一个目录。<br>Java解释器的运行过程如下：首先，找出环境变量CLASSPATH。CLASSPATH包含一个或<br>多个目录，用作.class文件的根目录。从根目录开始，解释器获取包的名称并将<br>每个句号替换为反斜杠，以从CLASSPATH根肿产生一个路径名称。得到的路径会与CLASSPATH路径<br>中的各个不同项相连接，解释器就在这些目录中查找与你所创建类的名称相关的.class文件。</p>
 <h4 id="Java访问权限修饰词"><a href="#Java访问权限修饰词" class="headerlink" title="Java访问权限修饰词"></a>Java访问权限修饰词</h4><table>
 <thead>
 <tr>
@@ -850,7 +850,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="初始化与清理"><a href="#初始化与清理" class="headerlink" title="初始化与清理"></a>初始化与清理</h3><h4 id="用构造器确保初始化"><a href="#用构造器确保初始化" class="headerlink" title="用构造器确保初始化"></a>用构造器确保初始化</h4><h4 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h4><ul>
+        <h2 id="初始化与清理"><a href="#初始化与清理" class="headerlink" title="初始化与清理"></a>初始化与清理</h2><h4 id="用构造器确保初始化"><a href="#用构造器确保初始化" class="headerlink" title="用构造器确保初始化"></a>用构造器确保初始化</h4><h4 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h4><ul>
 <li>区分重载方法：重载方法名称相同，参数数量、类型或顺序不同，但无法以返回值不同实现重载。</li>
 <li>涉及基本类型的方法重载：基本类型从一个“较小”的类型自动提升至一个“较大”的类型。<br>char略有不同，如果没有char参数的方法，将直接提升至int。</li>
 </ul>
@@ -951,7 +951,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="控制执行流程"><a href="#控制执行流程" class="headerlink" title="控制执行流程"></a>控制执行流程</h3><h4 id="true和false"><a href="#true和false" class="headerlink" title="true和false"></a>true和false</h4><h4 id="if-else"><a href="#if-else" class="headerlink" title="if-else"></a>if-else</h4><h4 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h4><p>逗号操作符：Java里唯一用到逗号操作符的地方就是for循环语句的控制表达式。<br>在Java中，不能像C/C++那样将多条语句写在一行然后用逗号隔开。</p>
+        <h2 id="控制执行流程"><a href="#控制执行流程" class="headerlink" title="控制执行流程"></a>控制执行流程</h2><h4 id="true和false"><a href="#true和false" class="headerlink" title="true和false"></a>true和false</h4><h4 id="if-else"><a href="#if-else" class="headerlink" title="if-else"></a>if-else</h4><h4 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h4><p>逗号操作符：Java里唯一用到逗号操作符的地方就是for循环语句的控制表达式。<br>在Java中，不能像C/C++那样将多条语句写在一行然后用逗号隔开。</p>
 <h4 id="Foreach语法"><a href="#Foreach语法" class="headerlink" title="Foreach语法"></a>Foreach语法</h4><p>数组和任何Iterable对象都可以使用Foreach语法。</p>
 <h4 id="return"><a href="#return" class="headerlink" title="return"></a>return</h4><h4 id="break和continue"><a href="#break和continue" class="headerlink" title="break和continue"></a>break和continue</h4><p>在嵌套for和while循环中，可以在循环前添加标签，并使用break和continue跳到标签处。</p>
 <h4 id="臭名昭著的goto"><a href="#臭名昭著的goto" class="headerlink" title="臭名昭著的goto"></a>臭名昭著的goto</h4><h4 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h4><p>switch语句中，case后的值必须是整数值。</p>
@@ -1016,7 +1016,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h3><h4 id="更简单的打印语句"><a href="#更简单的打印语句" class="headerlink" title="更简单的打印语句"></a>更简单的打印语句</h4><p>静态导入import static(类、变量、方法)</p>
+        <h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><h4 id="更简单的打印语句"><a href="#更简单的打印语句" class="headerlink" title="更简单的打印语句"></a>更简单的打印语句</h4><p>静态导入import static(类、变量、方法)</p>
 <h4 id="使用Java操作符"><a href="#使用Java操作符" class="headerlink" title="使用Java操作符"></a>使用Java操作符</h4><h4 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h4><h4 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h4><h4 id="算数操作符"><a href="#算数操作符" class="headerlink" title="算数操作符"></a>算数操作符</h4><p>一元减号用于转变数据的符号，而一元加号只是为了与一元减号相对应，<br>但是它唯一的作用仅仅是将较小类型的操作数提升为int。</p>
 <h4 id="自动递增和递减"><a href="#自动递增和递减" class="headerlink" title="自动递增和递减"></a>自动递增和递减</h4><h4 id="关系操作符"><a href="#关系操作符" class="headerlink" title="关系操作符"></a>关系操作符</h4><h4 id="逻辑操作符"><a href="#逻辑操作符" class="headerlink" title="逻辑操作符"></a>逻辑操作符</h4><p>与C/C++不同的是，不可将一个非布尔值当作布尔值在逻辑表达式中使用。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">boolean flag = 1 &amp;&amp; 1	//ERROR</span><br><span class="line">if(1)	//ERROR</span><br></pre></td></tr></table></figure>

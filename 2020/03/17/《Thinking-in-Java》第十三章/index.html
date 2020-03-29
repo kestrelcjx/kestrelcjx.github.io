@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Kestrel&#39;s Blog">
 <meta property="og:description" content="字符串不可变StringString对象是不可变的。String类中每一个看起来会修改String值得方法，实际上都是创建一个全新的String对象，以包含修改后的字符串内容，而最初的String对象则纹丝未动。（String类被final修饰，不可继承） 重载“+”与StringBuilder String重载了“+”和“+=”操作符，用于字符串拼接，拼接时会产生新的String对象。 字符串拼">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-18T06:48:22.003Z">
+<meta property="og:updated_time" content="2020-03-29T04:52:04.081Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Thinking in Java》第十三章">
 <meta name="twitter:description" content="字符串不可变StringString对象是不可变的。String类中每一个看起来会修改String值得方法，实际上都是创建一个全新的String对象，以包含修改后的字符串内容，而最初的String对象则纹丝未动。（String类被final修饰，不可继承） 重载“+”与StringBuilder String重载了“+”和“+=”操作符，用于字符串拼接，拼接时会产生新的String对象。 字符串拼">
@@ -294,7 +294,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><h4 id="不可变String"><a href="#不可变String" class="headerlink" title="不可变String"></a>不可变String</h4><p>String对象是不可变的。String类中每一个看起来会修改String值得方法，<br>实际上都是创建一个全新的String对象，以包含修改后的字符串内容，<br>而最初的String对象则纹丝未动。（String类被final修饰，不可继承）</p>
+        <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h4 id="不可变String"><a href="#不可变String" class="headerlink" title="不可变String"></a>不可变String</h4><p>String对象是不可变的。String类中每一个看起来会修改String值得方法，<br>实际上都是创建一个全新的String对象，以包含修改后的字符串内容，<br>而最初的String对象则纹丝未动。（String类被final修饰，不可继承）</p>
 <h4 id="重载“-”与StringBuilder"><a href="#重载“-”与StringBuilder" class="headerlink" title="重载“+”与StringBuilder"></a>重载“+”与StringBuilder</h4><ul>
 <li>String重载了“+”和“+=”操作符，用于字符串拼接，拼接时会产生新的String对象。</li>
 <li>字符串拼接时，为了提高效率，避免产生大量垃圾回收的中间对象，可以使用<br>StringBuilder拼接字符串，然后使用toString()方法，返回字符串。<br>（String拼接字符串时，编译器也会使用StringBuilder优化性能）</li>
@@ -605,7 +605,7 @@
         <p><span>本文标题:</span><a href="/2020/03/17/《Thinking-in-Java》第十三章/">《Thinking in Java》第十三章</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Kestrel 的个人博客">Kestrel</a></p>
         <p><span>发布时间:</span>2020年03月17日 - 11时50分</p>
-        <p><span>最后更新:</span>2020年03月18日 - 14时48分</p>
+        <p><span>最后更新:</span>2020年03月29日 - 12时52分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/03/17/《Thinking-in-Java》第十三章/" title="《Thinking in Java》第十三章">https://kestrelcjx.github.io/2020/03/17/《Thinking-in-Java》第十三章/</a>
             <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/17/《Thinking-in-Java》第十三章/　　作者: Kestrel" title></span>
@@ -642,7 +642,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串"><span class="toc-number">1.</span> <span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#不可变String"><span class="toc-number">1.1.</span> <span class="toc-text">不可变String</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#重载“-”与StringBuilder"><span class="toc-number">1.2.</span> <span class="toc-text">重载“+”与StringBuilder</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#无意识的递归"><span class="toc-number">1.3.</span> <span class="toc-text">无意识的递归</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#String上的操作"><span class="toc-number">1.4.</span> <span class="toc-text">String上的操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#格式化的输出"><span class="toc-number">1.5.</span> <span class="toc-text">格式化的输出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正则表达式"><span class="toc-number">1.6.</span> <span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#扫描输入"><span class="toc-number">1.7.</span> <span class="toc-text">扫描输入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#StringTokenizer"><span class="toc-number">1.8.</span> <span class="toc-text">StringTokenizer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">1.9.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串"><span class="toc-number">1.</span> <span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#不可变String"><span class="toc-number">1.0.1.</span> <span class="toc-text">不可变String</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#重载“-”与StringBuilder"><span class="toc-number">1.0.2.</span> <span class="toc-text">重载“+”与StringBuilder</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#无意识的递归"><span class="toc-number">1.0.3.</span> <span class="toc-text">无意识的递归</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#String上的操作"><span class="toc-number">1.0.4.</span> <span class="toc-text">String上的操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#格式化的输出"><span class="toc-number">1.0.5.</span> <span class="toc-text">格式化的输出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正则表达式"><span class="toc-number">1.0.6.</span> <span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#扫描输入"><span class="toc-number">1.0.7.</span> <span class="toc-text">扫描输入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#StringTokenizer"><span class="toc-number">1.0.8.</span> <span class="toc-text">StringTokenizer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">1.0.9.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
