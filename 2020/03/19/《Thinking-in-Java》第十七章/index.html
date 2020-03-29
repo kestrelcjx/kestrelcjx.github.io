@@ -18,7 +18,7 @@
 <meta property="og:description" content="容器深入研究完整的容器分类法 填充容器Collection的功能方法   boolean add(T) 确保容器持有具有泛型类型T的参数。如果没有将此参数添加进容器，则返回false（可选的）    boolean addAll(Collection&amp;lt;? extends&amp;gt; T) 添加参数中所有的元素。只要添加了任意元素就返回true（可选的）   void clear() 移除容器中的">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://kestrelcjx.github.io/images/17collection.jpg">
-<meta property="og:updated_time" content="2020-03-29T04:52:36.808Z">
+<meta property="og:updated_time" content="2020-03-29T05:02:30.515Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Thinking in Java》第十七章">
 <meta name="twitter:description" content="容器深入研究完整的容器分类法 填充容器Collection的功能方法   boolean add(T) 确保容器持有具有泛型类型T的参数。如果没有将此参数添加进容器，则返回false（可选的）    boolean addAll(Collection&amp;lt;? extends&amp;gt; T) 添加参数中所有的元素。只要添加了任意元素就返回true（可选的）   void clear() 移除容器中的">
@@ -296,8 +296,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="容器深入研究"><a href="#容器深入研究" class="headerlink" title="容器深入研究"></a>容器深入研究</h2><h4 id="完整的容器分类法"><a href="#完整的容器分类法" class="headerlink" title="完整的容器分类法"></a>完整的容器分类法</h4><p><img src="/images/17collection.jpg" alt="容器的完整分类"></p>
-<h4 id="填充容器"><a href="#填充容器" class="headerlink" title="填充容器"></a>填充容器</h4><h4 id="Collection的功能方法"><a href="#Collection的功能方法" class="headerlink" title="Collection的功能方法"></a>Collection的功能方法</h4><table>
+        <h2 id="容器深入研究"><a href="#容器深入研究" class="headerlink" title="容器深入研究"></a>容器深入研究</h2><h3 id="完整的容器分类法"><a href="#完整的容器分类法" class="headerlink" title="完整的容器分类法"></a>完整的容器分类法</h3><p><img src="/images/17collection.jpg" alt="容器的完整分类"></p>
+<h3 id="填充容器"><a href="#填充容器" class="headerlink" title="填充容器"></a>填充容器</h3><h3 id="Collection的功能方法"><a href="#Collection的功能方法" class="headerlink" title="Collection的功能方法"></a>Collection的功能方法</h3><table>
 <thead>
 <tr>
 <th>boolean add(T)</th>
@@ -353,8 +353,8 @@
 <td>返回一个数组，该数组包含容器中的所有元素。返回结果的运行时类型与参数数组a的类型相同，而不是单独的Object</td>
 </tr>
 </tbody></table>
-<h4 id="可选操作"><a href="#可选操作" class="headerlink" title="可选操作"></a>可选操作</h4><p>如果一个操作是未获支持的，那么在实现接口的时候可能就会导致UnsupportedOperationException<br>异常，而不是将产品程序交给客户以后才出现此异常，这种情况是是有道理的。毕<br>竟，它表示编程上有错误：使用了不正确的接口实现。值得注意的是，未获支持的<br>操作只有在运行时才能检测到，因此它们表示动态类型检查。</p>
-<h4 id="List的功能方法"><a href="#List的功能方法" class="headerlink" title="List的功能方法"></a>List的功能方法</h4><h4 id="Set的存储顺序"><a href="#Set的存储顺序" class="headerlink" title="Set的存储顺序"></a>Set的存储顺序</h4><table>
+<h3 id="可选操作"><a href="#可选操作" class="headerlink" title="可选操作"></a>可选操作</h3><p>如果一个操作是未获支持的，那么在实现接口的时候可能就会导致UnsupportedOperationException<br>异常，而不是将产品程序交给客户以后才出现此异常，这种情况是是有道理的。毕<br>竟，它表示编程上有错误：使用了不正确的接口实现。值得注意的是，未获支持的<br>操作只有在运行时才能检测到，因此它们表示动态类型检查。</p>
+<h3 id="List的功能方法"><a href="#List的功能方法" class="headerlink" title="List的功能方法"></a>List的功能方法</h3><h3 id="Set的存储顺序"><a href="#Set的存储顺序" class="headerlink" title="Set的存储顺序"></a>Set的存储顺序</h3><table>
 <thead>
 <tr>
 <th>Set(Interface)</th>
@@ -374,8 +374,8 @@
 <td>具有HashSet的查询速度，且内部使用链表维护元素的顺序（插入的次序）。于是在使用迭代器遍历Set时，结果会按元素插入的次序显示。元素也必须定义hashCode()方法</td>
 </tr>
 </tbody></table>
-<h4 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h4><p>除了并发应用，Queue在Java SE5中仅有的两个实现是LinkedList和PriorityQueue，<br>它们的差异在与排序行为而不是性能。</p>
-<h4 id="理解Map"><a href="#理解Map" class="headerlink" title="理解Map"></a>理解Map</h4><table>
+<h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><p>除了并发应用，Queue在Java SE5中仅有的两个实现是LinkedList和PriorityQueue，<br>它们的差异在与排序行为而不是性能。</p>
+<h3 id="理解Map"><a href="#理解Map" class="headerlink" title="理解Map"></a>理解Map</h3><table>
 <thead>
 <tr>
 <th>HashMap*</th>
@@ -403,17 +403,17 @@
 <td>使用==带起equals()对“键”进行比较的散列映射。专为解决特殊问题而设计的</td>
 </tr>
 </tbody></table>
-<h4 id="散列与散列码"><a href="#散列与散列码" class="headerlink" title="散列与散列码"></a>散列与散列码</h4><p>使用散列的数据结构（HashSet、HashMap、LinkedHashSet或LinkedHashMap），需要覆盖hashCode()和equals()。</p>
+<h3 id="散列与散列码"><a href="#散列与散列码" class="headerlink" title="散列与散列码"></a>散列与散列码</h3><p>使用散列的数据结构（HashSet、HashMap、LinkedHashSet或LinkedHashMap），需要覆盖hashCode()和equals()。</p>
 <ol>
 <li>正确的equals()方法必须满足下列5个条件：（默认的Object.equals()只是比较对象的地址）<br>（1）自反性。对任意x，x.equals(x)一定返回true<br>（2）对称性。对任意x和y，如果y.equals(x)返回true，则x.equals(y)也一定返回true。<br>（3）传递性。对任意x、y、z，如果有x.equals(y)返回true，y.equasl(z)返回true，则x.equals(z)一定返回true。<br>（4）一致性。对任意x和y，如果对象中用于等价比较的信息没有改变，那么无论调用x.equals(y)多少次，返回的结果应该一致，要么一直true，要么一直是false。<br>（5）对任何不是null的x，x.equals(null)一定返回false。</li>
 <li>散列的价值在于速度：散列使得查询得以快速进行。<br>在Object中定义有hashCode()方法（类似散列函数），且可能有你的类覆盖，用于生成的散列码。<br>hashCode()不应该依赖于具有唯一性的对象信息，尤其是使用this的值，因为这样<br>做无法生成一个新的键，使之与put()中原始的键值对中的键相同。（默认的hashCode()<br>使用的是对象的地址。）应该使用对象内有意义的识别信息。</li>
 </ol>
-<h4 id="选择接口的不同实现"><a href="#选择接口的不同实现" class="headerlink" title="选择接口的不同实现"></a>选择接口的不同实现</h4><ol>
+<h3 id="选择接口的不同实现"><a href="#选择接口的不同实现" class="headerlink" title="选择接口的不同实现"></a>选择接口的不同实现</h3><ol>
 <li>List。ArrayList底层有数组支持，查询速度快；而LinkedList是由双向链表实现的，插入删除速度快。</li>
 <li>Set。HashSet是最常用的，查询速度最快；LinkedHashSet保持元素插入的次序；TreeSet基于TreeMap，生成一个总是处于排序状态的Set。</li>
 </ol>
 <p>Map的性能因子：<br>容量：表中的桶位数<br>初始容量：表在创建时所拥有的桶位数。HashMap和HashSet都具有允许你指定初始容量的构造器<br>尺寸：表中当前存储的项数<br>负载因子：尺寸/容量。HashMap和HashSet都具有允许你指定负载因子的构造器，表示<br>当负载情况达到该负载因子的水平时，容器将自动增加其容量（桶位数），实现方式<br>是使容量大致加倍，并重新将现有对象分布到新的桶位集中（称为再散列）。HashMap的默认负载因子是0.75。</p>
-<h4 id="实用方法"><a href="#实用方法" class="headerlink" title="实用方法"></a>实用方法</h4><table>
+<h3 id="实用方法"><a href="#实用方法" class="headerlink" title="实用方法"></a>实用方法</h3><table>
     <tr>
         <td>checkedCollection(Collection&lt;T&gt;, Class&lt;T&gt; type)</td>
         <td rowspan="6">
@@ -569,13 +569,13 @@
 <li>Collection或Map的同步控制 Collections.synchronizedSet()…</li>
 <li>快速报错<br>如果在你迭代遍历某个容器的过程中，另一个进程介入其中，并且插入、删除或修改<br>此容器内的某个对象，那么就会出现问题。</li>
 </ul>
-<h4 id="持有引用"><a href="#持有引用" class="headerlink" title="持有引用"></a>持有引用</h4><p>java.lang.ref类库包含了一组类，这些类为垃圾回收提供了更大的灵活性。当存在<br>可能会耗尽内存的大对象的时候，这些类显得特别有用。有三个继承自抽象类Reference<br>的类：SoftReference、WeakReference和PhantomReference。当垃圾回收器正在考察<br>的对象只能通过某个Reference对象才能“可获得”时，上述这些不同的派生类为垃圾回收器<br>提供了不同级别的间接性指示。</p>
-<h4 id="Java1-0-1-1的容器"><a href="#Java1-0-1-1的容器" class="headerlink" title="Java1.0/1.1的容器"></a>Java1.0/1.1的容器</h4><ul>
+<h3 id="持有引用"><a href="#持有引用" class="headerlink" title="持有引用"></a>持有引用</h3><p>java.lang.ref类库包含了一组类，这些类为垃圾回收提供了更大的灵活性。当存在<br>可能会耗尽内存的大对象的时候，这些类显得特别有用。有三个继承自抽象类Reference<br>的类：SoftReference、WeakReference和PhantomReference。当垃圾回收器正在考察<br>的对象只能通过某个Reference对象才能“可获得”时，上述这些不同的派生类为垃圾回收器<br>提供了不同级别的间接性指示。</p>
+<h3 id="Java1-0-1-1的容器"><a href="#Java1-0-1-1的容器" class="headerlink" title="Java1.0/1.1的容器"></a>Java1.0/1.1的容器</h3><ul>
 <li>Vector和Enumeration</li>
 <li>Stack</li>
 <li>BitSet</li>
 </ul>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
       
     </div>
     
@@ -586,7 +586,7 @@
         <p><span>本文标题:</span><a href="/2020/03/19/《Thinking-in-Java》第十七章/">《Thinking in Java》第十七章</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Kestrel 的个人博客">Kestrel</a></p>
         <p><span>发布时间:</span>2020年03月19日 - 21时31分</p>
-        <p><span>最后更新:</span>2020年03月29日 - 12时52分</p>
+        <p><span>最后更新:</span>2020年03月29日 - 13时02分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/03/19/《Thinking-in-Java》第十七章/" title="《Thinking in Java》第十七章">https://kestrelcjx.github.io/2020/03/19/《Thinking-in-Java》第十七章/</a>
             <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/19/《Thinking-in-Java》第十七章/　　作者: Kestrel" title></span>
@@ -623,7 +623,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#容器深入研究"><span class="toc-number">1.</span> <span class="toc-text">容器深入研究</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#完整的容器分类法"><span class="toc-number">1.0.1.</span> <span class="toc-text">完整的容器分类法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#填充容器"><span class="toc-number">1.0.2.</span> <span class="toc-text">填充容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Collection的功能方法"><span class="toc-number">1.0.3.</span> <span class="toc-text">Collection的功能方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#可选操作"><span class="toc-number">1.0.4.</span> <span class="toc-text">可选操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#List的功能方法"><span class="toc-number">1.0.5.</span> <span class="toc-text">List的功能方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Set的存储顺序"><span class="toc-number">1.0.6.</span> <span class="toc-text">Set的存储顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#队列"><span class="toc-number">1.0.7.</span> <span class="toc-text">队列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#理解Map"><span class="toc-number">1.0.8.</span> <span class="toc-text">理解Map</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#散列与散列码"><span class="toc-number">1.0.9.</span> <span class="toc-text">散列与散列码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选择接口的不同实现"><span class="toc-number">1.0.10.</span> <span class="toc-text">选择接口的不同实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实用方法"><span class="toc-number">1.0.11.</span> <span class="toc-text">实用方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#持有引用"><span class="toc-number">1.0.12.</span> <span class="toc-text">持有引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Java1-0-1-1的容器"><span class="toc-number">1.0.13.</span> <span class="toc-text">Java1.0/1.1的容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">1.0.14.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#容器深入研究"><span class="toc-number">1.</span> <span class="toc-text">容器深入研究</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#完整的容器分类法"><span class="toc-number">1.1.</span> <span class="toc-text">完整的容器分类法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#填充容器"><span class="toc-number">1.2.</span> <span class="toc-text">填充容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Collection的功能方法"><span class="toc-number">1.3.</span> <span class="toc-text">Collection的功能方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可选操作"><span class="toc-number">1.4.</span> <span class="toc-text">可选操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#List的功能方法"><span class="toc-number">1.5.</span> <span class="toc-text">List的功能方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Set的存储顺序"><span class="toc-number">1.6.</span> <span class="toc-text">Set的存储顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#队列"><span class="toc-number">1.7.</span> <span class="toc-text">队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理解Map"><span class="toc-number">1.8.</span> <span class="toc-text">理解Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#散列与散列码"><span class="toc-number">1.9.</span> <span class="toc-text">散列与散列码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择接口的不同实现"><span class="toc-number">1.10.</span> <span class="toc-text">选择接口的不同实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实用方法"><span class="toc-number">1.11.</span> <span class="toc-text">实用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#持有引用"><span class="toc-number">1.12.</span> <span class="toc-text">持有引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java1-0-1-1的容器"><span class="toc-number">1.13.</span> <span class="toc-text">Java1.0/1.1的容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">1.14.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {

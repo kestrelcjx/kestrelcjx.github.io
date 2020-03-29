@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Kestrel&#39;s Blog">
 <meta property="og:description" content="访问权限控制包：库单元如果未设置源文件所属包，则会位于未命名包（默认包）中。当编写一个Java源代码文件时，此文件通常被称为编译单元。每个编译单元都必须有一个后缀.java，而在编译单元内则有一个public类，该类的名称必须与文件的名称相同（包括大小写，但不包括后缀名.java）。每个编译单元只能由一个pubic类（也可以没有）。创建包时，按照惯例，package名称第一部分是类创建者的反顺序的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-29T04:51:02.767Z">
+<meta property="og:updated_time" content="2020-03-29T05:00:49.561Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Thinking in Java》第六章">
 <meta name="twitter:description" content="访问权限控制包：库单元如果未设置源文件所属包，则会位于未命名包（默认包）中。当编写一个Java源代码文件时，此文件通常被称为编译单元。每个编译单元都必须有一个后缀.java，而在编译单元内则有一个public类，该类的名称必须与文件的名称相同（包括大小写，但不包括后缀名.java）。每个编译单元只能由一个pubic类（也可以没有）。创建包时，按照惯例，package名称第一部分是类创建者的反顺序的">
@@ -294,8 +294,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="访问权限控制"><a href="#访问权限控制" class="headerlink" title="访问权限控制"></a>访问权限控制</h2><h4 id="包：库单元"><a href="#包：库单元" class="headerlink" title="包：库单元"></a>包：库单元</h4><p>如果未设置源文件所属包，则会位于未命名包（默认包）中。<br>当编写一个Java源代码文件时，此文件通常被称为编译单元。<br>每个编译单元都必须有一个后缀.java，而在编译单元内则有一个public类，<br>该类的名称必须与文件的名称相同（包括大小写，但不包括后缀名.java）。<br>每个编译单元只能由一个pubic类（也可以没有）。<br>创建包时，按照惯例，package名称第一部分是类创建者的反顺序的Internet域名<br>（例如：com.kestrelcjx.xxx）。package名称将分解为机器上的一个目录。<br>Java解释器的运行过程如下：首先，找出环境变量CLASSPATH。CLASSPATH包含一个或<br>多个目录，用作.class文件的根目录。从根目录开始，解释器获取包的名称并将<br>每个句号替换为反斜杠，以从CLASSPATH根肿产生一个路径名称。得到的路径会与CLASSPATH路径<br>中的各个不同项相连接，解释器就在这些目录中查找与你所创建类的名称相关的.class文件。</p>
-<h4 id="Java访问权限修饰词"><a href="#Java访问权限修饰词" class="headerlink" title="Java访问权限修饰词"></a>Java访问权限修饰词</h4><table>
+        <h2 id="访问权限控制"><a href="#访问权限控制" class="headerlink" title="访问权限控制"></a>访问权限控制</h2><h3 id="包：库单元"><a href="#包：库单元" class="headerlink" title="包：库单元"></a>包：库单元</h3><p>如果未设置源文件所属包，则会位于未命名包（默认包）中。<br>当编写一个Java源代码文件时，此文件通常被称为编译单元。<br>每个编译单元都必须有一个后缀.java，而在编译单元内则有一个public类，<br>该类的名称必须与文件的名称相同（包括大小写，但不包括后缀名.java）。<br>每个编译单元只能由一个pubic类（也可以没有）。<br>创建包时，按照惯例，package名称第一部分是类创建者的反顺序的Internet域名<br>（例如：com.kestrelcjx.xxx）。package名称将分解为机器上的一个目录。<br>Java解释器的运行过程如下：首先，找出环境变量CLASSPATH。CLASSPATH包含一个或<br>多个目录，用作.class文件的根目录。从根目录开始，解释器获取包的名称并将<br>每个句号替换为反斜杠，以从CLASSPATH根肿产生一个路径名称。得到的路径会与CLASSPATH路径<br>中的各个不同项相连接，解释器就在这些目录中查找与你所创建类的名称相关的.class文件。</p>
+<h3 id="Java访问权限修饰词"><a href="#Java访问权限修饰词" class="headerlink" title="Java访问权限修饰词"></a>Java访问权限修饰词</h3><table>
 <thead>
 <tr>
 <th>修饰符</th>
@@ -334,7 +334,7 @@
 <td>*</td>
 </tr>
 </tbody></table>
-<h4 id="接口和实现"><a href="#接口和实现" class="headerlink" title="接口和实现"></a>接口和实现</h4><h4 id="类的访问权限"><a href="#类的访问权限" class="headerlink" title="类的访问权限"></a>类的访问权限</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
+<h3 id="接口和实现"><a href="#接口和实现" class="headerlink" title="接口和实现"></a>接口和实现</h3><h3 id="类的访问权限"><a href="#类的访问权限" class="headerlink" title="类的访问权限"></a>类的访问权限</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
       
     </div>
     
@@ -345,7 +345,7 @@
         <p><span>本文标题:</span><a href="/2020/03/13/《Thinking-in-Java》第六章/">《Thinking in Java》第六章</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Kestrel 的个人博客">Kestrel</a></p>
         <p><span>发布时间:</span>2020年03月13日 - 15时22分</p>
-        <p><span>最后更新:</span>2020年03月29日 - 12时51分</p>
+        <p><span>最后更新:</span>2020年03月29日 - 13时00分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/03/13/《Thinking-in-Java》第六章/" title="《Thinking in Java》第六章">https://kestrelcjx.github.io/2020/03/13/《Thinking-in-Java》第六章/</a>
             <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/13/《Thinking-in-Java》第六章/　　作者: Kestrel" title></span>
@@ -382,7 +382,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#访问权限控制"><span class="toc-number">1.</span> <span class="toc-text">访问权限控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#包：库单元"><span class="toc-number">1.0.1.</span> <span class="toc-text">包：库单元</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Java访问权限修饰词"><span class="toc-number">1.0.2.</span> <span class="toc-text">Java访问权限修饰词</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#接口和实现"><span class="toc-number">1.0.3.</span> <span class="toc-text">接口和实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类的访问权限"><span class="toc-number">1.0.4.</span> <span class="toc-text">类的访问权限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">1.0.5.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#访问权限控制"><span class="toc-number">1.</span> <span class="toc-text">访问权限控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#包：库单元"><span class="toc-number">1.1.</span> <span class="toc-text">包：库单元</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java访问权限修饰词"><span class="toc-number">1.2.</span> <span class="toc-text">Java访问权限修饰词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接口和实现"><span class="toc-number">1.3.</span> <span class="toc-text">接口和实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类的访问权限"><span class="toc-number">1.4.</span> <span class="toc-text">类的访问权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">1.5.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {

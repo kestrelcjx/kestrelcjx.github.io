@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Kestrel&#39;s Blog">
 <meta property="og:description" content="一切都是对象2.1 用引用操纵对象2.2 必须由你创建所有对象数据存储：  寄存器 堆栈 堆 常量存储 非RAM存储  八个基本数据类型    基本类型 大小 包装器类型    boolean - Boolean   char 16 bits Charactor   byte 8 bits Byte   short 16 bits Short   int 32 bits Integer   lon">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-29T04:51:15.421Z">
+<meta property="og:updated_time" content="2020-03-29T05:00:20.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Thinking in Java》第二章">
 <meta name="twitter:description" content="一切都是对象2.1 用引用操纵对象2.2 必须由你创建所有对象数据存储：  寄存器 堆栈 堆 常量存储 非RAM存储  八个基本数据类型    基本类型 大小 包装器类型    boolean - Boolean   char 16 bits Charactor   byte 8 bits Byte   short 16 bits Short   int 32 bits Integer   lon">
@@ -294,7 +294,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="一切都是对象"><a href="#一切都是对象" class="headerlink" title="一切都是对象"></a>一切都是对象</h2><h4 id="2-1-用引用操纵对象"><a href="#2-1-用引用操纵对象" class="headerlink" title="2.1 用引用操纵对象"></a>2.1 用引用操纵对象</h4><h4 id="2-2-必须由你创建所有对象"><a href="#2-2-必须由你创建所有对象" class="headerlink" title="2.2 必须由你创建所有对象"></a>2.2 必须由你创建所有对象</h4><p>数据存储：</p>
+        <h2 id="一切都是对象"><a href="#一切都是对象" class="headerlink" title="一切都是对象"></a>一切都是对象</h2><h3 id="2-1-用引用操纵对象"><a href="#2-1-用引用操纵对象" class="headerlink" title="2.1 用引用操纵对象"></a>2.1 用引用操纵对象</h3><h3 id="2-2-必须由你创建所有对象"><a href="#2-2-必须由你创建所有对象" class="headerlink" title="2.2 必须由你创建所有对象"></a>2.2 必须由你创建所有对象</h3><p>数据存储：</p>
 <ul>
 <li>寄存器</li>
 <li>堆栈</li>
@@ -353,16 +353,16 @@
 </tr>
 </tbody></table>
 <p>boolean类型所占存储空间的大小没有明确指定    </p>
-<h4 id="2-3-永远不需要销毁对象"><a href="#2-3-永远不需要销毁对象" class="headerlink" title="2.3 永远不需要销毁对象"></a>2.3 永远不需要销毁对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int x = 1;</span><br><span class="line">&#123;</span><br><span class="line">	int x = 2;	//ERROR</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-永远不需要销毁对象"><a href="#2-3-永远不需要销毁对象" class="headerlink" title="2.3 永远不需要销毁对象"></a>2.3 永远不需要销毁对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int x = 1;</span><br><span class="line">&#123;</span><br><span class="line">	int x = 2;	//ERROR</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>Java中不能嵌套作用域定义同名变量，编译器会报告变量已经定义过</p>
-<h4 id="2-4-创建新的数据类型：类"><a href="#2-4-创建新的数据类型：类" class="headerlink" title="2.4 创建新的数据类型：类"></a>2.4 创建新的数据类型：类</h4><p>若类的某个成员是基本数据类型，即使没有进行初始化，Java也会确保它获得一个默认值，将其每个为置0；<br>若是类，则初始化为null。局部变量不进行默认初始化。</p>
-<h4 id="2-5-方法、参数和返回值"><a href="#2-5-方法、参数和返回值" class="headerlink" title="2.5 方法、参数和返回值"></a>2.5 方法、参数和返回值</h4><h4 id="2-6-构建一个Java程序"><a href="#2-6-构建一个Java程序" class="headerlink" title="2.6 构建一个Java程序"></a>2.6 构建一个Java程序</h4><h4 id="2-7-你的第一个Java程序"><a href="#2-7-你的第一个Java程序" class="headerlink" title="2.7 你的第一个Java程序"></a>2.7 你的第一个Java程序</h4><h4 id="2-8-注释和嵌入式文档"><a href="#2-8-注释和嵌入式文档" class="headerlink" title="2.8 注释和嵌入式文档"></a>2.8 注释和嵌入式文档</h4><p>Java三种注释方法</p>
+<h3 id="2-4-创建新的数据类型：类"><a href="#2-4-创建新的数据类型：类" class="headerlink" title="2.4 创建新的数据类型：类"></a>2.4 创建新的数据类型：类</h3><p>若类的某个成员是基本数据类型，即使没有进行初始化，Java也会确保它获得一个默认值，将其每个为置0；<br>若是类，则初始化为null。局部变量不进行默认初始化。</p>
+<h3 id="2-5-方法、参数和返回值"><a href="#2-5-方法、参数和返回值" class="headerlink" title="2.5 方法、参数和返回值"></a>2.5 方法、参数和返回值</h3><h3 id="2-6-构建一个Java程序"><a href="#2-6-构建一个Java程序" class="headerlink" title="2.6 构建一个Java程序"></a>2.6 构建一个Java程序</h3><h3 id="2-7-你的第一个Java程序"><a href="#2-7-你的第一个Java程序" class="headerlink" title="2.7 你的第一个Java程序"></a>2.7 你的第一个Java程序</h3><h3 id="2-8-注释和嵌入式文档"><a href="#2-8-注释和嵌入式文档" class="headerlink" title="2.8 注释和嵌入式文档"></a>2.8 注释和嵌入式文档</h3><p>Java三种注释方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//单行注释</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * 多行注释</span><br><span class="line"> */</span><br><span class="line"> </span><br><span class="line">/**</span><br><span class="line"> * 文档注释</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
 
 <p>可以使用javadoc工具提取源文件的文档注释，生成注释文档（API）</p>
-<h4 id="2-9-编码规范"><a href="#2-9-编码规范" class="headerlink" title="2.9 编码规范"></a>2.9 编码规范</h4><p>类名首字母要大写，如果类名有几个单词构成，那么它们并在一起，其中每个内部单词首字母都采用大写形式。<br>这种分格称为“驼峰风格”。几乎其他所有内容也–方法、字段（成员变量）以及对象引用名称等，都采用这种风格，<br>只是标识符第一个字母小写。</p>
-<h4 id="2-10-总结"><a href="#2-10-总结" class="headerlink" title="2.10 总结"></a>2.10 总结</h4><h4 id="2-11-练习"><a href="#2-11-练习" class="headerlink" title="2.11 练习"></a>2.11 练习</h4>
+<h3 id="2-9-编码规范"><a href="#2-9-编码规范" class="headerlink" title="2.9 编码规范"></a>2.9 编码规范</h3><p>类名首字母要大写，如果类名有几个单词构成，那么它们并在一起，其中每个内部单词首字母都采用大写形式。<br>这种分格称为“驼峰风格”。几乎其他所有内容也–方法、字段（成员变量）以及对象引用名称等，都采用这种风格，<br>只是标识符第一个字母小写。</p>
+<h3 id="2-10-总结"><a href="#2-10-总结" class="headerlink" title="2.10 总结"></a>2.10 总结</h3><h3 id="2-11-练习"><a href="#2-11-练习" class="headerlink" title="2.11 练习"></a>2.11 练习</h3>
       
     </div>
     
@@ -373,7 +373,7 @@
         <p><span>本文标题:</span><a href="/2020/03/07/《Thinking-in-Java》第二章/">《Thinking in Java》第二章</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Kestrel 的个人博客">Kestrel</a></p>
         <p><span>发布时间:</span>2020年03月07日 - 23时16分</p>
-        <p><span>最后更新:</span>2020年03月29日 - 12时51分</p>
+        <p><span>最后更新:</span>2020年03月29日 - 13时00分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/03/07/《Thinking-in-Java》第二章/" title="《Thinking in Java》第二章">https://kestrelcjx.github.io/2020/03/07/《Thinking-in-Java》第二章/</a>
             <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/07/《Thinking-in-Java》第二章/　　作者: Kestrel" title></span>
@@ -410,7 +410,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一切都是对象"><span class="toc-number">1.</span> <span class="toc-text">一切都是对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-用引用操纵对象"><span class="toc-number">1.0.1.</span> <span class="toc-text">2.1 用引用操纵对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-必须由你创建所有对象"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.2 必须由你创建所有对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-永远不需要销毁对象"><span class="toc-number">1.0.3.</span> <span class="toc-text">2.3 永远不需要销毁对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-创建新的数据类型：类"><span class="toc-number">1.0.4.</span> <span class="toc-text">2.4 创建新的数据类型：类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-方法、参数和返回值"><span class="toc-number">1.0.5.</span> <span class="toc-text">2.5 方法、参数和返回值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-构建一个Java程序"><span class="toc-number">1.0.6.</span> <span class="toc-text">2.6 构建一个Java程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-你的第一个Java程序"><span class="toc-number">1.0.7.</span> <span class="toc-text">2.7 你的第一个Java程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-8-注释和嵌入式文档"><span class="toc-number">1.0.8.</span> <span class="toc-text">2.8 注释和嵌入式文档</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-9-编码规范"><span class="toc-number">1.0.9.</span> <span class="toc-text">2.9 编码规范</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-10-总结"><span class="toc-number">1.0.10.</span> <span class="toc-text">2.10 总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-11-练习"><span class="toc-number">1.0.11.</span> <span class="toc-text">2.11 练习</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一切都是对象"><span class="toc-number">1.</span> <span class="toc-text">一切都是对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-用引用操纵对象"><span class="toc-number">1.1.</span> <span class="toc-text">2.1 用引用操纵对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-必须由你创建所有对象"><span class="toc-number">1.2.</span> <span class="toc-text">2.2 必须由你创建所有对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-永远不需要销毁对象"><span class="toc-number">1.3.</span> <span class="toc-text">2.3 永远不需要销毁对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-创建新的数据类型：类"><span class="toc-number">1.4.</span> <span class="toc-text">2.4 创建新的数据类型：类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-方法、参数和返回值"><span class="toc-number">1.5.</span> <span class="toc-text">2.5 方法、参数和返回值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-构建一个Java程序"><span class="toc-number">1.6.</span> <span class="toc-text">2.6 构建一个Java程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-你的第一个Java程序"><span class="toc-number">1.7.</span> <span class="toc-text">2.7 你的第一个Java程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-注释和嵌入式文档"><span class="toc-number">1.8.</span> <span class="toc-text">2.8 注释和嵌入式文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-9-编码规范"><span class="toc-number">1.9.</span> <span class="toc-text">2.9 编码规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-10-总结"><span class="toc-number">1.10.</span> <span class="toc-text">2.10 总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-11-练习"><span class="toc-number">1.11.</span> <span class="toc-text">2.11 练习</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
