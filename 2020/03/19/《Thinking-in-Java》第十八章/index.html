@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://kestrelcjx.github.io/images/IO1.jpg">
 <meta property="og:image" content="https://kestrelcjx.github.io/images/IO2.jpg">
 <meta property="og:image" content="https://kestrelcjx.github.io/images/IO3.jpg">
-<meta property="og:updated_time" content="2020-03-29T04:59:24.341Z">
+<meta property="og:updated_time" content="2020-03-29T05:54:15.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Thinking in Java》第十八章">
 <meta name="twitter:description" content="Java I/O系统File类File既能代表一个特定的文件，又能代表一个目录下的一组文件的名称。假如我们想查看一个目录列表，可以用两种方法来使用File对象。如果我们调用不带参数的list()方法，便可以获得此File对象包含的全部列表。然而，如果我们想获得一个受限列表，例如，想得到所有扩展名为.java的文件，那么我们就要用到“目录过滤器”，这个类会告诉我们怎样显示符合条件的File对象。 1">
@@ -595,11 +595,120 @@
 <li>内存映射文件</li>
 </ul>
 <p>内存映射文件允许我们将创建和修改那些太大而不能放入内存的文件。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LargeMappedFiles</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> length = <span class="number">0x8FFFFFF</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		MappedByteBuffer out = <span class="keyword">new</span> RandomAccessFile(<span class="string">"test.dat"</span>, <span class="string">"rw"</span>)</span><br><span class="line">			.getChannel.map(FileChannel.MapMode.READ_WRITE, <span class="number">0</span>, length);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">			out.put((<span class="keyword">byte</span>)<span class="string">'x'</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">"Finished writing"</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = length/<span class="number">2</span>; i &lt; length/<span class="number">2</span>+<span class="number">6</span>; i++) &#123;</span><br><span class="line">			System.out.println((<span class="keyword">char</span>)out.get(i));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>文件加锁</li>
 </ul>
 <p>JDK1.4引入了文件加锁机制，它允许我们同步访问某个作为共享资源的文件。不过，竞争同一<br>个文件的两个线程可能在不同的Java虚拟机上；或者一个是Java线程，另一个是操作系统中其他<br>的某个本地线程。文件锁对其他的操作系统进程是可见的，因为Java的文件加锁直接映射到<br>了本地操作系统的加锁工具。</p>
-<h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><h3 id="对象序列化"><a href="#对象序列化" class="headerlink" title="对象序列化"></a>对象序列化</h3><h3 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h3><h3 id="Preference"><a href="#Preference" class="headerlink" title="Preference"></a>Preference</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileLocking</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(<span class="string">"file.txt"</span>);</span><br><span class="line">		FileLock fl = fos.getChannel().tryLock();</span><br><span class="line">		<span class="keyword">if</span>(fl != <span class="keyword">null</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"Locked File"</span>);</span><br><span class="line">			TimeUnit.MILLISECONDS.sleep(<span class="number">100</span>);</span><br><span class="line">			fl.release();</span><br><span class="line">			System.out.println(<span class="string">"Release Lock"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		fos.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过对FileChannel调用tryLock()或lock()，就可以获得整个文件的FileLock。（Socket-<br>Channel、DatagramChannel和ServerSocketChannel不需要加锁，因为它们是从单进程实体<br>继承而来的；我们通常不再两个进程之间共享网络socket）。tryLock()是非阻塞的，它设法<br>获取锁，但是如果不能获得（当其他一些进程已经持有相同的锁，并且不共享时），它将直接<br>从方法调用返回。lock()则是阻塞的，它要阻塞进程直至锁可以获得，或调用lock()的线程<br>中断，或调用lock()的通道关闭。使用FileLock.release()可以释放锁。也可以对文件一部分<br>上锁：<code>tryLock(long position, long size, boolean shared)</code>或<code>lock(long position, long size, long shared)</code></p>
+<h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><table>
+<thead>
+<tr>
+<th>压缩类</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CheckedInputStream</td>
+<td>GetCheckSum()为任何InputStream产生校验和（不仅是解压缩）</td>
+</tr>
+<tr>
+<td>CheckedOutputStream</td>
+<td>GetCheckSum()为任何OutputStream产生校验和（不仅是压缩）</td>
+</tr>
+<tr>
+<td>DeflaterOutputStream</td>
+<td>压缩类的基类</td>
+</tr>
+<tr>
+<td>ZipOutputStream</td>
+<td>一个DeflaterOutputStream，用于将数据压缩成Zip文件格式</td>
+</tr>
+<tr>
+<td>GZIPOutputStream</td>
+<td>一个DeflaterOutputStream，用于将数据压缩成GZIP文件格式</td>
+</tr>
+<tr>
+<td>InflaterInputStream</td>
+<td>解压缩类的基类</td>
+</tr>
+<tr>
+<td>ZipInputStream</td>
+<td>一个InflaterInputStream，用于解压缩Zip文件格式的数据</td>
+</tr>
+<tr>
+<td>GZIPInputStream</td>
+<td>一个InflaterInputStream，用于解压缩GZIP文件格式的数据</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>用GZIP进行简单压缩</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.zip.*;</span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GZIPcompress</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		BufferedReader in = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(args[<span class="number">0</span>]));</span><br><span class="line">		BufferedOutputStream out = <span class="keyword">new</span> BufferedOutputStream(</span><br><span class="line">			<span class="keyword">new</span> GZIPOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"test.gz"</span>)));</span><br><span class="line">		System.out.println(<span class="string">"Writing file"</span>);</span><br><span class="line">		<span class="keyword">int</span> c;</span><br><span class="line">		<span class="keyword">while</span>((c = in.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">			out.write(c);</span><br><span class="line">		&#125;</span><br><span class="line">		in.close();</span><br><span class="line">		out.close();</span><br><span class="line">		System.out.println(<span class="string">"Reading file"</span>);</span><br><span class="line">		BufferedReader in2 = <span class="keyword">new</span> BufferedReader(</span><br><span class="line">			<span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(<span class="string">"test.gz"</span>)));</span><br><span class="line">		String s;</span><br><span class="line">		<span class="keyword">while</span>((s = in2.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">			System.out.println(s);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用Zip进行多文件保存</p>
+</li>
+</ul>
+<p>使用Checksum类来计算和校验文件的校验和的方法。一共有两种Checksum类型：Adler32（它快一些）<br>和CRC32（慢一点，但更准确）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZipCompress</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		FileOutputStream f = <span class="keyword">new</span> FileOutputStream(<span class="string">"test.zip"</span>);</span><br><span class="line">		CheckedOutputStream csum = <span class="keyword">new</span> CheckedOutputStream(f, <span class="keyword">new</span> Adler32());</span><br><span class="line">		ZipOutputStream zos = <span class="keyword">new</span> ZipOutputStream(csum);</span><br><span class="line">		BufferedOutputStream out = <span class="keyword">new</span> BufferedOutputStream(zos);</span><br><span class="line">		zos.setComment(<span class="string">"A test of Java Zipping"</span>);</span><br><span class="line">		<span class="keyword">for</span>(String arg : args) &#123;</span><br><span class="line">			System.out.println(<span class="string">"Writing file "</span> + arg);</span><br><span class="line">			BufferedReader in = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(arg));</span><br><span class="line">			zos.putNextEntry(<span class="keyword">new</span> ZipEntry(arg));</span><br><span class="line">			<span class="keyword">int</span> c;</span><br><span class="line">			<span class="keyword">while</span>((c = in.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">				out.write(c);</span><br><span class="line">			&#125;</span><br><span class="line">			in.close();</span><br><span class="line">			out.flush();</span><br><span class="line">		&#125;</span><br><span class="line">		out.close();</span><br><span class="line">		System.out.println(<span class="string">"Checksum: "</span> + csum.getChecksum().getValue());</span><br><span class="line">		System.out.println(<span class="string">"Reading file"</span>);</span><br><span class="line">		FileInputStream fi = <span class="keyword">new</span> FileInputStream(<span class="string">"test.zip"</span>);</span><br><span class="line">		CheckedInputStream csumi = <span class="keyword">new</span> CheckedInputStream(fi, <span class="keyword">new</span> Adler32());</span><br><span class="line">		ZipInputStream in2 = <span class="keyword">new</span> ZipInputStream(csumi);</span><br><span class="line">		BufferedInputStream bis = <span class="keyword">new</span> BufferedInputStream(in2);</span><br><span class="line">		ZipEntry ze;</span><br><span class="line">		<span class="keyword">while</span>((ze = in2.getNextEntry()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"Reading file "</span> + ze);</span><br><span class="line">			<span class="keyword">int</span> x;</span><br><span class="line">			<span class="keyword">while</span>((x = bis.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">				System.out.write(x);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(args.length == <span class="number">1</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"Checksum: "</span> + csumi.getChecksum().getValue());</span><br><span class="line">		&#125;</span><br><span class="line">		bis.close();</span><br><span class="line">		ZipFile zf = <span class="keyword">new</span> ZipFile(<span class="string">"test.zip"</span>);</span><br><span class="line">		Enumeration e = zf.entries();</span><br><span class="line">		<span class="keyword">while</span>(e.hasMoreElements()) &#123;</span><br><span class="line">			ZipEntry ze2 = (ZipEntry)e.nextElement();</span><br><span class="line">			System.out.println(<span class="string">"File: "</span> + ze2);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Java档案文件</li>
+</ul>
+<p>Zip格式也被应用于JAR（Java ARchive，Java档案文件）文件格式中。JAR文件也是跨平台的。</p>
+<p>jar [options] destination [manifest] inputfile(s) </p>
+<p>以下这些选项字符在Unix和Linux系统中的tar文件中也具有相同的意义。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>c</td>
+<td>创建一个新的或空的压缩文档</td>
+</tr>
+<tr>
+<td>t</td>
+<td>列出目录表</td>
+</tr>
+<tr>
+<td>x</td>
+<td>解压所有文件</td>
+</tr>
+<tr>
+<td>x file</td>
+<td>解压该文件</td>
+</tr>
+<tr>
+<td>f</td>
+<td>意指：“我打算指定一个文件名”。如果没有用这个选项，jar假设所有的输入都来自于标准输入；或者在创建一个文件时，输出对象也假设为标准输出</td>
+</tr>
+<tr>
+<td>m</td>
+<td>表示一个参数将是用户自建的清单文件的名字</td>
+</tr>
+<tr>
+<td>v</td>
+<td>产生详细输出，描述jar所做的工作</td>
+</tr>
+<tr>
+<td>O</td>
+<td>只存储文件，不压缩文件（用来创建一个可以放在类路径中的JAR文件）</td>
+</tr>
+<tr>
+<td>M</td>
+<td>不自动创建文件清单</td>
+</tr>
+</tbody></table>
+<h3 id="对象序列化"><a href="#对象序列化" class="headerlink" title="对象序列化"></a>对象序列化</h3><ol>
+<li>实现Serializable接口（transient关键字表示字段不会序列化）<br>如果实现了writeObject()和readObject()方法，序列化和反序列化时，会被调用，而不是默认的序列化机制。</li>
+<li>实现Externalizable接口（继承自Serializable接口），实现writeExternal()和readExternal()</li>
+</ol>
+<h3 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h3><h3 id="Preference"><a href="#Preference" class="headerlink" title="Preference"></a>Preference</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
       
     </div>
     
@@ -610,7 +719,7 @@
         <p><span>本文标题:</span><a href="/2020/03/19/《Thinking-in-Java》第十八章/">《Thinking in Java》第十八章</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Kestrel 的个人博客">Kestrel</a></p>
         <p><span>发布时间:</span>2020年03月19日 - 21时31分</p>
-        <p><span>最后更新:</span>2020年03月29日 - 12时59分</p>
+        <p><span>最后更新:</span>2020年03月29日 - 13时54分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/03/19/《Thinking-in-Java》第十八章/" title="《Thinking in Java》第十八章">https://kestrelcjx.github.io/2020/03/19/《Thinking-in-Java》第十八章/</a>
             <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/19/《Thinking-in-Java》第十八章/　　作者: Kestrel" title></span>
