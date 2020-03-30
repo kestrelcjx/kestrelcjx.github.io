@@ -59,7 +59,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">41字</span>
+            <span class="post-count">820字</span>
         </span>
     </span>
 
@@ -68,7 +68,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">3分钟</span>
         </span>
     </span>
 </div>
@@ -93,7 +93,74 @@
       
 
       
-      <h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><h3 id="编写注解处理器"><a href="#编写注解处理器" class="headerlink" title="编写注解处理器"></a>编写注解处理器</h3><h3 id="使用apt处理注解"><a href="#使用apt处理注解" class="headerlink" title="使用apt处理注解"></a>使用apt处理注解</h3><h3 id="将观察者模式用于注解"><a href="#将观察者模式用于注解" class="headerlink" title="将观察者模式用于注解"></a>将观察者模式用于注解</h3><h3 id="基于注解的单元测试"><a href="#基于注解的单元测试" class="headerlink" title="基于注解的单元测试"></a>基于注解的单元测试</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
+      <h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><p>Java SE5内置了三种注解，定义在java.lang中：</p>
+<ol>
+<li>@Override，表示当前的方法定义将覆盖超类中的方法。如果你不小心拼写错误，或者方法<br>签名对不上被覆盖的方法，编译器就会发出错误提示。</li>
+<li>@Deprecated，如果程序员使用了注解为它的元素，那么编译器会发出警告信息。</li>
+<li>@SuppressWarnings，关闭不当的编译器警告信息。</li>
+</ol>
+<h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><ul>
+<li><p>定义注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Test &#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>元注解</p>
+</li>
+</ul>
+<p>Java内置了四种元注解，元注解专职负责注解其他的注解：</p>
+<table>
+<thead>
+<tr>
+<th>@Target</th>
+<th>表示该注解可以用于什么地方。可能的ElementType参数包括: (1)CONTRUCTOR构造器的声明 (2)FIELD域声明 (3)LOCAL_VARIABLE局部变量声明 (4)METHOD方法声明 (5)PACKAGE包声明 (6)PARAMETER参数声明 (7)TYPE类、接口（包括注解类型）和enum声明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Retention</td>
+<td>表示需要在什么级别保存该注解信息。可选的RetentionPolicy参数包括:(1)SOURCE注解将被编译器丢弃 (2)CLASS注解在文件中可用，但会被VM丢弃 (3)RUNTIME：VM将在运行期也保留注解，因此可以通过反射机制读取直接的信息</td>
+</tr>
+<tr>
+<td>@Documented</td>
+<td>将此注解包含在Javadoc中</td>
+</tr>
+<tr>
+<td>@Inherited</td>
+<td>允许子类继承父类中的注解</td>
+</tr>
+</tbody></table>
+<h3 id="编写注解处理器"><a href="#编写注解处理器" class="headerlink" title="编写注解处理器"></a>编写注解处理器</h3><ul>
+<li>注解元素</li>
+</ul>
+<p>注解元素可用的类型如下所示：</p>
+<ol>
+<li>所有基本类型（int，float，boolean等）</li>
+<li>String</li>
+<li>Class</li>
+<li>enum</li>
+<li>Annotation</li>
+<li>以上类型的数组</li>
+</ol>
+<ul>
+<li>默认值限制</li>
+</ul>
+<p>元素必须要么具有默认值，要么在使用注解时提供元素的值。同时，对于非基本类型的元素，<br>无论是在源代码中声明时，或是在注解接口中定义默认值时，都不能以null作为其值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> SimulatingNull &#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">id</span><span class="params">()</span> <span class="keyword">default</span> -1</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">description</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果程序员在注解中定义了名为value的元素，并且在应用该注解的时候，如果该元素是唯一<br>需要赋值的一个元素，那么此时无需使用名-值对的这种语法，而只需在括号内给出value元素<br>所需的值即可。<code>@SQLString(30)</code></p>
+<ul>
+<li>注解不支持继承</li>
+</ul>
+<h3 id="使用apt处理注解"><a href="#使用apt处理注解" class="headerlink" title="使用apt处理注解"></a>使用apt处理注解</h3><p>APT(Annotation Process Tool)，是一种在代码编译时处理注解，按照一定的规则，生成<br>相应的java文件，多用于对自定义注解的处理.<br>Java8移除了APT以及mirror API，取而代之的是Pluggable Annotation Processing API。</p>
+<h3 id="将观察者模式用于注解"><a href="#将观察者模式用于注解" class="headerlink" title="将观察者模式用于注解"></a>将观察者模式用于注解</h3><h3 id="基于注解的单元测试"><a href="#基于注解的单元测试" class="headerlink" title="基于注解的单元测试"></a>基于注解的单元测试</h3><p>JUnit测试框架已实现注解。</p>
+<ol>
+<li>@BeforeClass修饰的方法会在所有方法被调用前被执行，而且该方法是静态的，所有当<br>测试类被加载后接着就会运行它而且在内存中它只会存在一份实例，它比较适合加载配置文件。</li>
+<li>@AfterClass所修饰的方法通常用来对资源的清理，如关闭数据库的连接。</li>
+<li>@Before和@After会在每个测试方法的前后各执行一次。</li>
+<li>@Test标识需要测试的方法。</li>
+</ol>
+<ul>
+<li>Javassist：一个开源的分析、编辑和创建Java字节码的类库。<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3></li>
+</ul>
+
       
       <!-- reward -->
       
