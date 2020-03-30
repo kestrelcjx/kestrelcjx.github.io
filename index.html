@@ -1,533 +1,361 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  <meta name="baidu-site-verification" content="PIDFoetK5n">
-  
-  
-  
-  
-  <title>Kestrel&#39;s Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Kestrel&#39;s Blog">
-<meta property="og:url" content="https://kestrelcjx.github.io/index.html">
-<meta property="og:site_name" content="Kestrel&#39;s Blog">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kestrel&#39;s Blog">
-  
-    <link rel="alternative" href="/atom.xml" title="Kestrel&#39;s Blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/img/yellowicon.png">
-  
-  
-  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  
+
+
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8" />
     
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+     Kestrel&#39;s Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/dist/main.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
   
   
-      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
   
-  <!-- 加载特效 -->
-    <script src="/js/pace.js"></script>
-    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
-  <script>
-      var yiliaConfig = {
-          fancybox: true,
-          animate: true,
-          isHome: true,
-          isPost: false,
-          isArchive: false,
-          isTag: false,
-          isCategory: false,
-          open_in_new: true
-      }
-  </script>
-</head></html>
+
+</head>
+
+</html>
+
 <body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-        <a href="/" class="profilepic">
-            
-            <img lazy-src="/img/yellow.png" class="js-avatar">
-            
-        </a>
-        <hgroup>
-          <h1 class="header-author"><a href="/">Kestrel</a></h1>
-        </hgroup>
-        
-        
-            <form>
-                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
-            </form>
-            <div id="local-search-result"></div>
-        
-        
-            <script type="text/javascript">
-                (function() {
-                    'use strict';
-                    function getMatchData(keyword, data) {
-                        var matchData = [];
-                        for(var i =0;i<data.length;i++){
-                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
-                                matchData.push(data[i])
-                        }
-                        return matchData;
-                    }
-                    var $input = $('#local-search-input');
-                    var $resultContent = $('#local-search-result');
-                    $input.keyup(function(){
-                        $.ajax({
-                            url: '/search.json',
-                            dataType: "json",
-                            success: function( json ) {
-                                var str='<ul class=\"search-result-list\">';                
-                                var keyword = $input.val().trim().toLowerCase();
-                                $resultContent.innerHTML = "";
-                                if ($input.val().trim().length <= 0) {
-                                    $resultContent.empty();
-                                    $('#switch-area').show();
-                                    return;
-                                }
-                                var results = getMatchData(keyword, json);
-                                if(results.length === 0){
-                                    $resultContent.empty();
-                                    $('#switch-area').show();
-                                    return;
-                                } 
-                                for(var i =0; i<results.length; i++){
-                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
-                                }
-                                str += "</ul>";
-                                $resultContent.empty();
-                                $resultContent.append(str);
-                                $('#switch-area').hide();
-                            }
-                        });
-                    });
-                })();
-            </script>
-        
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
-                        
-                        
-                        <li>关于我</li>
-                        
-                    </ul>
-                </div>
-            </div>
-        
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/archives/">所有文章</a></li>
-                        
-                            <li><a href="/categories/开发工具/">玩转开发工具</a></li>
-                        
-                            <li><a href="/categories/digital">玩转数码</a></li>
-                        
-                            <li><a href="/categories/algorithm">算法学习</a></li>
-                        
-                            <li><a href="/about/">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fl github" target="_blank" href="https://github.com/kestrelcjx/kestrelcjx.github.io" title="github">github</a>
-                            
-                                <a class="fl weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
-                            
-                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/图论/" style="font-size: 15px;">图论</a> <a href="/tags/小记/" style="font-size: 10px;">小记</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a>
-                    </div>
-                </section>
-                
-                
-                
-                
-                <section class="switch-part switch-part3">
-                
-                    <div id="js-aboutme">ACMer</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>
-</div>
-
+  <div id="app">
+    <main class="content on">
+      
+<section class="cover">
+    
+      
+      <a class="forkMe" href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank"><img width="149" height="149" src="/images/forkme.png" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+    
+  <div class="cover-frame">
+    <div class="bg-box">
+      <img src="/images/cover1.jpg" alt="image frame">
     </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Kestrel</a></h1>
+    <div class="cover-inner text-center text-white">
+      <h1><a href="/">Kestrel&#39;s Blog</a></h1>
+      <div id="subtitle-box">
+        
+        <span id="subtitle"></span>
+        
       </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                
-                    <img lazy-src="/img/yellow.png" class="js-avatar">
-                
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">Kestrel</a></h1>
-            </hgroup>
-            
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/archives/">所有文章</a></li>
-                
-                    <li><a href="/categories/开发工具/">玩转开发工具</a></li>
-                
-                    <li><a href="/categories/digital">玩转数码</a></li>
-                
-                    <li><a href="/categories/algorithm">算法学习</a></li>
-                
-                    <li><a href="/about/">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                <div class="social">
-                    
-                        <a class="github" target="_blank" href="https://github.com/kestrelcjx/kestrelcjx.github.io" title="github">github</a>
-                    
-                        <a class="weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
-                    
-                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-                    
-                </div>
-            </nav>
-        </header>
+      <div>
+        
+      </div>
     </div>
-</nav>
-      <div class="body-wrap">
-  
-    <article id="post-《Thinking-in-Java》第二十二章" class="article article-type-post" itemscope itemprop="blogPost">
-  
+  </div>
+  <div class="cover-learn-more">
+    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+  </div>
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
+
+<div id="main">
+  <section class="outer">
+  <article class="articles">
+    
+    
+    
+    
+    <article id="post-《Thinking-in-Java》第二十二章" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/21/《Thinking-in-Java》第二十二章/">《Thinking in Java》第二十二章</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
     <div class="article-meta">
       <a href="/2020/03/21/《Thinking-in-Java》第二十二章/" class="article-date">
-      <time datetime="2020-03-20T17:35:11.000Z" itemprop="datePublished">2020-03-21</time>
+  <time datetime="2020-03-20T17:35:11.000Z" itemprop="datePublished">2020-03-21</time>
 </a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/21/《Thinking-in-Java》第二十二章/">《Thinking in Java》第二十二章</a>
-    </h1>
-  
-
-
-      </header>
       
+      
+      
+      
+    </div>
+    
+
+    
+
     
     <div class="article-entry" itemprop="articleBody">
       
-          
-        
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
       
 
       
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-    </div>
-
       
-      <div class="clearfix"></div>
+      
+      <!-- reward -->
+      
     </div>
     
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+
+    </footer>
+
   </div>
+
   
+
+  
+  
+  
+
+  
+
 </article>
+    
+    <article id="post-《Thinking-in-Java》第二十一章" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/21/《Thinking-in-Java》第二十一章/">《Thinking in Java》第二十一章</a> 
+</h2>
+ 
 
+    </header>
+    
 
-
-
-
-
-
-
-
-
-  
-    <article id="post-《Thinking-in-Java》第二十一章" class="article article-type-post" itemscope itemprop="blogPost">
-  
+    
     <div class="article-meta">
       <a href="/2020/03/21/《Thinking-in-Java》第二十一章/" class="article-date">
-      <time datetime="2020-03-20T17:34:37.000Z" itemprop="datePublished">2020-03-21</time>
+  <time datetime="2020-03-20T17:34:37.000Z" itemprop="datePublished">2020-03-21</time>
 </a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/21/《Thinking-in-Java》第二十一章/">《Thinking in Java》第二十一章</a>
-    </h1>
-  
-
-
-      </header>
       
+      
+      
+      
+    </div>
+    
+
+    
+
     
     <div class="article-entry" itemprop="articleBody">
       
-          
-        
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
       
 
       
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-    </div>
-
       
-      <div class="clearfix"></div>
+      
+      <!-- reward -->
+      
     </div>
     
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+
+    </footer>
+
   </div>
+
   
+
+  
+  
+  
+
+  
+
 </article>
+    
+    <article id="post-《Thinking-in-Java》第二十章" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/20/《Thinking-in-Java》第二十章/">《Thinking in Java》第二十章</a> 
+</h2>
+ 
 
+    </header>
+    
 
-
-
-
-
-
-
-
-
-  
-    <article id="post-《Thinking-in-Java》第二十章" class="article article-type-post" itemscope itemprop="blogPost">
-  
+    
     <div class="article-meta">
       <a href="/2020/03/20/《Thinking-in-Java》第二十章/" class="article-date">
-      <time datetime="2020-03-19T16:03:29.000Z" itemprop="datePublished">2020-03-20</time>
+  <time datetime="2020-03-19T16:03:29.000Z" itemprop="datePublished">2020-03-20</time>
 </a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/20/《Thinking-in-Java》第二十章/">《Thinking in Java》第二十章</a>
-    </h1>
-  
-
-
-      </header>
       
+      
+      
+      
+    </div>
+    
+
+    
+
     
     <div class="article-entry" itemprop="articleBody">
       
-          
-        <h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><h3 id="编写注解处理器"><a href="#编写注解处理器" class="headerlink" title="编写注解处理器"></a>编写注解处理器</h3><h3 id="使用apt处理注解"><a href="#使用apt处理注解" class="headerlink" title="使用apt处理注解"></a>使用apt处理注解</h3><h3 id="将观察者模式用于注解"><a href="#将观察者模式用于注解" class="headerlink" title="将观察者模式用于注解"></a>将观察者模式用于注解</h3><h3 id="基于注解的单元测试"><a href="#基于注解的单元测试" class="headerlink" title="基于注解的单元测试"></a>基于注解的单元测试</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
       
 
       
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-    </div>
-
+      <h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><h3 id="编写注解处理器"><a href="#编写注解处理器" class="headerlink" title="编写注解处理器"></a>编写注解处理器</h3><h3 id="使用apt处理注解"><a href="#使用apt处理注解" class="headerlink" title="使用apt处理注解"></a>使用apt处理注解</h3><h3 id="将观察者模式用于注解"><a href="#将观察者模式用于注解" class="headerlink" title="将观察者模式用于注解"></a>将观察者模式用于注解</h3><h3 id="基于注解的单元测试"><a href="#基于注解的单元测试" class="headerlink" title="基于注解的单元测试"></a>基于注解的单元测试</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
       
-      <div class="clearfix"></div>
+      <!-- reward -->
+      
     </div>
     
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+
+    </footer>
+
   </div>
+
   
+
+  
+  
+  
+
+  
+
 </article>
+    
+    <article id="post-《Thinking-in-Java》第十九章" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/20/《Thinking-in-Java》第十九章/">《Thinking in Java》第十九章</a> 
+</h2>
+ 
 
+    </header>
+    
 
-
-
-
-
-
-
-
-
-  
-    <article id="post-《Thinking-in-Java》第十九章" class="article article-type-post" itemscope itemprop="blogPost">
-  
+    
     <div class="article-meta">
       <a href="/2020/03/20/《Thinking-in-Java》第十九章/" class="article-date">
-      <time datetime="2020-03-19T16:03:19.000Z" itemprop="datePublished">2020-03-20</time>
+  <time datetime="2020-03-19T16:03:19.000Z" itemprop="datePublished">2020-03-20</time>
 </a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/20/《Thinking-in-Java》第十九章/">《Thinking in Java》第十九章</a>
-    </h1>
-  
-
-
-      </header>
       
+      
+      
+      
+    </div>
+    
+
+    
+
     
     <div class="article-entry" itemprop="articleBody">
       
-          
-        <h2 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h2><h3 id="基本enum特性"><a href="#基本enum特性" class="headerlink" title="基本enum特性"></a>基本enum特性</h3><h3 id="向enum中添加新方法"><a href="#向enum中添加新方法" class="headerlink" title="向enum中添加新方法"></a>向enum中添加新方法</h3><h3 id="switch语句中的enum"><a href="#switch语句中的enum" class="headerlink" title="switch语句中的enum"></a>switch语句中的enum</h3><h3 id="values-的神秘之处"><a href="#values-的神秘之处" class="headerlink" title="values()的神秘之处"></a>values()的神秘之处</h3><h3 id="实现，而非继承"><a href="#实现，而非继承" class="headerlink" title="实现，而非继承"></a>实现，而非继承</h3><h3 id="随机选取"><a href="#随机选取" class="headerlink" title="随机选取"></a>随机选取</h3><h3 id="使用接口组织枚举"><a href="#使用接口组织枚举" class="headerlink" title="使用接口组织枚举"></a>使用接口组织枚举</h3><h3 id="使用EnumSet替代标志"><a href="#使用EnumSet替代标志" class="headerlink" title="使用EnumSet替代标志"></a>使用EnumSet替代标志</h3><h3 id="使用EnumMap"><a href="#使用EnumMap" class="headerlink" title="使用EnumMap"></a>使用EnumMap</h3><h3 id="常量相关的方法"><a href="#常量相关的方法" class="headerlink" title="常量相关的方法"></a>常量相关的方法</h3><h3 id="多路分发"><a href="#多路分发" class="headerlink" title="多路分发"></a>多路分发</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
       
 
       
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-    </div>
-
+      <h2 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h2><h3 id="基本enum特性"><a href="#基本enum特性" class="headerlink" title="基本enum特性"></a>基本enum特性</h3><h3 id="向enum中添加新方法"><a href="#向enum中添加新方法" class="headerlink" title="向enum中添加新方法"></a>向enum中添加新方法</h3><h3 id="switch语句中的enum"><a href="#switch语句中的enum" class="headerlink" title="switch语句中的enum"></a>switch语句中的enum</h3><h3 id="values-的神秘之处"><a href="#values-的神秘之处" class="headerlink" title="values()的神秘之处"></a>values()的神秘之处</h3><h3 id="实现，而非继承"><a href="#实现，而非继承" class="headerlink" title="实现，而非继承"></a>实现，而非继承</h3><h3 id="随机选取"><a href="#随机选取" class="headerlink" title="随机选取"></a>随机选取</h3><h3 id="使用接口组织枚举"><a href="#使用接口组织枚举" class="headerlink" title="使用接口组织枚举"></a>使用接口组织枚举</h3><h3 id="使用EnumSet替代标志"><a href="#使用EnumSet替代标志" class="headerlink" title="使用EnumSet替代标志"></a>使用EnumSet替代标志</h3><h3 id="使用EnumMap"><a href="#使用EnumMap" class="headerlink" title="使用EnumMap"></a>使用EnumMap</h3><h3 id="常量相关的方法"><a href="#常量相关的方法" class="headerlink" title="常量相关的方法"></a>常量相关的方法</h3><h3 id="多路分发"><a href="#多路分发" class="headerlink" title="多路分发"></a>多路分发</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
       
-      <div class="clearfix"></div>
+      <!-- reward -->
+      
     </div>
     
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+
+    </footer>
+
   </div>
+
   
+
+  
+  
+  
+
+  
+
 </article>
+    
+    <article id="post-《Thinking-in-Java》第十八章" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/19/《Thinking-in-Java》第十八章/">《Thinking in Java》第十八章</a> 
+</h2>
+ 
 
+    </header>
+    
 
-
-
-
-
-
-
-
-
-  
-    <article id="post-《Thinking-in-Java》第十八章" class="article article-type-post" itemscope itemprop="blogPost">
-  
+    
     <div class="article-meta">
       <a href="/2020/03/19/《Thinking-in-Java》第十八章/" class="article-date">
-      <time datetime="2020-03-19T13:31:17.000Z" itemprop="datePublished">2020-03-19</time>
+  <time datetime="2020-03-19T13:31:17.000Z" itemprop="datePublished">2020-03-19</time>
 </a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/19/《Thinking-in-Java》第十八章/">《Thinking in Java》第十八章</a>
-    </h1>
-  
-
-
-      </header>
       
+      
+      
+      
+    </div>
+    
+
+    
+
     
     <div class="article-entry" itemprop="articleBody">
       
-          
-        <h2 id="Java-I-O系统"><a href="#Java-I-O系统" class="headerlink" title="Java I/O系统"></a>Java I/O系统</h2><h3 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h3><p>File既能代表一个特定的文件，又能代表一个目录下的一组文件的名称。<br>假如我们想查看一个目录列表，可以用两种方法来使用File对象。如果我们调用不带参数的<br>list()方法，便可以获得此File对象包含的全部列表。然而，如果我们想获得一个受限列表，<br>例如，想得到所有扩展名为.java的文件，那么我们就要用到“目录过滤器”，这个类会告诉<br>我们怎样显示符合条件的File对象。</p>
+      
+
+      
+      <h2 id="Java-I-O系统"><a href="#Java-I-O系统" class="headerlink" title="Java I/O系统"></a>Java I/O系统</h2><h3 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h3><p>File既能代表一个特定的文件，又能代表一个目录下的一组文件的名称。<br>假如我们想查看一个目录列表，可以用两种方法来使用File对象。如果我们调用不带参数的<br>list()方法，便可以获得此File对象包含的全部列表。然而，如果我们想获得一个受限列表，<br>例如，想得到所有扩展名为.java的文件，那么我们就要用到“目录过滤器”，这个类会告诉<br>我们怎样显示符合条件的File对象。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DirList</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		File path = <span class="keyword">new</span> File(<span class="string">"."</span>);	<span class="comment">//表示当前目录</span></span><br><span class="line">		String[] list;</span><br><span class="line">		<span class="keyword">if</span>(args.length == <span class="number">0</span>)</span><br><span class="line">			list = path.list();</span><br><span class="line">		<span class="keyword">else</span> </span><br><span class="line">			list = path.list(<span class="keyword">new</span> DirFilter(args[<span class="number">0</span>]));</span><br><span class="line">		Arrays.sort(list, String.CASE_INSENSITIVE_ORDER);</span><br><span class="line">		<span class="keyword">for</span>(String dirItem : list)</span><br><span class="line">			System.out.println(dirItem);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DirFilter</span> <span class="keyword">implements</span> <span class="title">FilenameFilter</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Pattern pattern;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">DirFilter</span><span class="params">(String regex)</span> </span>&#123;</span><br><span class="line">		pattern = Pattern.compile(regex);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">accept</span><span class="params">(File dir, String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> pattern.matcher(name).matches();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="输入和输出"><a href="#输入和输出" class="headerlink" title="输入和输出"></a>输入和输出</h3><p>Java类库中的I/O类分为输入和输出两部分。通过继承，任何自InputStream和Reader派生而来<br>的类都含有名为read()的方法，用于读取单个字节或字节数组。同样，任何自OutputStream<br>或Writer派生而来的类都含有write()的基本方法，用于写入单个字节或字节数组。</p>
@@ -939,66 +767,68 @@
 </ol>
 <h3 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h3><h3 id="Preference"><a href="#Preference" class="headerlink" title="Preference"></a>Preference</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
       
+      <!-- reward -->
+      
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
     
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+
+    </footer>
+
   </div>
+
   
+
+  
+  
+  
+
+  
+
 </article>
+    
+    <article id="post-《Thinking-in-Java》第十七章" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-《Thinking-in-Java》第十七章" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/19/《Thinking-in-Java》第十七章/" class="article-date">
-      <time datetime="2020-03-19T13:31:08.000Z" itemprop="datePublished">2020-03-19</time>
-</a>
-
-    </div>
-  
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/19/《Thinking-in-Java》第十七章/">《Thinking in Java》第十七章</a>
-    </h1>
-  
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/19/《Thinking-in-Java》第十七章/">《Thinking in Java》第十七章</a> 
+</h2>
+ 
 
+    </header>
+    
 
-      </header>
+    
+    <div class="article-meta">
+      <a href="/2020/03/19/《Thinking-in-Java》第十七章/" class="article-date">
+  <time datetime="2020-03-19T13:31:08.000Z" itemprop="datePublished">2020-03-19</time>
+</a>
       
+      
+      
+      
+    </div>
+    
+
+    
+
     
     <div class="article-entry" itemprop="articleBody">
       
-          
-        <h2 id="容器深入研究"><a href="#容器深入研究" class="headerlink" title="容器深入研究"></a>容器深入研究</h2><h3 id="完整的容器分类法"><a href="#完整的容器分类法" class="headerlink" title="完整的容器分类法"></a>完整的容器分类法</h3><p><img src="/images/17collection.jpg" alt="容器的完整分类"></p>
+      
+
+      
+      <h2 id="容器深入研究"><a href="#容器深入研究" class="headerlink" title="容器深入研究"></a>容器深入研究</h2><h3 id="完整的容器分类法"><a href="#完整的容器分类法" class="headerlink" title="完整的容器分类法"></a>完整的容器分类法</h3><p><img src="/images/17collection.jpg" alt="容器的完整分类"></p>
 <h3 id="填充容器"><a href="#填充容器" class="headerlink" title="填充容器"></a>填充容器</h3><h3 id="Collection的功能方法"><a href="#Collection的功能方法" class="headerlink" title="Collection的功能方法"></a>Collection的功能方法</h3><table>
 <thead>
 <tr>
@@ -1279,66 +1109,68 @@
 </ul>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
       
+      <!-- reward -->
+      
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
     
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+
+    </footer>
+
   </div>
+
   
+
+  
+  
+  
+
+  
+
 </article>
+    
+    <article id="post-《Thinking-in-Java》第十六章" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-《Thinking-in-Java》第十六章" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/18/《Thinking-in-Java》第十六章/" class="article-date">
-      <time datetime="2020-03-18T06:49:02.000Z" itemprop="datePublished">2020-03-18</time>
-</a>
-
-    </div>
-  
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/18/《Thinking-in-Java》第十六章/">《Thinking in Java》第十六章</a>
-    </h1>
-  
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/18/《Thinking-in-Java》第十六章/">《Thinking in Java》第十六章</a> 
+</h2>
+ 
 
+    </header>
+    
 
-      </header>
+    
+    <div class="article-meta">
+      <a href="/2020/03/18/《Thinking-in-Java》第十六章/" class="article-date">
+  <time datetime="2020-03-18T06:49:02.000Z" itemprop="datePublished">2020-03-18</time>
+</a>
       
+      
+      
+      
+    </div>
+    
+
+    
+
     
     <div class="article-entry" itemprop="articleBody">
       
-          
-        <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="数组为什么特殊"><a href="#数组为什么特殊" class="headerlink" title="数组为什么特殊"></a>数组为什么特殊</h3><h3 id="数组是第一级对象"><a href="#数组是第一级对象" class="headerlink" title="数组是第一级对象"></a>数组是第一级对象</h3><p>无论使用哪一个类型的数组，数组标识符其实只是一个引用，指向在堆中创建的一个<br>真实对象，这个（数组）对象用以保存指向其他对象的引用。</p>
+      
+
+      
+      <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="数组为什么特殊"><a href="#数组为什么特殊" class="headerlink" title="数组为什么特殊"></a>数组为什么特殊</h3><h3 id="数组是第一级对象"><a href="#数组是第一级对象" class="headerlink" title="数组是第一级对象"></a>数组是第一级对象</h3><p>无论使用哪一个类型的数组，数组标识符其实只是一个引用，指向在堆中创建的一个<br>真实对象，这个（数组）对象用以保存指向其他对象的引用。</p>
 <h3 id="返回一个数组"><a href="#返回一个数组" class="headerlink" title="返回一个数组"></a>返回一个数组</h3><h3 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h3><h3 id="数组与泛型"><a href="#数组与泛型" class="headerlink" title="数组与泛型"></a>数组与泛型</h3><p>通常，数组与泛型不能很好地结合，你不能实例化具有参数类型的数组。<br><code>Peel&lt;Banana&gt;[] peels = new Peel&lt;Banana&gt;[10]; //Illegal</code><br>擦除会移除参数类型信息，而数组必须知道它们所持有的确切类型，以强制保证类型安全。</p>
 <h3 id="创建测试数据"><a href="#创建测试数据" class="headerlink" title="创建测试数据"></a>创建测试数据</h3><h3 id="Arrays实用功能"><a href="#Arrays实用功能" class="headerlink" title="Arrays实用功能"></a>Arrays实用功能</h3><p>在java.util类库中可以找到Arrays类，它有一套用于数组的static实用方法，其中有六个<br>基本方法：equals()用于比较两个数组是否相等（deepEquals()用于多维数组）；<br>fill(), sort(), binarySearch(), toString(), hashCode()<br>Java标准类库提供有static方法System.arraycopy()，用它复制数组比用for循环复制要快很多。</p>
 <ul>
@@ -1347,66 +1179,68 @@
 </ul>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
       
+      <!-- reward -->
+      
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
     
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+
+    </footer>
+
   </div>
+
   
+
+  
+  
+  
+
+  
+
 </article>
+    
+    <article id="post-《Thinking-in-Java》第十五章" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-《Thinking-in-Java》第十五章" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/18/《Thinking-in-Java》第十五章/" class="article-date">
-      <time datetime="2020-03-18T06:48:52.000Z" itemprop="datePublished">2020-03-18</time>
-</a>
-
-    </div>
-  
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/18/《Thinking-in-Java》第十五章/">《Thinking in Java》第十五章</a>
-    </h1>
-  
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/18/《Thinking-in-Java》第十五章/">《Thinking in Java》第十五章</a> 
+</h2>
+ 
 
+    </header>
+    
 
-      </header>
+    
+    <div class="article-meta">
+      <a href="/2020/03/18/《Thinking-in-Java》第十五章/" class="article-date">
+  <time datetime="2020-03-18T06:48:52.000Z" itemprop="datePublished">2020-03-18</time>
+</a>
       
+      
+      
+      
+    </div>
+    
+
+    
+
     
     <div class="article-entry" itemprop="articleBody">
       
-          
-        <h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><h3 id="与C-的比较"><a href="#与C-的比较" class="headerlink" title="与C++的比较"></a>与C++的比较</h3><h3 id="简单泛型"><a href="#简单泛型" class="headerlink" title="简单泛型"></a>简单泛型</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Holder</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> T a;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Holder</span><span class="params">(T a)</span> </span>&#123; <span class="keyword">this</span>.a = a; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T a)</span> </span>&#123; <span class="keyword">this</span>.a = a; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> a; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+      <h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><h3 id="与C-的比较"><a href="#与C-的比较" class="headerlink" title="与C++的比较"></a>与C++的比较</h3><h3 id="简单泛型"><a href="#简单泛型" class="headerlink" title="简单泛型"></a>简单泛型</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Holder</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> T a;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Holder</span><span class="params">(T a)</span> </span>&#123; <span class="keyword">this</span>.a = a; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T a)</span> </span>&#123; <span class="keyword">this</span>.a = a; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> a; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Generator</span>&lt;<span class="title">T</span>&gt; </span>&#123; <span class="function">T <span class="title">next</span><span class="params">()</span></span>; &#125;</span><br></pre></td></tr></table></figure>
 
@@ -1470,66 +1304,68 @@
 <h3 id="对缺乏潜在类型机制的补偿"><a href="#对缺乏潜在类型机制的补偿" class="headerlink" title="对缺乏潜在类型机制的补偿"></a>对缺乏潜在类型机制的补偿</h3><p>尽管Java不支持潜在类型机制，但是这并不意味着有界泛型代码不能在不同的类型层次结构之间应用。</p>
 <h3 id="将函数对象用作策略"><a href="#将函数对象用作策略" class="headerlink" title="将函数对象用作策略"></a>将函数对象用作策略</h3><h3 id="总结：转型真的如此之糟吗？"><a href="#总结：转型真的如此之糟吗？" class="headerlink" title="总结：转型真的如此之糟吗？"></a>总结：转型真的如此之糟吗？</h3>
       
+      <!-- reward -->
+      
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
     
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+
+    </footer>
+
   </div>
+
   
+
+  
+  
+  
+
+  
+
 </article>
+    
+    <article id="post-《Thinking-in-Java》第十四章" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-《Thinking-in-Java》第十四章" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/17/《Thinking-in-Java》第十四章/" class="article-date">
-      <time datetime="2020-03-17T03:50:58.000Z" itemprop="datePublished">2020-03-17</time>
-</a>
-
-    </div>
-  
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/17/《Thinking-in-Java》第十四章/">《Thinking in Java》第十四章</a>
-    </h1>
-  
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/17/《Thinking-in-Java》第十四章/">《Thinking in Java》第十四章</a> 
+</h2>
+ 
 
+    </header>
+    
 
-      </header>
+    
+    <div class="article-meta">
+      <a href="/2020/03/17/《Thinking-in-Java》第十四章/" class="article-date">
+  <time datetime="2020-03-17T03:50:58.000Z" itemprop="datePublished">2020-03-17</time>
+</a>
       
+      
+      
+      
+    </div>
+    
+
+    
+
     
     <div class="article-entry" itemprop="articleBody">
       
-          
-        <h2 id="类型信息"><a href="#类型信息" class="headerlink" title="类型信息"></a>类型信息</h2><h3 id="为什么需要RTTI"><a href="#为什么需要RTTI" class="headerlink" title="为什么需要RTTI"></a>为什么需要RTTI</h3><p>Run-Time Type Identification（RTTI）运行时类型信息识别</p>
+      
+
+      
+      <h2 id="类型信息"><a href="#类型信息" class="headerlink" title="类型信息"></a>类型信息</h2><h3 id="为什么需要RTTI"><a href="#为什么需要RTTI" class="headerlink" title="为什么需要RTTI"></a>为什么需要RTTI</h3><p>Run-Time Type Identification（RTTI）运行时类型信息识别</p>
 <h3 id="Class对象"><a href="#Class对象" class="headerlink" title="Class对象"></a>Class对象</h3><p>类型信息在运行时的表示，是由Class对象完成的，它包含了与类有关的信息。Java使用Class对象来执行其RTTI。<br>所有的类都是在对其第一次使用时，动态加载到JVM中的。当程序第一次对类的静态成员进行引用时，<br>就会加载这个类。这个证明构造器也是类的静态方法。<br>为了生成类的对象，运行这个程序的Java虚拟机（JVM）将使用被称为“类加载器”的子系统。<br>类加载器首先检查这个类的Class对象是否已经加载。如果尚未加载，默认的类加载器就会<br>根据类名查找.class文件。在这个类的字节码被加载时，它们会接受验证，以确保其没有被<br>破坏，并且不包含不良代码（这是Java中用于安全防范目的措施之一）。</p>
 <ul>
 <li>获取Class对象的三种方法<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>&#123;&#125;</span><br><span class="line">Class clazz = Class.forName(<span class="string">"ClassName"</span>);<span class="comment">//通过使用Class的静态方法</span></span><br><span class="line">clazz = ClassName.class;<span class="comment">//通过使用类字面常量</span></span><br><span class="line">clazz = <span class="keyword">new</span> ClassName().getClass();<span class="comment">//通过使用对象的getClass方法</span></span><br></pre></td></tr></table></figure>
@@ -1561,66 +1397,68 @@
 <p>通过静态方法Proxy.newProxyInstance()可以创建动态代理，这个方法需要得到一个类加载器，<br>一个希望该代理实现的接口列表，以及InvocationHandler接口的一个实现。动态代理可以将<br>所有调用重定向到调用处理器，因此通常会向调用处理器的构造器传递一个“实际”的对象的引用，<br>从而得到调用处理器在执行其中介任务时，可以请求转发。</p>
 <h3 id="空对象"><a href="#空对象" class="headerlink" title="空对象"></a>空对象</h3><h3 id="接口与类型信息"><a href="#接口与类型信息" class="headerlink" title="接口与类型信息"></a>接口与类型信息</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
       
+      <!-- reward -->
+      
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
     
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+
+    </footer>
+
   </div>
+
   
+
+  
+  
+  
+
+  
+
 </article>
+    
+    <article id="post-《Thinking-in-Java》第十三章" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-《Thinking-in-Java》第十三章" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/17/《Thinking-in-Java》第十三章/" class="article-date">
-      <time datetime="2020-03-17T03:50:48.000Z" itemprop="datePublished">2020-03-17</time>
-</a>
-
-    </div>
-  
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/17/《Thinking-in-Java》第十三章/">《Thinking in Java》第十三章</a>
-    </h1>
-  
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/17/《Thinking-in-Java》第十三章/">《Thinking in Java》第十三章</a> 
+</h2>
+ 
 
+    </header>
+    
 
-      </header>
+    
+    <div class="article-meta">
+      <a href="/2020/03/17/《Thinking-in-Java》第十三章/" class="article-date">
+  <time datetime="2020-03-17T03:50:48.000Z" itemprop="datePublished">2020-03-17</time>
+</a>
       
+      
+      
+      
+    </div>
+    
+
+    
+
     
     <div class="article-entry" itemprop="articleBody">
       
-          
-        <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="不可变String"><a href="#不可变String" class="headerlink" title="不可变String"></a>不可变String</h3><p>String对象是不可变的。String类中每一个看起来会修改String值得方法，<br>实际上都是创建一个全新的String对象，以包含修改后的字符串内容，<br>而最初的String对象则纹丝未动。（String类被final修饰，不可继承）</p>
+      
+
+      
+      <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="不可变String"><a href="#不可变String" class="headerlink" title="不可变String"></a>不可变String</h3><p>String对象是不可变的。String类中每一个看起来会修改String值得方法，<br>实际上都是创建一个全新的String对象，以包含修改后的字符串内容，<br>而最初的String对象则纹丝未动。（String类被final修饰，不可继承）</p>
 <h3 id="重载“-”与StringBuilder"><a href="#重载“-”与StringBuilder" class="headerlink" title="重载“+”与StringBuilder"></a>重载“+”与StringBuilder</h3><ul>
 <li>String重载了“+”和“+=”操作符，用于字符串拼接，拼接时会产生新的String对象。</li>
 <li>字符串拼接时，为了提高效率，避免产生大量垃圾回收的中间对象，可以使用<br>StringBuilder拼接字符串，然后使用toString()方法，返回字符串。<br>（String拼接字符串时，编译器也会使用StringBuilder优化性能）</li>
@@ -1922,183 +1760,327 @@
 <h3 id="扫描输入"><a href="#扫描输入" class="headerlink" title="扫描输入"></a>扫描输入</h3><h3 id="StringTokenizer"><a href="#StringTokenizer" class="headerlink" title="StringTokenizer"></a>StringTokenizer</h3><p>在Java引入正则表达式（J2SE1.4）和Scanner（JavaSE5）之前，分割字符串的<br>唯一方法是使用StringTokenizer来分词。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
       
+      <!-- reward -->
+      
     </div>
     
-    <div class="article-info article-info-index">
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
 
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+  </article>
+  
+
+  
+  <nav class="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+  </nav>
+  
+</section>
+</div>
+
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2015-2020
+        Kestrel
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
       
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src="https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914"></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Kestrel&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/旅行/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="http://shenyu-vip.lofter.com">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
     </div>
-
-      
-      <div class="clearfix"></div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
     </div>
     
   </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
-
 </div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                &copy; 2020 Kestrel
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
-            </div>
-        </div>
-        
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style="display:none">
-                        <span id="site-visit">极客到访数: 
-                            <span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>, </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style="display:none">
-                        <span id="page-visit">本页阅读量: 
-                            <span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
-        
-    </div>
-</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
 
-    </div>
-    
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-<script src="/js/main.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var backgroundnum = 1;
-            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-        })
-    </script>
-
-
-<!-- Google Analytics -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'xxxxx', 'auto');
-ga('send', 'pageview');
-
-</script>
-<!-- End Google Analytics -->
-
-
-
-	<script>
-	var _hmt = _hmt || [];
-	(function() {
-	  var hm = document.createElement("script");
-	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
-	  var s = document.getElementsByTagName("script")[0]; 
-	  s.parentNode.insertBefore(hm, s);
-	})();
-	</script>
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-<div class="scroll" id="scroll">
-    <a href="#"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
-</div>
 <script>
-    $(document).ready(function() {
-        if ($("#comments").length < 1) {
-            $("#scroll > a:nth-child(2)").hide();
-        };
-    })
-</script>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-  <script language="javascript">
-    $(function() {
-        $("a[title]").each(function() {
-            var a = $(this);
-            var title = a.attr('title');
-            if (title == undefined || title == "") return;
-            a.data('title', title).removeAttr('title').hover(
-            function() {
-                var offset = a.offset();
-                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
-                    top: offset.top - a.outerHeight() - 15,
-                    left: offset.left + a.outerWidth()/2 + 1
-                }).fadeIn(function() {
-                    var pop = $(this);
-                    setTimeout(function() {
-                        pop.remove();
-                    }, pop.text().length * 800);
-                });
-            }, function() {
-                $("#anchortitlecontainer").remove();
-            });
-        });
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
     });
+  } catch (err) {
+  }
+
 </script>
 
 
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+<script src="/dist/main.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+    
   </div>
 </body>
+
 </html>

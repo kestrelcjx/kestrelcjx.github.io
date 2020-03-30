@@ -1,300 +1,99 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  <meta name="baidu-site-verification" content="PIDFoetK5n">
+
+
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    《Thinking in Java》第十三章 |  Kestrel&#39;s Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/dist/main.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
   
   
+
   
-  
-  <title>《Thinking in Java》第十三章 | Kestrel&#39;s Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="字符串不可变StringString对象是不可变的。String类中每一个看起来会修改String值得方法，实际上都是创建一个全新的String对象，以包含修改后的字符串内容，而最初的String对象则纹丝未动。（String类被final修饰，不可继承） 重载“+”与StringBuilder String重载了“+”和“+=”操作符，用于字符串拼接，拼接时会产生新的String对象。 字符串拼">
-<meta name="keywords" content="Java">
-<meta property="og:type" content="article">
-<meta property="og:title" content="《Thinking in Java》第十三章">
-<meta property="og:url" content="https://kestrelcjx.github.io/2020/03/17/《Thinking-in-Java》第十三章/index.html">
-<meta property="og:site_name" content="Kestrel&#39;s Blog">
-<meta property="og:description" content="字符串不可变StringString对象是不可变的。String类中每一个看起来会修改String值得方法，实际上都是创建一个全新的String对象，以包含修改后的字符串内容，而最初的String对象则纹丝未动。（String类被final修饰，不可继承） 重载“+”与StringBuilder String重载了“+”和“+=”操作符，用于字符串拼接，拼接时会产生新的String对象。 字符串拼">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-29T05:01:53.078Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《Thinking in Java》第十三章">
-<meta name="twitter:description" content="字符串不可变StringString对象是不可变的。String类中每一个看起来会修改String值得方法，实际上都是创建一个全新的String对象，以包含修改后的字符串内容，而最初的String对象则纹丝未动。（String类被final修饰，不可继承） 重载“+”与StringBuilder String重载了“+”和“+=”操作符，用于字符串拼接，拼接时会产生新的String对象。 字符串拼">
-  
-    <link rel="alternative" href="/atom.xml" title="Kestrel&#39;s Blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/img/yellowicon.png">
-  
-  
-  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  
-  
-      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  
-  <!-- 加载特效 -->
-    <script src="/js/pace.js"></script>
-    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
-  <script>
-      var yiliaConfig = {
-          fancybox: true,
-          animate: true,
-          isHome: false,
-          isPost: true,
-          isArchive: false,
-          isTag: false,
-          isCategory: false,
-          open_in_new: true
-      }
-  </script>
-</head></html>
+
+</head>
+
+</html>
+
 <body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-《Thinking-in-Java》第十三章" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
-        <a href="/" class="profilepic">
-            
-            <img lazy-src="/img/yellow.png" class="js-avatar">
-            
-        </a>
-        <hgroup>
-          <h1 class="header-author"><a href="/">Kestrel</a></h1>
-        </hgroup>
-        
-        
-            <form>
-                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
-            </form>
-            <div id="local-search-result"></div>
-        
-        
-            <script type="text/javascript">
-                (function() {
-                    'use strict';
-                    function getMatchData(keyword, data) {
-                        var matchData = [];
-                        for(var i =0;i<data.length;i++){
-                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
-                                matchData.push(data[i])
-                        }
-                        return matchData;
-                    }
-                    var $input = $('#local-search-input');
-                    var $resultContent = $('#local-search-result');
-                    $input.keyup(function(){
-                        $.ajax({
-                            url: '/search.json',
-                            dataType: "json",
-                            success: function( json ) {
-                                var str='<ul class=\"search-result-list\">';                
-                                var keyword = $input.val().trim().toLowerCase();
-                                $resultContent.innerHTML = "";
-                                if ($input.val().trim().length <= 0) {
-                                    $resultContent.empty();
-                                    $('#switch-area').show();
-                                    return;
-                                }
-                                var results = getMatchData(keyword, json);
-                                if(results.length === 0){
-                                    $resultContent.empty();
-                                    $('#switch-area').show();
-                                    return;
-                                } 
-                                for(var i =0; i<results.length; i++){
-                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
-                                }
-                                str += "</ul>";
-                                $resultContent.empty();
-                                $resultContent.append(str);
-                                $('#switch-area').hide();
-                            }
-                        });
-                    });
-                })();
-            </script>
-        
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
-                        
-                        
-                        <li>关于我</li>
-                        
-                    </ul>
-                </div>
-            </div>
-        
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/archives/">所有文章</a></li>
-                        
-                            <li><a href="/categories/开发工具/">玩转开发工具</a></li>
-                        
-                            <li><a href="/categories/digital">玩转数码</a></li>
-                        
-                            <li><a href="/categories/algorithm">算法学习</a></li>
-                        
-                            <li><a href="/about/">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fl github" target="_blank" href="https://github.com/kestrelcjx/kestrelcjx.github.io" title="github">github</a>
-                            
-                                <a class="fl weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
-                            
-                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/图论/" style="font-size: 15px;">图论</a> <a href="/tags/小记/" style="font-size: 10px;">小记</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a>
-                    </div>
-                </section>
-                
-                
-                
-                
-                <section class="switch-part switch-part3">
-                
-                    <div id="js-aboutme">ACMer</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>
-</div>
-
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Kestrel</a></h1>
-      </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                
-                    <img lazy-src="/img/yellow.png" class="js-avatar">
-                
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">Kestrel</a></h1>
-            </hgroup>
-            
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/archives/">所有文章</a></li>
-                
-                    <li><a href="/categories/开发工具/">玩转开发工具</a></li>
-                
-                    <li><a href="/categories/digital">玩转数码</a></li>
-                
-                    <li><a href="/categories/algorithm">算法学习</a></li>
-                
-                    <li><a href="/about/">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                <div class="social">
-                    
-                        <a class="github" target="_blank" href="https://github.com/kestrelcjx/kestrelcjx.github.io" title="github">github</a>
-                    
-                        <a class="weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
-                    
-                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-                    
-                </div>
-            </nav>
-        </header>
-    </div>
-</nav>
-      <div class="body-wrap"><article id="post-《Thinking-in-Java》第十三章" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/17/《Thinking-in-Java》第十三章/" class="article-date">
-      <time datetime="2020-03-17T03:50:48.000Z" itemprop="datePublished">2020-03-17</time>
-</a>
-
-    </div>
-  
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      《Thinking in Java》第十三章
-    </h1>
-  
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  《Thinking in Java》第十三章
+</h1>
+ 
 
+    </header>
+    
 
-      </header>
+    
+    <div class="article-meta">
+      <a href="/2020/03/17/《Thinking-in-Java》第十三章/" class="article-date">
+  <time datetime="2020-03-17T03:50:48.000Z" itemprop="datePublished">2020-03-17</time>
+</a>
       
-      <div class="article-info article-info-post">
-        
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.3k字</span>
+        </span>
+    </span>
 
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">5分钟</span>
+        </span>
+    </span>
+</div>
+
+      
     </div>
+    
 
-        <div class="clearfix"></div>
-      </div>
-      
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
     
     <div class="article-entry" itemprop="articleBody">
       
-          
-        <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="不可变String"><a href="#不可变String" class="headerlink" title="不可变String"></a>不可变String</h3><p>String对象是不可变的。String类中每一个看起来会修改String值得方法，<br>实际上都是创建一个全新的String对象，以包含修改后的字符串内容，<br>而最初的String对象则纹丝未动。（String类被final修饰，不可继承）</p>
+      
+
+      
+      <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="不可变String"><a href="#不可变String" class="headerlink" title="不可变String"></a>不可变String</h3><p>String对象是不可变的。String类中每一个看起来会修改String值得方法，<br>实际上都是创建一个全新的String对象，以包含修改后的字符串内容，<br>而最初的String对象则纹丝未动。（String类被final修饰，不可继承）</p>
 <h3 id="重载“-”与StringBuilder"><a href="#重载“-”与StringBuilder" class="headerlink" title="重载“+”与StringBuilder"></a>重载“+”与StringBuilder</h3><ul>
 <li>String重载了“+”和“+=”操作符，用于字符串拼接，拼接时会产生新的String对象。</li>
 <li>字符串拼接时，为了提高效率，避免产生大量垃圾回收的中间对象，可以使用<br>StringBuilder拼接字符串，然后使用toString()方法，返回字符串。<br>（String拼接字符串时，编译器也会使用StringBuilder优化性能）</li>
@@ -596,308 +395,468 @@
 <h3 id="扫描输入"><a href="#扫描输入" class="headerlink" title="扫描输入"></a>扫描输入</h3><h3 id="StringTokenizer"><a href="#StringTokenizer" class="headerlink" title="StringTokenizer"></a>StringTokenizer</h3><p>在Java引入正则表达式（J2SE1.4）和Scanner（JavaSE5）之前，分割字符串的<br>唯一方法是使用StringTokenizer来分词。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
       
-    </div>
-    
-  </div>
-  
-    
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2020/03/17/《Thinking-in-Java》第十三章/">《Thinking in Java》第十三章</a></p>
-        <p><span>文章作者:</span><a href="/" title="访问 Kestrel 的个人博客">Kestrel</a></p>
-        <p><span>发布时间:</span>2020年03月17日 - 11时50分</p>
-        <p><span>最后更新:</span>2020年03月29日 - 13时01分</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/03/17/《Thinking-in-Java》第十三章/" title="《Thinking in Java》第十三章">https://kestrelcjx.github.io/2020/03/17/《Thinking-in-Java》第十三章/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://kestrelcjx.github.io/2020/03/17/《Thinking-in-Java》第十三章/　　作者: Kestrel" title></span>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
-        </p>
-    </div>
-
-
-
-<nav id="article-nav">
-  
-    <a href="/2020/03/17/《Thinking-in-Java》第十四章/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          《Thinking in Java》第十四章
-        
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
       </div>
-    </a>
-  
-  
-    <a href="/2020/03/17/《Thinking-in-Java》第十二章/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">《Thinking in Java》第十二章</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
-
-  
-</article>
-
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串"><span class="toc-number">1.</span> <span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#不可变String"><span class="toc-number">1.1.</span> <span class="toc-text">不可变String</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重载“-”与StringBuilder"><span class="toc-number">1.2.</span> <span class="toc-text">重载“+”与StringBuilder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#无意识的递归"><span class="toc-number">1.3.</span> <span class="toc-text">无意识的递归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#String上的操作"><span class="toc-number">1.4.</span> <span class="toc-text">String上的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#格式化的输出"><span class="toc-number">1.5.</span> <span class="toc-text">格式化的输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正则表达式"><span class="toc-number">1.6.</span> <span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扫描输入"><span class="toc-number">1.7.</span> <span class="toc-text">扫描输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#StringTokenizer"><span class="toc-number">1.8.</span> <span class="toc-text">StringTokenizer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">1.9.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
-</div>
-<style>
-    .left-col .switch-btn {
-        display: none;
-    }
-    .left-col .switch-area {
-        display: none;
-    }
-</style>
-<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-            $(".switch-btn, .switch-area").fadeOut(300);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-            $(".switch-btn, .switch-area").fadeIn(500);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-        $(".switch-btn, .switch-area").show();
-    }
-</script>
-
-
-
-
-<div class="bdsharebuttonbox">
-	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
-	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
-</div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-
-
-
-    
-        <section class="changyan" id="comments">
-  <!--<div id="uyan_frame"></div>-->
-  <div id="SOHUCS"></div>
-  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
-  <script type="text/javascript">
-    window.changyan.api.config({
-      appid: 'xxxx',
-      conf: 'xxxxxxxxx'
-    });
-  </script>
-</section>
-    
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2020/03/17/《Thinking-in-Java》第十四章/" title="上一篇: 《Thinking in Java》第十四章">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-        
-            <a href="/2020/03/17/《Thinking-in-Java》第十二章/" title="下一篇: 《Thinking in Java》第十二章">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
+      
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/03/21/《Thinking-in-Java》第二十二章/">《Thinking in Java》第二十二章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/21/《Thinking-in-Java》第二十一章/">《Thinking in Java》第二十一章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/20/《Thinking-in-Java》第二十章/">《Thinking in Java》第二十章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/20/《Thinking-in-Java》第十九章/">《Thinking in Java》第十九章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/19/《Thinking-in-Java》第十八章/">《Thinking in Java》第十八章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/19/《Thinking-in-Java》第十七章/">《Thinking in Java》第十七章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/18/《Thinking-in-Java》第十六章/">《Thinking in Java》第十六章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/18/《Thinking-in-Java》第十五章/">《Thinking in Java》第十五章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/17/《Thinking-in-Java》第十四章/">《Thinking in Java》第十四章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/17/《Thinking-in-Java》第十三章/">《Thinking in Java》第十三章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/17/《Thinking-in-Java》第十二章/">《Thinking in Java》第十二章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/《Thinking-in-Java》第十一章/">《Thinking in Java》第十一章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/14/《Thinking-in-Java》第十章/">《Thinking in Java》第十章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/14/《Thinking-in-Java》第九章/">《Thinking in Java》第九章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/13/《Thinking-in-Java》第八章/">《Thinking in Java》第八章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/13/《Thinking-in-Java》第七章/">《Thinking in Java》第七章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/13/《Thinking-in-Java》第六章/">《Thinking in Java》第六章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/13/《Thinking-in-Java》第五章/">《Thinking in Java》第五章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/10/《Thinking-in-Java》第四章/">《Thinking in Java》第四章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/09/《Thinking-in-Java》第三章/">《Thinking in Java》第三章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/07/《Thinking-in-Java》第二章/">《Thinking in Java》第二章</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/07/《Thinking-in-Java》第一章/">《Thinking in Java》第一章</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/27/虚树/">虚树</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/26/斯坦纳树-Steiner-Tree/">斯坦纳树(Steiner Tree)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/FWT/">快速沃尔什变换(FWT)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/你好-Hexo/">我的第一篇博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/hello-world/">Hello World</a></li></ul>
     
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-    <script>
-        $(".post-list").addClass("toc-article");
-        // $(".post-list-item a").attr("target","_blank");
-        $("#post-nav-button > a:nth-child(2)").click(function() {
-            $(".fa-bars, .fa-times").toggle();
-            $(".post-list").toggle(300);
-            if ($(".toc").length > 0) {
-                $("#toc, #tocButton").toggle(200, function() {
-                    if ($(".switch-area").is(":visible")) {
-                        $("#toc, .switch-btn, .switch-area").toggle();
-                        $("#tocButton").attr("value", valueHide);
-                        }
-                    })
-            }
-            else {
-                $(".switch-btn, .switch-area").fadeToggle(300);
-            }
-        })
-    </script>
-
-
-
-
-    <script>
-        
-    </script>
-
-</div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                &copy; 2020 Kestrel
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
-            </div>
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
         </div>
         
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style="display:none">
-                        <span id="site-visit">极客到访数: 
-                            <span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>, </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style="display:none">
-                        <span id="page-visit">本页阅读量: 
-                            <span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
-        
-    </div>
-</footer>
-
-    </div>
-    
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-<script src="/js/main.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var backgroundnum = 1;
-            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-        })
-    </script>
-
-
-<!-- Google Analytics -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'xxxxx', 'auto');
-ga('send', 'pageview');
-
-</script>
-<!-- End Google Analytics -->
-
-
-
-	<script>
-	var _hmt = _hmt || [];
-	(function() {
-	  var hm = document.createElement("script");
-	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
-	  var s = document.getElementsByTagName("script")[0]; 
-	  s.parentNode.insertBefore(hm, s);
-	})();
-	</script>
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-<div class="scroll" id="scroll">
-    <a href="#"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
 </div>
-<script>
-    $(document).ready(function() {
-        if ($("#comments").length < 1) {
-            $("#scroll > a:nth-child(2)").hide();
-        };
-    })
-</script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kestrelcjx.github.io/2020/03/17/《Thinking-in-Java》第十三章/" alt="微信分享二维码">
+    </div>
+</div>
 
-  <script language="javascript">
-    $(function() {
-        $("a[title]").each(function() {
-            var a = $(this);
-            var title = a.attr('title');
-            if (title == undefined || title == "") return;
-            a.data('title', title).removeAttr('title').hover(
-            function() {
-                var offset = a.offset();
-                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
-                    top: offset.top - a.outerHeight() - 15,
-                    left: offset.left + a.outerWidth()/2 + 1
-                }).fadeIn(function() {
-                    var pop = $(this);
-                    setTimeout(function() {
-                        pop.remove();
-                    }, pop.text().length * 800);
-                });
-            }, function() {
-                $("#anchortitlecontainer").remove();
-            });
-        });
-    });
-</script>
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
 
+
+    </footer>
 
   </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/03/17/《Thinking-in-Java》第十四章/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            《Thinking in Java》第十四章
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/03/17/《Thinking-in-Java》第十二章/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">《Thinking in Java》第十二章</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2015-2020
+        Kestrel
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src="https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914"></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Kestrel&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/旅行/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="http://shenyu-vip.lofter.com">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+<script src="/dist/main.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+    
+  </div>
 </body>
+
 </html>
