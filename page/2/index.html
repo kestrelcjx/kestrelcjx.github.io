@@ -69,369 +69,6 @@
     
     
     
-    <article id="post-《Thinking-in-Java》第十三章" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/17/《Thinking-in-Java》第十三章/">《Thinking in Java》第十三章</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/17/《Thinking-in-Java》第十三章/" class="article-date">
-  <time datetime="2020-03-17T03:50:48.000Z" itemprop="datePublished">2020-03-17</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="不可变String"><a href="#不可变String" class="headerlink" title="不可变String"></a>不可变String</h3><p>String对象是不可变的。String类中每一个看起来会修改String值得方法，<br>实际上都是创建一个全新的String对象，以包含修改后的字符串内容，<br>而最初的String对象则纹丝未动。（String类被final修饰，不可继承）</p>
-<h3 id="重载“-”与StringBuilder"><a href="#重载“-”与StringBuilder" class="headerlink" title="重载“+”与StringBuilder"></a>重载“+”与StringBuilder</h3><ul>
-<li>String重载了“+”和“+=”操作符，用于字符串拼接，拼接时会产生新的String对象。</li>
-<li>字符串拼接时，为了提高效率，避免产生大量垃圾回收的中间对象，可以使用<br>StringBuilder拼接字符串，然后使用toString()方法，返回字符串。<br>（String拼接字符串时，编译器也会使用StringBuilder优化性能）</li>
-<li>使用JDK自带的工具javap来反编译.class文件</li>
-</ul>
-<h3 id="无意识的递归"><a href="#无意识的递归" class="headerlink" title="无意识的递归"></a>无意识的递归</h3><p>重写类的toString()方法时，应当避免toString()方法的递归。</p>
-<h3 id="String上的操作"><a href="#String上的操作" class="headerlink" title="String上的操作"></a>String上的操作</h3><h3 id="格式化的输出"><a href="#格式化的输出" class="headerlink" title="格式化的输出"></a>格式化的输出</h3><ul>
-<li><p>printf()<br>Java SE5引入的format方法可用于PrintStream或PrintWriter对象，format()方法模仿<br>自C的printf()，java中也可使用printf()。</p>
-</li>
-<li><p>Formatter类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Formatter f = <span class="keyword">new</span> Formatter(System.out);</span><br><span class="line">f.format(<span class="string">"%s The Turtle is at (%d, %d)\n"</span>, <span class="string">"xxx"</span>, <span class="number">1</span>, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>格式化说明符<br><code>%[argument_index$][flags][width][.precision]conversion</code><br>最常见的应用是控制一个域的最小尺寸，这可以通过指定width实现。<br>Formatter对象通过在必要时添加空格，来确保一个域至少达到某个长度。<br>在默认的情况下，数据是右对齐，不过可以通过使用“-”标志来改变对齐方向。<br>与width相对的是precision，它用来指明最大尺寸。width可以应用于各种类型<br>的数据转换，并且其行为方式都一样。precision则不然，不是所有类型的数据<br>都能使用precision，而且，应用于不同类型的数据转换时，precision的意义也<br>不同。在将precision应用于String时，它表示打印String时输出字符的最大数量。<br>而在将precision应用于浮点数时，它表示小数部分要显示出来的位数（默认6位），<br>如果小数位数过多则舍入，太少则在尾部补零。由于整数没有小数部分，所以<br>precision无法应用于整数，如果你对整数应用precision，则会触发异常。</p>
-</li>
-<li><p>Formatter转换</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>d</th>
-<th>整数型（十进制）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>c</td>
-<td>Unicode字符</td>
-</tr>
-<tr>
-<td>b</td>
-<td>Boolean值</td>
-</tr>
-<tr>
-<td>s</td>
-<td>String</td>
-</tr>
-<tr>
-<td>f</td>
-<td>浮点数（十进制）</td>
-</tr>
-<tr>
-<td>e</td>
-<td>浮点数（科学计数）</td>
-</tr>
-<tr>
-<td>x</td>
-<td>整数（十六进制）</td>
-</tr>
-<tr>
-<td>h</td>
-<td>散列码（十六进制）</td>
-</tr>
-<tr>
-<td>%</td>
-<td>字符“%”</td>
-</tr>
-</tbody></table>
-<ul>
-<li>String.format()</li>
-</ul>
-<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><ul>
-<li>创建正则表达式</li>
-</ul>
-<ol>
-<li>字符</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>B</th>
-<th>指定字符B</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>\xhh</td>
-<td>十六进制值为oxhh的字符</td>
-</tr>
-<tr>
-<td>\uhhhh</td>
-<td>十六进制表示为oxhhhh的Unicode字符</td>
-</tr>
-<tr>
-<td>\t</td>
-<td>制表符Tab</td>
-</tr>
-<tr>
-<td>\n</td>
-<td>换行符</td>
-</tr>
-<tr>
-<td>\r</td>
-<td>回车</td>
-</tr>
-<tr>
-<td>\f</td>
-<td>换页</td>
-</tr>
-<tr>
-<td>\e</td>
-<td>转义（Escape）</td>
-</tr>
-</tbody></table>
-<ol start="2">
-<li>字符类</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>.</th>
-<th>任意字符</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>[abc]</td>
-<td>包含a、b和c的任意字符（和a</td>
-</tr>
-<tr>
-<td>[^abc]</td>
-<td>除了a、b和c之外的任何字符</td>
-</tr>
-<tr>
-<td>[a-zA-Z]</td>
-<td>从a到z或从A到Z的任何字符</td>
-</tr>
-<tr>
-<td>[abc[hij]]</td>
-<td>任意a、b、c、h、i和j字符</td>
-</tr>
-<tr>
-<td>[a-z&amp;&amp;[hij]]</td>
-<td>任意h、i和j（交集）</td>
-</tr>
-<tr>
-<td>\s</td>
-<td>空白符（空格、tab、换行、换页和回车）</td>
-</tr>
-<tr>
-<td>\S</td>
-<td>非空白符</td>
-</tr>
-<tr>
-<td>\d</td>
-<td>数字[0-9]</td>
-</tr>
-<tr>
-<td>\D</td>
-<td>非数字[^0-9]</td>
-</tr>
-<tr>
-<td>\w</td>
-<td>词字符[a-zA-Z0-9]</td>
-</tr>
-<tr>
-<td>\W</td>
-<td>非词字符[^\w]</td>
-</tr>
-</tbody></table>
-<ol start="3">
-<li>逻辑操作符</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>XY</th>
-<th>Y跟在X后面</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>X|Y</td>
-<td>X或Y</td>
-</tr>
-<tr>
-<td>(X)</td>
-<td>捕获组。可以在表达式中用\i引用第i个捕获组</td>
-</tr>
-</tbody></table>
-<ol start="4">
-<li>边界匹配符</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>^</th>
-<th>一行的开始</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>$</td>
-<td>一行的结束</td>
-</tr>
-<tr>
-<td>\b</td>
-<td>词的边界</td>
-</tr>
-<tr>
-<td>\B</td>
-<td>非词的边界</td>
-</tr>
-<tr>
-<td>\G</td>
-<td>前一个匹配的结束</td>
-</tr>
-</tbody></table>
-<ol start="5">
-<li>量词<br>贪婪型：尽可能多的匹配<br>勉强型：尽可能少的匹配<br>占有型：当正则表达式被应用于字符串时，它会产生相当多的状态，<br>以便在匹配失败时可以回溯。而“占有的”量词并不保存这些中间状态，<br>因此它们可以防止回溯。它们常常用于防止正则表达式失控，因此可以<br>使正则表达式执行起来更有效。</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>贪婪型</th>
-<th>勉强型</th>
-<th>占有型</th>
-<th>如何匹配</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>X?</td>
-<td>X??</td>
-<td>X?+</td>
-<td>一个或零个X</td>
-</tr>
-<tr>
-<td>X*</td>
-<td>X*?</td>
-<td>X*+</td>
-<td>零个或多个X</td>
-</tr>
-<tr>
-<td>X+</td>
-<td>X+?</td>
-<td>X++</td>
-<td>一个或多个X</td>
-</tr>
-<tr>
-<td>X{n}</td>
-<td>X{n}?</td>
-<td>X{n}+</td>
-<td>恰好n次X</td>
-</tr>
-<tr>
-<td>X{n,}</td>
-<td>X{n,}?</td>
-<td>X{n,}+</td>
-<td>至少n次X</td>
-</tr>
-<tr>
-<td>X{n,m}</td>
-<td>X{n,m}?</td>
-<td>X{n,m}+</td>
-<td>X至少n次，且不超过m次</td>
-</tr>
-</tbody></table>
-<ol start="6">
-<li>Pattern标记</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>编译标记</th>
-<th>效果</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Pattern.CANON_EQ</td>
-<td>两个字符当且仅当它们的完全规范分解相匹配时，就认为它们是匹配的（默认不考虑规范的等价性）。</td>
-</tr>
-<tr>
-<td>Pattern.CASE_INSENSITIVE(?i)</td>
-<td>不略大小写</td>
-</tr>
-<tr>
-<td>Pattern.COMMENTS(?x)</td>
-<td>忽略空格符，并且以#开始知道行末的注释也会被忽略。</td>
-</tr>
-<tr>
-<td>Pattern.DOTALL(?s)</td>
-<td>“.”匹配所有字符。（默认不匹配行终结符）</td>
-</tr>
-<tr>
-<td>Pattern.MULTILINE(?m)</td>
-<td>匹配表达式^和$匹配一行的开始和结束。（默认匹配完整字符串的开始和结束）</td>
-</tr>
-<tr>
-<td>Pattern.UNICODE_CASE(?u)</td>
-<td>开启大小写不敏感时，unicode也大小写不敏感。（默认大小写不敏感不考虑unicode）</td>
-</tr>
-<tr>
-<td>Pattern.UNIX_LINES(?d)</td>
-<td>“.”、“^”和“$”只识别终结符\n</td>
-</tr>
-</tbody></table>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	Pattern p = Pattern.compile(<span class="string">"^java"</span>, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);</span><br><span class="line">	Matcher m = p.matcher(<span class="string">"..."</span>);</span><br><span class="line">	<span class="keyword">while</span>(m.find())</span><br><span class="line">		System.out.println(m.group());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="7">
-<li>split()</li>
-<li>替换操作</li>
-<li>reset()</li>
-</ol>
-<h3 id="扫描输入"><a href="#扫描输入" class="headerlink" title="扫描输入"></a>扫描输入</h3><h3 id="StringTokenizer"><a href="#StringTokenizer" class="headerlink" title="StringTokenizer"></a>StringTokenizer</h3><p>在Java引入正则表达式（J2SE1.4）和Scanner（JavaSE5）之前，分割字符串的<br>唯一方法是使用StringTokenizer来分词。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
     <article id="post-《Thinking-in-Java》第十二章" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -1154,6 +791,78 @@
 <h3 id="Foreach语法"><a href="#Foreach语法" class="headerlink" title="Foreach语法"></a>Foreach语法</h3><p>数组和任何Iterable对象都可以使用Foreach语法。</p>
 <h3 id="return"><a href="#return" class="headerlink" title="return"></a>return</h3><h3 id="break和continue"><a href="#break和continue" class="headerlink" title="break和continue"></a>break和continue</h3><p>在嵌套for和while循环中，可以在循环前添加标签，并使用break和continue跳到标签处。</p>
 <h3 id="臭名昭著的goto"><a href="#臭名昭著的goto" class="headerlink" title="臭名昭著的goto"></a>臭名昭著的goto</h3><h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3><p>switch语句中，case后的值必须是整数值。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-《Thinking-in-Java》第三章" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/09/《Thinking-in-Java》第三章/">《Thinking in Java》第三章</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/09/《Thinking-in-Java》第三章/" class="article-date">
+  <time datetime="2020-03-09T02:52:49.000Z" itemprop="datePublished">2020-03-09</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><h3 id="更简单的打印语句"><a href="#更简单的打印语句" class="headerlink" title="更简单的打印语句"></a>更简单的打印语句</h3><p>静态导入import static(类、变量、方法)</p>
+<h3 id="使用Java操作符"><a href="#使用Java操作符" class="headerlink" title="使用Java操作符"></a>使用Java操作符</h3><h3 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h3><h3 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h3><h3 id="算数操作符"><a href="#算数操作符" class="headerlink" title="算数操作符"></a>算数操作符</h3><p>一元减号用于转变数据的符号，而一元加号只是为了与一元减号相对应，<br>但是它唯一的作用仅仅是将较小类型的操作数提升为int。</p>
+<h3 id="自动递增和递减"><a href="#自动递增和递减" class="headerlink" title="自动递增和递减"></a>自动递增和递减</h3><h3 id="关系操作符"><a href="#关系操作符" class="headerlink" title="关系操作符"></a>关系操作符</h3><h3 id="逻辑操作符"><a href="#逻辑操作符" class="headerlink" title="逻辑操作符"></a>逻辑操作符</h3><p>与C/C++不同的是，不可将一个非布尔值当作布尔值在逻辑表达式中使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">boolean flag = 1 &amp;&amp; 1	//ERROR</span><br><span class="line">if(1)	//ERROR</span><br></pre></td></tr></table></figure>
+
+<h3 id="直接常量"><a href="#直接常量" class="headerlink" title="直接常量"></a>直接常量</h3><h3 id="按位操作符"><a href="#按位操作符" class="headerlink" title="按位操作符"></a>按位操作符</h3><h3 id="移位操作符"><a href="#移位操作符" class="headerlink" title="移位操作符"></a>移位操作符</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;=</span><br><span class="line">&gt;&gt;=			//逻辑右移，最高位补符号位</span><br><span class="line">&gt;&gt;&gt;=		//最高位补0</span><br></pre></td></tr></table></figure>
+
+<p>如果对char、byte或short类型进行移位处理，它们会被转换为int类型。<br>移位操作只对数值右端的低5位有效(因为2的5次方为32，而int类型只有32位)，<br>long为低6位有效（2的6次方64）。根本原因是Java中规定，没有任何移位操作符可以让一个数字丢弃所有的位。</p>
+<h3 id="三元操作符if-else"><a href="#三元操作符if-else" class="headerlink" title="三元操作符if-else"></a>三元操作符if-else</h3><h3 id="字符串操作符-和"><a href="#字符串操作符-和" class="headerlink" title="字符串操作符+和+="></a>字符串操作符+和+=</h3><h3 id="使用操作符时常犯的错误"><a href="#使用操作符时常犯的错误" class="headerlink" title="使用操作符时常犯的错误"></a>使用操作符时常犯的错误</h3><h3 id="类型转换操作符"><a href="#类型转换操作符" class="headerlink" title="类型转换操作符"></a>类型转换操作符</h3><h3 id="Java没有sizeof"><a href="#Java没有sizeof" class="headerlink" title="Java没有sizeof"></a>Java没有sizeof</h3><h3 id="操作符小结"><a href="#操作符小结" class="headerlink" title="操作符小结"></a>操作符小结</h3><p>在char、byte和short中，进行算术运算会转换为int类型。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
       
       <!-- reward -->
