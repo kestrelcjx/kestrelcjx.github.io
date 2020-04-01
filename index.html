@@ -205,24 +205,91 @@
 
 <p>submit()方法会产生Future对象，它用Callable返回结果的特定类型进行了参数化。你可以<br>用isDone()方法来查询Future是否已经完成。当任务完成时，它具有一个结果，你可以调用<br>get()方法来获取该结果。你也可以不用isDone()进行检查就直接调用get()，在这种情况下，<br>get()将阻塞，直至结果准备就绪。你还可以在试图调用get()来获取结果之前，先调用具有<br>超时的get()，或者调用isDone()来查看任务是否完成。</p>
 <ul>
-<li>休眠</li>
+<li>休眠<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SleepingTask</span> <span class="keyword">extends</span> <span class="title">LiftOff</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			System.out.print(status());</span><br><span class="line">			TimeUnit.MILLISECONDS.sleep(<span class="number">100</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span>(InterruptedException e) &#123;</span><br><span class="line">			System.err.println(<span class="string">"Interrupted"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>对sleep()的调用可以抛出InterruptedException异常，并且它在run()中被捕获。因为异常<br>不能跨线程传播回main()，所以必须在本地处理所有任务内部产生的异常。<br>Java SE5引入了更加显式的sleep()版本，作为TimeUnit类的一部分，就像上面示例所示的<br>那样。这个方法允许你指定sleep()延迟的时间单元，因此可以提供更好的阅读性。</p>
+<ul>
 <li>优先级</li>
-<li>让步</li>
-<li>后台线程</li>
+</ul>
+<p>线程的优先级将该线程的重要性传递给了调度器。尽管CPU处理现有线程集的顺序是不确定的，<br>但是调度器将倾向于优先权最高的线程先执行。在绝大多数时间里，所有线程都应该以默认的<br>优先级运行。优先级有1~10共10个等级。</p>
+<ol>
+<li>MAX_PRIORITY 10</li>
+<li>NORM_PRIORITY 5</li>
+<li>MIN_PRIORITY 1<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimplePriorities</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">	...</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Thread.currentThread().setPriority(<span class="number">5</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li><p>让步<br>如果知道已经完成了在run()方法的循环的一次迭代过程中所需的工作，就可以给线程调度<br>机制一个暗示：你的工作已经做的差不多了，可以让别的线程使用CPU了。这个暗示将通过调用<br>yield()方法来作出（不过这只是一个暗示，没有任何机制保证它将会被采纳）。</p>
+</li>
+<li><p>后台线程</p>
+</li>
+</ul>
+<p>所谓后台线程，是指在程序运行的时候在后台提供一种通用的服务的线程，并且这种县城并<br>不属于程序中不可或缺的部分。因此，当所有的非后台线程结束时，程序也就终止了，同时会<br>杀死所有进程中的所有后台线程。反过来说，只要有任何非后台线程还在运行，程序就不会终止<br>必须在线程启动之前调用setDaemon()方法，才能把它设置为后台线程。同时，后台线程派生出<br>的子线程也默认是后台线程。当最后一个非后台线程终止时，后台线程会“突然”终止，而不会<br>执行finally子句。</p>
+<ul>
 <li>编码的变体</li>
+</ul>
+<p>可以直接继承Thread类，重写run()方法，实现线程类。</p>
+<ul>
 <li>加入一个线程</li>
+</ul>
+<p>一个线程可以在其他线程之上调用join()方法，其效果是等待一段时间直到第二个线程结束<br>才继续执行。如果某个线程在另一个线程t上调用t.join()方法，此线程将被挂起，直到目标<br>t结束才恢复（即t.isAlive()返回为假）。<br>当另一个线程在该线程上调用interrupt()时，将给该线程设定一个标志，表明该线程已经被<br>中断。然而，异常被捕获时将清除这个标志，所以在catch子句中，在异常被捕获的时候这个<br>标志总是为假。除异常之外，这个标志还可用于其他情况，比如线程可能会检查其中断情况。</p>
+<ul>
 <li>捕获异常</li>
 </ul>
+<p>Thread.UncaughtExceptionHandler是Java SE5中的新接口，它允许你在每个Thread对象上都<br>附着一个一场处理器。Thread.UncaughtExceptionHandler.uncaughtException()会在线程因<br>为捕获的异常而临近死亡时被调用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyUncaughtExceptionHandler</span> <span class="keyword">implements</span> <span class="title">Thread</span>.<span class="title">UncaughtExceptionHandler</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">uncaughtExceptionHandler</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		...</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HandlerThreadFactory</span> <span class="keyword">implements</span> <span class="title">ThreadFactory</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Thread <span class="title">newThread</span><span class="params">(Runnable r)</span> </span>&#123;</span><br><span class="line">		Thread t = <span class="keyword">new</span> Thread(r);</span><br><span class="line">		t.setUncaughtExceptionHandler(<span class="keyword">new</span> MyUncaughtExceptionHandler());</span><br><span class="line">		<span class="keyword">return</span> t;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
 <h3 id="共享受限资源"><a href="#共享受限资源" class="headerlink" title="共享受限资源"></a>共享受限资源</h3><ul>
 <li>使用synchronized关键字</li>
-<li>使用显式的Lock对象</li>
-<li>原子性与易变形</li>
-<li>原子类</li>
-<li>临界区</li>
-<li>在其他对象上同步</li>
-<li>线程本地存储</li>
 </ul>
-<h3 id="终结任务"><a href="#终结任务" class="headerlink" title="终结任务"></a>终结任务</h3><h3 id="线程之间的协作"><a href="#线程之间的协作" class="headerlink" title="线程之间的协作"></a>线程之间的协作</h3><h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><h3 id="新类库中的构件"><a href="#新类库中的构件" class="headerlink" title="新类库中的构件"></a>新类库中的构件</h3><h3 id="仿真"><a href="#仿真" class="headerlink" title="仿真"></a>仿真</h3><h3 id="性能调优"><a href="#性能调优" class="headerlink" title="性能调优"></a>性能调优</h3><h3 id="活动对象"><a href="#活动对象" class="headerlink" title="活动对象"></a>活动对象</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
+<p>Java以提供关键字synchronized的形式，为防止资源冲突提供了内置支持。当任务要执行被<br>synchronized关键字保护的代码片段的时候，它将检查锁是否可用，然后获取锁，执行代码，<br>释放锁。如果某个任务处于一个对标记为synchronized的方法调用中，那么在这个线程从这个<br>方法返回之前，其他所有调用类中任何标记为synchronized方法的线程都会被阻塞。<br>所有对象都自动包含单一的锁（也称为监视器）。当在对象上调用其任意synchronized方法<br>的时候，此对象都会被加锁，这时该对象上其他的synchronized方法只有等到前一个方法调用<br>完毕并释放了锁之后才能被调用。<br>注意，在使用并发时，将域设置为private是非常重要的，否则，synchronized关键字就不能<br>防止其他任务直接访问域，这样就会产生冲突。<br>一个任务可以多次获得对象的锁。JVM负责跟踪对象被加锁的次数。如果一个对象被解锁，<br>其计数为0。</p>
+<ul>
+<li>使用显式的Lock对象</li>
+</ul>
+<p>Java SE5的java.util.concurrent类库还包含有定义在java.util.concurrent.locks中的显式<br>的互斥机制。Lock对象必须被显式地创建、锁定和释放。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MutexEvenGenerator</span> <span class="keyword">extends</span> <span class="title">IntGenerator</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> currentEvenValue = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">private</span> Lock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		lock.lock();</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			...</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			lock.unlock();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>原子性与易变形</li>
+</ul>
+<p>原子操作是不能被线程调度机制中断的操作；一旦操作开始，那么它一定可以在可能发生的<br>“上下文切换”之前（切换到其他线程执行）执行完毕。<br>原子性可以应用于除long和double之外的所有基本类型之上的“简单操作”。对于读取和写入<br>long和double之外的基本类型变量这样的操作，可以保证它们会被当作不可分（原子）的操作<br>来操作内存。但是JVM可以将64位（long和double变量）的读取和写入当作两个分离的32为操作<br>来执行，这就产生了在一个读取和写入操作中间发生上下文切换，从而导致不同的任务可以<br>看到不正确结果的可能性（这有时被称为字撕裂，因为你可能看到部分修改过的数值）。但是，<br>当你定义long或double变量时，如果使用volatile关键字，就会获得（简单赋值和返回操作的）<br>原子性（注意，在Java SE5之前，volatile一直未能正确地工作）。不同的JVM可以任意地提供<br>更强的保证，但是你不应该依赖于平台相关的特性。<br>volatile关键字还确保应用中的可视性。如果你将一个域声明为volatile的，那么只要对这个<br>域产生了写操作，那么所有的读操作就可以看到这个修改。即使使用了本地缓存，情况也确实<br>如此，volatile域会被立即写入到主存中，而读取操作将发生在主存中，</p>
+<ul>
+<li>原子类</li>
+</ul>
+<p>Java SE5引入了诸如AtomicInteger、AtomicLong、AtomicReference等特殊的原子性变量类，<br>它们提供下面形式的原子性条件更新操作：<code>boolean compareAndSet(expectedValue, updateValue)</code></p>
+<ul>
+<li><p>临界区</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(syncObject) &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在其他对象上同步</p>
+</li>
+<li><p>线程本地存储</p>
+</li>
+</ul>
+<p>线程本地存储是一种自动化机制，可以为使用相同变量的每个不同的线程都创建不同的存储。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.*;</span><br><span class="line"><span class="keyword">import</span> java.uitl.*;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Accessor</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">	...</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(!Trhead.currentThread().isInterrupted()) &#123;</span><br><span class="line">			ThreadLocalVariableHolder.increament();</span><br><span class="line">			...</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadLocalVariableHolder</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> ThreadLoal&lt;Integer&gt; value = <span class="keyword">new</span> ThreadLocal&lt;Integer&gt;() &#123;</span><br><span class="line">		<span class="keyword">private</span> Random rand = <span class="keyword">new</span> Random(<span class="number">47</span>);</span><br><span class="line">		<span class="function"><span class="keyword">protected</span> <span class="keyword">synchronized</span> Integer <span class="title">initialValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> rand.nextInt(<span class="number">1000</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">increment</span><span class="params">()</span> </span>&#123; </span><br><span class="line">		value.set(value.get()+<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> value.get(); &#125;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="终结任务"><a href="#终结任务" class="headerlink" title="终结任务"></a>终结任务</h3><ul>
+<li>线程状态</li>
+</ul>
+<ol>
+<li>新建（new）：当线程被创建时，它只会短暂地处于这种状态。此时它已经分配了必需的<br>系统资源，并执行了初始化。此刻线程已经有资格获得CPU时间了，之后调度器将把这个线程<br>转变为可运行状态或阻塞状态。</li>
+<li>就绪（Runnable）：在这种状态下，只要调度器把时间片分配给线程，线程就可以运行。<br>也就是说，在任意时刻，线程可以运行也可以不运行。只要调度器能分配时间片给线程，它<br>就可以运行；这不同于死亡和阻塞状态。</li>
+<li>阻塞（Blocked）：线程能够运行，但有某个条件阻止它的运行。当线程处于阻塞状态时，<br>调度器将忽略线程，不会分配给线程任何CPU时间。直到线程重新进入了就绪状态，它才能<br>执行操作。</li>
+<li>死亡（Dead）：处于死亡或终止状态的线程将不再是可调度的，并且再也不会得到CPU时间，<br>它的任务已结束，或不再是可运行的。任务死亡的通常方式是从run()方法返回，但是任务的<br>线程还可以被中断。</li>
+</ol>
+<ul>
+<li>进入阻塞状态</li>
+</ul>
+<ol>
+<li>通过调用sleep(milliseconds)使任务进入休眠状态，在这种情况下，任务在指定的时间<br>内不会运行。 </li>
+<li>你通过调用wait()使线程挂起。直到线程得到了notify()和notifyAll()消息（或者在Java<br>SE5的java.util.concurrent类库中等价的signal()或signalAll()消息），线程才会进入就绪状态</li>
+<li>任务在等待某个输入/输出完成。</li>
+<li>任务试图在某个对象上调用其同步控制方法，但是对象锁不可用，因为另一个任务已经<br>获取了这个锁。</li>
+</ol>
+<h3 id="线程之间的协作"><a href="#线程之间的协作" class="headerlink" title="线程之间的协作"></a>线程之间的协作</h3><h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><h3 id="新类库中的构件"><a href="#新类库中的构件" class="headerlink" title="新类库中的构件"></a>新类库中的构件</h3><h3 id="仿真"><a href="#仿真" class="headerlink" title="仿真"></a>仿真</h3><h3 id="性能调优"><a href="#性能调优" class="headerlink" title="性能调优"></a>性能调优</h3><h3 id="活动对象"><a href="#活动对象" class="headerlink" title="活动对象"></a>活动对象</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
       
       <!-- reward -->
       
