@@ -450,7 +450,8 @@
       
 
       
-      <h2 id="快速沃尔什变换-FWT"><a href="#快速沃尔什变换-FWT" class="headerlink" title="快速沃尔什变换(FWT)"></a>快速沃尔什变换(FWT)</h2><p>用途：求<br>$$C(i) = \sum_{i=j@k}A(j)*B(k)$$<br>其中@为位运算或(|), 与(&amp;), 异或(^)中一种,算法复杂度O($n\log(n)$)。</p>
+      <p>\lim_{n\to +\infty}</p>
+<h2 id="快速沃尔什变换-FWT"><a href="#快速沃尔什变换-FWT" class="headerlink" title="快速沃尔什变换(FWT)"></a>快速沃尔什变换(FWT)</h2><p>用途：求<br>$$C(i) = \sum_{i=j@k}A(j)*B(k)$$<br>其中@为位运算或(|), 与(&amp;), 异或(^)中一种,算法复杂度O($n\log(n)$)。</p>
 <hr>
 <h3 id="1-或运算"><a href="#1-或运算" class="headerlink" title="1. 或运算"></a>1. 或运算</h3><p>令
 $$FWT[A] = (A_1, A_2…)$$<br>其中<br>$$A_i = \sum_{i=i|j}A[j]$$<br>用A0表示A的前一半，A1表示A的后一半，那么如果已经求得FWT[A0]和FWT[A1]，则可以得到<br><code>FWT[A] = (FWT[A0], FWT[A0]+FWT[A1]) (‘+’ 对应位相加) 当A长度为1时，FWT[A] = A</code>(A0最高<br>位为0，对FWT[A]后一半能贡献，而A1最高位为1，对FWT[A]前一半不能贡献)。所以，就可以<br>通过迭代分治，在O(nlogn)求得FWT[A]。<br>并且，由<br>$$C(i) = \sum_{i=j|k}A(j)*B(k)$$<br>得到<code>FWT[C] = FWT[A]*FWT[B] (‘*’ 对应位相乘)</code>，所以能在求得FWT[A]和FWT[B]基础上，在<br>O(n)求得FWT[C]。<br>最后，需要将FWT[C]恢复为C。通过观察求FWT[A]的过程，发现只需要将FWT[C]的后半部分减<br>去FWT[C]的前半部分<code>IFWT[C] = (IFWT[C0], IFWT[C1]-IFWT[C0]) 当C长度为1时，IFWT[C] = C</code><br>就可以得到C。所以，同样能通过逆向迭代分治，在O(nlogn)求得C。</p>
