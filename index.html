@@ -330,7 +330,39 @@
 <li>必须有循环等待。</li>
 </ol>
 <p>防止死锁发生，只需要破环其中一个条件即可。</p>
-<h3 id="新类库中的构件"><a href="#新类库中的构件" class="headerlink" title="新类库中的构件"></a>新类库中的构件</h3><h3 id="仿真"><a href="#仿真" class="headerlink" title="仿真"></a>仿真</h3><h3 id="性能调优"><a href="#性能调优" class="headerlink" title="性能调优"></a>性能调优</h3><h3 id="活动对象"><a href="#活动对象" class="headerlink" title="活动对象"></a>活动对象</h3><p>活动对象，每个对象都维护着它自己的工作线程和消息队列，并且所有这种对象的请求都将<br>进入队列排队，任何时刻偶读只能运行其中的一个。（Executors.newSingleThreadExecutor）</p>
+<h3 id="新类库中的构件"><a href="#新类库中的构件" class="headerlink" title="新类库中的构件"></a>新类库中的构件</h3><ul>
+<li>CountDownLatch</li>
+</ul>
+<p>CountDownLatch被用来同步一个或多个任务，强制它们等待由其他任务执行的一组操作完成。<br>可以向CountDownLatch对象设置一个初始计数值，任何在这个对象上调用wait()的方法都将<br>阻塞，直至这个计数值到达0。其他任务在结束其工作时，可以在该对象上调用countDown()<br>来减小这个计数值。CountDownLatch被设置为只触发一次，计数值不能重置。</p>
+<ul>
+<li>CyclicBarrier</li>
+</ul>
+<p>CyclicBarrier适用于这样的情况：你希望创建一组任务，它们并行地执行工作，然后在进行<br>下一个步骤之前等待，直至所有任务都完成，可以多次重用。</p>
+<ul>
+<li>DelayQueue</li>
+</ul>
+<p>这种队列是有序的，即队头对象的延迟到期的时间最长。如果没有任何延迟到期，那么就不会<br>有任何元素，并且poll()将返回null。</p>
+<ul>
+<li>PriorityBlockingQueue</li>
+</ul>
+<p>这是一个很基础的优先级队列，它具有可阻塞的读取操作，其中的对象是按照优先级顺序从<br>队列中出现的任务。</p>
+<ul>
+<li>ScheduledThreadPoolExecutor</li>
+</ul>
+<p>通过使用schedule()（运行一次任务）或者scheduleAtFixedRate()（每隔规则的时间重复<br>执行任务）。</p>
+<ul>
+<li>Semaphore</li>
+</ul>
+<p>技术信号量允许n个任务同时访问这个资源。</p>
+<ul>
+<li>Exchanger</li>
+</ul>
+<p>Exchanger是在两个任务之间交换对象的栅栏。当这些任务进入栅栏时，它们将各自拥有一个<br>对象，当它们离开时，它们都拥有之前由对方持有的对象。</p>
+<h3 id="仿真"><a href="#仿真" class="headerlink" title="仿真"></a>仿真</h3><h3 id="性能调优"><a href="#性能调优" class="headerlink" title="性能调优"></a>性能调优</h3><ul>
+<li>免锁容器</li>
+</ul>
+<p>Java SE5特别添加了新的容器，通过使用更灵巧的技术来消除加锁，从而提高线程的安全和<br>性能。这些免锁容器背后的通用策略是：对容器的修改可以与读取操作同时发生，只要读取<br>者只能看到完成修改的结果即可。修改是在容器数据结构的副本上执行的，并且这个副本在<br>修改过程中是不可视的，之后读取者就可以看到这个修改了。<br>(CopyOnWriteArrayList, CopyOnWriteArraySet, ConcurrentHashMap, ConcurrentLinkedQueue)</p>
+<h3 id="活动对象"><a href="#活动对象" class="headerlink" title="活动对象"></a>活动对象</h3><p>活动对象，每个对象都维护着它自己的工作线程和消息队列，并且所有这种对象的请求都将<br>进入队列排队，任何时刻偶读只能运行其中的一个。（Executors.newSingleThreadExecutor()）</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
       
       <!-- reward -->
