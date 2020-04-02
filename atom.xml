@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Kestrel&#39;s Blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://kestrelcjx.github.io/"/>
+  <updated>2020-04-02T13:16:58.929Z</updated>
+  <id>https://kestrelcjx.github.io/</id>
+  
+  <author>
+    <name>Kestrel</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《Thinking in Java》第二十二章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/21/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%8C%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/21/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%8C%E7%AB%A0/</id>
+    <published>2020-03-20T17:35:11.000Z</published>
+    <updated>2020-04-02T13:16:58.929Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;图形化用户界面（略）&quot;&gt;&lt;a href=&quot;#图形化用户界面（略）&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Thinking in Java》第二十一章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/21/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%80%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/21/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%80%E7%AB%A0/</id>
+    <published>2020-03-20T17:34:37.000Z</published>
+    <updated>2020-04-02T15:57:38.797Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;并发&quot;&gt;&lt;a href=&quot;#并发&quot; class=&quot;headerlink&quot; title=&quot;并发&quot;&gt;&lt;/a&gt;并发&lt;/h2&gt;&lt;h3 id=&quot;并发的多面性&quot;&gt;&lt;a href=&quot;#并发的多面性&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Thinking in Java》第二十章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/20/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%BA%8C%E5%8D%81%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/20/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%BA%8C%E5%8D%81%E7%AB%A0/</id>
+    <published>2020-03-19T16:03:29.000Z</published>
+    <updated>2020-03-30T16:01:07.645Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;注解&quot;&gt;&lt;a href=&quot;#注解&quot; class=&quot;headerlink&quot; title=&quot;注解&quot;&gt;&lt;/a&gt;注解&lt;/h2&gt;&lt;p&gt;Java
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Thinking in Java》第十九章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/20/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%B9%9D%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/20/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%B9%9D%E7%AB%A0/</id>
+    <published>2020-03-19T16:03:19.000Z</published>
+    <updated>2020-03-30T11:04:24.005Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;枚举类型&quot;&gt;&lt;a href=&quot;#枚举类型&quot; class=&quot;headerlink&quot; title=&quot;枚举类型&quot;&gt;&lt;/a&gt;枚举类型&lt;/h2&gt;&lt;h3 id=&quot;基本enum特性&quot;&gt;&lt;a href=&quot;#基本enum特性&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Thinking in Java》第十八章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/19/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E5%85%AB%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/19/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E5%85%AB%E7%AB%A0/</id>
+    <published>2020-03-19T13:31:17.000Z</published>
+    <updated>2020-03-29T05:54:15.464Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Java-I-O系统&quot;&gt;&lt;a href=&quot;#Java-I-O系统&quot; class=&quot;headerlink&quot; title=&quot;Java I/O系统&quot;&gt;&lt;/a&gt;Java I/O系统&lt;/h2&gt;&lt;h3 id=&quot;File类&quot;&gt;&lt;a href=&quot;#File类&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Thinking in Java》第十七章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/19/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/19/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0/</id>
+    <published>2020-03-19T13:31:08.000Z</published>
+    <updated>2020-03-29T05:02:30.515Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;容器深入研究&quot;&gt;&lt;a href=&quot;#容器深入研究&quot; class=&quot;headerlink&quot; title=&quot;容器深入研究&quot;&gt;&lt;/a&gt;容器深入研究&lt;/h2&gt;&lt;h3 id=&quot;完整的容器分类法&quot;&gt;&lt;a href=&quot;#完整的容器分类法&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Thinking in Java》第十六章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/18/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E5%85%AD%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/18/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E5%85%AD%E7%AB%A0/</id>
+    <published>2020-03-18T06:49:02.000Z</published>
+    <updated>2020-03-29T05:02:23.844Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;数组&quot;&gt;&lt;a href=&quot;#数组&quot; class=&quot;headerlink&quot; title=&quot;数组&quot;&gt;&lt;/a&gt;数组&lt;/h2&gt;&lt;h3 id=&quot;数组为什么特殊&quot;&gt;&lt;a href=&quot;#数组为什么特殊&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Thinking in Java》第十五章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/18/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%BA%94%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/18/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%BA%94%E7%AB%A0/</id>
+    <published>2020-03-18T06:48:52.000Z</published>
+    <updated>2020-03-29T05:02:17.127Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;泛型&quot;&gt;&lt;a href=&quot;#泛型&quot; class=&quot;headerlink&quot; title=&quot;泛型&quot;&gt;&lt;/a&gt;泛型&lt;/h2&gt;&lt;h3 id=&quot;与C-的比较&quot;&gt;&lt;a href=&quot;#与C-的比较&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Thinking in Java》第十四章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/17/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/17/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0/</id>
+    <published>2020-03-17T03:50:58.000Z</published>
+    <updated>2020-03-29T05:02:08.746Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;类型信息&quot;&gt;&lt;a href=&quot;#类型信息&quot; class=&quot;headerlink&quot; title=&quot;类型信息&quot;&gt;&lt;/a&gt;类型信息&lt;/h2&gt;&lt;h3 id=&quot;为什么需要RTTI&quot;&gt;&lt;a href=&quot;#为什么需要RTTI&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Thinking in Java》第十三章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/17/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/17/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0/</id>
+    <published>2020-03-17T03:50:48.000Z</published>
+    <updated>2020-03-29T05:01:53.078Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;字符串&quot;&gt;&lt;a href=&quot;#字符串&quot; class=&quot;headerlink&quot; title=&quot;字符串&quot;&gt;&lt;/a&gt;字符串&lt;/h2&gt;&lt;h3 id=&quot;不可变String&quot;&gt;&lt;a href=&quot;#不可变String&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Thinking in Java》第十二章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/17/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/17/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0/</id>
+    <published>2020-03-17T03:50:37.000Z</published>
+    <updated>2020-03-29T05:01:45.189Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;通过异常处理错误&quot;&gt;&lt;a href=&quot;#通过异常处理错误&quot; class=&quot;headerlink&quot; title=&quot;通过异常处理错误&quot;&gt;&lt;/a&gt;通过异常处理错误&lt;/h2&gt;&lt;h3 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Thinking in Java》第十一章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/16/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/16/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0/</id>
+    <published>2020-03-16T02:13:29.000Z</published>
+    <updated>2020-03-29T05:01:36.207Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;持有对象&quot;&gt;&lt;a href=&quot;#持有对象&quot; class=&quot;headerlink&quot; title=&quot;持有对象&quot;&gt;&lt;/a&gt;持有对象&lt;/h2&gt;&lt;h3 id=&quot;泛型和类型安全的容器&quot;&gt;&lt;a href=&quot;#泛型和类型安全的容器&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Thinking in Java》第十章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/14/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/14/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E7%AB%A0/</id>
+    <published>2020-03-14T07:30:27.000Z</published>
+    <updated>2020-03-29T05:01:21.132Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;内部类&quot;&gt;&lt;a href=&quot;#内部类&quot; class=&quot;headerlink&quot; title=&quot;内部类&quot;&gt;&lt;/a&gt;内部类&lt;/h2&gt;&lt;h3 id=&quot;创建内部类&quot;&gt;&lt;a href=&quot;#创建内部类&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Thinking in Java》第九章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/14/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%B9%9D%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/14/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%B9%9D%E7%AB%A0/</id>
+    <published>2020-03-14T07:30:18.000Z</published>
+    <updated>2020-03-29T05:01:28.130Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;接口&quot;&gt;&lt;a href=&quot;#接口&quot; class=&quot;headerlink&quot; title=&quot;接口&quot;&gt;&lt;/a&gt;接口&lt;/h2&gt;&lt;h3 id=&quot;抽象类与抽象方法&quot;&gt;&lt;a href=&quot;#抽象类与抽象方法&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Thinking in Java》第八章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/13/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%85%AB%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/13/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%85%AB%E7%AB%A0/</id>
+    <published>2020-03-13T07:22:36.000Z</published>
+    <updated>2020-03-29T05:01:12.571Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;多态&quot;&gt;&lt;a href=&quot;#多态&quot; class=&quot;headerlink&quot; title=&quot;多态&quot;&gt;&lt;/a&gt;多态&lt;/h2&gt;&lt;h3 id=&quot;再论向上转型&quot;&gt;&lt;a href=&quot;#再论向上转型&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Thinking in Java》第七章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/13/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%B8%83%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/13/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%B8%83%E7%AB%A0/</id>
+    <published>2020-03-13T07:22:29.000Z</published>
+    <updated>2020-03-29T05:00:56.966Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;复用类&quot;&gt;&lt;a href=&quot;#复用类&quot; class=&quot;headerlink&quot; title=&quot;复用类&quot;&gt;&lt;/a&gt;复用类&lt;/h2&gt;&lt;h3 id=&quot;组合语法&quot;&gt;&lt;a href=&quot;#组合语法&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Thinking in Java》第六章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/13/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%85%AD%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/13/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%85%AD%E7%AB%A0/</id>
+    <published>2020-03-13T07:22:24.000Z</published>
+    <updated>2020-03-29T05:00:49.561Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;访问权限控制&quot;&gt;&lt;a href=&quot;#访问权限控制&quot; class=&quot;headerlink&quot; title=&quot;访问权限控制&quot;&gt;&lt;/a&gt;访问权限控制&lt;/h2&gt;&lt;h3 id=&quot;包：库单元&quot;&gt;&lt;a href=&quot;#包：库单元&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Thinking in Java》第五章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/13/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%BA%94%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/13/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%BA%94%E7%AB%A0/</id>
+    <published>2020-03-13T07:21:59.000Z</published>
+    <updated>2020-03-29T05:01:04.027Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;初始化与清理&quot;&gt;&lt;a href=&quot;#初始化与清理&quot; class=&quot;headerlink&quot; title=&quot;初始化与清理&quot;&gt;&lt;/a&gt;初始化与清理&lt;/h2&gt;&lt;h3 id=&quot;用构造器确保初始化&quot;&gt;&lt;a href=&quot;#用构造器确保初始化&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Thinking in Java》第四章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/10/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%9B%9B%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/10/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%9B%9B%E7%AB%A0/</id>
+    <published>2020-03-10T10:42:32.000Z</published>
+    <updated>2020-03-29T05:00:33.799Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;控制执行流程&quot;&gt;&lt;a href=&quot;#控制执行流程&quot; class=&quot;headerlink&quot; title=&quot;控制执行流程&quot;&gt;&lt;/a&gt;控制执行流程&lt;/h2&gt;&lt;h3 id=&quot;true和false&quot;&gt;&lt;a href=&quot;#true和false&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Thinking in Java》第三章</title>
+    <link href="https://kestrelcjx.github.io/2020/03/09/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%B8%89%E7%AB%A0/"/>
+    <id>https://kestrelcjx.github.io/2020/03/09/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%B8%89%E7%AB%A0/</id>
+    <published>2020-03-09T02:52:49.000Z</published>
+    <updated>2020-03-29T05:00:41.938Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;操作符&quot;&gt;&lt;a href=&quot;#操作符&quot; class=&quot;headerlink&quot; title=&quot;操作符&quot;&gt;&lt;/a&gt;操作符&lt;/h2&gt;&lt;h3 id=&quot;更简单的打印语句&quot;&gt;&lt;a href=&quot;#更简单的打印语句&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+  </entry>
+  
+</feed>
