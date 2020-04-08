@@ -112,8 +112,57 @@
 <h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><p>方法区(Method Area)与Java堆一样，是各个线程共享的内存区域，它用于存储已被虚拟机加载<br>的类型信息、常量、静态变量、即使编译器编译后的代码缓存等数据。<br>JDK8以前，很多人将方法区称为“永久代”(Permanent Generation)，但本质上两者不等价，<br>仅仅因为当时的HotSpot虚拟机设计团队选择把收集器的分代设计扩展至方法区，或者说使用<br>永久代来实现方法区而已，这样使得HotSpot的垃圾收集器能够像管理Java堆一样管理这部分<br>内存。<br>到了JDK8，终于完全废弃了永久带的概念，改用与JRockit、J9一样在本地内存中实现元空间<br>(Metaspace)来替代，把JDK7中永久代还剩余的内存（主要是类型信息）全部移到元空间中。<br>《Java虚拟机规范》对方法区的约束是非常宽松的，除了和Java堆一样不需要连续的内存和<br>可以选择固定大小或者可扩展外，甚至还可以选择不实现垃圾收集。这区域的内存回收目标<br>主要是针对常量池和对类型的卸载。<br>根据《Java虚拟机规范》的规定，如果方法区无法满足新的内存分配需求时，将抛出<br>OutOfMemoryError异常。</p>
 <h3 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h3><p>运行时常量池(Runtime Constant Pool)是方法区的一部分。Class文件除了有类的版本、字段、<br>方法、接口等描述信息外，还有一项是常量池表(Constant Pool Table)，用于存放编译期<br>生成的各种字面量和符号引用，这部分内存将在类加载后存放到方法区的运行时常量池中。<br>运行时常量池相对于Class文件常量池的另外一个重要特性是具有动态性，Java语言并不要求<br>常量一定只有编译期才能产生，也就是说，并非预置入Class文件中常量池的内容才能进入<br>方法区运行时常量池，运行期间也可以将新的常量放入池中，这种特性被开发人员利用得比较<br>多的便是String类的intern()方法。<br>当常量池无法在申请到内存时会抛出OutOfMemoryError异常。</p>
 <h3 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h3><p>直接内存(Direct Memory)并不是虚拟机运行时数据区的一部分，也不是《Java虚拟机规范》<br>中定义的内存区域。在JDK1.4中新加入了NIO(New Input/Output)类，引入了一种基于通道<br>(Channel)与缓冲区(Buffer)的I/O方式，它可以使用Native函数库直接分配堆外内存，然后<br>通过一个存储在Java堆里面的DirectByteBuffer对象作为这块内存的引用进行操作。这样能<br>在一些场景中显著提高性能，因为避免了在Java堆和Native堆中来回复制数据。<br>显然，本地直接内存的分配不会受Java堆大小的限制，但是，既然是内存，则肯定还是会受<br>本机总内存大小以及处理及寻址空间的限制。</p>
-<h2 id="HotSpot虚拟机对象探秘"><a href="#HotSpot虚拟机对象探秘" class="headerlink" title="HotSpot虚拟机对象探秘"></a>HotSpot虚拟机对象探秘</h2><h3 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h3><p>在虚拟机中，对象（指不同对象，不包括数组和Class对象等）的创建：<br>当Java虚拟机遇到一条字节码new指令时，首先将去检查这个指令的参数是否能在常量池中<br>定位到一个类的符号引用，并且检查这个符号引用代表的类是否已经被加载、解析和初始化<br>过。如果没有，那必须先执行相应的类加载过程。<br>在类加载检查通过后，接下来虚拟机将为新生对象分配内存。对象所需内存的大小在类加载<br>完成后便完全确定，为对象分配空间的任务实际上便等同于把一块确定大小的内存块从Java<br>堆中划分出来。假设Java堆中内存是绝对规整的，所有被使用过的内存都被放在一边，空间<br>的内存被放在另一边，中间放着一个指针作为分界点的指示器，那所分配内存就仅仅是把那个<br>指针向空闲方法挪动一段与对象大小相等的距离，这种分配方式被称为“指针碰撞”(Bump The<br>Point)。但如果Java堆中的内存并不是规整的，已被使用的内存和空闲的内存相互交错在一起，<br>那就没有办法简单地进行指针碰撞了，虚拟机就必须维护一个列表，记录上哪些内存块是可用的，<br>在分配的时候从列表中找到一块足够大的空间划分给对象实例，并更新列表上的记录，这种<br>分配方式被称为“空闲列表”(Free List)。选择哪种分配方式由Java堆是否规整决定，而Java堆<br>是否规整又由所采用的垃圾收集器是否带有空间压缩整理(Compact)的能力决定。<br>对象创建在虚拟机中非常频繁的行为，即使仅仅修改一个指针所指向的位置，在并发情况下<br>也并不是线程安全的。解决这个问题有两种可选方案：一种是对分配内存空间的动作进行同步<br>处理——实际上虚拟机是采用CAS配上失败重试的方式保证更新操作的原子性；另一种是把内存<br>分配动作划分在不同的空间之中进行，即每个线程在Java堆中预先分配一小块内存，成为本地<br>线程分配缓存(Thread Local Allocation Buffer, TLAB)，哪个线程要分配内存，就在哪个<br>线程的本地缓存区中分配，只有本地缓冲区用完了，分配新的缓存区时才需要同步锁定。虚拟机<br>是否适用TLAB，可以通过-XX:+/-UseTLAB参数来设定。<br>内存分配完成之后，虚拟机必须将分配到的内存空间（但不包括对象头）都初始化为零值，<br>如果使用了TLAB的话，这一项工作也可以提前至TLAB分配时顺便进行。<br>就下来，Java虚拟机还要对对象进行必要的设置，例如这个对象是哪个类的实例、如何才能<br>找到类的元数据信息、对象的哈希码（实际上对象的哈希码会延后到真正调用Object::hashCode()<br>方法时才计算）、对象的GC分代年龄等信息。这些信息存放在对象的对象头(Object Header)之中。<br>在上面的工作完成之后，将执行对象的构造函数，即Class文件中的<init>()方法。一般来说<br>（由字节码流中new指令是否跟随invokespecial指令所决定，Java编译器会在遇到new关键字<br>的地方同时生成这两条字节码指令，但如果直接通过其他方式产生的则不一定如此），new指令<br>之后会接着执行<init>()方法，按照程序员的意愿对对象进行初始化，这样一个真正可用的<br>对象才算完全被构造出来。</init></init></p>
-<h3 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h3><h3 id="对象的访问定位"><a href="#对象的访问定位" class="headerlink" title="对象的访问定位"></a>对象的访问定位</h3><h2 id="实战：OutOfMemoryError异常"><a href="#实战：OutOfMemoryError异常" class="headerlink" title="实战：OutOfMemoryError异常"></a>实战：OutOfMemoryError异常</h2><h3 id="Java堆溢出"><a href="#Java堆溢出" class="headerlink" title="Java堆溢出"></a>Java堆溢出</h3><h3 id="虚拟机栈和本地方法栈溢出"><a href="#虚拟机栈和本地方法栈溢出" class="headerlink" title="虚拟机栈和本地方法栈溢出"></a>虚拟机栈和本地方法栈溢出</h3><h3 id="方法区和运行时常量池溢出"><a href="#方法区和运行时常量池溢出" class="headerlink" title="方法区和运行时常量池溢出"></a>方法区和运行时常量池溢出</h3><h3 id="本地直接内存溢出"><a href="#本地直接内存溢出" class="headerlink" title="本地直接内存溢出"></a>本地直接内存溢出</h3>
+<h2 id="HotSpot虚拟机对象探秘"><a href="#HotSpot虚拟机对象探秘" class="headerlink" title="HotSpot虚拟机对象探秘"></a>HotSpot虚拟机对象探秘</h2><h3 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h3><p>在虚拟机中，对象（指不同对象，不包括数组和Class对象等）的创建：</p>
+<ol>
+<li>当Java虚拟机遇到一条字节码new指令时，首先将去检查这个指令的参数是否能在常量池中<br>定位到一个类的符号引用，并且检查这个符号引用代表的类是否已经被加载、解析和初始化<br>过。如果没有，那必须先执行相应的类加载过程。</li>
+<li>在类加载检查通过后，接下来虚拟机将为新生对象分配内存。对象所需内存的大小在类加载<br>完成后便完全确定，为对象分配空间的任务实际上便等同于把一块确定大小的内存块从Java<br>堆中划分出来。假设Java堆中内存是绝对规整的，所有被使用过的内存都被放在一边，空间<br>的内存被放在另一边，中间放着一个指针作为分界点的指示器，那所分配内存就仅仅是把那个<br>指针向空闲方法挪动一段与对象大小相等的距离，这种分配方式被称为“指针碰撞”(Bump The<br>Point)。但如果Java堆中的内存并不是规整的，已被使用的内存和空闲的内存相互交错在一起，<br>那就没有办法简单地进行指针碰撞了，虚拟机就必须维护一个列表，记录上哪些内存块是可用的，<br>在分配的时候从列表中找到一块足够大的空间划分给对象实例，并更新列表上的记录，这种<br>分配方式被称为“空闲列表”(Free List)。选择哪种分配方式由Java堆是否规整决定，而Java堆<br>是否规整又由所采用的垃圾收集器是否带有空间压缩整理(Compact)的能力决定。</li>
+<li>对象创建在虚拟机中非常频繁的行为，即使仅仅修改一个指针所指向的位置，在并发情况下<br>也并不是线程安全的。解决这个问题有两种可选方案：一种是对分配内存空间的动作进行同步<br>处理——实际上虚拟机是采用CAS配上失败重试的方式保证更新操作的原子性；另一种是把内存<br>分配动作划分在不同的空间之中进行，即每个线程在Java堆中预先分配一小块内存，成为本地<br>线程分配缓存(Thread Local Allocation Buffer, TLAB)，哪个线程要分配内存，就在哪个<br>线程的本地缓存区中分配，只有本地缓冲区用完了，分配新的缓存区时才需要同步锁定。虚拟机<br>是否适用TLAB，可以通过-XX:+/-UseTLAB参数来设定。</li>
+<li>内存分配完成之后，虚拟机必须将分配到的内存空间（但不包括对象头）都初始化为零值，<br>如果使用了TLAB的话，这一项工作也可以提前至TLAB分配时顺便进行。</li>
+<li>就下来，Java虚拟机还要对对象进行必要的设置，例如这个对象是哪个类的实例、如何才能<br>找到类的元数据信息、对象的哈希码（实际上对象的哈希码会延后到真正调用Object::hashCode()<br>方法时才计算）、对象的GC分代年龄等信息。这些信息存放在对象的对象头(Object Header)之中。<br>在上面的工作完成之后，将执行对象的构造函数，即Class文件中的<init>()方法。一般来说<br>（由字节码流中new指令是否跟随invokespecial指令所决定，Java编译器会在遇到new关键字<br>的地方同时生成这两条字节码指令，但如果直接通过其他方式产生的则不一定如此），new指令<br>之后会接着执行<init>()方法，按照程序员的意愿对对象进行初始化，这样一个真正可用的<br>对象才算完全被构造出来。</init></init></li>
+</ol>
+<h3 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h3><p>在HotSpot虚拟机里，对象在堆内存中的存储布局可以划分为三个部分：对象头(Header)、<br>实例数据(Instance Data)和对齐填充(Padding)。<br>HotSpot虚拟机对象的对象头部分包括两类信息。第一类是用于存储对象自身的运行时数据，<br>如哈希码(HashCode)、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID、偏向时间戳等，这部分<br>数据的长度在32位和64位虚拟机（未开启压缩指针）中分别为32个比特和64个比特，官方称为<br>“Mark Word”。对象需要存储的运行时数据很多，其实已经超过了32、64喂Bitmap结构所能记录<br>的最大限度，但对象头里的信息是与对象自身定义的数据无关的额外存储成本，考虑到虚拟机<br>的空间效率，Mark Word被设计成一个有着动态定义的数据结构，以便在极小的空间内存储尽量<br>多的数据，根据对象的状态复用自己的存储空间。例如在32位的HotSpot虚拟机中，如对象未<br>被同步锁锁定的状态下，Mark Word的32个比特存储空间中的25个比特用于存储对象哈希码，<br>4个比特用于存储对象分代年龄，2个比特用于存储锁标志位，1个比特固定为0，在其他状态<br>（轻量级锁定、重量级锁定、GC标记、可偏向）下对象的存储内容如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>存储内容</th>
+<th>标志位</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>对象哈希码、对象分代年龄</td>
+<td>01</td>
+<td>未锁定</td>
+</tr>
+<tr>
+<td>指向锁记录的指针</td>
+<td>00</td>
+<td>轻量级锁定</td>
+</tr>
+<tr>
+<td>指向重量级锁的指针</td>
+<td>10</td>
+<td>膨胀（重量级锁定）</td>
+</tr>
+<tr>
+<td>空，不需要记录信息</td>
+<td>11</td>
+<td>GC标记</td>
+</tr>
+<tr>
+<td>偏向线程ID、偏向时间戳、对象分代年龄</td>
+<td>01</td>
+<td>可偏向</td>
+</tr>
+</tbody></table>
+<p>对象头的另一部分是类型指针，即对象指向它的类型元数据的指针，Java虚拟机通过这个指针<br>来确定该对象是哪个类的实例。并不是所有的虚拟机实现都必须在对象数据上保留类型指针。<br>此外，如果对象是一个Java数组，那再对象头中还必须有一块用于记录数组长度的数据。</p>
+<ul>
+<li>以下为HotSpot虚拟机代表Mark Word中代码注释片段，描述了Mark Word的存储布局：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Bit-format of an object header (most significant first, big endian layout below):</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  32 bits:</span></span><br><span class="line"><span class="comment">//  --------</span></span><br><span class="line"><span class="comment">//             hash:25 ------------&gt;| age:4    biased_lock:1 lock:2 (normal object)</span></span><br><span class="line"><span class="comment">//             JavaThread*:23 epoch:2 age:4    biased_lock:1 lock:2 (biased object)</span></span><br><span class="line"><span class="comment">//             size:32 ------------------------------------------&gt;| (CMS free block)</span></span><br><span class="line"><span class="comment">//             PromotedObject*:29 ----------&gt;| promo_bits:3 -----&gt;| (CMS promoted object)</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  64 bits:</span></span><br><span class="line"><span class="comment">//  --------</span></span><br><span class="line"><span class="comment">//  unused:25 hash:31 --&gt;| unused:1   age:4    biased_lock:1 lock:2 (normal object)</span></span><br><span class="line"><span class="comment">//  JavaThread*:54 epoch:2 unused:1   age:4    biased_lock:1 lock:2 (biased object)</span></span><br><span class="line"><span class="comment">//  PromotedObject*:61 ---------------------&gt;| promo_bits:3 -----&gt;| (CMS promoted object)</span></span><br><span class="line"><span class="comment">//  size:64 -----------------------------------------------------&gt;| (CMS free block)</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  unused:25 hash:31 --&gt;| cms_free:1 age:4    biased_lock:1 lock:2 (COOPs &amp;&amp; normal object)</span></span><br><span class="line"><span class="comment">//  JavaThread*:54 epoch:2 cms_free:1 age:4    biased_lock:1 lock:2 (COOPs &amp;&amp; biased object)</span></span><br><span class="line"><span class="comment">//  narrowOop:32 unused:24 cms_free:1 unused:4 promo_bits:3 -----&gt;| (COOPs &amp;&amp; CMS promoted object)</span></span><br><span class="line"><span class="comment">//  unused:21 size:35 --&gt;| cms_free:1 unused:7 ------------------&gt;| (COOPs &amp;&amp; CMS free block)</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>接下来实例数据部分是对象真正存储的有效信息，即我们在程序代码里面所定义的各种类型<br>的字段内容，无论是从父类继承下来的，还是在子类中定义的字段都必须记录起来。<br>对象的第三部分是对齐填充，这并不是必然存在的，也没有特别的含义，它仅仅起占位符的<br>作用。由于HotSpot虚拟机的自动内存管理系统要求对象起始地址必须是8字节的整数倍，也<br>就是说，任何对象的大小都必须是8字节的整数倍。</p>
+<h3 id="对象的访问定位"><a href="#对象的访问定位" class="headerlink" title="对象的访问定位"></a>对象的访问定位</h3><h2 id="实战：OutOfMemoryError异常"><a href="#实战：OutOfMemoryError异常" class="headerlink" title="实战：OutOfMemoryError异常"></a>实战：OutOfMemoryError异常</h2><h3 id="Java堆溢出"><a href="#Java堆溢出" class="headerlink" title="Java堆溢出"></a>Java堆溢出</h3><h3 id="虚拟机栈和本地方法栈溢出"><a href="#虚拟机栈和本地方法栈溢出" class="headerlink" title="虚拟机栈和本地方法栈溢出"></a>虚拟机栈和本地方法栈溢出</h3><h3 id="方法区和运行时常量池溢出"><a href="#方法区和运行时常量池溢出" class="headerlink" title="方法区和运行时常量池溢出"></a>方法区和运行时常量池溢出</h3><h3 id="本地直接内存溢出"><a href="#本地直接内存溢出" class="headerlink" title="本地直接内存溢出"></a>本地直接内存溢出</h3>
       
       <!-- reward -->
       
