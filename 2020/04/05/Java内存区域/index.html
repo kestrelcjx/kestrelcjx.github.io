@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Java内存区域 |  Kestrel&#39;s Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/dist/main.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="Kestrel's Blog" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+</html>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-Java内存区域" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Java内存区域
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/05/Java内存区域/" class="article-date">
+  <time datetime="2020-04-05T15:18:32.000Z" itemprop="datePublished">2020-04-05</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">4.3k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">15分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h2><p>Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些<br>区域有各自的用途，以及创建和销毁时间，有的区域随着虚拟机进程的启动而一直存在，有些<br>区域则是依赖用户线程的启动和结束而建立和销毁。根据《Java虚拟机规范》的规定，Java<br>虚拟机所管理的内存将会包括以下几个运行时数据区域：<br><img src="/images/RuntimeDataArea.jpg" alt="RuntimeDataArea"></p>
+<h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p>程序计数器(Program Counter Register)是一块较小的内存空间，它可以看作是当前线程所<br>执行的字节码的行号指示器。<br>由于Java虚拟机的多线程是通过线程轮流切换、分配处理器执行时间的方式来实现的，为了<br>县城切换后能恢复到正确的执行位置，每个线程都需要一个独立的程序计数器。各条线程之间<br>计数器互不影响，独立存储，我们称这类内存区域为“线程私有”的内存。<br>如果线程正在执行的是一个Java方法，这个计数器记录的是正在执行的虚拟机字节码指令的<br>地址；如果正在执行的是本地(Native)方法，这个计数器则应为空(Undefined)。此内存区域<br>是唯一一个在《Java虚拟机规范》中没有规定任何OutOfMemoryError情况的区域。</p>
+<h3 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h3><p>Java虚拟机栈(Java Virtual Machine Stack)描述的是Java方法执行的线程内存模型：每个<br>方法被执行的时候，Java虚拟机都会同步创建一个栈帧(Stack Frame)用于存储局部变量表、<br>操作数栈、动态连接、方法出口等信息。每个方法被调用直至执行完毕的过程，就对应着一个<br>栈帧在虚拟机栈中从入栈到出栈的过程。<br>局部变量表存放了编译期可知的各种Java虚拟机基本数据类型(boolean、byte、char、short、<br>int、float、long、double)、对象引用(reference类型，它并不等同于对象本身，可能是一个<br>指向起始地址的引用指针，也可能是指向一个代表对象的句柄或者其他与此对象相关的位置)<br>和returnAddress类型(指向了一条字节码指令的地址)。<br>这些数据类型在局部变量表中的存储空间以局部变量槽(Slot)来表示，其中64位长度的long<br>和double类型的数据会占用两个变量槽，其余的数据类型只占用一个。局部变量表所需的内存<br>空间在编译期间完成分配，当进入一个方法时，这个方法需要在栈帧中分配多大的局部变量<br>空间是完全确定的，在方法运行期间不会改变局部变量表的大小。这里“大小”指变量槽的数量，<br>虚拟机真正使用多大的内存空间（譬如按照1个变量槽占用32个比特、64个比特，或者更多）<br>来实现一个变量槽，由具体的虚拟机实现自行决定。<br>在《Java虚拟机规范》中，对这个内存区域规定了两类异常状况：如果线程请求的栈深度大于<br>虚拟机所允许的深度，将抛出StackOverflowError异常；如果Java虚拟机栈容量可以动态扩展，<br>当栈扩展时无法申请到足够的内存抛出OutOfMemoryError异常。（HotSpot虚拟机的栈容量<br>是不可以动态扩展的，以前的Classic虚拟机倒是可以）</p>
+<h3 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h3><p>本地方法栈(Native Method Stacks)与虚拟机栈所发挥的作用是非常相似的，其区别只是虚拟机<br>栈为虚拟机执行Java方法（也就是字节码）服务，而本地方法栈则是为虚拟机使用到的本地<br>（Native）方法服务。有的虚拟机把本地方法栈和虚拟机栈合二为一，例如HotSpot。本地方法栈<br>也会在栈深度溢出或者栈扩展失败时分别抛出StackOverflowError和OutOfMemoryError异常。</p>
+<h3 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h3><p>对于Java应用程序来说，Java堆(Java Heap)是虚拟机所管理的内存中最大的一块。Java堆是<br>被所有线程共享的一块内存区域，在虚拟机启动时创建。此内存区域的唯一目的就是存放对象<br>实例。<br>Java堆是垃圾收集器管理的内存区域，也被称为“GC堆”(Garbage Collected Heap)。现代垃圾<br>收集器大部分都是基于分代收集理论的。<br>根据《Java虚拟机规范》的规定，Java堆可以处于物理上不连续的内存空间中，但在逻辑上<br>它应该被视为连续的。Java堆既可以被实现成固定大小的，也可以是可扩展的，不过当前主流<br>的Java虚拟机都是按照可扩展来实现的（通过参数-Xmx和-Xms设定的）。如果在Java堆中没有<br>内存完成实例分配，并且堆也无法再扩展时，Java虚拟机将会抛出OutOfMemoryError异常。</p>
+<h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><p>方法区(Method Area)与Java堆一样，是各个线程共享的内存区域，它用于存储已被虚拟机加载<br>的类型信息、常量、静态变量、即使编译器编译后的代码缓存等数据。<br>JDK8以前，很多人将方法区称为“永久代”(Permanent Generation)，但本质上两者不等价，<br>仅仅因为当时的HotSpot虚拟机设计团队选择把收集器的分代设计扩展至方法区，或者说使用<br>永久代来实现方法区而已，这样使得HotSpot的垃圾收集器能够像管理Java堆一样管理这部分<br>内存。<br>到了JDK8，终于完全废弃了永久带的概念，改用与JRockit、J9一样在本地内存中实现元空间<br>(Metaspace)来替代，把JDK7中永久代还剩余的内存（主要是类型信息）全部移到元空间中。<br>《Java虚拟机规范》对方法区的约束是非常宽松的，除了和Java堆一样不需要连续的内存和<br>可以选择固定大小或者可扩展外，甚至还可以选择不实现垃圾收集。这区域的内存回收目标<br>主要是针对常量池和对类型的卸载。<br>根据《Java虚拟机规范》的规定，如果方法区无法满足新的内存分配需求时，将抛出<br>OutOfMemoryError异常。</p>
+<h3 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h3><p>运行时常量池(Runtime Constant Pool)是方法区的一部分。Class文件除了有类的版本、字段、<br>方法、接口等描述信息外，还有一项是常量池表(Constant Pool Table)，用于存放编译期<br>生成的各种字面量和符号引用，这部分内存将在类加载后存放到方法区的运行时常量池中。<br>运行时常量池相对于Class文件常量池的另外一个重要特性是具有动态性，Java语言并不要求<br>常量一定只有编译期才能产生，也就是说，并非预置入Class文件中常量池的内容才能进入<br>方法区运行时常量池，运行期间也可以将新的常量放入池中，这种特性被开发人员利用得比较<br>多的便是String类的intern()方法。<br>当常量池无法在申请到内存时会抛出OutOfMemoryError异常。</p>
+<h3 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h3><p>直接内存(Direct Memory)并不是虚拟机运行时数据区的一部分，也不是《Java虚拟机规范》<br>中定义的内存区域。在JDK1.4中新加入了NIO(New Input/Output)类，引入了一种基于通道<br>(Channel)与缓冲区(Buffer)的I/O方式，它可以使用Native函数库直接分配堆外内存，然后<br>通过一个存储在Java堆里面的DirectByteBuffer对象作为这块内存的引用进行操作。这样能<br>在一些场景中显著提高性能，因为避免了在Java堆和Native堆中来回复制数据。<br>显然，本地直接内存的分配不会受Java堆大小的限制，但是，既然是内存，则肯定还是会受<br>本机总内存大小以及处理及寻址空间的限制。</p>
+<h2 id="HotSpot虚拟机对象探秘"><a href="#HotSpot虚拟机对象探秘" class="headerlink" title="HotSpot虚拟机对象探秘"></a>HotSpot虚拟机对象探秘</h2><h3 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h3><p>在虚拟机中，对象（指不同对象，不包括数组和Class对象等）的创建：</p>
+<ol>
+<li>当Java虚拟机遇到一条字节码new指令时，首先将去检查这个指令的参数是否能在常量池中<br>定位到一个类的符号引用，并且检查这个符号引用代表的类是否已经被加载、解析和初始化<br>过。如果没有，那必须先执行相应的类加载过程。</li>
+<li>在类加载检查通过后，接下来虚拟机将为新生对象分配内存。对象所需内存的大小在类加载<br>完成后便完全确定，为对象分配空间的任务实际上便等同于把一块确定大小的内存块从Java<br>堆中划分出来。假设Java堆中内存是绝对规整的，所有被使用过的内存都被放在一边，空间<br>的内存被放在另一边，中间放着一个指针作为分界点的指示器，那所分配内存就仅仅是把那个<br>指针向空闲方法挪动一段与对象大小相等的距离，这种分配方式被称为“指针碰撞”(Bump The<br>Point)。但如果Java堆中的内存并不是规整的，已被使用的内存和空闲的内存相互交错在一起，<br>那就没有办法简单地进行指针碰撞了，虚拟机就必须维护一个列表，记录上哪些内存块是可用的，<br>在分配的时候从列表中找到一块足够大的空间划分给对象实例，并更新列表上的记录，这种<br>分配方式被称为“空闲列表”(Free List)。选择哪种分配方式由Java堆是否规整决定，而Java堆<br>是否规整又由所采用的垃圾收集器是否带有空间压缩整理(Compact)的能力决定。</li>
+<li>对象创建在虚拟机中非常频繁的行为，即使仅仅修改一个指针所指向的位置，在并发情况下<br>也并不是线程安全的。解决这个问题有两种可选方案：一种是对分配内存空间的动作进行同步<br>处理——实际上虚拟机是采用CAS配上失败重试的方式保证更新操作的原子性；另一种是把内存<br>分配动作划分在不同的空间之中进行，即每个线程在Java堆中预先分配一小块内存，成为本地<br>线程分配缓存(Thread Local Allocation Buffer, TLAB)，哪个线程要分配内存，就在哪个<br>线程的本地缓存区中分配，只有本地缓冲区用完了，分配新的缓存区时才需要同步锁定。虚拟机<br>是否适用TLAB，可以通过-XX:+/-UseTLAB参数来设定。</li>
+<li>内存分配完成之后，虚拟机必须将分配到的内存空间（但不包括对象头）都初始化为零值，<br>如果使用了TLAB的话，这一项工作也可以提前至TLAB分配时顺便进行。</li>
+<li>就下来，Java虚拟机还要对对象进行必要的设置，例如这个对象是哪个类的实例、如何才能<br>找到类的元数据信息、对象的哈希码（实际上对象的哈希码会延后到真正调用Object::hashCode()<br>方法时才计算）、对象的GC分代年龄等信息。这些信息存放在对象的对象头(Object Header)之中。<br>在上面的工作完成之后，将执行对象的构造函数，即Class文件中的<init>()方法。一般来说<br>（由字节码流中new指令是否跟随invokespecial指令所决定，Java编译器会在遇到new关键字<br>的地方同时生成这两条字节码指令，但如果直接通过其他方式产生的则不一定如此），new指令<br>之后会接着执行<init>()方法，按照程序员的意愿对对象进行初始化，这样一个真正可用的<br>对象才算完全被构造出来。</init></init></li>
+</ol>
+<h3 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h3><p>在HotSpot虚拟机里，对象在堆内存中的存储布局可以划分为三个部分：对象头(Header)、<br>实例数据(Instance Data)和对齐填充(Padding)。<br>HotSpot虚拟机对象的对象头部分包括两类信息。第一类是用于存储对象自身的运行时数据，<br>如哈希码(HashCode)、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID、偏向时间戳等，这部分<br>数据的长度在32位和64位虚拟机（未开启压缩指针）中分别为32个比特和64个比特，官方称为<br>“Mark Word”。对象需要存储的运行时数据很多，其实已经超过了32、64喂Bitmap结构所能记录<br>的最大限度，但对象头里的信息是与对象自身定义的数据无关的额外存储成本，考虑到虚拟机<br>的空间效率，Mark Word被设计成一个有着动态定义的数据结构，以便在极小的空间内存储尽量<br>多的数据，根据对象的状态复用自己的存储空间。例如在32位的HotSpot虚拟机中，如对象未<br>被同步锁锁定的状态下，Mark Word的32个比特存储空间中的25个比特用于存储对象哈希码，<br>4个比特用于存储对象分代年龄，2个比特用于存储锁标志位，1个比特固定为0，在其他状态<br>（轻量级锁定、重量级锁定、GC标记、可偏向）下对象的存储内容如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>存储内容</th>
+<th>标志位</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>对象哈希码、对象分代年龄</td>
+<td>01</td>
+<td>未锁定</td>
+</tr>
+<tr>
+<td>指向锁记录的指针</td>
+<td>00</td>
+<td>轻量级锁定</td>
+</tr>
+<tr>
+<td>指向重量级锁的指针</td>
+<td>10</td>
+<td>膨胀（重量级锁定）</td>
+</tr>
+<tr>
+<td>空，不需要记录信息</td>
+<td>11</td>
+<td>GC标记</td>
+</tr>
+<tr>
+<td>偏向线程ID、偏向时间戳、对象分代年龄</td>
+<td>01</td>
+<td>可偏向</td>
+</tr>
+</tbody></table>
+<p>对象头的另一部分是类型指针，即对象指向它的类型元数据的指针，Java虚拟机通过这个指针<br>来确定该对象是哪个类的实例。并不是所有的虚拟机实现都必须在对象数据上保留类型指针。<br>此外，如果对象是一个Java数组，那再对象头中还必须有一块用于记录数组长度的数据。</p>
+<ul>
+<li>以下为HotSpot虚拟机代表Mark Word中代码注释片段，描述了Mark Word的存储布局：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Bit-format of an object header (most significant first, big endian layout below):</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  32 bits:</span></span><br><span class="line"><span class="comment">//  --------</span></span><br><span class="line"><span class="comment">//             hash:25 ------------&gt;| age:4    biased_lock:1 lock:2 (normal object)</span></span><br><span class="line"><span class="comment">//             JavaThread*:23 epoch:2 age:4    biased_lock:1 lock:2 (biased object)</span></span><br><span class="line"><span class="comment">//             size:32 ------------------------------------------&gt;| (CMS free block)</span></span><br><span class="line"><span class="comment">//             PromotedObject*:29 ----------&gt;| promo_bits:3 -----&gt;| (CMS promoted object)</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  64 bits:</span></span><br><span class="line"><span class="comment">//  --------</span></span><br><span class="line"><span class="comment">//  unused:25 hash:31 --&gt;| unused:1   age:4    biased_lock:1 lock:2 (normal object)</span></span><br><span class="line"><span class="comment">//  JavaThread*:54 epoch:2 unused:1   age:4    biased_lock:1 lock:2 (biased object)</span></span><br><span class="line"><span class="comment">//  PromotedObject*:61 ---------------------&gt;| promo_bits:3 -----&gt;| (CMS promoted object)</span></span><br><span class="line"><span class="comment">//  size:64 -----------------------------------------------------&gt;| (CMS free block)</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  unused:25 hash:31 --&gt;| cms_free:1 age:4    biased_lock:1 lock:2 (COOPs &amp;&amp; normal object)</span></span><br><span class="line"><span class="comment">//  JavaThread*:54 epoch:2 cms_free:1 age:4    biased_lock:1 lock:2 (COOPs &amp;&amp; biased object)</span></span><br><span class="line"><span class="comment">//  narrowOop:32 unused:24 cms_free:1 unused:4 promo_bits:3 -----&gt;| (COOPs &amp;&amp; CMS promoted object)</span></span><br><span class="line"><span class="comment">//  unused:21 size:35 --&gt;| cms_free:1 unused:7 ------------------&gt;| (COOPs &amp;&amp; CMS free block)</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>接下来实例数据部分是对象真正存储的有效信息，即我们在程序代码里面所定义的各种类型<br>的字段内容，无论是从父类继承下来的，还是在子类中定义的字段都必须记录起来。<br>对象的第三部分是对齐填充，这并不是必然存在的，也没有特别的含义，它仅仅起占位符的<br>作用。由于HotSpot虚拟机的自动内存管理系统要求对象起始地址必须是8字节的整数倍，也<br>就是说，任何对象的大小都必须是8字节的整数倍。</p>
+<h3 id="对象的访问定位"><a href="#对象的访问定位" class="headerlink" title="对象的访问定位"></a>对象的访问定位</h3><p>对象的访问方式是由虚拟机实现而定的，主流的访问方式主要有使用句柄和直接指针两种：</p>
+<ol>
+<li>如果使用句柄访问的话，Java堆中将可能会划分出一块内存作为句柄池，reference中存储<br>的就是对象的句柄地址，而句柄中包含了对象实例数据与类型数据各自具体的地址信息。<br><img src="/images/handler.jpg" alt="handler"></li>
+<li>如果使用直接指针访问的话，Java堆中对象的内存布局就必须考虑如何放置访问类型数据<br>的相关信息，reference中存储的直接就是对象地址，如果只是访问对象本身的话，就不需要<br>多一次间接访问的开销。<br><img src="/images/pointer.jpg" alt="pointer"></li>
+</ol>
+<p>HotSpot虚拟机采用直接指针方式访问对象。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kestrelcjx.github.io/2020/04/05/Java内存区域/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/04/08/Java虚拟机内存回收/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Java虚拟机内存回收
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/03/21/《Thinking-in-Java》第二十二章/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">《Thinking in Java》第二十二章</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2015-2020
+        Kestrel
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src="https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914"></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Kestrel&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+<script src="/dist/main.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+    
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+
+</html>

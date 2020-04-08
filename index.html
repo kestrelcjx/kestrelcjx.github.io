@@ -70,14 +70,14 @@
     
     
     
-    <article id="post-垃圾收集器与内存分配策略" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+    <article id="post-实战：内存分配与回收策略" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/04/08/垃圾收集器与内存分配策略/">垃圾收集器与内存分配策略</a> 
+  <a class="article-title" href="/2020/04/08/实战：内存分配与回收策略/">实战：内存分配与回收策略</a> 
 </h2>
  
 
@@ -86,8 +86,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/08/垃圾收集器与内存分配策略/" class="article-date">
-  <time datetime="2020-04-08T09:42:51.000Z" itemprop="datePublished">2020-04-08</time>
+      <a href="/2020/04/08/实战：内存分配与回收策略/" class="article-date">
+  <time datetime="2020-04-08T12:07:50.000Z" itemprop="datePublished">2020-04-08</time>
 </a>
       
       
@@ -104,7 +104,7 @@
       
 
       
-      <h2 id="对象已死？"><a href="#对象已死？" class="headerlink" title="对象已死？"></a>对象已死？</h2><h3 id="引用计数算法"><a href="#引用计数算法" class="headerlink" title="引用计数算法"></a>引用计数算法</h3><h3 id="可达性分析算法"><a href="#可达性分析算法" class="headerlink" title="可达性分析算法"></a>可达性分析算法</h3><h3 id="再谈引用"><a href="#再谈引用" class="headerlink" title="再谈引用"></a>再谈引用</h3><h3 id="生存还是死亡？"><a href="#生存还是死亡？" class="headerlink" title="生存还是死亡？"></a>生存还是死亡？</h3><h3 id="回收方法区"><a href="#回收方法区" class="headerlink" title="回收方法区"></a>回收方法区</h3><h2 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h2><h3 id="分代收集理论"><a href="#分代收集理论" class="headerlink" title="分代收集理论"></a>分代收集理论</h3><h3 id="标记-清理算法"><a href="#标记-清理算法" class="headerlink" title="标记-清理算法"></a>标记-清理算法</h3><h3 id="标记-复制算法"><a href="#标记-复制算法" class="headerlink" title="标记-复制算法"></a>标记-复制算法</h3><h3 id="标记-整理算法"><a href="#标记-整理算法" class="headerlink" title="标记-整理算法"></a>标记-整理算法</h3><h2 id="HotSpot的算法细节实现"><a href="#HotSpot的算法细节实现" class="headerlink" title="HotSpot的算法细节实现"></a>HotSpot的算法细节实现</h2><h3 id="根节点枚举"><a href="#根节点枚举" class="headerlink" title="根节点枚举"></a>根节点枚举</h3><h3 id="安全点"><a href="#安全点" class="headerlink" title="安全点"></a>安全点</h3><h3 id="安全区域"><a href="#安全区域" class="headerlink" title="安全区域"></a>安全区域</h3><h3 id="记忆集与卡表"><a href="#记忆集与卡表" class="headerlink" title="记忆集与卡表"></a>记忆集与卡表</h3><h3 id="写屏障"><a href="#写屏障" class="headerlink" title="写屏障"></a>写屏障</h3><h3 id="并发的可达性分析"><a href="#并发的可达性分析" class="headerlink" title="并发的可达性分析"></a>并发的可达性分析</h3><h2 id="经典垃圾收集器"><a href="#经典垃圾收集器" class="headerlink" title="经典垃圾收集器"></a>经典垃圾收集器</h2><h3 id="Serial收集器"><a href="#Serial收集器" class="headerlink" title="Serial收集器"></a>Serial收集器</h3><h3 id="ParNew收集器"><a href="#ParNew收集器" class="headerlink" title="ParNew收集器"></a>ParNew收集器</h3><h3 id="Parallel-Scavenge收集器"><a href="#Parallel-Scavenge收集器" class="headerlink" title="Parallel Scavenge收集器"></a>Parallel Scavenge收集器</h3><h3 id="Serial-Old收集器"><a href="#Serial-Old收集器" class="headerlink" title="Serial Old收集器"></a>Serial Old收集器</h3><h3 id="Parallel-Old收集器"><a href="#Parallel-Old收集器" class="headerlink" title="Parallel Old收集器"></a>Parallel Old收集器</h3><h3 id="CMS收集器"><a href="#CMS收集器" class="headerlink" title="CMS收集器"></a>CMS收集器</h3><h3 id="Garbage-First收集器"><a href="#Garbage-First收集器" class="headerlink" title="Garbage First收集器"></a>Garbage First收集器</h3><h2 id="低延迟垃圾收集器"><a href="#低延迟垃圾收集器" class="headerlink" title="低延迟垃圾收集器"></a>低延迟垃圾收集器</h2><h3 id="Shenandoah收集器"><a href="#Shenandoah收集器" class="headerlink" title="Shenandoah收集器"></a>Shenandoah收集器</h3><h3 id="ZGC收集器"><a href="#ZGC收集器" class="headerlink" title="ZGC收集器"></a>ZGC收集器</h3><h2 id="选择合适的垃圾收集器"><a href="#选择合适的垃圾收集器" class="headerlink" title="选择合适的垃圾收集器"></a>选择合适的垃圾收集器</h2><h3 id="Epsilon收集器"><a href="#Epsilon收集器" class="headerlink" title="Epsilon收集器"></a>Epsilon收集器</h3><h3 id="收集器的权衡"><a href="#收集器的权衡" class="headerlink" title="收集器的权衡"></a>收集器的权衡</h3><h3 id="虚拟机及垃圾收集器日志"><a href="#虚拟机及垃圾收集器日志" class="headerlink" title="虚拟机及垃圾收集器日志"></a>虚拟机及垃圾收集器日志</h3><h3 id="垃圾收集器参数总结"><a href="#垃圾收集器参数总结" class="headerlink" title="垃圾收集器参数总结"></a>垃圾收集器参数总结</h3><h2 id="实战：内存分配与回收策略"><a href="#实战：内存分配与回收策略" class="headerlink" title="实战：内存分配与回收策略"></a>实战：内存分配与回收策略</h2><h3 id="对象优先在Eden分配"><a href="#对象优先在Eden分配" class="headerlink" title="对象优先在Eden分配"></a>对象优先在Eden分配</h3><h3 id="大对象直接进入老年代"><a href="#大对象直接进入老年代" class="headerlink" title="大对象直接进入老年代"></a>大对象直接进入老年代</h3><h3 id="长期存活的对象将进入老年代"><a href="#长期存活的对象将进入老年代" class="headerlink" title="长期存活的对象将进入老年代"></a>长期存活的对象将进入老年代</h3><h3 id="动态对象年龄判定"><a href="#动态对象年龄判定" class="headerlink" title="动态对象年龄判定"></a>动态对象年龄判定</h3><h3 id="空间分配担保"><a href="#空间分配担保" class="headerlink" title="空间分配担保"></a>空间分配担保</h3>
+      <h2 id="实战：内存分配与回收策略"><a href="#实战：内存分配与回收策略" class="headerlink" title="实战：内存分配与回收策略"></a>实战：内存分配与回收策略</h2><h3 id="对象优先在Eden分配"><a href="#对象优先在Eden分配" class="headerlink" title="对象优先在Eden分配"></a>对象优先在Eden分配</h3><h3 id="大对象直接进入老年代"><a href="#大对象直接进入老年代" class="headerlink" title="大对象直接进入老年代"></a>大对象直接进入老年代</h3><h3 id="长期存活的对象将进入老年代"><a href="#长期存活的对象将进入老年代" class="headerlink" title="长期存活的对象将进入老年代"></a>长期存活的对象将进入老年代</h3><h3 id="动态对象年龄判定"><a href="#动态对象年龄判定" class="headerlink" title="动态对象年龄判定"></a>动态对象年龄判定</h3><h3 id="空间分配担保"><a href="#空间分配担保" class="headerlink" title="空间分配担保"></a>空间分配担保</h3>
       
       <!-- reward -->
       
@@ -133,14 +133,14 @@
 
 </article>
     
-    <article id="post-Java内存区域与内存溢出异常" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+    <article id="post-经典垃圾收集器" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/04/05/Java内存区域与内存溢出异常/">Java内存区域与内存溢出异常</a> 
+  <a class="article-title" href="/2020/04/08/经典垃圾收集器/">经典垃圾收集器</a> 
 </h2>
  
 
@@ -149,7 +149,133 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/05/Java内存区域与内存溢出异常/" class="article-date">
+      <a href="/2020/04/08/经典垃圾收集器/" class="article-date">
+  <time datetime="2020-04-08T12:07:16.000Z" itemprop="datePublished">2020-04-08</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="经典垃圾收集器"><a href="#经典垃圾收集器" class="headerlink" title="经典垃圾收集器"></a>经典垃圾收集器</h2><h3 id="Serial收集器"><a href="#Serial收集器" class="headerlink" title="Serial收集器"></a>Serial收集器</h3><h3 id="ParNew收集器"><a href="#ParNew收集器" class="headerlink" title="ParNew收集器"></a>ParNew收集器</h3><h3 id="Parallel-Scavenge收集器"><a href="#Parallel-Scavenge收集器" class="headerlink" title="Parallel Scavenge收集器"></a>Parallel Scavenge收集器</h3><h3 id="Serial-Old收集器"><a href="#Serial-Old收集器" class="headerlink" title="Serial Old收集器"></a>Serial Old收集器</h3><h3 id="Parallel-Old收集器"><a href="#Parallel-Old收集器" class="headerlink" title="Parallel Old收集器"></a>Parallel Old收集器</h3><h3 id="CMS收集器"><a href="#CMS收集器" class="headerlink" title="CMS收集器"></a>CMS收集器</h3><h3 id="Garbage-First收集器"><a href="#Garbage-First收集器" class="headerlink" title="Garbage First收集器"></a>Garbage First收集器</h3><h2 id="低延迟垃圾收集器"><a href="#低延迟垃圾收集器" class="headerlink" title="低延迟垃圾收集器"></a>低延迟垃圾收集器</h2><h3 id="Shenandoah收集器"><a href="#Shenandoah收集器" class="headerlink" title="Shenandoah收集器"></a>Shenandoah收集器</h3><h3 id="ZGC收集器"><a href="#ZGC收集器" class="headerlink" title="ZGC收集器"></a>ZGC收集器</h3><h2 id="选择合适的垃圾收集器"><a href="#选择合适的垃圾收集器" class="headerlink" title="选择合适的垃圾收集器"></a>选择合适的垃圾收集器</h2><h3 id="Epsilon收集器"><a href="#Epsilon收集器" class="headerlink" title="Epsilon收集器"></a>Epsilon收集器</h3><h3 id="收集器的权衡"><a href="#收集器的权衡" class="headerlink" title="收集器的权衡"></a>收集器的权衡</h3><h3 id="虚拟机及垃圾收集器日志"><a href="#虚拟机及垃圾收集器日志" class="headerlink" title="虚拟机及垃圾收集器日志"></a>虚拟机及垃圾收集器日志</h3><h3 id="垃圾收集器参数总结"><a href="#垃圾收集器参数总结" class="headerlink" title="垃圾收集器参数总结"></a>垃圾收集器参数总结</h3>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Java虚拟机内存回收" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/08/Java虚拟机内存回收/">Java虚拟机内存回收</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/08/Java虚拟机内存回收/" class="article-date">
+  <time datetime="2020-04-08T09:42:51.000Z" itemprop="datePublished">2020-04-08</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="对象已死？"><a href="#对象已死？" class="headerlink" title="对象已死？"></a>对象已死？</h2><h3 id="引用计数算法"><a href="#引用计数算法" class="headerlink" title="引用计数算法"></a>引用计数算法</h3><h3 id="可达性分析算法"><a href="#可达性分析算法" class="headerlink" title="可达性分析算法"></a>可达性分析算法</h3><h3 id="再谈引用"><a href="#再谈引用" class="headerlink" title="再谈引用"></a>再谈引用</h3><h3 id="生存还是死亡？"><a href="#生存还是死亡？" class="headerlink" title="生存还是死亡？"></a>生存还是死亡？</h3><h3 id="回收方法区"><a href="#回收方法区" class="headerlink" title="回收方法区"></a>回收方法区</h3><h2 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h2><h3 id="分代收集理论"><a href="#分代收集理论" class="headerlink" title="分代收集理论"></a>分代收集理论</h3><h3 id="标记-清理算法"><a href="#标记-清理算法" class="headerlink" title="标记-清理算法"></a>标记-清理算法</h3><h3 id="标记-复制算法"><a href="#标记-复制算法" class="headerlink" title="标记-复制算法"></a>标记-复制算法</h3><h3 id="标记-整理算法"><a href="#标记-整理算法" class="headerlink" title="标记-整理算法"></a>标记-整理算法</h3><h2 id="HotSpot的算法细节实现"><a href="#HotSpot的算法细节实现" class="headerlink" title="HotSpot的算法细节实现"></a>HotSpot的算法细节实现</h2><h3 id="根节点枚举"><a href="#根节点枚举" class="headerlink" title="根节点枚举"></a>根节点枚举</h3><h3 id="安全点"><a href="#安全点" class="headerlink" title="安全点"></a>安全点</h3><h3 id="安全区域"><a href="#安全区域" class="headerlink" title="安全区域"></a>安全区域</h3><h3 id="记忆集与卡表"><a href="#记忆集与卡表" class="headerlink" title="记忆集与卡表"></a>记忆集与卡表</h3><h3 id="写屏障"><a href="#写屏障" class="headerlink" title="写屏障"></a>写屏障</h3><h3 id="并发的可达性分析"><a href="#并发的可达性分析" class="headerlink" title="并发的可达性分析"></a>并发的可达性分析</h3>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-Java内存区域" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/05/Java内存区域/">Java内存区域</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/05/Java内存区域/" class="article-date">
   <time datetime="2020-04-05T15:18:32.000Z" itemprop="datePublished">2020-04-05</time>
 </a>
       
@@ -231,7 +357,7 @@
 <li>如果使用直接指针访问的话，Java堆中对象的内存布局就必须考虑如何放置访问类型数据<br>的相关信息，reference中存储的直接就是对象地址，如果只是访问对象本身的话，就不需要<br>多一次间接访问的开销。<br><img src="/images/pointer.jpg" alt="pointer"></li>
 </ol>
 <p>HotSpot虚拟机采用直接指针方式访问对象。</p>
-<h2 id="实战：OutOfMemoryError异常"><a href="#实战：OutOfMemoryError异常" class="headerlink" title="实战：OutOfMemoryError异常"></a>实战：OutOfMemoryError异常</h2><h3 id="Java堆溢出"><a href="#Java堆溢出" class="headerlink" title="Java堆溢出"></a>Java堆溢出</h3><h3 id="虚拟机栈和本地方法栈溢出"><a href="#虚拟机栈和本地方法栈溢出" class="headerlink" title="虚拟机栈和本地方法栈溢出"></a>虚拟机栈和本地方法栈溢出</h3><h3 id="方法区和运行时常量池溢出"><a href="#方法区和运行时常量池溢出" class="headerlink" title="方法区和运行时常量池溢出"></a>方法区和运行时常量池溢出</h3><h3 id="本地直接内存溢出"><a href="#本地直接内存溢出" class="headerlink" title="本地直接内存溢出"></a>本地直接内存溢出</h3>
+
       
       <!-- reward -->
       
@@ -1614,208 +1740,13 @@
 
 </article>
     
-    <article id="post-《Thinking-in-Java》第十六章" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/18/《Thinking-in-Java》第十六章/">《Thinking in Java》第十六章</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/18/《Thinking-in-Java》第十六章/" class="article-date">
-  <time datetime="2020-03-18T06:49:02.000Z" itemprop="datePublished">2020-03-18</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="数组为什么特殊"><a href="#数组为什么特殊" class="headerlink" title="数组为什么特殊"></a>数组为什么特殊</h3><h3 id="数组是第一级对象"><a href="#数组是第一级对象" class="headerlink" title="数组是第一级对象"></a>数组是第一级对象</h3><p>无论使用哪一个类型的数组，数组标识符其实只是一个引用，指向在堆中创建的一个<br>真实对象，这个（数组）对象用以保存指向其他对象的引用。</p>
-<h3 id="返回一个数组"><a href="#返回一个数组" class="headerlink" title="返回一个数组"></a>返回一个数组</h3><h3 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h3><h3 id="数组与泛型"><a href="#数组与泛型" class="headerlink" title="数组与泛型"></a>数组与泛型</h3><p>通常，数组与泛型不能很好地结合，你不能实例化具有参数类型的数组。<br><code>Peel&lt;Banana&gt;[] peels = new Peel&lt;Banana&gt;[10]; //Illegal</code><br>擦除会移除参数类型信息，而数组必须知道它们所持有的确切类型，以强制保证类型安全。</p>
-<h3 id="创建测试数据"><a href="#创建测试数据" class="headerlink" title="创建测试数据"></a>创建测试数据</h3><h3 id="Arrays实用功能"><a href="#Arrays实用功能" class="headerlink" title="Arrays实用功能"></a>Arrays实用功能</h3><p>在java.util类库中可以找到Arrays类，它有一套用于数组的static实用方法，其中有六个<br>基本方法：equals()用于比较两个数组是否相等（deepEquals()用于多维数组）；<br>fill(), sort(), binarySearch(), toString(), hashCode()<br>Java标准类库提供有static方法System.arraycopy()，用它复制数组比用for循环复制要快很多。</p>
-<ul>
-<li>数组元素的比较<br>Java有两种方法来提供比较功能。第一种是实现java.lang.Comparable接口，使你的类具有<br>“天生”的比较能力。此接口很简单，只有compareTo()一个方法。第二种方法是创建一个实现<br>了Comparator接口的单独的类。</li>
-<li>在已排序的数组中查找<br>如果使用Comparator排序了某个对象数组（基本类型数组无法使用Comparator进行排序），<br>在使用binarySearch()时必须提供同样的Comparator（使用binarySearch()方法的重载版本）。</li>
-</ul>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-《Thinking-in-Java》第十五章" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/18/《Thinking-in-Java》第十五章/">《Thinking in Java》第十五章</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/18/《Thinking-in-Java》第十五章/" class="article-date">
-  <time datetime="2020-03-18T06:48:52.000Z" itemprop="datePublished">2020-03-18</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><h3 id="与C-的比较"><a href="#与C-的比较" class="headerlink" title="与C++的比较"></a>与C++的比较</h3><h3 id="简单泛型"><a href="#简单泛型" class="headerlink" title="简单泛型"></a>简单泛型</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Holder</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> T a;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Holder</span><span class="params">(T a)</span> </span>&#123; <span class="keyword">this</span>.a = a; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T a)</span> </span>&#123; <span class="keyword">this</span>.a = a; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> a; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Generator</span>&lt;<span class="title">T</span>&gt; </span>&#123; <span class="function">T <span class="title">next</span><span class="params">()</span></span>; &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h3><ul>
-<li><p>是否拥有泛型方法，与其所在的类是否是泛型没有关系。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericMethods</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">		System.out.println(x.getClass().getName());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>类型推断：类型推断只对赋值操作有效，其他时候（例如作为参数）并不起作用。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list = List&lt;&gt;();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>显式的类型说明</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.&lt;String&gt;fun(); <span class="comment">//类内部</span></span><br><span class="line">person.&lt;String&gt;fun(); <span class="comment">//成员泛型方法</span></span><br><span class="line">Person.&lt;String&gt;staticFun(); <span class="comment">//静态泛型方法</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h3><p>泛型还可以应用于内部类以及匿名内部类。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span> </span>&#123;</span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> Generator&lt;Product&gt; generator = </span><br><span class="line">		<span class="keyword">new</span> Generator&lt;Product&gt;() &#123;</span><br><span class="line">			...</span><br><span class="line">		&#125;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="构造复杂模型"><a href="#构造复杂模型" class="headerlink" title="构造复杂模型"></a>构造复杂模型</h3><h3 id="擦除的神秘之处"><a href="#擦除的神秘之处" class="headerlink" title="擦除的神秘之处"></a>擦除的神秘之处</h3><p>Java中使用擦除实现泛型。在泛型代码内部，无法获得任何有关泛型参数类型的信息。<br>擦除的代价是显著的。泛型不能用于显式地引用运行时类型的操作之中，例如转型、<br>instanceof操作和new表达式，因为所有类型信息都丢失了。</p>
-<h3 id="擦除的补偿"><a href="#擦除的补偿" class="headerlink" title="擦除的补偿"></a>擦除的补偿</h3><p>无法在泛型中使用instanceof，如果引入类型标签，就可以转而使用动态的isInstance()。<br>编译器将确保类型标签可以匹配泛型参数。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Building</span> </span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">House</span> <span class="title">exntends</span> <span class="title">Building</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassTypeCapture</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">	Class&lt;T&gt; kind;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ClassTypeCapture</span><span class="params">(Class&lt;T&gt; kind)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.kind = kind;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">f</span><span class="params">(Object arg)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> kind.isInstance(arg);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		CLassTypeCapture&lt;Building&gt; ctt1 = </span><br><span class="line">			<span class="keyword">new</span> ClassTypeCapture&lt;Building&gt;(Building.class);</span><br><span class="line">		System.out.println(ctt1.f(<span class="keyword">new</span> Building()));</span><br><span class="line">		System.out.println(ctt1.f(<span class="keyword">new</span> House()));</span><br><span class="line">		CLassTypeCapture&lt;House&gt; ctt2 = </span><br><span class="line">			<span class="keyword">new</span> ClassTypeCapture&lt;House&gt;(House.class);</span><br><span class="line">		System.out.println(ctt2.f(<span class="keyword">new</span> Building()));</span><br><span class="line">		System.out.println(ctt2.f(<span class="keyword">new</span> House()));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* Output</span></span><br><span class="line"><span class="comment">true</span></span><br><span class="line"><span class="comment">true</span></span><br><span class="line"><span class="comment">false</span></span><br><span class="line"><span class="comment">true</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Clazz1</span>&lt;?&gt; </span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Clazz2</span>&lt;? <span class="keyword">extends</span> <span class="title">ClassA</span>&gt; </span>&#123;&#125; <span class="comment">// class Clazz3&lt;? extends A &amp; B&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Clazz3</span>&lt;? <span class="title">super</span> <span class="title">ClassB</span>&gt; </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><ul>
-<li><p>可以向导出类型的数组赋予基本类型的数组引用。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fruit</span> </span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Apple</span> <span class="keyword">extends</span> <span class="title">Fruit</span> </span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Jonathan</span> <span class="keyword">extends</span> <span class="title">Apple</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CovariantArrays</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Fruit[] fruit = <span class="keyword">new</span> Apple[<span class="number">10</span>];</span><br><span class="line">		fruit[<span class="number">0</span>] = <span class="keyword">new</span> Apple();</span><br><span class="line">		fruit[<span class="number">1</span>] = <span class="keyword">new</span> Jonathan();</span><br><span class="line">		<span class="comment">// fruit[0] = new Fruit(); // ArrayStoreException</span></span><br><span class="line">		<span class="comment">// fruit[0] = new Orange(); // ArrayStoreException</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>与数组不同，泛型没有内建的协变类型。这是因为数组在语言中是完全定义的，<br>因此可以内建了编译器和运行时的检查，但是在使用泛型时，编译器和运行时<br>系统都不知道你想用类型做什么，以及应该采用什么样的规则。但是，有时你<br>想要在两个类型之间建立某种类型的向上转型关系，这正是通配符所允许的。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericsAndCovariance</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> staic <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		List&lt;? extends Fruit&gt; flist = <span class="keyword">new</span> ArrayList&lt;Apple&gt;();</span><br><span class="line">		<span class="comment">// Compile Error: can't add any type of object:</span></span><br><span class="line">		<span class="comment">// flist.add(new Apple());</span></span><br><span class="line">		<span class="comment">// flist.add(new Fruit());</span></span><br><span class="line">		<span class="comment">// flist.add(new Object());</span></span><br><span class="line">		flist.add(<span class="keyword">null</span>);</span><br><span class="line">		<span class="comment">// We know that it returns at least Fruit:</span></span><br><span class="line">		Fruit f = flist.get(<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>当你指定一个ArrayList&lt;? extends Fruit&gt;时，add()的参数就变成了“? exntends Fruit”。<br>从这个描述中，编译器并不能了解这里需要Fruit的哪个具体子类型，因此它不会接受任何类型<br>的Fruit。<br>在使用contains()和indexOf()时，参数类型是Object，因此不会涉及任何通配符，而编译器<br>也将允许这个调用。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CompilerIntelligence</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		List&lt;? extends Fruit&gt; flist = Arrays.asList(<span class="keyword">new</span> Apple());</span><br><span class="line">		Apple a = (Apple)flist.get(<span class="number">0</span>);	<span class="comment">// No warning</span></span><br><span class="line">		flist.contains(<span class="keyword">new</span> Apple());	<span class="comment">// Argument is 'Object'</span></span><br><span class="line">		flist.indexOf(<span class="keyword">new</span> Apple());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>逆变。可以声明通配符是由某个特定类的任务基类来界定的，方法是指定&lt;? super MyClass&gt;，<br>甚至或者使用类型参数&lt;? super T&gt;（尽管你不能对泛型参数给出一个超类型边界；即不能声明<br><t super myclass>）。这使得你可以安全地传递一个类型到泛型类型中。</t></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SuperTypeWildcards</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">writeTo</span><span class="params">(List&lt;? <span class="keyword">super</span> Apple&gt; apples)</span> </span>&#123;</span><br><span class="line">		apples.add(<span class="keyword">new</span> Apple());</span><br><span class="line">		apples.add(<span class="keyword">new</span> Jonathan());</span><br><span class="line">		<span class="comment">// apples.add(new Fruit()); // Error</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>无界通配符<br>有很多情况都和你在这里看到的情况类似，即编译器很少关心使用的是原生类型还是&lt;?&gt;。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UnboundedWildcards1</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> List list1;</span><br><span class="line">	<span class="keyword">static</span> List&lt;?&gt; list2;</span><br><span class="line">	<span class="keyword">static</span> List&lt;? extends Object&gt; list3;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">assign1</span><span class="params">(List list)</span> </span>&#123;</span><br><span class="line">		list1 = list;</span><br><span class="line">		list2 = list;</span><br><span class="line">		<span class="comment">// list3 = list; // Warning: unchecked conversion</span></span><br><span class="line">		<span class="comment">// Found: List, Required: List&lt;? extends Object&gt;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">assign2</span><span class="params">(List&lt;?&gt; list)</span> </span>&#123;</span><br><span class="line">		list1 = list;</span><br><span class="line">		list2 = list;</span><br><span class="line">		list3 = list;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">assign3</span><span class="params">(List&lt;? extends Object&gt; list)</span> </span>&#123;</span><br><span class="line">		list1 = list;</span><br><span class="line">		list2 = list;</span><br><span class="line">		list3 = list;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>捕获转型<br>有一种情况特别需要使用<?>而不是原生类型。如果向一个使用<?>的方法传递原生类型，<br>那么对编译器来说，可能会推断出实际的类型参数，使得这个方法可以回转并调用另一个<br>使用这个确切类型的方法。下面的示例演示了这种技术，它被称为捕获转型。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CaptureConversion</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(Holder&lt;T&gt; holder)</span> </span>&#123;</span><br><span class="line">		T t = holder.get();</span><br><span class="line">		System.out.println(t.getClass().getSimpleName());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">f2</span><span class="params">(Holder&lt;?&gt; holder)</span> </span>&#123;</span><br><span class="line">		f1(holder);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@SupperWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Holder raw = <span class="keyword">new</span> Holder&lt;Integer&gt;(<span class="number">1</span>);</span><br><span class="line">		<span class="comment">// f1(raw); // Produces warnings</span></span><br><span class="line">		f2(raw); <span class="comment">// No warnings</span></span><br><span class="line">		Holder rawBasic = <span class="keyword">new</span> Holder();</span><br><span class="line">		rawBasic.set(<span class="keyword">new</span> Object()); <span class="comment">// Warnings</span></span><br><span class="line">		f2(rawBasic); <span class="comment">// No warnings</span></span><br><span class="line">		<span class="comment">// Upcast to Holder&lt;?&gt;, still figures it out</span></span><br><span class="line">		Holder&lt;?&gt; wildcarded = <span class="keyword">new</span> Holder&lt;Double&gt;(<span class="number">1.0</span>);</span><br><span class="line">		f2(wildcarded);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* Output</span></span><br><span class="line"><span class="comment">Integer</span></span><br><span class="line"><span class="comment">Object</span></span><br><span class="line"><span class="comment">Double</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ol>
-<li>任何基本类型都不能作为类型参数<br>解决之道是使用基本类型的包装器类以及Java SE5的自动包装机制。</li>
-<li>实现参数化接口<br>一个类不能实现同一个泛型接口的两种变体，由于擦除的原因，这两个变体会成为相同的接口。</li>
-<li>转型和警告<br>使用带有泛型类型参数的转型或instanceof不会有任何效果。</li>
-<li>重载</li>
-<li>基类劫持了接口</li>
-</ol>
-<h3 id="自限定的类型"><a href="#自限定的类型" class="headerlink" title="自限定的类型"></a>自限定的类型</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelfBounded</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">SelfBounded</span>&lt;<span class="title">T</span>&gt;&gt; </span>&#123;</span><br><span class="line">	T element;</span><br><span class="line">	<span class="function">SelfBounded&lt;T&gt; <span class="title">set</span><span class="params">(T arg)</span> </span>&#123;</span><br><span class="line">		element = arg;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">T <span class="title">get</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> element; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">SelfBounded</span>&lt;<span class="title">A</span>&gt; </span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">SelfBounded</span>&lt;<span class="title">A</span>&gt; </span>&#123;&#125; <span class="comment">// Also OK</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span> </span>&#123;&#125;</span><br><span class="line"><span class="comment">// class E extends SelfBounded&lt;D&gt; &#123;&#125;</span></span><br><span class="line"><span class="comment">// Compile error: Type parameter D is not within its bound</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Alas, you can do this, so you can't force the idiom;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">F</span> <span class="keyword">extends</span> <span class="title">SelfBounded</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="动态类型安全"><a href="#动态类型安全" class="headerlink" title="动态类型安全"></a>动态类型安全</h3><p>因为可以向Java SE5之前的代码传递泛型容器，所以旧式代码仍旧有可能破坏你的容器，<br>Java SE5的java.util.Collection中有一组便利工具，可以解决在这种情况下的类型检查<br>问题，他们是：静态方法checkedCollection(), checkedList(), checkedMap(), checkedSet()<br>, checkedSortedMap()和checkedSortedSet()。这些方法每一个都会将你希望动态检查<br>的容器当作第一个参数接受，并将你希望强制要求的类型作为第二个参数接受。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CheckedList</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">oldStyleMethod</span><span class="params">(List probablyDogs)</span> </span>&#123;</span><br><span class="line">		probablyDogs.add(<span class="keyword">new</span> Cat());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		List&lt;Dog&gt; dogs1 = <span class="keyword">new</span> ArrayList&lt;Dog&gt;();</span><br><span class="line">		oldStyleMethod(dogs1); <span class="comment">// Quietly accepts a Cat</span></span><br><span class="line">		List&lt;Dog&gt; dogs2 = Collections.checkedList(</span><br><span class="line">			<span class="keyword">new</span> ArrayList&lt;Dog&gt;, Dog.class);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			oldStyleMethod(dogs2);	<span class="comment">// ClassCastException</span></span><br><span class="line">		&#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><p>由于擦除的原因，将泛型应用于异常是非常受限的。catch语句不能捕获泛型类型的异常，<br>因为在编译器被运行时都必须知道异常的确切类型。泛型类也不能直接或间接继承自Throwable。</p>
-<h3 id="混型"><a href="#混型" class="headerlink" title="混型"></a>混型</h3><p>混合多个类的能力，以产生一个可以表示混型中所有类型的类。</p>
-<h3 id="潜在类型机制"><a href="#潜在类型机制" class="headerlink" title="潜在类型机制"></a>潜在类型机制</h3><p>具有潜在类型机制的语言只要求实现某个方法子集，而不是某个特定类或接口。</p>
-<h3 id="对缺乏潜在类型机制的补偿"><a href="#对缺乏潜在类型机制的补偿" class="headerlink" title="对缺乏潜在类型机制的补偿"></a>对缺乏潜在类型机制的补偿</h3><p>尽管Java不支持潜在类型机制，但是这并不意味着有界泛型代码不能在不同的类型层次结构之间应用。</p>
-<h3 id="将函数对象用作策略"><a href="#将函数对象用作策略" class="headerlink" title="将函数对象用作策略"></a>将函数对象用作策略</h3><h3 id="总结：转型真的如此之糟吗？"><a href="#总结：转型真的如此之糟吗？" class="headerlink" title="总结：转型真的如此之糟吗？"></a>总结：转型真的如此之糟吗？</h3>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
   
 </section>
