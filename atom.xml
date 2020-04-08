@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kestrelcjx.github.io/"/>
-  <updated>2020-04-08T09:37:44.724Z</updated>
+  <updated>2020-04-08T09:52:59.127Z</updated>
   <id>https://kestrelcjx.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>垃圾收集器与内存分配策略</title>
+    <link href="https://kestrelcjx.github.io/2020/04/08/%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E4%B8%8E%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5/"/>
+    <id>https://kestrelcjx.github.io/2020/04/08/%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E4%B8%8E%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5/</id>
+    <published>2020-04-08T09:42:51.000Z</published>
+    <updated>2020-04-08T09:52:59.127Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;对象已死？&quot;&gt;&lt;a href=&quot;#对象已死？&quot; class=&quot;headerlink&quot; title=&quot;对象已死？&quot;&gt;&lt;/a&gt;对象已死？&lt;/h2&gt;&lt;h3 id=&quot;引用计数算法&quot;&gt;&lt;a href=&quot;#引用计数算法&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+      <category term="JVM" scheme="https://kestrelcjx.github.io/tags/JVM/"/>
+    
+  </entry>
   
   <entry>
     <title>Java内存区域与内存溢出异常</title>
@@ -482,31 +509,6 @@
         
         
           &lt;h2 id=&quot;初始化与清理&quot;&gt;&lt;a href=&quot;#初始化与清理&quot; class=&quot;headerlink&quot; title=&quot;初始化与清理&quot;&gt;&lt;/a&gt;初始化与清理&lt;/h2&gt;&lt;h3 id=&quot;用构造器确保初始化&quot;&gt;&lt;a href=&quot;#用构造器确保初始化&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《Thinking in Java》第四章</title>
-    <link href="https://kestrelcjx.github.io/2020/03/10/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%9B%9B%E7%AB%A0/"/>
-    <id>https://kestrelcjx.github.io/2020/03/10/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%9B%9B%E7%AB%A0/</id>
-    <published>2020-03-10T10:42:32.000Z</published>
-    <updated>2020-03-29T05:00:33.799Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;控制执行流程&quot;&gt;&lt;a href=&quot;#控制执行流程&quot; class=&quot;headerlink&quot; title=&quot;控制执行流程&quot;&gt;&lt;/a&gt;控制执行流程&lt;/h2&gt;&lt;h3 id=&quot;true和false&quot;&gt;&lt;a href=&quot;#true和false&quot;
         
       
     
