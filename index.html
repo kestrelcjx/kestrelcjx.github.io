@@ -162,7 +162,13 @@
 </li>
 </ul>
 <p>接下来实例数据部分是对象真正存储的有效信息，即我们在程序代码里面所定义的各种类型<br>的字段内容，无论是从父类继承下来的，还是在子类中定义的字段都必须记录起来。<br>对象的第三部分是对齐填充，这并不是必然存在的，也没有特别的含义，它仅仅起占位符的<br>作用。由于HotSpot虚拟机的自动内存管理系统要求对象起始地址必须是8字节的整数倍，也<br>就是说，任何对象的大小都必须是8字节的整数倍。</p>
-<h3 id="对象的访问定位"><a href="#对象的访问定位" class="headerlink" title="对象的访问定位"></a>对象的访问定位</h3><h2 id="实战：OutOfMemoryError异常"><a href="#实战：OutOfMemoryError异常" class="headerlink" title="实战：OutOfMemoryError异常"></a>实战：OutOfMemoryError异常</h2><h3 id="Java堆溢出"><a href="#Java堆溢出" class="headerlink" title="Java堆溢出"></a>Java堆溢出</h3><h3 id="虚拟机栈和本地方法栈溢出"><a href="#虚拟机栈和本地方法栈溢出" class="headerlink" title="虚拟机栈和本地方法栈溢出"></a>虚拟机栈和本地方法栈溢出</h3><h3 id="方法区和运行时常量池溢出"><a href="#方法区和运行时常量池溢出" class="headerlink" title="方法区和运行时常量池溢出"></a>方法区和运行时常量池溢出</h3><h3 id="本地直接内存溢出"><a href="#本地直接内存溢出" class="headerlink" title="本地直接内存溢出"></a>本地直接内存溢出</h3>
+<h3 id="对象的访问定位"><a href="#对象的访问定位" class="headerlink" title="对象的访问定位"></a>对象的访问定位</h3><p>对象的访问方式是由虚拟机实现而定的，主流的访问方式主要有使用句柄和直接指针两种：</p>
+<ol>
+<li>如果使用句柄访问的话，Java堆中将可能会划分出一块内存作为句柄池，reference中存储<br>的就是对象的句柄地址，而句柄中包含了对象实例数据与类型数据各自具体的地址信息。<br><img src="/images/handler.jpg" alt="handler"></li>
+<li>如果使用直接指针访问的话，Java堆中对象的内存布局就必须考虑如何放置访问类型数据<br>的相关信息，reference中存储的直接就是对象地址，如果只是访问对象本身的话，就不需要<br>多一次间接访问的开销。<br><img src="/images/pointer.jpg" alt="pointer"></li>
+</ol>
+<p>HotSpot虚拟机采用直接指针方式访问对象。</p>
+<h2 id="实战：OutOfMemoryError异常"><a href="#实战：OutOfMemoryError异常" class="headerlink" title="实战：OutOfMemoryError异常"></a>实战：OutOfMemoryError异常</h2><h3 id="Java堆溢出"><a href="#Java堆溢出" class="headerlink" title="Java堆溢出"></a>Java堆溢出</h3><h3 id="虚拟机栈和本地方法栈溢出"><a href="#虚拟机栈和本地方法栈溢出" class="headerlink" title="虚拟机栈和本地方法栈溢出"></a>虚拟机栈和本地方法栈溢出</h3><h3 id="方法区和运行时常量池溢出"><a href="#方法区和运行时常量池溢出" class="headerlink" title="方法区和运行时常量池溢出"></a>方法区和运行时常量池溢出</h3><h3 id="本地直接内存溢出"><a href="#本地直接内存溢出" class="headerlink" title="本地直接内存溢出"></a>本地直接内存溢出</h3>
       
       <!-- reward -->
       
