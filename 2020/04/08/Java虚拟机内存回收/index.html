@@ -60,7 +60,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">3.6k字</span>
+            <span class="post-count">3.9k字</span>
         </span>
     </span>
 
@@ -69,7 +69,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">12分钟</span>
+            <span class="post-count">13分钟</span>
         </span>
     </span>
 </div>
@@ -140,8 +140,7 @@
 <ol start="3">
 <li>跨代引用假说(Intergenerational Reference Hypothesis)：跨代引用相对于同代引用来说<br>仅占极少数。</li>
 </ol>
-<p>　　这其实可根据前两条假说逻辑推理得出的隐含推论：存在相互引用的关系的两个对象，是应该<br>倾向于同时生存和同事消亡的。举个例子：如果某个新生代对象存在跨代引用，由于老年代对象<br>难以消亡，该引用会使得新生代对象在收集时同样得以存活，进而在年龄增长之后晋升到老年代<br>中，这时跨代引用也随即被消除了。</p>
-<p>　　依据这条假说，我们就不应再为了少量的跨代引用去扫描整个老年代，也不必浪费空间专门<br>记录每个对象是否存在及存在哪些跨代引用，只需在新生代上建立一个全局的数据结构（该结构<br>被称为“记忆集”，Remembered Set），这个结构把老年代划分为若干小块，标识出老年代的哪<br>一块内存会存在跨代引用。此后当发生Minor GC时，只有包含了跨代引用的小块内存里的对象<br>才会被加入到GC Roots进行扫描。虽然这种方法需要在对象改变引用关系（如将自己或者某个<br>属性赋值）时维护记录数据的正确性，会增加一些运行时的开销，但比起收集时扫描整个老年代<br>来说仍然是划算的。</p>
+<p>　　这其实可根据前两条假说逻辑推理得出的隐含推论：存在相互引用的关系的两个对象，是应该<br>倾向于同时生存和同事消亡的。举个例子：如果某个新生代对象存在跨代引用，由于老年代对象<br>难以消亡，该引用会使得新生代对象在收集时同样得以存活，进而在年龄增长之后晋升到老年代<br>中，这时跨代引用也随即被消除了。<br>　　依据这条假说，我们就不应再为了少量的跨代引用去扫描整个老年代，也不必浪费空间专门<br>记录每个对象是否存在及存在哪些跨代引用，只需在新生代上建立一个全局的数据结构（该结构<br>被称为“记忆集”，Remembered Set），这个结构把老年代划分为若干小块，标识出老年代的哪<br>一块内存会存在跨代引用。此后当发生Minor GC时，只有包含了跨代引用的小块内存里的对象<br>才会被加入到GC Roots进行扫描。虽然这种方法需要在对象改变引用关系（如将自己或者某个<br>属性赋值）时维护记录数据的正确性，会增加一些运行时的开销，但比起收集时扫描整个老年代<br>来说仍然是划算的。</p>
 <hr>
 <p>部分收集(Partial GC)：指目标不是完整收集整个Java堆的垃圾收集，其中又分为：</p>
 <ul>
@@ -152,7 +151,8 @@
 <p>整堆收集(Full GC)：收集整个Java堆和方法区的垃圾收集。</p>
 <hr>
 <h3 id="标记-清理算法"><a href="#标记-清理算法" class="headerlink" title="标记-清理算法"></a>标记-清理算法</h3><p>　　“标记-清理(Mark-Sweep)算法”：首先标记出所有需要回收的对象，在标记完成后，统一<br>回收掉所有被标记的对象，也可以反过来，标记存活的对象，统一回收所有未被标记的对象。<br>　　它的主要缺点有两个：第一是执行效率不太稳定，如果Java堆中包含大量对象，而且大部分<br>是需要回收的，这时必须进行大量标记和清除的动作，导致标记和清除两个过程的效率都随<br>对象数量增长而降低；第二个是内存空间的碎片化问题，标记、清除之后会产生大量不连续的<br>内存碎片，空间碎片太多可能会导致当以后再程序运行过程中需要分配较大对象时无法找到<br>足够的连续内存而不得不提前触发另一次垃圾收集动作。<br><img src="/images/Mark-Sweep.jpg" alt="Mark-Sweep"></p>
-<h3 id="标记-复制算法"><a href="#标记-复制算法" class="headerlink" title="标记-复制算法"></a>标记-复制算法</h3><h3 id="标记-整理算法"><a href="#标记-整理算法" class="headerlink" title="标记-整理算法"></a>标记-整理算法</h3><h2 id="HotSpot的算法细节实现"><a href="#HotSpot的算法细节实现" class="headerlink" title="HotSpot的算法细节实现"></a>HotSpot的算法细节实现</h2><h3 id="根节点枚举"><a href="#根节点枚举" class="headerlink" title="根节点枚举"></a>根节点枚举</h3><h3 id="安全点"><a href="#安全点" class="headerlink" title="安全点"></a>安全点</h3><h3 id="安全区域"><a href="#安全区域" class="headerlink" title="安全区域"></a>安全区域</h3><h3 id="记忆集与卡表"><a href="#记忆集与卡表" class="headerlink" title="记忆集与卡表"></a>记忆集与卡表</h3><h3 id="写屏障"><a href="#写屏障" class="headerlink" title="写屏障"></a>写屏障</h3><h3 id="并发的可达性分析"><a href="#并发的可达性分析" class="headerlink" title="并发的可达性分析"></a>并发的可达性分析</h3>
+<h3 id="标记-复制算法"><a href="#标记-复制算法" class="headerlink" title="标记-复制算法"></a>标记-复制算法</h3><p>　　标记-复制算法常被称为复制算法。为了解决标记-清理算法面对大量可回收对象执行效率<br>低的问题，1969年Fenichel提出了一种称为“半区复制”(Semispace Copying)的垃圾收集算法，<br>它将可用内存按容量划分为大小相等的两块，每次只是用其中的一块。当这一块的内存用完了，<br>就将还存活着的对象复制到另外一块上面，然后再把已使用过的内存空间一次清理掉。如果<br>内存中多数对象都是存活的，这种算法将会产生大量的内存间复制的开销。但对于多数对象<br>都是可回收的情况，算法需要复制的就是占少数的存活对象，而且每次都是针对整个半区进行<br>内存回收，分配内存时也就不同考虑有空间碎片的复杂情况，只要移动堆顶指针，按顺序分配<br>即可。这样实现简单，运行高效，不过其缺陷也显而易见，这种复制回收算法的代价是将可用<br>内存缩小为了原来的一半，空间浪费未免太多了。<br><img src="Mark-Cpoy.jpg" alt="Mark-Copy"><br>　　HotSpot虚拟机的Serial、ParNew等新生代收集器均采用更优化的半区复制分代策略，<br>这种策略称为“Appel式回收”。</p>
+<h3 id="标记-整理算法"><a href="#标记-整理算法" class="headerlink" title="标记-整理算法"></a>标记-整理算法</h3><h2 id="HotSpot的算法细节实现"><a href="#HotSpot的算法细节实现" class="headerlink" title="HotSpot的算法细节实现"></a>HotSpot的算法细节实现</h2><h3 id="根节点枚举"><a href="#根节点枚举" class="headerlink" title="根节点枚举"></a>根节点枚举</h3><h3 id="安全点"><a href="#安全点" class="headerlink" title="安全点"></a>安全点</h3><h3 id="安全区域"><a href="#安全区域" class="headerlink" title="安全区域"></a>安全区域</h3><h3 id="记忆集与卡表"><a href="#记忆集与卡表" class="headerlink" title="记忆集与卡表"></a>记忆集与卡表</h3><h3 id="写屏障"><a href="#写屏障" class="headerlink" title="写屏障"></a>写屏障</h3><h3 id="并发的可达性分析"><a href="#并发的可达性分析" class="headerlink" title="并发的可达性分析"></a>并发的可达性分析</h3>
       
       <!-- reward -->
       
