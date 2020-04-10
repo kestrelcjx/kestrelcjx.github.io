@@ -105,7 +105,7 @@
 
       
       <h2 id="实战：内存分配与回收策略"><a href="#实战：内存分配与回收策略" class="headerlink" title="实战：内存分配与回收策略"></a>实战：内存分配与回收策略</h2><h3 id="对象优先在Eden分配"><a href="#对象优先在Eden分配" class="headerlink" title="对象优先在Eden分配"></a>对象优先在Eden分配</h3><p>　　大多数情况下，对象在新生代Eden区中分配。当Eden区没有足够空间进行分配时，虚拟机<br>将发起一次Minor GC。</p>
-<h3 id="大对象直接进入老年代"><a href="#大对象直接进入老年代" class="headerlink" title="大对象直接进入老年代"></a>大对象直接进入老年代</h3><p>　　HotSpot虚拟机提供了-XX:PretenureSizeThreshold参数，指定大于改设置值的对象直接<br>在老年代中分配，这样做的目的就是避免在Eden区及两个Survivor区之间来回复制，产生大量<br>的内存复制操作。</p>
+<h3 id="大对象直接进入老年代"><a href="#大对象直接进入老年代" class="headerlink" title="大对象直接进入老年代"></a>大对象直接进入老年代</h3><p>　　HotSpot虚拟机提供了-XX:PretenureSizeThreshold参数，指定大于该设置值的对象直接<br>在老年代中分配，这样做的目的就是避免在Eden区及两个Survivor区之间来回复制，产生大量<br>的内存复制操作。</p>
 <hr>
 <p>-XX:PretenureSizeThreshold参数只对Serial和ParNew两款新生代收集器有效，HotSpot的其他<br>新生代收集器，如Parallel Scavenge并不支持这个参数。如果必须使用此参数进行调优，可<br>考虑ParNew加CMS的收集器组合。</p>
 <hr>
