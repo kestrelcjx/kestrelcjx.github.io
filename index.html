@@ -104,7 +104,7 @@
       
 
       
-      <h2 id="实战：内存分配与回收策略"><a href="#实战：内存分配与回收策略" class="headerlink" title="实战：内存分配与回收策略"></a>实战：内存分配与回收策略</h2><h3 id="对象优先在Eden分配"><a href="#对象优先在Eden分配" class="headerlink" title="对象优先在Eden分配"></a>对象优先在Eden分配</h3><p>　　大多数情况下，对象在新生代Eden区中分配。当Eden区没有足够空间进行分配时，虚拟机将发起一次Minor GC。<br>　　在代码清单的testAllocation()方法中，尝试分配三个2MB大小和一个4MB大小的对象，在运行时通过-Xms20M、<br>-Xmx20M、-Xmn10M这三个参数限制了Java堆大小为20MB，不可扩展，其中10MB分配给新生代，剩下的10MB分配个老<br>年代。-XX:SurvivorRatio=8决定了新生代中Eden区与一个Survivor区的空间比例是8：1，从输出的结果也清晰看到<br>“eden space 8192K、from space 1024K、to space 1024K”的信息，新生代总可用空间为9126KB（Eden区+1个Surv-<br>ivor区的总容量）。</p>
+      <h2 id="实战：内存分配与回收策略"><a href="#实战：内存分配与回收策略" class="headerlink" title="实战：内存分配与回收策略"></a>实战：内存分配与回收策略</h2><h3 id="对象优先在Eden分配"><a href="#对象优先在Eden分配" class="headerlink" title="对象优先在Eden分配"></a>对象优先在Eden分配</h3><p>　　大多数情况下，对象在新生代Eden区中分配。当Eden区没有足够空间进行分配时，虚拟机<br>将发起一次Minor GC。<br>　　在代码清单的testAllocation()方法中，尝试分配三个2MB大小和一个4MB大小的对象，<br>在运行时通过-Xms20M、-Xmx20M、-Xmn10M这三个参数限制了Java堆大小为20MB，不可扩展，<br>其中10MB分配给新生代，剩下的10MB分配个老年代。-XX:SurvivorRatio=8决定了新生代中Eden<br>区与一个Survivor区的空间比例是8：1，从输出的结果也清晰看到“eden space 8192K、from<br>space 1024K、to space 1024K”的信息，新生代总可用空间为9126KB（Eden区+1个Survivor区<br>的总容量）。</p>
 <h3 id="大对象直接进入老年代"><a href="#大对象直接进入老年代" class="headerlink" title="大对象直接进入老年代"></a>大对象直接进入老年代</h3><h3 id="长期存活的对象将进入老年代"><a href="#长期存活的对象将进入老年代" class="headerlink" title="长期存活的对象将进入老年代"></a>长期存活的对象将进入老年代</h3><h3 id="动态对象年龄判定"><a href="#动态对象年龄判定" class="headerlink" title="动态对象年龄判定"></a>动态对象年龄判定</h3><h3 id="空间分配担保"><a href="#空间分配担保" class="headerlink" title="空间分配担保"></a>空间分配担保</h3>
       
       <!-- reward -->
