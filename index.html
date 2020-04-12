@@ -298,7 +298,19 @@
 <p><img src="/images/G11.jpg" alt="Garbage First"></p>
 <h2 id="低延迟垃圾收集器"><a href="#低延迟垃圾收集器" class="headerlink" title="低延迟垃圾收集器"></a>低延迟垃圾收集器</h2><p>　　衡量垃圾收集器的三项最重要的指标是：内存占用(Footpoint)、吞吐量(Throughput)<br>和延迟(Latency)，三者共同构成了一个“不可能三角形”。三者总体的表现会随技术<br>进步而越来越好，但是要在这三个方面同时具有卓越表现得“完美”收集器是极其困难<br>甚至不可能的，一款优秀的收集器通常最多可以同时达成其中的两项。</p>
 <p><img src="/images/Four-Collectors.jpg" alt="Collectors"></p>
-<h3 id="Shenandoah收集器"><a href="#Shenandoah收集器" class="headerlink" title="Shenandoah收集器"></a>Shenandoah收集器</h3><h3 id="ZGC收集器"><a href="#ZGC收集器" class="headerlink" title="ZGC收集器"></a>ZGC收集器</h3><h3 id="Epsilon收集器"><a href="#Epsilon收集器" class="headerlink" title="Epsilon收集器"></a>Epsilon收集器</h3><p>　　Epsilon（A No-Op Garbage Collector）垃圾回收器控制内存分配，但是不执行<br>任何垃圾回收工作。一旦java的堆被耗尽，jvm就直接关闭。设计的目的是提供一个<br>完全消极的GC实现，分配有限的内存分配，最大限度降低消费内存占用量和内存吞吐<br>时的延迟时间。</p>
+<h3 id="Shenandoah收集器"><a href="#Shenandoah收集器" class="headerlink" title="Shenandoah收集器"></a>Shenandoah收集器</h3><p>　　虽然Shenandoah也是使用基于Region的堆内存布局，同样有着用于存放大对象的<br>Humongous Region，默认的回收策略也同样是优先处理回收价值最大的Region。。。<br>但在管理堆内存方面，它与G1至少有三个明显的不同之处，最重要的当然是支持并发<br>的整理算法，G1的回收阶段是可以多线程并行的，但却不能与用户线程并发。其次，<br>Shenandoah（目前）是默认不使用分代收集的，换言之，不会有专门的新生代Region<br>或者老年代Region的存在。最后，Shenandoah摒弃了在G1中耗费大量内存和计算资源<br>来维护的记忆集，改用名为“连接矩阵”(Connection Matrix)的全局数据结构来记录<br>跨Region的引用关系，降低了处理跨代指针时记忆集维护消耗，也降低了伪共享问题<br>的发生概率。连接矩阵可以简单理解为一张二维表格，如果Region N有对象指向Region M，<br>就在表格的N行M列中打上一个标记。<br>　　Shenandoah收集器的工作过程大致可以划分为以下九个阶段：</p>
+<ol>
+<li>初始标记(Initial Marking)：</li>
+<li>并发标记(Concurrent Marking)：</li>
+<li>最终标记(Final Marking)：</li>
+<li>并发清理(Concurrent Cleanup)：</li>
+<li>并发回收(Concurrent Evacuation)：</li>
+<li>初始引用更新(Initial Update Reference)：</li>
+<li>并发引用更新(Concurrent Update Reference)：</li>
+<li>最终引用更新(Final Update Reference)：</li>
+<li>并发清理(Concurrent Cleanup)：</li>
+</ol>
+<h3 id="ZGC收集器"><a href="#ZGC收集器" class="headerlink" title="ZGC收集器"></a>ZGC收集器</h3><h3 id="Epsilon收集器"><a href="#Epsilon收集器" class="headerlink" title="Epsilon收集器"></a>Epsilon收集器</h3><p>　　Epsilon（A No-Op Garbage Collector）垃圾回收器控制内存分配，但是不执行<br>任何垃圾回收工作。一旦java的堆被耗尽，jvm就直接关闭。设计的目的是提供一个<br>完全消极的GC实现，分配有限的内存分配，最大限度降低消费内存占用量和内存吞吐<br>时的延迟时间。</p>
 
       
       <!-- reward -->
