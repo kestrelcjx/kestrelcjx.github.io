@@ -311,7 +311,7 @@
 <li>并发清理(Concurrent Cleanup)：经过并发回收和引用更新之后，整个回收集中<br>所有的Region已再无存活对象，这些Region都变成Immediate Garbage Region了，最后<br>在调用一次并发清理过程来回收这些Region的内存空间，供以后新对象分配使用。</li>
 </ol>
 <p><img src="/images/Shenandoah.jpg" alt="Shenandoah"><br>　　黄色的区域代表的是被选入回收集合的Region，绿色部分就代表还存活的对象，<br>蓝色就是用户线程可以用来分配对象的Region了。</p>
-<h3 id="ZGC收集器"><a href="#ZGC收集器" class="headerlink" title="ZGC收集器"></a>ZGC收集器</h3><h3 id="Epsilon收集器"><a href="#Epsilon收集器" class="headerlink" title="Epsilon收集器"></a>Epsilon收集器</h3><p>　　Epsilon（A No-Op Garbage Collector）垃圾回收器控制内存分配，但是不执行<br>任何垃圾回收工作。一旦java的堆被耗尽，jvm就直接关闭。设计的目的是提供一个<br>完全消极的GC实现，分配有限的内存分配，最大限度降低消费内存占用量和内存吞吐<br>时的延迟时间。</p>
+<h3 id="ZGC收集器"><a href="#ZGC收集器" class="headerlink" title="ZGC收集器"></a>ZGC收集器</h3><h2 id="其他垃圾收集器"><a href="#其他垃圾收集器" class="headerlink" title="其他垃圾收集器"></a>其他垃圾收集器</h2><h3 id="Epsilon收集器"><a href="#Epsilon收集器" class="headerlink" title="Epsilon收集器"></a>Epsilon收集器</h3><p>　　Epsilon（A No-Op Garbage Collector）垃圾回收器控制内存分配，但是不执行<br>任何垃圾回收工作。一旦java的堆被耗尽，jvm就直接关闭。设计的目的是提供一个<br>完全消极的GC实现，分配有限的内存分配，最大限度降低消费内存占用量和内存吞吐<br>时的延迟时间。</p>
 
       
       <!-- reward -->
