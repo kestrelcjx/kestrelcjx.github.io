@@ -69,7 +69,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">18分钟</span>
+            <span class="post-count">19分钟</span>
         </span>
     </span>
 </div>
@@ -142,7 +142,8 @@
 <p><img src="/images/G11.jpg" alt="Garbage First"></p>
 <h2 id="低延迟垃圾收集器"><a href="#低延迟垃圾收集器" class="headerlink" title="低延迟垃圾收集器"></a>低延迟垃圾收集器</h2><p>　　衡量垃圾收集器的三项最重要的指标是：内存占用(Footpoint)、吞吐量(Throughput)<br>和延迟(Latency)，三者共同构成了一个“不可能三角形”。三者总体的表现会随技术<br>进步而越来越好，但是要在这三个方面同时具有卓越表现得“完美”收集器是极其困难<br>甚至不可能的，一款优秀的收集器通常最多可以同时达成其中的两项。</p>
 <p><img src="/images/Four-Collectors.jpg" alt="Collectors"></p>
-<h3 id="Shenandoah收集器"><a href="#Shenandoah收集器" class="headerlink" title="Shenandoah收集器"></a>Shenandoah收集器</h3><h3 id="ZGC收集器"><a href="#ZGC收集器" class="headerlink" title="ZGC收集器"></a>ZGC收集器</h3><h2 id="选择合适的垃圾收集器"><a href="#选择合适的垃圾收集器" class="headerlink" title="选择合适的垃圾收集器"></a>选择合适的垃圾收集器</h2><h3 id="Epsilon收集器"><a href="#Epsilon收集器" class="headerlink" title="Epsilon收集器"></a>Epsilon收集器</h3><h3 id="收集器的权衡"><a href="#收集器的权衡" class="headerlink" title="收集器的权衡"></a>收集器的权衡</h3><h3 id="虚拟机及垃圾收集器日志"><a href="#虚拟机及垃圾收集器日志" class="headerlink" title="虚拟机及垃圾收集器日志"></a>虚拟机及垃圾收集器日志</h3><h3 id="垃圾收集器参数总结"><a href="#垃圾收集器参数总结" class="headerlink" title="垃圾收集器参数总结"></a>垃圾收集器参数总结</h3>
+<h3 id="Shenandoah收集器"><a href="#Shenandoah收集器" class="headerlink" title="Shenandoah收集器"></a>Shenandoah收集器</h3><h3 id="ZGC收集器"><a href="#ZGC收集器" class="headerlink" title="ZGC收集器"></a>ZGC收集器</h3><h3 id="Epsilon收集器"><a href="#Epsilon收集器" class="headerlink" title="Epsilon收集器"></a>Epsilon收集器</h3><p>　　Epsilon（A No-Op Garbage Collector）垃圾回收器控制内存分配，但是不执行<br>任何垃圾回收工作。一旦java的堆被耗尽，jvm就直接关闭。设计的目的是提供一个<br>完全消极的GC实现，分配有限的内存分配，最大限度降低消费内存占用量和内存吞吐<br>时的延迟时间。</p>
+
       
       <!-- reward -->
       
