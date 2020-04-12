@@ -15,8 +15,12 @@
   
   <link rel="shortcut icon" href="/favicon.ico" />
   
-  <link rel="stylesheet" href="/dist/main.css">
-  <link rel="stylesheet" href="/css/custom.css">
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
   
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
   
@@ -33,7 +37,8 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-Java内存区域" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  <article id="post-Java内存区域" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
@@ -49,7 +54,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/05/Java内存区域/" class="article-date">
+      <a href="/2020/04/05/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/" class="article-date">
   <time datetime="2020-04-05T15:18:32.000Z" itemprop="datePublished">2020-04-05</time>
 </a>
       
@@ -108,7 +113,7 @@
 <li>在类加载检查通过后，接下来虚拟机将为新生对象分配内存。对象所需内存的大小在类加载<br>完成后便完全确定，为对象分配空间的任务实际上便等同于把一块确定大小的内存块从Java<br>堆中划分出来。假设Java堆中内存是绝对规整的，所有被使用过的内存都被放在一边，空间<br>的内存被放在另一边，中间放着一个指针作为分界点的指示器，那所分配内存就仅仅是把那个<br>指针向空闲方法挪动一段与对象大小相等的距离，这种分配方式被称为“指针碰撞”(Bump The<br>Point)。但如果Java堆中的内存并不是规整的，已被使用的内存和空闲的内存相互交错在一起，<br>那就没有办法简单地进行指针碰撞了，虚拟机就必须维护一个列表，记录上哪些内存块是可用的，<br>在分配的时候从列表中找到一块足够大的空间划分给对象实例，并更新列表上的记录，这种<br>分配方式被称为“空闲列表”(Free List)。选择哪种分配方式由Java堆是否规整决定，而Java堆<br>是否规整又由所采用的垃圾收集器是否带有空间压缩整理(Compact)的能力决定。</li>
 <li>对象创建在虚拟机中非常频繁的行为，即使仅仅修改一个指针所指向的位置，在并发情况下<br>也并不是线程安全的。解决这个问题有两种可选方案：一种是对分配内存空间的动作进行同步<br>处理——实际上虚拟机是采用CAS配上失败重试的方式保证更新操作的原子性；另一种是把内存<br>分配动作划分在不同的空间之中进行，即每个线程在Java堆中预先分配一小块内存，成为本地<br>线程分配缓存(Thread Local Allocation Buffer, TLAB)，哪个线程要分配内存，就在哪个<br>线程的本地缓存区中分配，只有本地缓冲区用完了，分配新的缓存区时才需要同步锁定。虚拟机<br>是否适用TLAB，可以通过-XX:+/-UseTLAB参数来设定。</li>
 <li>内存分配完成之后，虚拟机必须将分配到的内存空间（但不包括对象头）都初始化为零值，<br>如果使用了TLAB的话，这一项工作也可以提前至TLAB分配时顺便进行。</li>
-<li>就下来，Java虚拟机还要对对象进行必要的设置，例如这个对象是哪个类的实例、如何才能<br>找到类的元数据信息、对象的哈希码（实际上对象的哈希码会延后到真正调用Object::hashCode()<br>方法时才计算）、对象的GC分代年龄等信息。这些信息存放在对象的对象头(Object Header)之中。<br>在上面的工作完成之后，将执行对象的构造函数，即Class文件中的<init>()方法。一般来说<br>（由字节码流中new指令是否跟随invokespecial指令所决定，Java编译器会在遇到new关键字<br>的地方同时生成这两条字节码指令，但如果直接通过其他方式产生的则不一定如此），new指令<br>之后会接着执行<init>()方法，按照程序员的意愿对对象进行初始化，这样一个真正可用的<br>对象才算完全被构造出来。</init></init></li>
+<li>就下来，Java虚拟机还要对对象进行必要的设置，例如这个对象是哪个类的实例、如何才能<br>找到类的元数据信息、对象的哈希码（实际上对象的哈希码会延后到真正调用Object::hashCode()<br>方法时才计算）、对象的GC分代年龄等信息。这些信息存放在对象的对象头(Object Header)之中。<br>在上面的工作完成之后，将执行对象的构造函数，即Class文件中的<init>()方法。一般来说<br>（由字节码流中new指令是否跟随invokespecial指令所决定，Java编译器会在遇到new关键字<br>的地方同时生成这两条字节码指令，但如果直接通过其他方式产生的则不一定如此），new指令<br>之后会接着执行<init>()方法，按照程序员的意愿对对象进行初始化，这样一个真正可用的<br>对象才算完全被构造出来。</li>
 </ol>
 <h3 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h3><p>在HotSpot虚拟机里，对象在堆内存中的存储布局可以划分为三个部分：对象头(Header)、<br>实例数据(Instance Data)和对齐填充(Padding)。<br>HotSpot虚拟机对象的对象头部分包括两类信息。第一类是用于存储对象自身的运行时数据，<br>如哈希码(HashCode)、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID、偏向时间戳等，这部分<br>数据的长度在32位和64位虚拟机（未开启压缩指针）中分别为32个比特和64个比特，官方称为<br>“Mark Word”。对象需要存储的运行时数据很多，其实已经超过了32、64喂Bitmap结构所能记录<br>的最大限度，但对象头里的信息是与对象自身定义的数据无关的额外存储成本，考虑到虚拟机<br>的空间效率，Mark Word被设计成一个有着动态定义的数据结构，以便在极小的空间内存储尽量<br>多的数据，根据对象的状态复用自己的存储空间。例如在32位的HotSpot虚拟机中，如对象未<br>被同步锁锁定的状态下，Mark Word的32个比特存储空间中的25个比特用于存储对象哈希码，<br>4个比特用于存储对象分代年龄，2个比特用于存储锁标志位，1个比特固定为0，在其他状态<br>（轻量级锁定、重量级锁定、GC标记、可偏向）下对象的存储内容如下表所示：</p>
 <table>
@@ -148,10 +153,8 @@
 <p>对象头的另一部分是类型指针，即对象指向它的类型元数据的指针，Java虚拟机通过这个指针<br>来确定该对象是哪个类的实例。并不是所有的虚拟机实现都必须在对象数据上保留类型指针。<br>此外，如果对象是一个Java数组，那再对象头中还必须有一块用于记录数组长度的数据。</p>
 <ul>
 <li>以下为HotSpot虚拟机代表Mark Word中代码注释片段，描述了Mark Word的存储布局：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Bit-format of an object header (most significant first, big endian layout below):</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  32 bits:</span></span><br><span class="line"><span class="comment">//  --------</span></span><br><span class="line"><span class="comment">//             hash:25 ------------&gt;| age:4    biased_lock:1 lock:2 (normal object)</span></span><br><span class="line"><span class="comment">//             JavaThread*:23 epoch:2 age:4    biased_lock:1 lock:2 (biased object)</span></span><br><span class="line"><span class="comment">//             size:32 ------------------------------------------&gt;| (CMS free block)</span></span><br><span class="line"><span class="comment">//             PromotedObject*:29 ----------&gt;| promo_bits:3 -----&gt;| (CMS promoted object)</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  64 bits:</span></span><br><span class="line"><span class="comment">//  --------</span></span><br><span class="line"><span class="comment">//  unused:25 hash:31 --&gt;| unused:1   age:4    biased_lock:1 lock:2 (normal object)</span></span><br><span class="line"><span class="comment">//  JavaThread*:54 epoch:2 unused:1   age:4    biased_lock:1 lock:2 (biased object)</span></span><br><span class="line"><span class="comment">//  PromotedObject*:61 ---------------------&gt;| promo_bits:3 -----&gt;| (CMS promoted object)</span></span><br><span class="line"><span class="comment">//  size:64 -----------------------------------------------------&gt;| (CMS free block)</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  unused:25 hash:31 --&gt;| cms_free:1 age:4    biased_lock:1 lock:2 (COOPs &amp;&amp; normal object)</span></span><br><span class="line"><span class="comment">//  JavaThread*:54 epoch:2 cms_free:1 age:4    biased_lock:1 lock:2 (COOPs &amp;&amp; biased object)</span></span><br><span class="line"><span class="comment">//  narrowOop:32 unused:24 cms_free:1 unused:4 promo_bits:3 -----&gt;| (COOPs &amp;&amp; CMS promoted object)</span></span><br><span class="line"><span class="comment">//  unused:21 size:35 --&gt;| cms_free:1 unused:7 ------------------&gt;| (COOPs &amp;&amp; CMS free block)</span></span><br></pre></td></tr></table></figure>
-
-</li>
+接下来实例数据部分是对象真正存储的有效信息，即我们在程序代码里面所定义的各种类型<br>的字段内容，无论是从父类继承下来的，还是在子类中定义的字段都必须记录起来。<br>对象的第三部分是对齐填充，这并不是必然存在的，也没有特别的含义，它仅仅起占位符的<br>作用。由于HotSpot虚拟机的自动内存管理系统要求对象起始地址必须是8字节的整数倍，也<br>就是说，任何对象的大小都必须是8字节的整数倍。</li>
 </ul>
-<p>接下来实例数据部分是对象真正存储的有效信息，即我们在程序代码里面所定义的各种类型<br>的字段内容，无论是从父类继承下来的，还是在子类中定义的字段都必须记录起来。<br>对象的第三部分是对齐填充，这并不是必然存在的，也没有特别的含义，它仅仅起占位符的<br>作用。由于HotSpot虚拟机的自动内存管理系统要求对象起始地址必须是8字节的整数倍，也<br>就是说，任何对象的大小都必须是8字节的整数倍。</p>
 <h3 id="对象的访问定位"><a href="#对象的访问定位" class="headerlink" title="对象的访问定位"></a>对象的访问定位</h3><p>对象的访问方式是由虚拟机实现而定的，主流的访问方式主要有使用句柄和直接指针两种：</p>
 <ol>
 <li>如果使用句柄访问的话，Java堆中将可能会划分出一块内存作为句柄池，reference中存储<br>的就是对象的句柄地址，而句柄中包含了对象实例数据与类型数据各自具体的地址信息。<br><img src="/images/handler.jpg" alt="handler"></li>
@@ -171,8 +174,9 @@
           <ul class="post-copyright">
             <li>
               <i class="ri-copyright-line"></i>
-              <strong>版权声明： </strong>
-              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
             </li>
           </ul>
         </div>
@@ -222,14 +226,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kestrelcjx.github.io/2020/04/05/Java内存区域/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kestrelcjx.github.io/2020/04/05/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
 
     </footer>
@@ -240,7 +244,7 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/04/08/Java虚拟机内存回收/" class="article-nav-link">
+      <a href="/2020/04/08/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
@@ -250,7 +254,7 @@
       </a>
     
     
-      <a href="/2020/03/21/《Thinking-in-Java》第二十二章/" class="article-nav-link">
+      <a href="/2020/03/21/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%8C%E7%AB%A0/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">《Thinking in Java》第二十二章</div>
       </a>
@@ -268,7 +272,7 @@
     </div>
 </div>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
 <script>
     new Valine({
         el: '#vcomments',
@@ -351,7 +355,7 @@
       <li>
         <!-- cnzz统计 -->
         
-        <script type="text/javascript" src="https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914"></script>
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
         
       </li>
     </ul>
@@ -404,7 +408,7 @@
   <ul class="nav">
     <li class="nav-item">
       
-      <a class="nav-item-link nav-item-search" title="Search">
+      <a class="nav-item-link nav-item-search"  title="Search">
         <i class="ri-search-line"></i>
       </a>
       
@@ -450,8 +454,12 @@
     
   </div>
 </div>
-    <script src="/js/jquery-2.0.3.min.js"></script>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
 <script src="/js/lazyload.min.js"></script>
+
 
 <script>
   try {
@@ -470,7 +478,9 @@
 
 
 
+
 <script src="/js/tocbot.min.js"></script>
+
 <script>
   // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
   tocbot.init({
@@ -491,7 +501,9 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
 <script src="/dist/main.js"></script>
+
 
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
@@ -627,7 +639,9 @@
 </script>
 
 
+
 <script src="/js/busuanzi-2.3.pure.min.js"></script>
+
 
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>

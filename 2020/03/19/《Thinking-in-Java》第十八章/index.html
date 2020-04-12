@@ -15,8 +15,12 @@
   
   <link rel="shortcut icon" href="/favicon.ico" />
   
-  <link rel="stylesheet" href="/dist/main.css">
-  <link rel="stylesheet" href="/css/custom.css">
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
   
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
   
@@ -33,7 +37,8 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-《Thinking-in-Java》第十八章" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  <article id="post-《Thinking-in-Java》第十八章" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
@@ -49,7 +54,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/03/19/《Thinking-in-Java》第十八章/" class="article-date">
+      <a href="/2020/03/19/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E5%85%AB%E7%AB%A0/" class="article-date">
   <time datetime="2020-03-19T13:31:17.000Z" itemprop="datePublished">2020-03-19</time>
 </a>
       
@@ -398,7 +403,6 @@
 </ul>
 <p>JDK1.4引入了文件加锁机制，它允许我们同步访问某个作为共享资源的文件。不过，竞争同一<br>个文件的两个线程可能在不同的Java虚拟机上；或者一个是Java线程，另一个是操作系统中其他<br>的某个本地线程。文件锁对其他的操作系统进程是可见的，因为Java的文件加锁直接映射到<br>了本地操作系统的加锁工具。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileLocking</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(<span class="string">"file.txt"</span>);</span><br><span class="line">		FileLock fl = fos.getChannel().tryLock();</span><br><span class="line">		<span class="keyword">if</span>(fl != <span class="keyword">null</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"Locked File"</span>);</span><br><span class="line">			TimeUnit.MILLISECONDS.sleep(<span class="number">100</span>);</span><br><span class="line">			fl.release();</span><br><span class="line">			System.out.println(<span class="string">"Release Lock"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		fos.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>通过对FileChannel调用tryLock()或lock()，就可以获得整个文件的FileLock。（Socket-<br>Channel、DatagramChannel和ServerSocketChannel不需要加锁，因为它们是从单进程实体<br>继承而来的；我们通常不再两个进程之间共享网络socket）。tryLock()是非阻塞的，它设法<br>获取锁，但是如果不能获得（当其他一些进程已经持有相同的锁，并且不共享时），它将直接<br>从方法调用返回。lock()则是阻塞的，它要阻塞进程直至锁可以获得，或调用lock()的线程<br>中断，或调用lock()的通道关闭。使用FileLock.release()可以释放锁。也可以对文件一部分<br>上锁：<code>tryLock(long position, long size, boolean shared)</code>或<code>lock(long position, long size, long shared)</code></p>
 <h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><table>
 <thead>
@@ -441,15 +445,11 @@
 </tr>
 </tbody></table>
 <ul>
-<li><p>用GZIP进行简单压缩</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.zip.*;</span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GZIPcompress</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		BufferedReader in = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(args[<span class="number">0</span>]));</span><br><span class="line">		BufferedOutputStream out = <span class="keyword">new</span> BufferedOutputStream(</span><br><span class="line">			<span class="keyword">new</span> GZIPOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"test.gz"</span>)));</span><br><span class="line">		System.out.println(<span class="string">"Writing file"</span>);</span><br><span class="line">		<span class="keyword">int</span> c;</span><br><span class="line">		<span class="keyword">while</span>((c = in.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">			out.write(c);</span><br><span class="line">		&#125;</span><br><span class="line">		in.close();</span><br><span class="line">		out.close();</span><br><span class="line">		System.out.println(<span class="string">"Reading file"</span>);</span><br><span class="line">		BufferedReader in2 = <span class="keyword">new</span> BufferedReader(</span><br><span class="line">			<span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(<span class="string">"test.gz"</span>)));</span><br><span class="line">		String s;</span><br><span class="line">		<span class="keyword">while</span>((s = in2.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">			System.out.println(s);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>用Zip进行多文件保存</p>
-</li>
+<li>用GZIP进行简单压缩<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.zip.*;</span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GZIPcompress</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		BufferedReader in = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(args[<span class="number">0</span>]));</span><br><span class="line">		BufferedOutputStream out = <span class="keyword">new</span> BufferedOutputStream(</span><br><span class="line">			<span class="keyword">new</span> GZIPOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"test.gz"</span>)));</span><br><span class="line">		System.out.println(<span class="string">"Writing file"</span>);</span><br><span class="line">		<span class="keyword">int</span> c;</span><br><span class="line">		<span class="keyword">while</span>((c = in.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">			out.write(c);</span><br><span class="line">		&#125;</span><br><span class="line">		in.close();</span><br><span class="line">		out.close();</span><br><span class="line">		System.out.println(<span class="string">"Reading file"</span>);</span><br><span class="line">		BufferedReader in2 = <span class="keyword">new</span> BufferedReader(</span><br><span class="line">			<span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(<span class="string">"test.gz"</span>)));</span><br><span class="line">		String s;</span><br><span class="line">		<span class="keyword">while</span>((s = in2.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">			System.out.println(s);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>用Zip进行多文件保存</li>
 </ul>
 <p>使用Checksum类来计算和校验文件的校验和的方法。一共有两种Checksum类型：Adler32（它快一些）<br>和CRC32（慢一点，但更准确）。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZipCompress</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		FileOutputStream f = <span class="keyword">new</span> FileOutputStream(<span class="string">"test.zip"</span>);</span><br><span class="line">		CheckedOutputStream csum = <span class="keyword">new</span> CheckedOutputStream(f, <span class="keyword">new</span> Adler32());</span><br><span class="line">		ZipOutputStream zos = <span class="keyword">new</span> ZipOutputStream(csum);</span><br><span class="line">		BufferedOutputStream out = <span class="keyword">new</span> BufferedOutputStream(zos);</span><br><span class="line">		zos.setComment(<span class="string">"A test of Java Zipping"</span>);</span><br><span class="line">		<span class="keyword">for</span>(String arg : args) &#123;</span><br><span class="line">			System.out.println(<span class="string">"Writing file "</span> + arg);</span><br><span class="line">			BufferedReader in = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(arg));</span><br><span class="line">			zos.putNextEntry(<span class="keyword">new</span> ZipEntry(arg));</span><br><span class="line">			<span class="keyword">int</span> c;</span><br><span class="line">			<span class="keyword">while</span>((c = in.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">				out.write(c);</span><br><span class="line">			&#125;</span><br><span class="line">			in.close();</span><br><span class="line">			out.flush();</span><br><span class="line">		&#125;</span><br><span class="line">		out.close();</span><br><span class="line">		System.out.println(<span class="string">"Checksum: "</span> + csum.getChecksum().getValue());</span><br><span class="line">		System.out.println(<span class="string">"Reading file"</span>);</span><br><span class="line">		FileInputStream fi = <span class="keyword">new</span> FileInputStream(<span class="string">"test.zip"</span>);</span><br><span class="line">		CheckedInputStream csumi = <span class="keyword">new</span> CheckedInputStream(fi, <span class="keyword">new</span> Adler32());</span><br><span class="line">		ZipInputStream in2 = <span class="keyword">new</span> ZipInputStream(csumi);</span><br><span class="line">		BufferedInputStream bis = <span class="keyword">new</span> BufferedInputStream(in2);</span><br><span class="line">		ZipEntry ze;</span><br><span class="line">		<span class="keyword">while</span>((ze = in2.getNextEntry()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"Reading file "</span> + ze);</span><br><span class="line">			<span class="keyword">int</span> x;</span><br><span class="line">			<span class="keyword">while</span>((x = bis.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">				System.out.write(x);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(args.length == <span class="number">1</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"Checksum: "</span> + csumi.getChecksum().getValue());</span><br><span class="line">		&#125;</span><br><span class="line">		bis.close();</span><br><span class="line">		ZipFile zf = <span class="keyword">new</span> ZipFile(<span class="string">"test.zip"</span>);</span><br><span class="line">		Enumeration e = zf.entries();</span><br><span class="line">		<span class="keyword">while</span>(e.hasMoreElements()) &#123;</span><br><span class="line">			ZipEntry ze2 = (ZipEntry)e.nextElement();</span><br><span class="line">			System.out.println(<span class="string">"File: "</span> + ze2);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>Java档案文件</li>
 </ul>
@@ -517,8 +517,9 @@
           <ul class="post-copyright">
             <li>
               <i class="ri-copyright-line"></i>
-              <strong>版权声明： </strong>
-              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
             </li>
           </ul>
         </div>
@@ -568,14 +569,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kestrelcjx.github.io/2020/03/19/《Thinking-in-Java》第十八章/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kestrelcjx.github.io/2020/03/19/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E5%85%AB%E7%AB%A0/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
 
     </footer>
@@ -586,7 +587,7 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/03/20/《Thinking-in-Java》第十九章/" class="article-nav-link">
+      <a href="/2020/03/20/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%B9%9D%E7%AB%A0/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
@@ -596,7 +597,7 @@
       </a>
     
     
-      <a href="/2020/03/19/《Thinking-in-Java》第十七章/" class="article-nav-link">
+      <a href="/2020/03/19/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">《Thinking in Java》第十七章</div>
       </a>
@@ -614,7 +615,7 @@
     </div>
 </div>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
 <script>
     new Valine({
         el: '#vcomments',
@@ -697,7 +698,7 @@
       <li>
         <!-- cnzz统计 -->
         
-        <script type="text/javascript" src="https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914"></script>
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
         
       </li>
     </ul>
@@ -750,7 +751,7 @@
   <ul class="nav">
     <li class="nav-item">
       
-      <a class="nav-item-link nav-item-search" title="Search">
+      <a class="nav-item-link nav-item-search"  title="Search">
         <i class="ri-search-line"></i>
       </a>
       
@@ -796,8 +797,12 @@
     
   </div>
 </div>
-    <script src="/js/jquery-2.0.3.min.js"></script>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
 <script src="/js/lazyload.min.js"></script>
+
 
 <script>
   try {
@@ -816,7 +821,9 @@
 
 
 
+
 <script src="/js/tocbot.min.js"></script>
+
 <script>
   // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
   tocbot.init({
@@ -837,7 +844,9 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
 <script src="/dist/main.js"></script>
+
 
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
@@ -973,7 +982,9 @@
 </script>
 
 
+
 <script src="/js/busuanzi-2.3.pure.min.js"></script>
+
 
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>

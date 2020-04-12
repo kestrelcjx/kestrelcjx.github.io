@@ -15,8 +15,12 @@
   
   <link rel="shortcut icon" href="/favicon.ico" />
   
-  <link rel="stylesheet" href="/dist/main.css">
-  <link rel="stylesheet" href="/css/custom.css">
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
   
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
   
@@ -33,7 +37,8 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-Java虚拟机内存回收" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  <article id="post-Java虚拟机内存回收" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
@@ -49,7 +54,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/08/Java虚拟机内存回收/" class="article-date">
+      <a href="/2020/04/08/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6/" class="article-date">
   <time datetime="2020-04-08T09:42:51.000Z" itemprop="datePublished">2020-04-08</time>
 </a>
       
@@ -118,7 +123,6 @@
 </ol>
 <h3 id="生存还是死亡？"><a href="#生存还是死亡？" class="headerlink" title="生存还是死亡？"></a>生存还是死亡？</h3><p>即使在可达性分析算法中判定为不可达的对象，也不是“非死不可”的，这时候她们暂时还处于<br>“缓刑”阶段，要真正宣告一个对象死亡，至少要经历两次标记过程：如果对象在进行可达性<br>分析后发现没有与GC Roots相连接的引用链，那它将会被第一次标记，随后进行一次筛选，<br>筛选的条件是此对象是否有必要执行finalize()方法。假如对象没有覆盖finalize()方法，<br>或者finalize()方法已经被虚拟机调用过，那么虚拟机将这两种情况都视为“没有必要执行”。<br>如果这个对象被判定为确有必要执行finalize()方法，那么该对象将会被放置在一个名为<br>F-Queue的队列之中，并在稍后由一条由虚拟机自动建立的、低调度优先级的Finalizer线程<br>去执行它们的finalize()方法。这里所说的“执行”是指虚拟机会触发这个方法开始运行，但<br>并不承诺会等待它运行结束。这样做的原因是，如果某个对象的finalize()方法执行缓慢，<br>或者更极端地发生了死循环，将很可能导致F-Queue队列中的其他对象永久处于等待，甚至导致<br>整个内存回收子系统的崩溃。finalize()方法是对象逃脱死亡命运的最后一次机会，稍后收集器<br>将对F-Queue中的对象进行第二次小规模的标记，如果对象要在finalize()中成功拯救自己<br>——只要重新与引用链上的任何一个对象建立关联即可，譬如把自己“this关键字”赋值给某个<br>类变量或者对象的成员变量，那在第二次标记时它将被移出“即将回收”的集合；如果对象这<br>时候还没有逃脱，那基本上它就真的要被回收了。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 此代码演示了两点：</span></span><br><span class="line"><span class="comment"> * 1. 对象可以在被GC时自我拯救</span></span><br><span class="line"><span class="comment"> * 2. 这种自救的机会只有一次，因为一个对象的finalize()方法最多只会被系统自动调用一次 </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalizeEscapeGC</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> FinalizeEscapeGC SAVE_HOOK = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">isAlive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"yes, i am still alive :)"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">finalize</span><span class="params">()</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.finalize();</span><br><span class="line">		System.out.println(<span class="string">"finalize method executed!"</span>);</span><br><span class="line">		FinalizeEscapeGC.SAVE_HOOK = <span class="keyword">this</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">		SAVE_HOOK = <span class="keyword">new</span> FinalizeEscapeGC();</span><br><span class="line"></span><br><span class="line">		SAVE_HOOK = <span class="keyword">null</span>;</span><br><span class="line">		System.gc();</span><br><span class="line">		Thread.sleep(<span class="number">500</span>);</span><br><span class="line">		<span class="keyword">if</span> (SAVE_HOOK != <span class="keyword">null</span>) &#123;</span><br><span class="line">			SAVE_HOOK.isAlive();</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">"no, i am dead :("</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		SAVE_HOOK = <span class="keyword">null</span>;</span><br><span class="line">		System.gc();</span><br><span class="line">		Thread.sleep(<span class="number">500</span>);</span><br><span class="line">		<span class="keyword">if</span> (SAVE_HOOK != <span class="keyword">null</span>) &#123;</span><br><span class="line">			SAVE_HOOK.isAlive();</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">"no, i am dead :("</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>輸出<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">finalize method executed!</span><br><span class="line">yes, i am still alive :)</span><br><span class="line">no, i am dead :(</span><br></pre></td></tr></table></figure>
 
@@ -159,10 +163,8 @@
 <h3 id="记忆集与卡表"><a href="#记忆集与卡表" class="headerlink" title="记忆集与卡表"></a>记忆集与卡表</h3><p>　　为了解决对象跨代引用所带来的问题，垃圾收集器在新生代中建立了名为记忆集(Remembered<br>Set)的数据结构，用以避免把整个老年代加进GC Roots扫描范围。事实上，并不只是新生代、<br>老年代之间才有跨代引用，所有涉及部分区域收集(Partial GC)行为的垃圾收集器都会面临<br>相同的问题。<br>　　记忆集是一种用于记录从非收集区域指向收集区域的指针集合的抽象数据结构。<br>　　以“卡表”的方式实现记忆集，是目前最常用的一种记忆集实现形式。<br>　　HotSpot虚拟机以字节数组实现卡表<code>CARD_TABLE[this address &gt;&gt; 9] = 0;</code>。字节数组<br>CARD_TABLE的每一个元素都对应着其标识的内存区域中一块特定大小的内存块，这个内存块<br>被称为“卡页”(Card Page)。一般来说，卡页大小都是以2的N次幂的字节数。<br><img src="/images/Card-Table.jpg" alt="Card Table"><br>　　一个卡页的内存中通常包含不止一个对象，只要卡页内有一个（或更多）对象的字段存在<br>着跨代指针，那就将对应卡表的数组元素的值标识为1，称为这个元素变脏(Dirty)，没有则<br>标识为0。在垃圾收集发生时，只要筛选出卡表中变脏的元素，就能轻易得出哪些卡页内存块<br>中包含跨代指针，把它们加入GC Roots中一并扫描。</p>
 <h3 id="写屏障"><a href="#写屏障" class="headerlink" title="写屏障"></a>写屏障</h3><p>　　卡表元素如何变脏的答案是很明确的——有其他分代区域中对象引用了本区域对象时，其<br>对应的卡表元素就应该变脏，变脏时间点原则上应该发生在引用类型字段赋值的那一刻。但<br>问题是如何变脏，即如何在对象赋值的那一刻去更新维护卡表呢？假如是解释执行的字节码，<br>那相对好处理，虚拟机负责每条字节码指令的执行，有充分的介入空间；但在编译执行的场景<br>呢？经过即时编译后的代码已经是纯粹的机器指令流了，这就必须找到一个在机器码层面的<br>手段，把维护卡表的动作放到每一个赋值操作之中。<br>　　在HotSpot虚拟机里是通过写屏障(Writer Barrier)技术维护卡表状态的。写屏障可以看作<br>在虚拟机层面对“引用类型字段赋值”这个动作的AOP切面，在引用对象赋值时会产生一个环形<br>(Around)通知，供程序执行额外的动作，也就是说赋值的前后都在写屏障的覆盖范围内。在<br>赋值前的部分的写屏障叫作写前屏障(Pre-Write Barrier)，在赋值后的则叫作写后屏障<br>(Post-Wrtie Barrier)。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">op_field_store</span><span class="params">(oop* field, oop new_value)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 引用字段赋值操作</span></span><br><span class="line">	*field = new_value;</span><br><span class="line">	<span class="comment">// 写后屏障，在这里完成卡表状态更新</span></span><br><span class="line">	post_write_barrier(field, new_value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>　　应用写屏障后，虚拟机就会为所有赋值操作生成相应的指令，一旦收集器在写屏障中增加<br>了更新卡表操作，无论更新的是不是老年代对新生代对象的引用，每次只要对引用进行更新，<br>就会产生额外的开销，不过这个开销与Minor GC时扫描整个老年代的代价相比还是低得多的。<br>　　除了写屏障的开销外，卡表在高并发场景下还面临着“伪共享”(False Sharing)问题。<br>伪共享是处理并发底层细节时一种经常需要考虑的问题，现代中央处理器的缓存系统中是以<br>缓存行(Cache Line)为单位存储的，当多线程修改互相独立的变量时，如果这些变量恰好共享<br>一个缓存行，就会彼此影响（写回、无效化或者同步）而导致性能降低，这就是伪共享问题。<br>　　为了避免伪共享问题，一种简单的解决方案是不采用无条件的写屏障，而是先检查卡表<br>标记，只有当该卡表元素未被标记过时才将其标记为变脏。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(CARD_TABLE[<span class="keyword">this</span> address &gt;&gt; <span class="number">9</span>] != <span class="number">0</span>)</span><br><span class="line">	CARD_TABLE[<span class="keyword">this</span> address &gt;&gt; <span class="number">9</span>] = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
-
 <p>　　在JDK7之后，HotSpot虚拟机增加了一个新的参数-XX:+UseCondCardMark，用来决定是否<br>开启卡表更新的条件判断。开启会增加一次额外判断的开销，但能够避免伪共享问题，两者<br>各有性能损耗，是否打开要根据应用实际运行情况会进行测试权衡。</p>
 <h3 id="并发的可达性分析"><a href="#并发的可达性分析" class="headerlink" title="并发的可达性分析"></a>并发的可达性分析</h3><p>　　可达性分析算法理论上要求全过程都基于一个能保障一致性的快照中才能够进行分析，<br>这意味着必须全程冻结用户线程的运行。为了理解必须保证一致性的原因，使用三色标记<br>(Tri-color Marking)作为工具来辅助推导，把遍历对象图过程中遇到的对象，按照“是否访问<br>过”这个条件标记成以下三种颜色：</p>
 <ul>
@@ -189,8 +191,9 @@
           <ul class="post-copyright">
             <li>
               <i class="ri-copyright-line"></i>
-              <strong>版权声明： </strong>
-              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
             </li>
           </ul>
         </div>
@@ -240,14 +243,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kestrelcjx.github.io/2020/04/08/Java虚拟机内存回收/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kestrelcjx.github.io/2020/04/08/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
 
     </footer>
@@ -258,7 +261,7 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/04/08/经典垃圾收集器/" class="article-nav-link">
+      <a href="/2020/04/08/%E7%BB%8F%E5%85%B8%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
@@ -268,7 +271,7 @@
       </a>
     
     
-      <a href="/2020/04/05/Java内存区域/" class="article-nav-link">
+      <a href="/2020/04/05/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">Java内存区域</div>
       </a>
@@ -286,7 +289,7 @@
     </div>
 </div>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
 <script>
     new Valine({
         el: '#vcomments',
@@ -369,7 +372,7 @@
       <li>
         <!-- cnzz统计 -->
         
-        <script type="text/javascript" src="https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914"></script>
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
         
       </li>
     </ul>
@@ -422,7 +425,7 @@
   <ul class="nav">
     <li class="nav-item">
       
-      <a class="nav-item-link nav-item-search" title="Search">
+      <a class="nav-item-link nav-item-search"  title="Search">
         <i class="ri-search-line"></i>
       </a>
       
@@ -468,8 +471,12 @@
     
   </div>
 </div>
-    <script src="/js/jquery-2.0.3.min.js"></script>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
 <script src="/js/lazyload.min.js"></script>
+
 
 <script>
   try {
@@ -488,7 +495,9 @@
 
 
 
+
 <script src="/js/tocbot.min.js"></script>
+
 <script>
   // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
   tocbot.init({
@@ -509,7 +518,9 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
 <script src="/dist/main.js"></script>
+
 
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
@@ -645,7 +656,9 @@
 </script>
 
 
+
 <script src="/js/busuanzi-2.3.pure.min.js"></script>
+
 
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
