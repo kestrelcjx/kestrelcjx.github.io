@@ -60,7 +60,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">4.9k字</span>
+            <span class="post-count">5.3k字</span>
         </span>
     </span>
 
@@ -69,7 +69,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">17分钟</span>
+            <span class="post-count">18分钟</span>
         </span>
     </span>
 </div>
@@ -134,10 +134,10 @@
 </ul>
 <p>　　G1收集器的运作过程大致划分为以下四个步骤：</p>
 <ol>
-<li>初始标记(Initial Marking)：</li>
-<li>并发标记(Concurrent Marking)：</li>
-<li>最终标记(Fianl Marking)：</li>
-<li>筛选回收(Live Data Counting and Evacuation)：</li>
+<li>初始标记(Initial Marking)：仅仅是标记一下GC Roots能直接关联到的对象，并且<br>修改TAMS指针的值，让下一阶段用户线程并发运行时，能正确地在可用的Region中分配<br>新对象。这个阶段需要停顿线程，但耗时很短，而且是借用进行Minor GC的时候同步<br>完成的，所以G1收集器在这个阶段实际并没有额外的停顿。</li>
+<li>并发标记(Concurrent Marking)：从GC Roots开始对堆中对象进行可达性分析，递归<br>扫描整个堆里的对象图，找出要回收的对象，这阶段耗时较长，但可与用户程序并发<br>执行。但对象图扫描完成以后，还要重新处理SATB记录下的在并发时有引用变动的对象。</li>
+<li>最终标记(Fianl Marking)：对用户线程做另一个短暂的暂停，用于处理并发阶段<br>结束后仍遗留下来的最后那少量的STAB记录。</li>
+<li>筛选回收(Live Data Counting and Evacuation)：负责更新Region的统计数据，<br>对各个Region的回收价值和成本进行排序，根据用户所期望的停顿时间来制定回收计划，<br>可以自由选择任意多个Region构成回收集，然后把决定回收的那一部分Region的存活<br>对象复制到空的Region中，在清理掉整个就Region的全部空间。这里的操作设计存活<br>对象的移动，是必须暂停用户线程，由多条收集器线程并发完成的。</li>
 </ol>
 <p><img src="/images/G11.jpg" alt="Garbage First"></p>
 <h2 id="低延迟垃圾收集器"><a href="#低延迟垃圾收集器" class="headerlink" title="低延迟垃圾收集器"></a>低延迟垃圾收集器</h2><h3 id="Shenandoah收集器"><a href="#Shenandoah收集器" class="headerlink" title="Shenandoah收集器"></a>Shenandoah收集器</h3><h3 id="ZGC收集器"><a href="#ZGC收集器" class="headerlink" title="ZGC收集器"></a>ZGC收集器</h3><h2 id="选择合适的垃圾收集器"><a href="#选择合适的垃圾收集器" class="headerlink" title="选择合适的垃圾收集器"></a>选择合适的垃圾收集器</h2><h3 id="Epsilon收集器"><a href="#Epsilon收集器" class="headerlink" title="Epsilon收集器"></a>Epsilon收集器</h3><h3 id="收集器的权衡"><a href="#收集器的权衡" class="headerlink" title="收集器的权衡"></a>收集器的权衡</h3><h3 id="虚拟机及垃圾收集器日志"><a href="#虚拟机及垃圾收集器日志" class="headerlink" title="虚拟机及垃圾收集器日志"></a>虚拟机及垃圾收集器日志</h3><h3 id="垃圾收集器参数总结"><a href="#垃圾收集器参数总结" class="headerlink" title="垃圾收集器参数总结"></a>垃圾收集器参数总结</h3>
