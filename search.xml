@@ -27,6 +27,13 @@
 <h3 id="ParNew收集器"><a href="#ParNew收集器" class="headerlink" title="ParNew收集器"></a>ParNew收集器</h3><p>　　ParNew收集器实质上是Serial收集器的多线程并行版本，除了同时使用多条线程<br>进行垃圾收集之外，其余的行为包括Serial收集器可用的所有控制参数（例如：-XX:Survivor、<br>-XX:PretenureSizeThreshold、-XX:HandlePromotionFailure等）、收集算法、Stop<br>The World、对象分配规则、回收策略等都与Serial收集器完全一致，在实现上这两种<br>收集器也共用了相当多的代码。</p>
 <p><img src="/images/ParNew.jpg" alt="ParNew"></p>
 <p>　　除了Serial收集器之外，目前只有ParNew收集器能与CMS收集器配合工作。ParNew<br>收集器是激活CMS后（使用-XX:+UseConcMarkSweepGC选项）的默认新生代收集器，也<br>可以使用-XX:+/-UseParNewGC选项来强制指定或者禁用它。<br>　　ParNew收集器在单核心处理器的环境中绝对不会有比Serial收集器更好的效果，<br>甚至由于存在线程交互的开销，该收集器在通过超线程(Hyper-Threading)技术实现的<br>伪双核处理器环境中都不能保证超越Serial收集器。当然，随着可以被使用的处理器<br>核心数量的增加，ParNew对于垃圾收集时系统资源的高效利用还是很有好处的。它默认<br>开启的收集线程数与处理器核心数量相同，在处理器核心的环境中，可以用-XX:ParallelGCTreads<br>参数来限制垃圾收集的线程数。</p>
+<hr>
+<p>并行和并发都是并发编程中的专业名词，在谈论垃圾收集器的上下文语境中，它们<br>可以理解为：</p>
+<ul>
+<li>并行(Parallel)：并行描述的是多条垃圾收集器线程之间的关系，说明同一时间<br>有多条这样的线程在协同工作，通常默认此时用户线程是处于等待状态。</li>
+<li>并发(Concurrent)：并发描述的是垃圾收集器线程与用户线程之间的关系，说明<br>同一时间垃圾收集器线程与用户线程都在运行。由于用户线程并未被冻结，所以程序<br>仍然能响应服务请求，但由于垃圾收集器线程占用了一部分系统资源，此时应用程序<br>的处理的吞吐量将受到一定影响。</li>
+</ul>
+<hr>
 <h3 id="Parallel-Scavenge收集器"><a href="#Parallel-Scavenge收集器" class="headerlink" title="Parallel Scavenge收集器"></a>Parallel Scavenge收集器</h3><h3 id="Serial-Old收集器"><a href="#Serial-Old收集器" class="headerlink" title="Serial Old收集器"></a>Serial Old收集器</h3><h3 id="Parallel-Old收集器"><a href="#Parallel-Old收集器" class="headerlink" title="Parallel Old收集器"></a>Parallel Old收集器</h3><h3 id="CMS收集器"><a href="#CMS收集器" class="headerlink" title="CMS收集器"></a>CMS收集器</h3><h3 id="Garbage-First收集器"><a href="#Garbage-First收集器" class="headerlink" title="Garbage First收集器"></a>Garbage First收集器</h3><h2 id="低延迟垃圾收集器"><a href="#低延迟垃圾收集器" class="headerlink" title="低延迟垃圾收集器"></a>低延迟垃圾收集器</h2><h3 id="Shenandoah收集器"><a href="#Shenandoah收集器" class="headerlink" title="Shenandoah收集器"></a>Shenandoah收集器</h3><h3 id="ZGC收集器"><a href="#ZGC收集器" class="headerlink" title="ZGC收集器"></a>ZGC收集器</h3><h2 id="选择合适的垃圾收集器"><a href="#选择合适的垃圾收集器" class="headerlink" title="选择合适的垃圾收集器"></a>选择合适的垃圾收集器</h2><h3 id="Epsilon收集器"><a href="#Epsilon收集器" class="headerlink" title="Epsilon收集器"></a>Epsilon收集器</h3><h3 id="收集器的权衡"><a href="#收集器的权衡" class="headerlink" title="收集器的权衡"></a>收集器的权衡</h3><h3 id="虚拟机及垃圾收集器日志"><a href="#虚拟机及垃圾收集器日志" class="headerlink" title="虚拟机及垃圾收集器日志"></a>虚拟机及垃圾收集器日志</h3><h3 id="垃圾收集器参数总结"><a href="#垃圾收集器参数总结" class="headerlink" title="垃圾收集器参数总结"></a>垃圾收集器参数总结</h3>]]></content>
       <tags>
         <tag>Java</tag>
