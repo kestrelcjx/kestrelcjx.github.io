@@ -70,6 +70,69 @@
     
     
     
+    <article id="post-类文件结构" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/12/类文件结构/">类文件结构</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/12/类文件结构/" class="article-date">
+  <time datetime="2020-04-12T09:03:31.000Z" itemprop="datePublished">2020-04-12</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-实战：内存分配与回收策略" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -1509,348 +1572,6 @@
 <li>实现Externalizable接口（继承自Serializable接口），实现writeExternal()和readExternal()</li>
 </ol>
 <h3 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h3><h3 id="Preference"><a href="#Preference" class="headerlink" title="Preference"></a>Preference</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-《Thinking-in-Java》第十七章" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/19/《Thinking-in-Java》第十七章/">《Thinking in Java》第十七章</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/19/《Thinking-in-Java》第十七章/" class="article-date">
-  <time datetime="2020-03-19T13:31:08.000Z" itemprop="datePublished">2020-03-19</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="容器深入研究"><a href="#容器深入研究" class="headerlink" title="容器深入研究"></a>容器深入研究</h2><h3 id="完整的容器分类法"><a href="#完整的容器分类法" class="headerlink" title="完整的容器分类法"></a>完整的容器分类法</h3><p><img src="/images/17collection.jpg" alt="容器的完整分类"></p>
-<h3 id="填充容器"><a href="#填充容器" class="headerlink" title="填充容器"></a>填充容器</h3><h3 id="Collection的功能方法"><a href="#Collection的功能方法" class="headerlink" title="Collection的功能方法"></a>Collection的功能方法</h3><table>
-<thead>
-<tr>
-<th>boolean add(T)</th>
-<th>确保容器持有具有泛型类型T的参数。如果没有将此参数添加进容器，则返回false（可选的）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>boolean addAll(Collection&lt;? extends&gt; T)</td>
-<td>添加参数中所有的元素。只要添加了任意元素就返回true（可选的）</td>
-</tr>
-<tr>
-<td>void clear()</td>
-<td>移除容器中的所有元素（可选的）</td>
-</tr>
-<tr>
-<td>boolean contains(T)</td>
-<td>如果容器已经持有具有泛型类型T此参数，则返回true</td>
-</tr>
-<tr>
-<td>Boolean containsAll(Collection&lt;?&gt;)</td>
-<td>如果容器持有此参数中的所有元素，则返回true</td>
-</tr>
-<tr>
-<td>boolean isEmpty()</td>
-<td>容器中没有元素时返回true</td>
-</tr>
-<tr>
-<td>Iterator<t> iterator()</t></td>
-<td>返回一个Iterator<t>，可以用来遍历容器的元素</t></td>
-</tr>
-<tr>
-<td>boolean remove(Object)</td>
-<td>如果参数在容器中，则移除此元素的一个实例。如果做了移除动作，则返回true（可选的）</td>
-</tr>
-<tr>
-<td>boolean removeAll(Collection&lt;?&gt;)</td>
-<td>移除参数中的所有元素。只要有移除动作发生就返回true（可选的）</td>
-</tr>
-<tr>
-<td>Boolean retainAll(Collection&lt;?&gt;)</td>
-<td>只保存参数中的元素（应用集合论的“交集”概念）。只要Collection发生了改变就返回true（可选的）</td>
-</tr>
-<tr>
-<td>int size()</td>
-<td>返回容器中元素的数量</td>
-</tr>
-<tr>
-<td>Object[] toArray()</td>
-<td>返回一个数组，该数组包含容器中的所有元素</td>
-</tr>
-<tr>
-<td><t> T[] toArray(T[] a)</t></td>
-<td>返回一个数组，该数组包含容器中的所有元素。返回结果的运行时类型与参数数组a的类型相同，而不是单独的Object</td>
-</tr>
-</tbody></table>
-<h3 id="可选操作"><a href="#可选操作" class="headerlink" title="可选操作"></a>可选操作</h3><p>如果一个操作是未获支持的，那么在实现接口的时候可能就会导致UnsupportedOperationException<br>异常，而不是将产品程序交给客户以后才出现此异常，这种情况是是有道理的。毕<br>竟，它表示编程上有错误：使用了不正确的接口实现。值得注意的是，未获支持的<br>操作只有在运行时才能检测到，因此它们表示动态类型检查。</p>
-<h3 id="List的功能方法"><a href="#List的功能方法" class="headerlink" title="List的功能方法"></a>List的功能方法</h3><h3 id="Set的存储顺序"><a href="#Set的存储顺序" class="headerlink" title="Set的存储顺序"></a>Set的存储顺序</h3><table>
-<thead>
-<tr>
-<th>Set(Interface)</th>
-<th>存入Set的每个元素都必须是唯一的，因为Set不保存重复元素。加入Set的元素定义equals()方法以确保对象的唯一性。Set与Collection有完全一样的接口。Set接口不保证元素的次序</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>HashSet*</td>
-<td>为快速查找而设计的Set。存入HashSet的元素必须定义hashCode()</td>
-</tr>
-<tr>
-<td>TreeSet</td>
-<td>保持次序的Set，底层为树结构。使用它可以从Set中提取有序的序列。元素必须实现Comparable接口</td>
-</tr>
-<tr>
-<td>LinkedHashSet</td>
-<td>具有HashSet的查询速度，且内部使用链表维护元素的顺序（插入的次序）。于是在使用迭代器遍历Set时，结果会按元素插入的次序显示。元素也必须定义hashCode()方法</td>
-</tr>
-</tbody></table>
-<h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><p>除了并发应用，Queue在Java SE5中仅有的两个实现是LinkedList和PriorityQueue，<br>它们的差异在与排序行为而不是性能。</p>
-<h3 id="理解Map"><a href="#理解Map" class="headerlink" title="理解Map"></a>理解Map</h3><table>
-<thead>
-<tr>
-<th>HashMap*</th>
-<th>Map基于散列表的实现（它取代了Hashtable）。插入和查询“键值对”的开销是固定的。可以通过构造器设置容量和负载因子，以调整容器的性能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>LinkedHashMap</td>
-<td>类似于HashMap，但是迭代遍历它时，取得“键值对”的顺序是其插入次序，或者是最近最少使用（LRU）的次序。只比HashMap慢一点；而在迭代访问时反而更快，因为它是用链表维护内部次序。</td>
-</tr>
-<tr>
-<td>TreeMap</td>
-<td>基于红黑树的实现。查看“键”或“键值对”时，它们会被排序（次序有Comparable或Comparator决定）。TreeMap的特点在于，所得到的结果是经过排序的。TreeMap是唯一带有subMap()方法的Map，它可以返回一个子树。</td>
-</tr>
-<tr>
-<td>WeakHashMap</td>
-<td>弱键（weak key）映射，允许释放映射所指向的对象；这是为解决某类特殊问题而设计的。如果映射之外没有引用指向某个“键”，则此“键”可以被垃圾收集器回收</td>
-</tr>
-<tr>
-<td>ConcurrentHashMap</td>
-<td>一种线程安全的Map，它不涉及同步加锁。</td>
-</tr>
-<tr>
-<td>IdentityHashMap</td>
-<td>使用==带起equals()对“键”进行比较的散列映射。专为解决特殊问题而设计的</td>
-</tr>
-</tbody></table>
-<h3 id="散列与散列码"><a href="#散列与散列码" class="headerlink" title="散列与散列码"></a>散列与散列码</h3><p>使用散列的数据结构（HashSet、HashMap、LinkedHashSet或LinkedHashMap），需要覆盖hashCode()和equals()。</p>
-<ol>
-<li>正确的equals()方法必须满足下列5个条件：（默认的Object.equals()只是比较对象的地址）<br>（1）自反性。对任意x，x.equals(x)一定返回true<br>（2）对称性。对任意x和y，如果y.equals(x)返回true，则x.equals(y)也一定返回true。<br>（3）传递性。对任意x、y、z，如果有x.equals(y)返回true，y.equasl(z)返回true，则x.equals(z)一定返回true。<br>（4）一致性。对任意x和y，如果对象中用于等价比较的信息没有改变，那么无论调用x.equals(y)多少次，返回的结果应该一致，要么一直true，要么一直是false。<br>（5）对任何不是null的x，x.equals(null)一定返回false。</li>
-<li>散列的价值在于速度：散列使得查询得以快速进行。<br>在Object中定义有hashCode()方法（类似散列函数），且可能有你的类覆盖，用于生成的散列码。<br>hashCode()不应该依赖于具有唯一性的对象信息，尤其是使用this的值，因为这样<br>做无法生成一个新的键，使之与put()中原始的键值对中的键相同。（默认的hashCode()<br>使用的是对象的地址。）应该使用对象内有意义的识别信息。</li>
-</ol>
-<h3 id="选择接口的不同实现"><a href="#选择接口的不同实现" class="headerlink" title="选择接口的不同实现"></a>选择接口的不同实现</h3><ol>
-<li>List。ArrayList底层有数组支持，查询速度快；而LinkedList是由双向链表实现的，插入删除速度快。</li>
-<li>Set。HashSet是最常用的，查询速度最快；LinkedHashSet保持元素插入的次序；TreeSet基于TreeMap，生成一个总是处于排序状态的Set。</li>
-</ol>
-<p>Map的性能因子：<br>容量：表中的桶位数<br>初始容量：表在创建时所拥有的桶位数。HashMap和HashSet都具有允许你指定初始容量的构造器<br>尺寸：表中当前存储的项数<br>负载因子：尺寸/容量。HashMap和HashSet都具有允许你指定负载因子的构造器，表示<br>当负载情况达到该负载因子的水平时，容器将自动增加其容量（桶位数），实现方式<br>是使容量大致加倍，并重新将现有对象分布到新的桶位集中（称为再散列）。HashMap的默认负载因子是0.75。</p>
-<h3 id="实用方法"><a href="#实用方法" class="headerlink" title="实用方法"></a>实用方法</h3><table>
-    <tr>
-        <td>checkedCollection(Collection&lt;T&gt;, Class&lt;T&gt; type)</td>
-        <td rowspan="6">
-            产生Collection或者Collection的具体子类型的动态类型安全的试图。
-            在不可能使用静态检查版本时使用这些方法。
-        </td>
-    </tr>
-    <tr>
-        <td>checkedList(List&lt;T&gt;, Class&lt;T&gt; type)</td>
-    </tr>
-    <tr>
-        <td>checkedMap(Map&lt;K,V&gt;, Class&lt;K&gt; keyType, Class&lt;V&gt; valueType)</td>
-    </tr>
-    <tr>
-        <td>checkedSet(Set&lt;T&gt;, Class&lt;T&gt; type)</td>
-    </tr>
-    <tr>
-        <td>checkedSortedMap(SortedMap&lt;K,V&gt;, Class&lt;K&gt; keyType, Class&lt;V&gt; valueType)</td>
-    </tr>
-    <tr>
-        <td>checkedSortedSet(SortedSet&lt;T&gt;, Class&lt;T&gt; type)</td>
-    </tr>
-    <tr>
-        <td>max(Collection)</td>
-        <td rowspan="2">
-            返回参数Collection中最大或最小的元素--采用Collection内置的自然比较法
-        </td>
-    </tr>
-    <tr>
-        <td>min(Collection)</td>
-    </tr>
-    <tr>
-        <td>max(Collection, Comparator)</td>
-        <td rowspan="2">
-            返回参数Collection中最大或最小的元素--采用Comparator进行比较
-        </td>
-    </tr>
-    <tr>
-        <td>min(Collection, Comparator)</td>
-    </tr>
-    <tr>
-        <td>indexOfSubList(List source, List target)</td>
-        <td>返回target在source中第一次出现的位置，或者在找不到时返回-1</td>
-    </tr>
-    <tr>
-        <td>lastIndexOfSubList(List source, List target)</td>
-        <td>返回target在source中最后一次出现的位置，或者在找不到时返回-1</td>
-    </tr>
-    <tr>
-        <td>replaceAll(List&lt;T&gt;, T oldVal, T newVal)</td>
-        <td>使用newVal替换所有oldVal</td>
-    </tr>
-    <tr>
-        <td>reverse(List)</td>
-        <td>逆转所有元素的次序</td>
-    </tr>
-    <tr>
-        <td>reverseOrder()</td>
-        <td rowspan="2">
-            返回一个Comparator，它可以逆转实现了Comparator&lt;T&gt;的对象集合的自然顺序。
-            第二个版本可以逆转所提供的Comparator的顺序
-        </td>
-    </tr>
-    <tr>
-        <td>reverse(Comparator&lt;T&gt;)</td>
-    </tr>
-    <tr>
-        <td>rotate(List)</td>
-        <td>所有元素向后移动distance个位置，将末尾的元素循环到前面来</td>
-    </tr>
-    <tr>
-        <td>shuffle(List)</td>
-        <td rowspan="2">
-            随机改变指定列表的顺序。第一种形式提供了其自己的随机机制，
-            你可以通过第二种形式提供自己的随机机制。
-        </td>
-    </tr>
-    <tr>
-        <td>shuffle(List, Random)</td>
-    </tr>
-    <tr>
-        <td>sort(List&lt;T&gt;)</td>
-        <td rowspan="2">使用List&lt;T&gt;中的自然顺序排序。第二种形式允许提供用于排序的Comparator</td>
-    </tr>
-    <tr>
-        <td>sort(List&lt;T&gt;, Comparator&lt;? super T&gt; c)</td>
-    </tr>
-    <tr>
-        <td>copy(List&lt;? super T&gt; dest, List&lt;? extends T&gt; src)</td>
-        <td>将src中的元素复制到dest</td>
-    </tr>
-    <tr>
-        <td>swap(List, int i, int j)</td>
-        <td>交换list中位置i与位置j的元素。通常比你自己写的代码快</td>
-    </tr>
-    <tr>
-        <td>fill(List&lt;? super T&gt;, T x)</td>
-        <td>用对象x替换list中所有元素</td>
-    </tr>
-    <tr>
-        <td>nCopies(int n, T x)</td>
-        <td>返回大小为n的List&lt;T&gt;，此List不可改变，其中的引用都指向x</td>
-    </tr>
-    <tr>
-        <td>disjoint(Collection, Collection)</td>
-        <td>当两个集合没有任何相同元素时，返回true</td>
-    </tr>
-    <tr>
-        <td>frequency(Collection, Object x)</td>
-        <td>返回Collection中等于x的元素个数</td>
-    </tr>
-    <tr>
-        <td>emptyList()</td>
-        <td rowspan="3">
-            返回不可变的空List、Map或Set。这些方法都是泛型的，因此所产生的
-            结果将被参数化为所希望的类型
-        </td>
-    </tr>
-    <tr>
-        <td>emptyMap()</td>
-    </tr>
-    <tr>
-        <td>emptySet()</td>
-    </tr>
-    <tr>
-        <td>singleton(T x)</td>
-        <td rowspan="3">
-            产生不可变的Set&lt;T&gt;、List&lt;T&gt;或Map&lt;K, V&gt;，它们都只包含基于所给定
-            参数的内容而形成的单一项
-        </td>
-    </tr>
-    <tr>
-        <td>singletonList(T x)</td>
-    </tr>
-    <tr>
-        <td>singletonMap(K key, V value)</td>
-    </tr>
-    <tr>
-        <td>list(Enumeration&lt;T&gt; e)</td>
-        <td>
-            产生一个ArrayList&lt;T&gt;，它包含的元素的顺序，与（旧式的）Enumeration
-            （Iterator的前身）返回这些元素的顺序相同。用来转换遗留的来代码
-        </td>
-    </tr>
-    <tr>
-        <td>enumeration(Collection&lt;T&gt;)</td>
-        <td>为参数生成一个旧式的Enumeration&lt;T&gt;</td>
-    </tr>
-</table>
-
-<ul>
-<li>设定Collection或Map为不可修改 Collections.unmodifiable()…</li>
-<li>Collection或Map的同步控制 Collections.synchronizedSet()…</li>
-<li>快速报错<br>如果在你迭代遍历某个容器的过程中，另一个进程介入其中，并且插入、删除或修改<br>此容器内的某个对象，那么就会出现问题。</li>
-</ul>
-<h3 id="持有引用"><a href="#持有引用" class="headerlink" title="持有引用"></a>持有引用</h3><p>java.lang.ref类库包含了一组类，这些类为垃圾回收提供了更大的灵活性。当存在<br>可能会耗尽内存的大对象的时候，这些类显得特别有用。有三个继承自抽象类Reference<br>的类：SoftReference、WeakReference和PhantomReference。当垃圾回收器正在考察<br>的对象只能通过某个Reference对象才能“可获得”时，上述这些不同的派生类为垃圾回收器<br>提供了不同级别的间接性指示。</p>
-<h3 id="Java1-0-1-1的容器"><a href="#Java1-0-1-1的容器" class="headerlink" title="Java1.0/1.1的容器"></a>Java1.0/1.1的容器</h3><ul>
-<li>Vector和Enumeration</li>
-<li>Stack</li>
-<li>BitSet</li>
-</ul>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>
       
       <!-- reward -->
       
