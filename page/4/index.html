@@ -76,6 +76,76 @@
     
     
     
+    <article id="post-FWT" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/06/08/FWT/"
+    >快速沃尔什变换(FWT)</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/06/08/FWT/" class="article-date">
+  <time datetime="2019-06-08T15:40:54.000Z" itemprop="datePublished">2019-06-08</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="快速沃尔什变换-FWT"><a href="#快速沃尔什变换-FWT" class="headerlink" title="快速沃尔什变换(FWT)"></a>快速沃尔什变换(FWT)</h2><p>用途：求<br>$$C(i) = \sum_{i=j@k}A(j)*B(k)$$<br>其中@为位运算或(|), 与(&amp;), 异或(^)中一种,算法复杂度O($n\log(n)$)。</p>
+<hr>
+<h3 id="1-或运算"><a href="#1-或运算" class="headerlink" title="1. 或运算"></a>1. 或运算</h3><p>令<br>$$FWT[A] = (A_1, A_2…)$$<br>其中<br>$$A_i = \sum_{i=i|j}A[j]$$<br>用A0表示A的前一半，A1表示A的后一半，那么如果已经求得FWT[A0]和FWT[A1]，则可以得到<br><code>FWT[A] = (FWT[A0], FWT[A0]+FWT[A1]) (‘+’ 对应位相加) 当A长度为1时，FWT[A] = A</code>(A0最高<br>位为0，对FWT[A]后一半能贡献，而A1最高位为1，对FWT[A]前一半不能贡献)。所以，就可以<br>通过迭代分治，在O(nlogn)求得FWT[A]。<br>并且，由<br>$$C(i) = \sum_{i=j|k}A(j)*B(k)$$<br>得到<code>FWT[C] = FWT[A]*FWT[B] (‘*’ 对应位相乘)</code>，所以能在求得FWT[A]和FWT[B]基础上，在<br>O(n)求得FWT[C]。<br>最后，需要将FWT[C]恢复为C。通过观察求FWT[A]的过程，发现只需要将FWT[C]的后半部分减<br>去FWT[C]的前半部分<code>IFWT[C] = (IFWT[C0], IFWT[C1]-IFWT[C0]) 当C长度为1时，IFWT[C] = C</code><br>就可以得到C。所以，同样能通过逆向迭代分治，在O(nlogn)求得C。</p>
+<h3 id="2-与运算"><a href="#2-与运算" class="headerlink" title="2. 与运算"></a>2. 与运算</h3><p>FWT的与运算和或运算非常类似，只需改变FWT[A]中元素含义，让FWT[A]中<br>$$A_i = \sum_{i=i\&amp;j}A[j]$$<br>同样我们能发现<code>FWT[A] = (FWT[A0]+FWT[A1], FWT[A1])</code>,同时<code>FWT[C] = FWT[A]*FWT[B]</code><br>所以同样能求得FWT[C],最后由<code>IFWT[C] = (IFWT[C0]-IFWT[C1], IFWT[C1])</code>,求得C</p>
+<h3 id="3-异或运算"><a href="#3-异或运算" class="headerlink" title="3. 异或运算"></a>3. 异或运算</h3><p>FWT的异或运算相比或运算和与运算有些不同，我们设i&amp;j所得结果中1的个数的奇偶表示i&amp;j的<br>奇偶性(偶：0；奇：1)，那么会有<code>(i&amp;k的奇偶性)^(j&amp;k的奇偶性) = (i^j)&amp;k的奇偶性</code>，那么，令<br>$$A_i = \sum_{i\&amp;k=0}A[k]-\sum_{i\&amp;k=1}A[k]$$<br>其中i&amp;k=0表示i&amp;k为偶性，i&amp;k=1表示i&amp;k为奇性，我们能发现仍然有<code>FWT[C] = FWT[A]*FWT[B]</code><br>假设不考虑二进制最高位已经求得FWT[A0]和FWT[A1],要求FWT[A]。那么再多考虑最高位，A0中<br>最高位为0，FWT[A0]仍然能直接贡献到FWT[A0]和FWT[A1]；而A1最高位为1，FWT[A1]能直<br>接贡献到FWT[A0]，但贡献到FWT[A1]时，因为有了最高位1，i&amp;k的奇偶性改变。所以，有<br><code>FWT[A] = (FWT[A0]+FWT[A1], FWT[A0]-FWT[A1])</code>最后求得FWT[C]后，由<br><code>IFWT[C] = ((IFWT[C0]+IFWT[C1])/2, (IFWT[C0]-IFWT[C1])/2)</code>,恢复得到C</p>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100005</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line">ll inv;</span><br><span class="line">ll a[N];</span><br><span class="line">ll b[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FWT</span><span class="params">(ll *num, <span class="keyword">int</span> flag)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>, m = <span class="number">1</span>; i &lt;= n; i &lt;&lt;= <span class="number">1</span>, m &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j += i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = j; k &lt; j+m; k++)</span><br><span class="line">            &#123;</span><br><span class="line">                ll x = num[k], y = num[k+m];</span><br><span class="line">                <span class="keyword">if</span>(flag == <span class="number">-1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">//xor num[k] = (x+y)%mod*inv2%mod, num[k+m] = ((x-y)%mod+mod)%mod*inv2%mod;</span></span><br><span class="line">                    <span class="comment">//and num[k] = ((x-y)%mod+mod)%mod;</span></span><br><span class="line">                    <span class="comment">//or num[k+m] = ((y-x)%mod+mod)%mod;</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">//xor num[k] = (x+y)%mod, num[k+m] = ((x-y)%mod+mod)%mod;</span></span><br><span class="line">                    <span class="comment">//and num[k] = (x+y)%mod;</span></span><br><span class="line">                    <span class="comment">//or num[k+m] = (x+y)%mod;</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ll q_pow(ll x, ll y)</span><br><span class="line">&#123;</span><br><span class="line">    ll ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(y)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(y&amp;<span class="number">1</span>) ans = ans*x%mod;</span><br><span class="line">        x = x*x%mod;</span><br><span class="line">        y &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    inv = q_pow(<span class="number">2L</span>L, mod<span class="number">-2</span>);</span><br><span class="line">    <span class="keyword">int</span> k;</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;k))</span><br><span class="line">    &#123;</span><br><span class="line">        n = (<span class="keyword">int</span>)q_pow(<span class="number">2L</span>L, (ll)k);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;a[i]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;b[i]);</span><br><span class="line">        FWT(a, <span class="number">1</span>);</span><br><span class="line">        FWT(b, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) b[i] = b[i]*a[i];</span><br><span class="line">        FWT(b, <span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, b[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag">数论</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-你好-Hexo" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
