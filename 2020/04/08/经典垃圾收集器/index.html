@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">6.5k字</span>
+            <span class="post-count">7k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">22分钟</span>
+            <span class="post-count">24分钟</span>
         </span>
     </span>
 </div>
@@ -160,6 +160,10 @@
 <li>并发清理(Concurrent Cleanup)：经过并发回收和引用更新之后，整个回收集中<br>所有的Region已再无存活对象，这些Region都变成Immediate Garbage Region了，最后<br>在调用一次并发清理过程来回收这些Region的内存空间，供以后新对象分配使用。</li>
 </ol>
 <p><img src="/images/Shenandoah.jpg" alt="Shenandoah"><br>　　黄色的区域代表的是被选入回收集合的Region，绿色部分就代表还存活的对象，<br>蓝色就是用户线程可以用来分配对象的Region了。</p>
+<p>　　1984年,Rodney A. Brooks在论文中提到了使用转发指针(Forwarding Pointer，<br>也常被称为Indirection Pointer)来实现对象移动与用户程序并发的一种解决方案。<br>此前，要做类似的并发操作，通常是在被移动对象原来的内存上设置保护陷阱(Memory<br>Protection Trap)，一旦用户程序访问到归属于旧对象的内存空间就会产生自陷中断，<br>进入预设好的异常处理器中，再由其中的代码逻辑把访问转发到复制后的新对象上。<br>虽然确实能够实现对象移动与用户线程并发，但是如果没有操作系统层面的直接支持，<br>这种方案将导致用户态频繁切换到核心态，代价是非常大的，不能频繁使用。<br>　　Brooks提出的新方案不需要用到内存保护陷阱，而是在原有对象布局结构的最前面<br>同意增加一个新的引用字段，在正常不处于并发移动的情况下，该引用指向对象自己。</p>
+<p><img src="/images/Brooks-Pointer.jpg" alt="Brooks Pointer"></p>
+<p>　　从结构上来看，Brooks提出的转发指针与某些早期Java虚拟机使用过的句柄定位<br>有一些相似，两者都是一种间接性的对象访问方式，差别是句柄通常会统一存储在<br>专门的句柄池中，而转发指针是分散存放在每一个对象头前面。<br>　　需要注意，Brooks形式的转发指针的设计上决定了它是必然出现多线程竞争问题的，<br>如果发生并发写入，就一定必须保证写操作只能发生在新复制的对象上，而不是写入<br>旧对象的内存中。</p>
+<p><img src="/images/Brooks-Pointer2.jpg" alt="Brooks Pointer"></p>
 <h3 id="ZGC收集器"><a href="#ZGC收集器" class="headerlink" title="ZGC收集器"></a>ZGC收集器</h3><h2 id="其他垃圾收集器"><a href="#其他垃圾收集器" class="headerlink" title="其他垃圾收集器"></a>其他垃圾收集器</h2><h3 id="Epsilon收集器"><a href="#Epsilon收集器" class="headerlink" title="Epsilon收集器"></a>Epsilon收集器</h3><p>　　Epsilon（A No-Op Garbage Collector）垃圾回收器控制内存分配，但是不执行<br>任何垃圾回收工作。一旦java的堆被耗尽，jvm就直接关闭。设计的目的是提供一个<br>完全消极的GC实现，分配有限的内存分配，最大限度降低消费内存占用量和内存吞吐<br>时的延迟时间。</p>
 
       
