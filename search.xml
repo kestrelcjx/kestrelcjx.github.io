@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>类文件结构</title>
+    <url>/2020/04/17/%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<h2 id="类文件结构"><a href="#类文件结构" class="headerlink" title="类文件结构"></a>类文件结构</h2><h3 id="无关性基石"><a href="#无关性基石" class="headerlink" title="无关性基石"></a>无关性基石</h3><p>　　实现语言无关性的基础是虚拟机与字节码存储格式。Java虚拟机不与包括Java语言在内的任何程序语言绑定，它只<br>与“Class文件”这种特定的二进制文件格式所绑定，Class文件中包含了Java虚拟机指令集、符号表以及若干其他辅助信<br>息。作为一个通用的、与机器无关的执行平台，任何其他语言的实现都可以将Java虚拟机作为他们语言的运行基础，以<br>Class文件作为他们产品的交付媒介。</p>
+<p><img src="/images/jvm.jpg" alt="JVM"></p>
+<h3 id="Class类文件的结构"><a href="#Class类文件的结构" class="headerlink" title="Class类文件的结构"></a>Class类文件的结构</h3>]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>JVM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>低延迟垃圾收集器</title>
     <url>/2020/04/13/%E4%BD%8E%E5%BB%B6%E8%BF%9F%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/</url>
     <content><![CDATA[<h2 id="低延迟垃圾收集器"><a href="#低延迟垃圾收集器" class="headerlink" title="低延迟垃圾收集器"></a>低延迟垃圾收集器</h2><p>　　衡量垃圾收集器的三项最重要的指标是：内存占用(Footpoint)、吞吐量(Throughput)<br>和延迟(Latency)，三者共同构成了一个“不可能三角形”。三者总体的表现会随技术<br>进步而越来越好，但是要在这三个方面同时具有卓越表现得“完美”收集器是极其困难<br>甚至不可能的，一款优秀的收集器通常最多可以同时达成其中的两项。</p>
@@ -50,15 +61,6 @@
 </ul>
 <p>　　ZGC没有使用记忆集，甚至连分代都没有，连像CMS中那样只记录新生代和老年代<br>引用的卡表也不需要，因而完全没有用到写屏障，所以给用户线程带来的运行负担<br>小很多。ZGC这种选择也限制了它能承受的对象分配速率不会太高。如果ZGC要准备对<br>一个很大的堆做一次完整的并发收集，假设其全过程要持续十分钟以上，在这段时间<br>里面，由于应用的对象分配速率很高，将创建大量的新对象，这些新对象很难进入<br>当次收集的标记范围，通常就只能全部当作存活对象来看待。如果这种高速分配持续<br>维持的话，每一次完整的并发收集周期就会很长，回收到的内存空间持续小于期间并发<br>产生的浮动垃圾所占的空间，堆中剩余可腾挪的空间就会越来越小。目前唯一的办法<br>就是尽可能地增加堆容量大小，获得更多喘息的时间。<br>　　ZGC支持“NUMA-Aware”的内存分配。NUMA(Non-Uniform Memory Access，非统一<br>内存访问架构)是一种为多处理器或者多核处理器的计算机所设计的内存架构。在NUMA<br>架构下，ZGC收集器会优先尝试在请求线程当前所处的处理器的本地内存上分配对象，<br>以保证高效内存访问。</p>
 ]]></content>
-      <tags>
-        <tag>Java</tag>
-        <tag>JVM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>类文件结构</title>
-    <url>/2020/04/12/%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/</url>
-    <content><![CDATA[]]></content>
       <tags>
         <tag>Java</tag>
         <tag>JVM</tag>

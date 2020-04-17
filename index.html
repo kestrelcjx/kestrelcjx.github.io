@@ -76,6 +76,73 @@
     
     
     
+    <article id="post-类文件结构" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/17/%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/"
+    >类文件结构</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/17/%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" class="article-date">
+  <time datetime="2020-04-17T08:03:31.000Z" itemprop="datePublished">2020-04-17</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="类文件结构"><a href="#类文件结构" class="headerlink" title="类文件结构"></a>类文件结构</h2><h3 id="无关性基石"><a href="#无关性基石" class="headerlink" title="无关性基石"></a>无关性基石</h3><p>　　实现语言无关性的基础是虚拟机与字节码存储格式。Java虚拟机不与包括Java语言在内的任何程序语言绑定，它只<br>与“Class文件”这种特定的二进制文件格式所绑定，Class文件中包含了Java虚拟机指令集、符号表以及若干其他辅助信<br>息。作为一个通用的、与机器无关的执行平台，任何其他语言的实现都可以将Java虚拟机作为他们语言的运行基础，以<br>Class文件作为他们产品的交付媒介。</p>
+<p><img src="/images/jvm.jpg" alt="JVM"></p>
+<h3 id="Class类文件的结构"><a href="#Class类文件的结构" class="headerlink" title="Class类文件的结构"></a>Class类文件的结构</h3>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-低延迟垃圾收集器" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -159,71 +226,6 @@
 </ul>
 <p>　　ZGC没有使用记忆集，甚至连分代都没有，连像CMS中那样只记录新生代和老年代<br>引用的卡表也不需要，因而完全没有用到写屏障，所以给用户线程带来的运行负担<br>小很多。ZGC这种选择也限制了它能承受的对象分配速率不会太高。如果ZGC要准备对<br>一个很大的堆做一次完整的并发收集，假设其全过程要持续十分钟以上，在这段时间<br>里面，由于应用的对象分配速率很高，将创建大量的新对象，这些新对象很难进入<br>当次收集的标记范围，通常就只能全部当作存活对象来看待。如果这种高速分配持续<br>维持的话，每一次完整的并发收集周期就会很长，回收到的内存空间持续小于期间并发<br>产生的浮动垃圾所占的空间，堆中剩余可腾挪的空间就会越来越小。目前唯一的办法<br>就是尽可能地增加堆容量大小，获得更多喘息的时间。<br>　　ZGC支持“NUMA-Aware”的内存分配。NUMA(Non-Uniform Memory Access，非统一<br>内存访问架构)是一种为多处理器或者多核处理器的计算机所设计的内存架构。在NUMA<br>架构下，ZGC收集器会优先尝试在请求线程当前所处的处理器的本地内存上分配对象，<br>以保证高效内存访问。</p>
 
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-类文件结构" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/12/%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/"
-    >类文件结构</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/12/%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" class="article-date">
-  <time datetime="2020-04-12T09:03:31.000Z" itemprop="datePublished">2020-04-12</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      
       
       <!-- reward -->
       
