@@ -133,52 +133,94 @@
 <td>46.0</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>JDK1.3.1_19</td>
+<td>不带（默认为-target 1.1）</td>
+<td>1.1~1.3</td>
+<td>45.3</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>JDK1.3.1_19</td>
+<td>-target 1.3</td>
+<td>1.1~1.3</td>
+<td>47.0</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>JDK1.4.2_10</td>
+<td>不带（默认为-target 1.2）</td>
+<td>1.1~1.4</td>
+<td>46.0</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>JDK1.4.2_10</td>
+<td>-target 1.4</td>
+<td>1.1~1.4</td>
+<td>48.0</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>JDK5.0_11</td>
+<td>不带（默认为-target 1.5），后续版本不带target参数默认编译的Class文件均为其JDK版本相同</td>
+<td>1.1~1.5</td>
+<td>49.0</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>JDK5.0_11</td>
+<td>-target 1.4 -source 1.4</td>
+<td>1.1~1.5</td>
+<td>48.0</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>JDK6</td>
+<td>不带（默认为-target 6）</td>
+<td>1.1~6</td>
+<td>50.0</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>JDK7</td>
+<td>不带（默认为-target 7）</td>
+<td>1.1~7</td>
+<td>51.0</td>
+</tr>
+<tr>
+<td>JDK8</td>
+<td>不带（默认为-target 8）</td>
+<td>1.1~8</td>
+<td>52.0</td>
+</tr>
+<tr>
+<td>JDK9</td>
+<td>不带（默认为-target 9）</td>
+<td>6~9</td>
+<td>53.0</td>
+</tr>
+<tr>
+<td>JDK10</td>
+<td>不带（默认为-target 10）</td>
+<td>6~10</td>
+<td>54.0</td>
+</tr>
+<tr>
+<td>JDK11</td>
+<td>不带（默认为-target 11）</td>
+<td>6~11</td>
+<td>55.0</td>
+</tr>
+<tr>
+<td>JDK12</td>
+<td>不带（默认为-target 12）</td>
+<td>6~12</td>
+<td>56.0</td>
+</tr>
+<tr>
+<td>JDK13</td>
+<td>不带（默认为-target 13）</td>
+<td>6~13</td>
+<td>57.0</td>
+</tr>
+<tr>
+<td>JDK14</td>
+<td>不带（默认为-target 14）</td>
+<td>6~14</td>
+<td>58.0</td>
 </tr>
 </tbody></table>
 ]]></content>
