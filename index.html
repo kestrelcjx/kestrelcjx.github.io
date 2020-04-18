@@ -456,40 +456,70 @@
         <td>长度为length的UTF-8编码的字符串</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td rowspan="2">CONSTANT_Integer_info</td>
+        <td>tag</td>
+        <td>u1</td>
+        <td>值为3</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>bytes</td>
+        <td>u4</td>
+        <td>按照高位在前存储的int值</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td rowspan="2">CONSTANT_Float_info</td>
+        <td>tag</td>
+        <td>u1</td>
+        <td>值为4</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>bytes</td>
+        <td>u4</td>
+        <td>按照高位在前存储的float值</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td rowspan="2">CONSTANT_Long_info</td>
+        <td>tag</td>
+        <td>u1</td>
+        <td>值为5</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>bytes</td>
+        <td>u8</td>
+        <td>按照高位在前存储的long值</td>
+    </tr>
+    <tr>
+        <td rowspan="2">CONSTANT_Double_info</td>
+        <td>tag</td>
+        <td>u1</td>
+        <td>值为6</td>
+    </tr>
+    <tr>
+        <td>bytes</td>
+        <td>u8</td>
+        <td>按照高位在前存储的double值</td>
+    </tr>
+    <tr>
+        <td rowspan="2">CONSTANT_Class_info</td>
+        <td>tag</td>
+        <td>u1</td>
+        <td>值为7</td>
+    </tr>
+    <tr>
+        <td>index</td>
+        <td>u2</td>
+        <td>指向全限定名常量项的索引</td>
+    </tr>
+    <tr>
+        <td rowspan="2">CONSTANT_String_info</td>
+        <td>tag</td>
+        <td>u1</td>
+        <td>值为8</td>
+    </tr>
+    <tr>
+        <td>index</td>
+        <td>u2</td>
+        <td>指向字符串字面量的索引</td>
     </tr>
     <tr>
         <td></td>
