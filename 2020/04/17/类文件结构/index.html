@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2.8k字</span>
+            <span class="post-count">3.1k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">10分钟</span>
+            <span class="post-count">12分钟</span>
         </span>
     </span>
 </div>
@@ -589,15 +589,69 @@
         <td>值必须是对常量池的有效索引</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td rowspan="2">CONSTANT_MethodType_info</td>
+        <td>tag</td>
+        <td>u1</td>
+        <td>值为16</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>descriptor_index</td>
+        <td>u2</td>
+        <td>值必须是对常量池的有效索引，常量池在该索引处的项必须是CONSTANT_Utf8_info结构，表示方法的描述符</td>
+    </tr>
+    <tr>
+        <td rowspan="3">CONSTANT_Dynamic_info</td>
+        <td>tag</td>
+        <td>u1</td>
+        <td>值为17</td>
+    </tr>
+    <tr>
+        <td>bootstrap_method_attr</td>
+        <td>u2</td>
+        <td>值必须是对当前Class文件中引导方法表的bootstrap_methods[]数组的有效索引</td>
+    </tr>
+    <tr>
+        <td>name_and_type_index</td>
+        <td>u2</td>
+        <td>值必须是对当前常量池的有效索引，常量池在该索引出的项必须是CONSTANT_NameAndType_info结构，表示方法名和方法描述符</td>
+    </tr>
+    <tr>
+        <td rowspan="3">CONSTANT_InvokeDynamic_info</td>
+        <td>tag</td>
+        <td>u1</td>
+        <td>值为18</td>
+    </tr>
+    <tr>
+        <td>bootstrap_method_attr_index</td>
+        <td>u2</td>
+        <td>值必须是对当前Class文件中引导方法表的bootstrap_methods[]数组的有效索引</td>
+    </tr>
+    <tr>
+        <td>name_and_type_index</td>
+        <td>u2</td>
+        <td>值必须是对当前常量池的有效索引，常量池在该索引处的项必须是CONSTANT_NameAndType_info结构，表示方法名和方法描述符</td>
+    </tr>
+    <tr>
+        <td rowspan="2">CONSTANT_Module_info</td>
+        <td>tag</td>
+        <td>u1</td>
+        <td>值为19</td>
+    </tr>
+    <tr>
+        <td>name_index</td>
+        <td>u2</td>
+        <td>值必须是对常量池的有效索引，常量池在该索引处的项必须是CONSTANT_Utf8_info结构，表示模块名称</td>
+    </tr>
+    <tr>
+        <td rowspan="2">CONSTANT_Package_info</td>
+        <td>tag</td>
+        <td>u1</td>
+        <td>值为20</td>
+    </tr>
+    <tr>
+        <td>name_index</td>
+        <td>u2</td>
+        <td>值必须是对常量池的有效索引，常量池在该索引处的项必须是CONSTANT_Utf8_info结构，表示包名称</td>
     </tr>
 </table>
       
