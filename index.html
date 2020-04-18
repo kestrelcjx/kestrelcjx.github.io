@@ -538,68 +538,68 @@
         <td>指向字段描述符CONSTANT_NameAndType的索引项</td>
     </tr>
     <tr>
-        <td rowspan="3"></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td rowspan="3">CONSTANT_Methodref_info</td>
+        <td>tag</td>
+        <td>u1</td>
+        <td>值为10</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>index</td>
+        <td>u2</td>
+        <td>指向声明方法的类描述符CONSTANT_Class_info的索引项</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>index</td>
+        <td>u2</td>
+        <td>指向名称及类型描述符CONSTANT_NameAndType的索引项</td>
     </tr>
     <tr>
-        <td rowspan="3"></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td rowspan="3">CONSTANT_InterfaceMethodref_info</td>
+        <td>tag</td>
+        <td>u1</td>
+        <td>值为11</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>index</td>
+        <td>u2</td>
+        <td>指向声明方法的接口描述符CONSTANT_Class_info的索引项</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>index</td>
+        <td>u2</td>
+        <td>指向名称及类型描述符CONSTANT_NameAndType的索引项</td>
     </tr>
     <tr>
-        <td rowspan="3"></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td rowspan="3">CONSTANT_NameAndType</td>
+        <td>tag</td>
+        <td>u1</td>
+        <td>值为12</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>index</td>
+        <td>u2</td>
+        <td>指向该字段或方法名称常量项的索引</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>index</td>
+        <td>u2</td>
+        <td>指向该字段或方法描述符常量项的索引</td>
     </tr>
     <tr>
-        <td rowspan="3"></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td rowspan="3">CONSTANT_MethodHandle_info</td>
+        <td>tag</td>
+        <td>u1</td>
+        <td>值为15</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>reference_kind</td>
+        <td>u1</td>
+        <td>值必须在1至9之间（包括1和9），它决定了方法句柄的类型。方法句柄类型的值表示方法句柄的字节码行为</td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>reference_index</td>
+        <td>u2</td>
+        <td>值必须是对常量池的有效索引</td>
     </tr>
 </table>
       
