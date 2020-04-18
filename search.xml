@@ -322,7 +322,79 @@
 <td>表示一个模块中开放或者导出的包</td>
 </tr>
 </tbody></table>
-]]></content>
+<p>　　17种常量项的结构定义如下表：</p>
+<table>
+    <tr>
+        <th>常量</th>
+        <th>项目</th>
+        <th>类型</th>
+        <th>描述</th>
+    </tr>
+    <tr>
+        <td rowspan="3">CONSTANT_Utf8_info</td>
+        <td>tag</td>
+        <td>u1</td>
+        <td>值为1</td>
+    </tr>
+    <tr>
+        <td>length</td>
+        <td>u2</td>
+        <td>UTF-8编码的字符串占用了字节数</td>
+    </tr>
+    <tr>
+        <td>bytes</td>
+        <td>u1</td>
+        <td>长度为length的UTF-8编码的字符串</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>]]></content>
       <tags>
         <tag>Java</tag>
         <tag>JVM</tag>
