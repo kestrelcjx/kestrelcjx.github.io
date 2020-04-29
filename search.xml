@@ -134,12 +134,12 @@
 <li>符号引用(Symbolic Reference)：</li>
 <li>直接引用(Direct Reference)：</li>
 </ul>
-<ul>
+<ol>
 <li>类或接口的解析</li>
 <li>字段解析</li>
 <li>方法解析</li>
 <li>接口方法解析</li>
-</ul>
+</ol>
 <h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2><h2 id="Java模块化系统"><a href="#Java模块化系统" class="headerlink" title="Java模块化系统"></a>Java模块化系统</h2>]]></content>
       <tags>
         <tag>Java</tag>
