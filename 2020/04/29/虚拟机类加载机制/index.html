@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2.1k字</span>
+            <span class="post-count">2.7k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">7分钟</span>
+            <span class="post-count">9分钟</span>
         </span>
     </span>
 </div>
@@ -101,19 +101,23 @@
       
       <h2 id="类加载的时机"><a href="#类加载的时机" class="headerlink" title="类加载的时机"></a>类加载的时机</h2><p>　　一个类型从被加载到虚拟机内存中开始，到卸载出内存为止，它的整个生命周期将会经历<br>加载(Loading)、验证(Verification)、准备(Preparation)、解析(Resolution)、初始化(Initialization)、<br>使用(Using)和卸载(Unloading)七个阶段，其中验证、准备、解析三个部分统称为连接(Linking)。<br><img src="/images/ClassLife.jpg" alt="类的生命周期"><br>　　加载、验证、准备、初始化和卸载这五个阶段的顺序是确定的，类型的加载过程必须按照<br>这种顺序按部就班地开始（这些阶段通常都是互相交叉地混合进行的，会在一个阶段执行的<br>过程中调用、激活另一个阶段），而解析阶段则不一定：它在某些情况下可以在初始化阶段<br>之后在开始，这是为了支持Java语言的运行时绑定特性（也称为动态绑定或晚期绑定）。<br>　　《Java虚拟机规范》严格规定了有且只有六种情况必须立即对类进行“初始化”（而加载、<br>验证、准备自然需要在此之前开始）：</p>
 <ol>
-<li>遇到new、getstatic、putstatic或invokestatic这四条字节码指令时，如果没有进行过<br>初始化，则需要先触发其初始化阶段。能够生成这四条指令的典型Java代码场景有：</li>
-</ol>
+<li><p>遇到new、getstatic、putstatic或invokestatic这四条字节码指令时，如果没有进行过<br>初始化，则需要先触发其初始化阶段。能够生成这四条指令的典型Java代码场景有：</p>
 <ul>
 <li>使用new关键字实例化对象的时候。</li>
 <li>读取或设置一个类型的静态字段（被final修饰、已在编译期把结果放入常量池的静态字段<br>除外）的时候。</li>
 <li>调用一个类型的静态方法的时候。</li>
 </ul>
-<ol start="2">
-<li>使用java.lang.reflect包的方法对类型进行反射调用的时候，如果类型没有进行过初始化，<br>则需要先触发其初始化。</li>
-<li>当初始化类的时候，如果发现其父类还没有进行过初始化，则需要先触发其父类的初始化。</li>
-<li>当虚拟机启动时，用户需要指定一个要执行的主类（包含main()方法的那个类），虚拟机<br>会先初始化这个主类。</li>
-<li>当使用JDK7新加入的动态语言支持时，如果要给java.lang.invoke.MethodHandle实例最后<br>的解析结果为REF_getStatic、REF_putStatic、REF_invokeStatic、REF_newInvokeSpecial<br>四种类型的方法句柄，并且这个方法句柄对应的类没有进行过初始化，则需要先触发其初始化。</li>
-<li>当一个接口中定义了JDK8新加入的默认方法（被default关键字修饰的接口方法）时，如果<br>有这个接口的实现类发生了初始化，那该接口要在其之前被初始化。</li>
+</li>
+<li><p>使用java.lang.reflect包的方法对类型进行反射调用的时候，如果类型没有进行过初始化，<br>则需要先触发其初始化。</p>
+</li>
+<li><p>当初始化类的时候，如果发现其父类还没有进行过初始化，则需要先触发其父类的初始化。</p>
+</li>
+<li><p>当虚拟机启动时，用户需要指定一个要执行的主类（包含main()方法的那个类），虚拟机<br>会先初始化这个主类。</p>
+</li>
+<li><p>当使用JDK7新加入的动态语言支持时，如果要给java.lang.invoke.MethodHandle实例最后<br>的解析结果为REF_getStatic、REF_putStatic、REF_invokeStatic、REF_newInvokeSpecial<br>四种类型的方法句柄，并且这个方法句柄对应的类没有进行过初始化，则需要先触发其初始化。</p>
+</li>
+<li><p>当一个接口中定义了JDK8新加入的默认方法（被default关键字修饰的接口方法）时，如果<br>有这个接口的实现类发生了初始化，那该接口要在其之前被初始化。</p>
+</li>
 </ol>
 <p>　　除了以上六种情况，其他所有引用类型的方式都不会触发初始化，称为被动引用。例如：</p>
 <ul>
@@ -158,12 +162,25 @@
 <li>……</li>
 </ul>
 </li>
-<li><p>字节码验证</p>
+<li><p>字节码验证<br>　　第三个阶段是整个验证过程中最复杂的一个阶段，主要目的是通过数据流分析和控制流<br>分析，确定程序语义是合法的、符合逻辑的。在第二个阶段对元数据信息中的数据类型校验<br>完毕以后，这阶段就要对类的方法体（Class文件中的Code属性）进行校验分析，保证被校验类<br>的方法在运行时不会做出危害虚拟机安全的行为，例如：</p>
+<ul>
+<li>保证任何时刻操作数栈的数据类型与指令代码序列都能配合工作，例如不会出现类似于<br>“操作栈放置了一个int类型的数据，使用时却按long类型来加载入本地变量表中”这样的情况。</li>
+<li>保证任何跳转指令都不会跳转到方法体以外的字节码指令上。</li>
+<li>保证方法体中的类型转换总是有效的，例如可以把一个子类对象赋值给父类数据类型，<br>这是安全的，但是把父类对象赋值给子类数据类型，设置把对象赋值给与它毫无继承关系、<br>完全不相干的一个数据类型，则是危险和不合法的。</li>
+</ul>
 </li>
-<li><p>符号引用验证</p>
+<li><p>符号引用验证<br>　　最后一个阶段的校验行为发生在虚拟机将符号引用转化为直接引用的时候，这个转换动作<br>将在连接的第三个阶段——解析阶段中发生。符号引用验证可以看作是对类自身以外（常量池<br>中的各种符号引用）的各类信息进行匹配性校验，通俗来说就是，该类是否缺少或者被禁止<br>访问它依赖的某些外部类、方法、字段等资源。本阶段通常需要校验下列内容：</p>
+<ul>
+<li>符号引用中通过字符串描述的全限定名是否能找到对应的类</li>
+<li>在指定类中是否存在符合方法的字段描述符及简单名称所描述的方法和字段</li>
+<li>符号引用中的类、字段、方法的可访问性(private、protected、public、<package>)<br>是否可被当前类访问</li>
+<li>……</li>
+</ul>
 </li>
 </ol>
-<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2><h2 id="Java模块化系统"><a href="#Java模块化系统" class="headerlink" title="Java模块化系统"></a>Java模块化系统</h2>
+<p>　　符号引用验证的主要目的是确保解析行为能正常执行，如果无法通过符号引用验证，Java<br>虚拟机将会抛出一个java.lang.IncompatibleClassChangeError的子类异常，典型的如：<br>java.lang.IllegalAccessError、java.lang.NoSuchFieldError、java.lang.NoSuchMethodError等。</p>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>　　</p>
+<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2><h2 id="Java模块化系统"><a href="#Java模块化系统" class="headerlink" title="Java模块化系统"></a>Java模块化系统</h2>
       
       <!-- reward -->
       
