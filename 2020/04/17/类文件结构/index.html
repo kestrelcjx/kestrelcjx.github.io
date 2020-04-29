@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">7.9k字</span>
+            <span class="post-count">8.9k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">29分钟</span>
+            <span class="post-count">33分钟</span>
         </span>
     </span>
 </div>
@@ -1439,16 +1439,221 @@
 <td>1</td>
 </tr>
 </tbody></table>
-<p>　　constantvalue_index数据项代表了常量池中一个字面量常量的引用，根据字段类型的不同，<br>字面量可以是CONSTANT_Long_info、CONSTANT_Float_info、CONSTANT_Double_info、CONSTANT_Integer_info<br>和CONSTANT_String_info常量中的一种。</p>
+<p>　　constantvalue_index数据项代表了常量池中一个字面量常量的引用，根据字段类型的不同，<br>字面量可以是CONSTANT_Long_info、CONSTANT_Float_info、CONSTANT_Double_info、<br>CONSTANT_Integer_info和CONSTANT_String_info常量中的一种。</p>
 <ul>
-<li>InnerClasses属性</li>
-<li>Deprecated及Synthetic属性</li>
-<li>StackMapTable属性</li>
-<li>Signature属性</li>
-<li>BootstrapMethods属性</li>
-<li>MethodParameters属性</li>
-<li>模块化相关属性</li>
-<li>运行时注解相关属性</li>
+<li>InnerClasses属性<br>　　InnnerClasses属性用于记录内部类与宿主类之间的关联。如果一个类中定义了内部类，<br>那编译器将会为它以及它所包含的内部类生成InnerClasses属性。InnerClasses属性的结构<br>如下表所示：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u2</td>
+<td>attribute_name_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u4</td>
+<td>attribute_length</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>number_of_classes</td>
+<td>1</td>
+</tr>
+<tr>
+<td>inner_classes_info</td>
+<td>inner_classes</td>
+<td>number_of_classes</td>
+</tr>
+</tbody></table>
+<p>　　数据项number_of_classes代表需要记录多少个内部类信息，每一个内部类的信息都由一个<br>inner_classes_info表进行描述。innner_classes_info表的结构如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u2</td>
+<td>inner_class_info_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>outer_class_info_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>inner_name_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>inner_class_access_flags</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>　　inner_class_info_index和outer_class_info_index都是指向常量池中CONSTANT_Class_info<br>型常量的索引，分别代表了内部类和宿主类的符号引用。<br>　　inner_name_index是指向常量池中CONSTANT_Utf8_info型常量的索引，代表这个内部类的<br>名称，如果是匿名内部类，这项值是0。<br>　　inner_class_access_flags是内部类的访问标志，类似于类的access_flags，它的取值范围<br>如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>标志名称</th>
+<th>标志值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ACC_PUBLIC</td>
+<td>0x0001</td>
+<td>内部类是否为public</td>
+</tr>
+<tr>
+<td>ACC_PRIVATE</td>
+<td>0x0002</td>
+<td>内部类是否为private</td>
+</tr>
+<tr>
+<td>ACC_PROTECTED</td>
+<td>0x0004</td>
+<td>内部类是否为protected</td>
+</tr>
+<tr>
+<td>ACC_STATIC</td>
+<td>0x0008</td>
+<td>内部类是否为static</td>
+</tr>
+<tr>
+<td>ACC_FINAL</td>
+<td>0x0010</td>
+<td>内部类是否为final</td>
+</tr>
+<tr>
+<td>ACC_INTERFACE</td>
+<td>0x0020</td>
+<td>内部类是否为接口</td>
+</tr>
+<tr>
+<td>ACC_ABSTRACT</td>
+<td>0x0400</td>
+<td>内部类是否为abstract</td>
+</tr>
+<tr>
+<td>ACC_SYNTHETIC</td>
+<td>0x1000</td>
+<td>内部类是否并非由用户代码产生的</td>
+</tr>
+<tr>
+<td>ACC_ANNOTATION</td>
+<td>0x2000</td>
+<td>内部类是不是一个注解</td>
+</tr>
+<tr>
+<td>ACC_ENUM</td>
+<td>0x4000</td>
+<td>内部类是不是一个枚举</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Deprecated及Synthetic属性<br>　　Deprecated和Synthetic两个属性都属于标志类型的布尔属性，只存在有和没有的区别，<br>没有属性值的概念。<br>　　Deprecated属性用于表示某个类、字段或者方法，已经被程序作者定为不再推荐使用，<br>它可以通过代码中使用“@deprecated”注解进行设置。<br>　　Synthetic属性代表此字段或者方法并不是由Java源码直接产生的，而是由编译器自行添加<br>的，在JDK5之后，标识一个类、字段或者方法是由编译器自动产生的，也可以设置它们的访问<br>标志中的ACC_SYNTHETIC标志位。<br>　　Deprecated和Synthetic属性结构：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u2</td>
+<td>attribute_name_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u4</td>
+<td>attribute_length</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>　　其中attribute_length数据项的值必须为0x00000000，因为没有任何属性值需要设置。</p>
+<ul>
+<li>StackMapTable属性<br>　　StackMapTable属性在JDK6增加到Class文件规范之中，它是一个相当复杂的变长属性，<br>位于Code属性的属性表中。这个属性会在虚拟机类加载的字节码验证阶段被新类型检查验证器<br>(Type Checker)使用，目的在于代替以前比较消耗性能的基于数据流分析的类型推导验证器。<br>　　StackMapTable属性中包含零至多个栈映射帧(Stack Map Frame)，每个栈映射桢都显式<br>或隐式地代表了一个字节码偏移量，用于表示执行到该字节码时局部变量表和操作数栈的验证<br>类型。类型检查验证器会通过检查目标方法的局部变量和操作数栈所需要的类型来确定一段<br>字节码指令是否符合逻辑约束。StackMapTable属性的结构如下表所示：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u2</td>
+<td>attribute_name_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u4</td>
+<td>attribute_length</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>number_of_entries</td>
+<td>1</td>
+</tr>
+<tr>
+<td>stack_map_frame</td>
+<td>stack_map_frame_entries</td>
+<td>number_of_entries</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Signature属性<br>　　Signature属性在JDK5增加到Class文件规范之中，它是一个可选的定长属性，可以出现于<br>类、字段表和方法表结构的属性表中。在JDK5里面大幅增强了Java语言的语法，在此之后，<br>任何类、接口、初始化方法或成员的泛型签名如果包含了类型变量(Tyoe Variable)或参数化<br>类型(Parameterized Type)，则Signature属性会为它记录泛型签名信息。<br>　　Signature属性结构如下表所示：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u2</td>
+<td>attribute_name_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u4</td>
+<td>attribute_length</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>signature_index</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>　　其中signature_index项的值必须是一个对常量池的有效索引。常量池在该索引处的项必须<br>是CONSTANT_Utf8_info结构，表示类签名或方法类型签名或字段类型签名。</p>
+<ul>
+<li><p>BootstrapMethods属性<br>　　BootstrapMethods属性在JDK7时增加到Class文件规范之中，它是一个复杂的变长属性，<br>位于类文件的属性表中。这个属性用于保存invokedynamic指令引用的引导方法限定符。</p>
+</li>
+<li><p>MethodParameters属性</p>
+</li>
+<li><p>模块化相关属性</p>
+</li>
+<li><p>运行时注解相关属性</p>
+</li>
 </ul>
 
       
