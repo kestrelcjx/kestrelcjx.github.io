@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Tag: Java |  Kestrel&#39;s Blog
+    虚拟机类加载机制 |  Kestrel&#39;s Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -37,284 +37,244 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="app">
     <main class="content on">
       <section class="outer">
-  <article class="articles">
+  <article id="post-虚拟机类加载机制" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">#&nbspJava</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2020" class="archive-year">2020</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/29/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/" class="archive-article-date">
-  <time datetime="2020-04-29T08:17:43.000Z" itemprop="datePublished">04/29</time>
-</a>
+    <header class="article-header">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/04/29/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"
-    >虚拟机类加载机制</a> 
-</h2>
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  虚拟机类加载机制
+</h1>
  
 
     </header>
     
-    
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
     
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/17/%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" class="archive-article-date">
-  <time datetime="2020-04-17T08:03:31.000Z" itemprop="datePublished">04/17</time>
+    <div class="article-meta">
+      <a href="/2020/04/29/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/" class="article-date">
+  <time datetime="2020-04-29T08:17:43.000Z" itemprop="datePublished">2020-04-29</time>
 </a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/04/17/%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/"
-    >类文件结构</a> 
-</h2>
- 
-
-    </header>
-    
-    
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
-
-    
-  </div>
-</article>
       
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/13/%E4%BD%8E%E5%BB%B6%E8%BF%9F%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/" class="archive-article-date">
-  <time datetime="2020-04-13T02:59:50.000Z" itemprop="datePublished">04/13</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/04/13/%E4%BD%8E%E5%BB%B6%E8%BF%9F%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/"
-    >低延迟垃圾收集器</a> 
-</h2>
- 
-
-    </header>
-    
-    
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">976字</span>
+        </span>
+    </span>
 
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/08/%E5%AE%9E%E6%88%98%EF%BC%9A%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E4%B8%8E%E5%9B%9E%E6%94%B6%E7%AD%96%E7%95%A5/" class="archive-article-date">
-  <time datetime="2020-04-08T12:07:50.000Z" itemprop="datePublished">04/08</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/04/08/%E5%AE%9E%E6%88%98%EF%BC%9A%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E4%B8%8E%E5%9B%9E%E6%94%B6%E7%AD%96%E7%95%A5/"
-    >实战：内存分配与回收策略</a> 
-</h2>
- 
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">3分钟</span>
+        </span>
+    </span>
+</div>
 
-    </header>
-    
-    
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
-
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/08/%E7%BB%8F%E5%85%B8%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/" class="archive-article-date">
-  <time datetime="2020-04-08T12:07:16.000Z" itemprop="datePublished">04/08</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/04/08/%E7%BB%8F%E5%85%B8%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/"
-    >经典垃圾收集器</a> 
-</h2>
- 
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
-
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/08/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6/" class="archive-article-date">
-  <time datetime="2020-04-08T09:42:51.000Z" itemprop="datePublished">04/08</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/04/08/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6/"
-    >Java虚拟机内存回收</a> 
-</h2>
- 
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
-
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/05/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/" class="archive-article-date">
-  <time datetime="2020-04-05T15:18:32.000Z" itemprop="datePublished">04/05</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/04/05/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/"
-    >Java内存区域</a> 
-</h2>
- 
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
-
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/03/21/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%8C%E7%AB%A0/" class="archive-article-date">
-  <time datetime="2020-03-20T17:35:11.000Z" itemprop="datePublished">03/21</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/03/21/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%8C%E7%AB%A0/"
-    >《Thinking in Java》第二十二章</a> 
-</h2>
- 
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
-
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/03/21/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%80%E7%AB%A0/" class="archive-article-date">
-  <time datetime="2020-03-20T17:34:37.000Z" itemprop="datePublished">03/21</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/03/21/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%80%E7%AB%A0/"
-    >《Thinking in Java》第二十一章</a> 
-</h2>
- 
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
-
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/03/20/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%BA%8C%E5%8D%81%E7%AB%A0/" class="archive-article-date">
-  <time datetime="2020-03-19T16:03:29.000Z" itemprop="datePublished">03/20</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/03/20/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%BA%8C%E5%8D%81%E7%AB%A0/"
-    >《Thinking in Java》第二十章</a> 
-</h2>
- 
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
-
-    
-  </div>
-</article>
-      
       
     </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="类加载的时机"><a href="#类加载的时机" class="headerlink" title="类加载的时机"></a>类加载的时机</h2><p>　　一个类型从被加载到虚拟机内存中开始，到卸载出内存为止，它的整个生命周期将会经历<br>加载(Loading)、验证(Verification)、准备(Preparation)、解析(Resolution)、初始化(Initialization)、<br>使用(Using)和卸载(Unloading)七个阶段，其中验证、准备、解析三个部分统称为连接(Linking)。<br><img src="ClassLife.jpg" alt="类的生命周期"><br>　　加载、验证、准备、初始化和卸载这五个阶段的顺序是确定的，类型的加载过程必须按照<br>这种顺序按部就班地开始（这些阶段通常都是互相交叉地混合进行的，会在一个阶段执行的<br>过程中调用、激活另一个阶段），而解析阶段则不一定：它在某些情况下可以在初始化阶段<br>之后在开始，这是为了支持Java语言的运行时绑定特性（也称为动态绑定或晚期绑定）。<br>　　《Java虚拟机规范》严格规定了有且只有六种情况必须立即对类进行“初始化”（而加载、<br>验证、准备自然需要在此之前开始）：</p>
+<ol>
+<li>遇到new、getstatic、putstatic或invokestatic这四条字节码指令时，如果没有进行过<br>初始化，则需要先触发其初始化阶段。能够生成这四条指令的典型Java代码场景有：</li>
+</ol>
+<ul>
+<li>使用new关键字实例化对象的时候。</li>
+<li>读取或设置一个类型的静态字段（被final修饰、已在编译期把结果放入常量池的静态字段<br>除外）的时候。</li>
+<li>调用一个类型的静态方法的时候。</li>
+</ul>
+<ol start="2">
+<li>使用java.lang.reflect包的方法对类型进行反射调用的时候，如果类型没有进行过初始化，<br>则需要先触发其初始化。</li>
+<li>当初始化类的时候，如果发现其父类还没有进行过初始化，则需要先触发其父类的初始化。</li>
+<li>当虚拟机启动时，用户需要指定一个要执行的主类（包含main()方法的那个类），虚拟机<br>会先初始化这个主类。</li>
+<li>当使用JDK7新加入的动态语言支持时，如果要给java.lang.invoke.MethodHandle实例最后<br>的解析结果为REF_getStatic、REF_putStatic、REF_invokeStatic、REF_newInvokeSpecial<br>四种类型的方法句柄，并且这个方法句柄对应的类没有进行过初始化，则需要先触发其初始化。</li>
+<li>当一个接口中定义了JDK8新加入的默认方法（被default关键字修饰的接口方法）时，如果<br>有这个接口的实现类发生了初始化，那该接口要在其之前被初始化。</li>
+</ol>
+<p>　　除了以上六种情况，其他所有引用类型的方式都不会触发初始化，称为被动引用。例如：</p>
+<ul>
+<li>通过子类引用父类的静态字段，不会导致子类初始化</li>
+<li>通过数组定义来引用类，不会触发此类的初始化</li>
+<li>常量在编译阶段会存入调用类的常量池中，本质上没有直接引用到定义常量的类，因此不会<br>触发定义常量的类的初始化</li>
+</ul>
+<p>　　接口的加载过程与类加载过程稍有不同，针对接口需要做一些特殊说明：接口也有初始化<br>过程，编译器会为接口生成“<clinit>()”类构造器，用于初始化接口中所定义的成员变量。<br>接口与类真正有所区别的是：当一个类在初始胡时，要求其父类全部都已经初始化过了，但是<br>一个接口在初始化时，并不要求父接口全部都要完成了初始化，只有在真正使用到父接口的<br>时候（如引用接口中定义的常量）才会初始化。</p>
+<h2 id="类加载的过程"><a href="#类加载的过程" class="headerlink" title="类加载的过程"></a>类加载的过程</h2><h3 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h3><h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2><h2 id="Java模块化系统"><a href="#Java模块化系统" class="headerlink" title="Java模块化系统"></a>Java模块化系统</h2>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kestrelcjx.github.io/2020/04/29/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+
+    </footer>
+
   </div>
-  
-  
 
   
-  <nav class="page-nav">
+  
+  <nav class="article-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/tags/Java/page/2/">2</a><a class="page-number" href="/tags/Java/page/3/">3</a><a class="extend next" rel="next" href="/tags/Java/page/2/">下一页</a>
+    
+      <a href="/2020/04/17/%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">类文件结构</div>
+      </a>
+    
   </nav>
+
+
   
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
 </section>
       <footer class="footer">
   <div class="outer">
@@ -469,6 +429,24 @@
 </script>
 
 
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
 
 
 

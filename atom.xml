@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kestrelcjx.github.io/"/>
-  <updated>2020-04-29T08:04:44.019Z</updated>
+  <updated>2020-04-29T10:07:10.462Z</updated>
   <id>https://kestrelcjx.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>虚拟机类加载机制</title>
+    <link href="https://kestrelcjx.github.io/2020/04/29/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"/>
+    <id>https://kestrelcjx.github.io/2020/04/29/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</id>
+    <published>2020-04-29T08:17:43.000Z</published>
+    <updated>2020-04-29T10:07:10.462Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;类加载的时机&quot;&gt;&lt;a href=&quot;#类加载的时机&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+      <category term="JVM" scheme="https://kestrelcjx.github.io/tags/JVM/"/>
+    
+  </entry>
   
   <entry>
     <title>类文件结构</title>
@@ -493,31 +520,6 @@
         
         
           &lt;h2 id=&quot;内部类&quot;&gt;&lt;a href=&quot;#内部类&quot; class=&quot;headerlink&quot; title=&quot;内部类&quot;&gt;&lt;/a&gt;内部类&lt;/h2&gt;&lt;h3 id=&quot;创建内部类&quot;&gt;&lt;a href=&quot;#创建内部类&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《Thinking in Java》第九章</title>
-    <link href="https://kestrelcjx.github.io/2020/03/14/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%B9%9D%E7%AB%A0/"/>
-    <id>https://kestrelcjx.github.io/2020/03/14/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E4%B9%9D%E7%AB%A0/</id>
-    <published>2020-03-14T07:30:18.000Z</published>
-    <updated>2020-03-29T05:01:28.130Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;接口&quot;&gt;&lt;a href=&quot;#接口&quot; class=&quot;headerlink&quot; title=&quot;接口&quot;&gt;&lt;/a&gt;接口&lt;/h2&gt;&lt;h3 id=&quot;抽象类与抽象方法&quot;&gt;&lt;a href=&quot;#抽象类与抽象方法&quot; class=&quot;headerlink&quot;
         
       
     
