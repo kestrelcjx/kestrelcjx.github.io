@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">4.8k字</span>
+            <span class="post-count">5k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">18分钟</span>
+            <span class="post-count">19分钟</span>
         </span>
     </span>
 </div>
@@ -957,7 +957,198 @@
 </tr>
 </tbody></table>
 <p>　　与字段表集合相对应地，如果父类方法在子类中没有被重写(Override)，方法表集合中<br>就不会出现来自父类的方法信息。但同样地，有可能会出现由编译器自动添加的方法，最常见<br>的便是类构造器“<clinit>()”方法和实例构造器“<init>()”方法。<br>　　在Java语言中，要重载(Overload)一个方法，除了要与原方法具有相同的简单名称之外，<br>还要求必须拥有一个与原方法不同的特征签名。特征签名是指一个方法中各个参数在常量池<br>中的字段符号引用的集合，也正是因为返回值不会包含在特征签名之中，所以Java语言里面<br>是无法仅仅依靠返回值的不同来对一个已有方法进行重载的。但是在Class文件格式之中，特征<br>签名的范围明显要更大一些，只要描述符不是完全一致的两个方法就可以共存。也就是说，<br>如果两个方法有相同的名称和特征签名，但返回值不同，那么也是可以合法共存于同一个Class<br>文件中的。</p>
-<h3 id="属性表集合"><a href="#属性表集合" class="headerlink" title="属性表集合"></a>属性表集合</h3>
+<h3 id="属性表集合"><a href="#属性表集合" class="headerlink" title="属性表集合"></a>属性表集合</h3><p>　　虚拟机规范预定义的属性：</p>
+<table>
+<thead>
+<tr>
+<th>属性名称</th>
+<th>使用位置</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Code</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ConstantValue</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Deprecated</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Exceptions</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>EnclosingMethod</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>InnerClasses</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>LineNumberTable</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>LocalVariableTable</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>StackMapTable</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Signature</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>SourceFile</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>SourceDebugExtension</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Synthetic</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>LocalVariableTypeTable</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>RuntimeVisibleAnnotations</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>RuntimeInvisibleAnnotations</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>RuntimeVisibleParameterAnnotations</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>RuntimeInvisibleParameterAnnotations</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>AnnotationDefault</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>BootstrapMethods</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>RuntimeVisibleTypeAnnotations</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>RuntimeInvisibleTypeAnnotations</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MethodParameters</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Module</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ModulePackages</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ModuleMainClass</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>NestHost</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>NestMethods</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>　　对于每一属性，它的名称都要从常量池中引用一个CONSTANT_Utf8_info类型的常量来表示，<br>而属性值的结构则是完全自定义的，只需要通过一个u4的长度属性去说明属性值所占的位数<br>即可。一个符合规则的属性表应该满足下表所定义的结构：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>Code属性</li>
+<li>Exceptions属性</li>
+<li>LineNumberTable属性</li>
+<li>LocalVaribleTable及LocalVariableTypeTable属性</li>
+<li>SourceFile及SourceDebugExtension属性</li>
+<li>ConstantValue属性</li>
+<li>InnerClasses属性</li>
+<li>Deprecated及Synthetic属性</li>
+<li>StackMapTable属性</li>
+<li>Signature属性</li>
+<li>BootstrapMethods属性</li>
+<li>MethodParameters属性</li>
+<li>模块化相关属性</li>
+<li>运行时注解相关属性</li>
+</ul>
+
       
       <!-- reward -->
       
