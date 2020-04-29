@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">9.2k字</span>
+            <span class="post-count">6k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">34分钟</span>
+            <span class="post-count">22分钟</span>
         </span>
     </span>
 </div>
@@ -1132,658 +1132,296 @@
 <td>attribute_length</td>
 </tr>
 </tbody></table>
-<ul>
-<li>Code属性<br>　　Java程序方法体里面的代码经过Javac编译器处理之后，最终变成为字节码指令存储在Code<br>属性内。Code属性出现在方法表的属性集合之中，但并非所有的方法表都必须存在这个属性，<br>譬如接口或者抽象类中的方法就不存在Code属性，如果方法表有Code属性存在，那么它的结构<br>如下表所示：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>名称</th>
-<th>数量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>u2</td>
-<td>attribute_name_index</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u4</td>
-<td>attribute_length</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>max_stack</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>max_locals</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u4</td>
-<td>code_length</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u1</td>
-<td>code</td>
-<td>code_length</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>exception_table_length</td>
-<td>1</td>
-</tr>
-<tr>
-<td>exception_info</td>
-<td>exception_table</td>
-<td>exception_table_length</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>attributes_count</td>
-<td>1</td>
-</tr>
-<tr>
-<td>attribute_info</td>
-<td>attributes</td>
-<td>attributes_count</td>
-</tr>
-</tbody></table>
-<p>　　在字节码指令之后的是这个方法的显示异常处理表集合，如果存在异常表，那它的格式<br>应如下表所示，包含四个字段，这些字段的含义为：如果当字节码从第start_pc行（字节码<br>相对于方法体开始的偏移量）到第end_pc行之间（不含第end_pc行）出现了类型为catch_type<br>或者其子类的异常（catch_type为指向一个CONSTANT_Class_info型常量的索引），则转到第<br>handler_pc行继续处理。当catch_type的值为0时，代表任意异常情况都需要转到handler_pc<br>行进行处理。</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>名称</th>
-<th>数量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>u2</td>
-<td>start_pc</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>end_pc</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>handler</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>catch_type</td>
-<td>1</td>
-</tr>
-</tbody></table>
-<ul>
-<li>Exceptions属性<br>　　Exceptions属性结构：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>名称</th>
-<th>数量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>u2</td>
-<td>attribute_name_index</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u4</td>
-<td>attribute_length</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>number_of_exceptions</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>exception_index_table</td>
-<td>number_of_exceptions</td>
-</tr>
-</tbody></table>
-<p>　　此属性中的number_of_exceptions项表示方法可能抛出number_of_exceptions种受查异常，<br>每一种受查异常使用一个exception_index_table项表示；exception_index_table是一个指向<br>常量池中CONSTANT_Class_info型常量的索引，代表了该受查异常的类型。</p>
-<ul>
-<li>LineNumberTable属性<br>　　LineNumberTable属性用于描述Java源代码行号与字节码行号（字节码的偏移量）之间的<br>对应关系。它并不是运行时必需的属性，但默认会生成到Class文件之中，可以在Javac中使用</li>
-<li>g:none或-g:lines选项来取消或要求生成这项信息。如果选择不生成LinuxNumberTable属性，<br>对程序运行时产生的最主要影响就是当抛出异常时，堆栈中将不会显示出错的行号，并且在<br>调试程序的时候，也无法按照源码行来设置断点。<br>　　LineNumberTable属性结构：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>名称</th>
-<th>数量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>u2</td>
-<td>attribute_name_index</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u4</td>
-<td>attribute_length</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>line_number_table_length</td>
-<td>1</td>
-</tr>
-<tr>
-<td>line_number_info</td>
-<td>line_number_table</td>
-<td>line_number_table_length</td>
-</tr>
-</tbody></table>
-<p>　　line_number_info表包含start_pc和line_number两个u2类型的数据项，前者是字节码行号，<br>后者是Java源代码行号。</p>
-<ul>
-<li>LocalVariableTable及LocalVariableTypeTable属性<br>　　LocalVariableTable属性用于描述栈帧中局部变量表的变量和Java源代码中定义的变量<br>之间的关系，它也不是运行时必需的属性，但默认会生成到Class文件之中，可以在Javac中<br>使用-g:none或-g:vars选项来取消或要求生成这项信息。如果没有生成这项属性，最大的影响<br>就是当其他人引用这个方法时，所有的参数名称都将会丢失，譬如IDE将会使用诸如arg0、arg1<br>之类的占位符代替原有的参数名，这对程序运行没有影响，但是对代码编写带来较大不便，<br>而且在调试期间无法根据参数名称从上下文中获得参数值。<br>　　LocalVariableTable属性结构：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>名称</th>
-<th>数量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>u2</td>
-<td>attribute_name_index</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u4</td>
-<td>attribute_length</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>local_variable_table_length</td>
-<td>1</td>
-</tr>
-<tr>
-<td>local_variable_info</td>
-<td>local_variable_table</td>
-<td>local_variable_table_length</td>
-</tr>
-</tbody></table>
-<p>　　其中local_variable_info项目代表了一个栈帧与源码中的局部变量的关联，结构如下表所示：</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>名称</th>
-<th>数量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>u2</td>
-<td>start_pc</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>length</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>name_index</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>descriptor_index</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>index</td>
-<td>1</td>
-</tr>
-</tbody></table>
-<p>　　start_pc和length属性分别代表了这个局部变量的声明周期开始的字节码偏移量及其作用<br>范围覆盖的长度，两者结合起来就是这个局部变量在字节码之中的作用域范围。<br>　　name_index和descriptor_index都是指向常量池中CONSTANT_Utf8_info型常量的索引，<br>分别代表了局部变量的名称以及这个局部变量的描述符。<br>　　index是这个局部变量在栈帧的局部变量表中变量槽的位置。<br>　　在JDK5引入泛型之后，新增了LocalVariableTypeTable，其结构与LocalVariableTable<br>非常相似，仅仅是把记录的字段描述符的descript_index替换成了字段的特征签名(Signature)。<br>对于非泛型类型来说，描述符和特征签名能描述的信息是能吻合一致的，但是泛型引入之后，<br>由于描述符中泛型的参数化类型被擦除掉，描述符就不能准确描述泛型类型了。因此出现了<br>LocalVariableTypeTable属性，使用字段的特征签名来完成泛型的描述。</p>
-<ul>
-<li>SourceFile及SourceDebugExtension属性<br>　　SourceFile属性用于记录生成这个Class文件的源码文件名称。这个属性也是可选的，可以<br>使用Javac的-g:none或-g:source选项来关闭或要求生成这项信息。在Java中，对于大多数的类<br>来说，类名和文件名是一致的，但是有一些特殊情况（如内部类）例外。如果不生成这项属性，<br>当抛出异常时，堆栈中将不会显示出错代码所属的文件名。这个属性是一个定长的属性，其结构<br>如下表所示：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>名称</th>
-<th>数量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>u2</td>
-<td>attribute_name_index</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u4</td>
-<td>attribute_length</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>sourcefile_index</td>
-<td>1</td>
-</tr>
-</tbody></table>
-<p>　　sourcefile_index数据项是指向常量池中CONSTANT_Utf8_info型常量的索引，常量值是<br>源码文件的文件名。<br>　　为了方便在编译器和动态生成的Class中加入供程序员使用的自定义内容，在JDK5时，新增<br>了SourceDebugExtension属性用于存储额外的代码调试信息。</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>名称</th>
-<th>数量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>u2</td>
-<td>attribute_name_index</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u4</td>
-<td>attribute_lenght</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u1</td>
-<td>debug_extension[attribute_length]</td>
-<td>1</td>
-</tr>
-</tbody></table>
-<p>　　其中debug_extension存储的就是额外的调试信息，是一组通过变长UTF-8格式来表示的<br>字符串。一个类中最多允许存在一个SourceDebugExtension属性。</p>
-<ul>
-<li>ConstantValue属性<br>　　ConstantValue属性的作用是通知虚拟机自动为静态变量赋值。只有被static关键字修饰<br>的变量（类变量）才可以使用这项属性。类似“int x = 123”和“static int x = 123”这样的<br>变量定义在Java程序里面是非常常见的事情，但虚拟机对这两中变量赋值的方式和时刻都是<br>有所不同的。对非static类型的变量（也就是实例变量）的赋值是在实例构造器<init>()方法<br>中进行的；而对于类变量，则有两种方式可以选择：在类构造器<clinit>()方法中或者使用<br>ConstantValue属性。目前Oracle公司实现的Javac编译器的选择是，如果同时使用final和static<br>来修饰一个变量（常量），并且这个变量的数据类型是基本数据类型或者java.lang.String<br>的话，就将生成ConstantValue属性进行初始化；如果这个变量没有被final修饰，或者并非<br>基本类型及字符串，则将会选择在<clinit>()方法中进行初始化。<br>　　ConstantValue属性结构：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>名称</th>
-<th>数量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>u2</td>
-<td>attribute_name_index</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u4</td>
-<td>attribute_length</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>constantvalue_index</td>
-<td>1</td>
-</tr>
-</tbody></table>
-<p>　　constantvalue_index数据项代表了常量池中一个字面量常量的引用，根据字段类型的不同，<br>字面量可以是CONSTANT_Long_info、CONSTANT_Float_info、CONSTANT_Double_info、<br>CONSTANT_Integer_info和CONSTANT_String_info常量中的一种。</p>
-<ul>
-<li>InnerClasses属性<br>　　InnnerClasses属性用于记录内部类与宿主类之间的关联。如果一个类中定义了内部类，<br>那编译器将会为它以及它所包含的内部类生成InnerClasses属性。InnerClasses属性的结构<br>如下表所示：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>名称</th>
-<th>数量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>u2</td>
-<td>attribute_name_index</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u4</td>
-<td>attribute_length</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>number_of_classes</td>
-<td>1</td>
-</tr>
-<tr>
-<td>inner_classes_info</td>
-<td>inner_classes</td>
-<td>number_of_classes</td>
-</tr>
-</tbody></table>
-<p>　　数据项number_of_classes代表需要记录多少个内部类信息，每一个内部类的信息都由一个<br>inner_classes_info表进行描述。innner_classes_info表的结构如下表所示：</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>名称</th>
-<th>数量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>u2</td>
-<td>inner_class_info_index</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>outer_class_info_index</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>inner_name_index</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>inner_class_access_flags</td>
-<td>1</td>
-</tr>
-</tbody></table>
-<p>　　inner_class_info_index和outer_class_info_index都是指向常量池中CONSTANT_Class_info<br>型常量的索引，分别代表了内部类和宿主类的符号引用。<br>　　inner_name_index是指向常量池中CONSTANT_Utf8_info型常量的索引，代表这个内部类的<br>名称，如果是匿名内部类，这项值是0。<br>　　inner_class_access_flags是内部类的访问标志，类似于类的access_flags，它的取值范围<br>如下表所示：</p>
-<table>
-<thead>
-<tr>
-<th>标志名称</th>
-<th>标志值</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ACC_PUBLIC</td>
-<td>0x0001</td>
-<td>内部类是否为public</td>
-</tr>
-<tr>
-<td>ACC_PRIVATE</td>
-<td>0x0002</td>
-<td>内部类是否为private</td>
-</tr>
-<tr>
-<td>ACC_PROTECTED</td>
-<td>0x0004</td>
-<td>内部类是否为protected</td>
-</tr>
-<tr>
-<td>ACC_STATIC</td>
-<td>0x0008</td>
-<td>内部类是否为static</td>
-</tr>
-<tr>
-<td>ACC_FINAL</td>
-<td>0x0010</td>
-<td>内部类是否为final</td>
-</tr>
-<tr>
-<td>ACC_INTERFACE</td>
-<td>0x0020</td>
-<td>内部类是否为接口</td>
-</tr>
-<tr>
-<td>ACC_ABSTRACT</td>
-<td>0x0400</td>
-<td>内部类是否为abstract</td>
-</tr>
-<tr>
-<td>ACC_SYNTHETIC</td>
-<td>0x1000</td>
-<td>内部类是否并非由用户代码产生的</td>
-</tr>
-<tr>
-<td>ACC_ANNOTATION</td>
-<td>0x2000</td>
-<td>内部类是不是一个注解</td>
-</tr>
-<tr>
-<td>ACC_ENUM</td>
-<td>0x4000</td>
-<td>内部类是不是一个枚举</td>
-</tr>
-</tbody></table>
-<ul>
-<li>Deprecated及Synthetic属性<br>　　Deprecated和Synthetic两个属性都属于标志类型的布尔属性，只存在有和没有的区别，<br>没有属性值的概念。<br>　　Deprecated属性用于表示某个类、字段或者方法，已经被程序作者定为不再推荐使用，<br>它可以通过代码中使用“@deprecated”注解进行设置。<br>　　Synthetic属性代表此字段或者方法并不是由Java源码直接产生的，而是由编译器自行添加<br>的，在JDK5之后，标识一个类、字段或者方法是由编译器自动产生的，也可以设置它们的访问<br>标志中的ACC_SYNTHETIC标志位。<br>　　Deprecated和Synthetic属性结构：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>名称</th>
-<th>数量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>u2</td>
-<td>attribute_name_index</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u4</td>
-<td>attribute_length</td>
-<td>1</td>
-</tr>
-</tbody></table>
-<p>　　其中attribute_length数据项的值必须为0x00000000，因为没有任何属性值需要设置。</p>
-<ul>
-<li>StackMapTable属性<br>　　StackMapTable属性在JDK6增加到Class文件规范之中，它是一个相当复杂的变长属性，<br>位于Code属性的属性表中。这个属性会在虚拟机类加载的字节码验证阶段被新类型检查验证器<br>(Type Checker)使用，目的在于代替以前比较消耗性能的基于数据流分析的类型推导验证器。<br>　　StackMapTable属性中包含零至多个栈映射帧(Stack Map Frame)，每个栈映射桢都显式<br>或隐式地代表了一个字节码偏移量，用于表示执行到该字节码时局部变量表和操作数栈的验证<br>类型。类型检查验证器会通过检查目标方法的局部变量和操作数栈所需要的类型来确定一段<br>字节码指令是否符合逻辑约束。StackMapTable属性的结构如下表所示：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>名称</th>
-<th>数量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>u2</td>
-<td>attribute_name_index</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u4</td>
-<td>attribute_length</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>number_of_entries</td>
-<td>1</td>
-</tr>
-<tr>
-<td>stack_map_frame</td>
-<td>stack_map_frame_entries</td>
-<td>number_of_entries</td>
-</tr>
-</tbody></table>
-<ul>
-<li>Signature属性<br>　　Signature属性在JDK5增加到Class文件规范之中，它是一个可选的定长属性，可以出现于<br>类、字段表和方法表结构的属性表中。在JDK5里面大幅增强了Java语言的语法，在此之后，<br>任何类、接口、初始化方法或成员的泛型签名如果包含了类型变量(Tyoe Variable)或参数化<br>类型(Parameterized Type)，则Signature属性会为它记录泛型签名信息。<br>　　Signature属性结构如下表所示：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>名称</th>
-<th>数量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>u2</td>
-<td>attribute_name_index</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u4</td>
-<td>attribute_length</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>signature_index</td>
-<td>1</td>
-</tr>
-</tbody></table>
-<p>　　其中signature_index项的值必须是一个对常量池的有效索引。常量池在该索引处的项必须<br>是CONSTANT_Utf8_info结构，表示类签名或方法类型签名或字段类型签名。</p>
-<ul>
-<li>BootstrapMethods属性<br>　　BootstrapMethods属性在JDK7时增加到Class文件规范之中，它是一个复杂的变长属性，<br>位于类文件的属性表中。这个属性用于保存invokedynamic指令引用的引导方法限定符。<br>　　BootstrapMethods属性结构如下表所示：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>名称</th>
-<th>数量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>u2</td>
-<td>attribute_name_index</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u4</td>
-<td>attribute_length</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>num_bootstrap_methods</td>
-<td>1</td>
-</tr>
-<tr>
-<td>bootstrap_method</td>
-<td>bootstrap_methods</td>
-<td>num_bootstrap_methods</td>
-</tr>
-</tbody></table>
-<p>　　其中引用到的bootstrap_method结构如下表所示：</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>名称</th>
-<th>数量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>u2</td>
-<td>bootstrap_method_ref</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>num_bootstrap_arguments</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>bootstrap_arguments</td>
-<td>num_bootstrap_arguments</td>
-</tr>
-</tbody></table>
-<ul>
-<li>MethodParameters属性<br>　　MethodParameters是在JDK8时新加入到Class文件格式中的，它是一个用在方法表中的变长<br>属性。MethodParameters的作用是记录方法的各个形参名称和信息。<br>　　MethodParameters属性结构如下表所示：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>名称</th>
-<th>数量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>u2</td>
-<td>attribute_name_index</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u4</td>
-<td>attribute_length</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u1</td>
-<td>parameters_count</td>
-<td>1</td>
-</tr>
-<tr>
-<td>parameter</td>
-<td>parameters</td>
-<td>parameters_count</td>
-</tr>
-</tbody></table>
-<p>　　其中，引用到的parameter结构如下表所示：</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>名称</th>
-<th>数量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>u2</td>
-<td>name_index</td>
-<td>1</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>access_flags</td>
-<td>1</td>
-</tr>
-</tbody></table>
-<p>　　其中access_flag的取值范围为：</p>
-<table>
-<thead>
-<tr>
-<th>标志名称</th>
-<th>标志值</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ACC_FINAL</td>
-<td>0x0010</td>
-<td>表示该参数被final修饰</td>
-</tr>
-<tr>
-<td>ACC_SYNTHETIC</td>
-<td>0x1000</td>
-<td>表示该参数并未出现在源文件中，是编译器自动生成的</td>
-</tr>
-<tr>
-<td>ACC_MANDATED</td>
-<td>0x8000</td>
-<td>表示该参数是在源文件中隐式定义的，例如this关键字</td>
-</tr>
-</tbody></table>
-<ul>
-<li>模块化相关属性</li>
-<li>运行时注解相关属性</li>
-</ul>
+<!--
+- Code属性
+　　Java程序方法体里面的代码经过Javac编译器处理之后，最终变成为字节码指令存储在Code
+属性内。Code属性出现在方法表的属性集合之中，但并非所有的方法表都必须存在这个属性，
+譬如接口或者抽象类中的方法就不存在Code属性，如果方法表有Code属性存在，那么它的结构
+如下表所示：
 
+类型|名称|数量
+-|-|-
+u2|attribute_name_index|1
+u4|attribute_length|1
+u2|max_stack|1
+u2|max_locals|1
+u4|code_length|1
+u1|code|code_length
+u2|exception_table_length|1
+exception_info|exception_table|exception_table_length
+u2|attributes_count|1
+attribute_info|attributes|attributes_count
+
+　　在字节码指令之后的是这个方法的显示异常处理表集合，如果存在异常表，那它的格式
+应如下表所示，包含四个字段，这些字段的含义为：如果当字节码从第start_pc行（字节码
+相对于方法体开始的偏移量）到第end_pc行之间（不含第end_pc行）出现了类型为catch_type
+或者其子类的异常（catch_type为指向一个CONSTANT_Class_info型常量的索引），则转到第
+handler_pc行继续处理。当catch_type的值为0时，代表任意异常情况都需要转到handler_pc
+行进行处理。
+
+类型|名称|数量
+-|-|-
+u2|start_pc|1
+u2|end_pc|1
+u2|handler|1
+u2|catch_type|1
+
+- Exceptions属性
+　　Exceptions属性结构：
+
+类型|名称|数量
+-|-|-
+u2|attribute_name_index|1
+u4|attribute_length|1
+u2|number_of_exceptions|1
+u2|exception_index_table|number_of_exceptions
+
+　　此属性中的number_of_exceptions项表示方法可能抛出number_of_exceptions种受查异常，
+每一种受查异常使用一个exception_index_table项表示；exception_index_table是一个指向
+常量池中CONSTANT_Class_info型常量的索引，代表了该受查异常的类型。
+
+- LineNumberTable属性
+　　LineNumberTable属性用于描述Java源代码行号与字节码行号（字节码的偏移量）之间的
+对应关系。它并不是运行时必需的属性，但默认会生成到Class文件之中，可以在Javac中使用
+-g:none或-g:lines选项来取消或要求生成这项信息。如果选择不生成LinuxNumberTable属性，
+对程序运行时产生的最主要影响就是当抛出异常时，堆栈中将不会显示出错的行号，并且在
+调试程序的时候，也无法按照源码行来设置断点。
+　　LineNumberTable属性结构：
+
+类型|名称|数量
+-|-|-
+u2|attribute_name_index|1
+u4|attribute_length|1
+u2|line_number_table_length|1
+line_number_info|line_number_table|line_number_table_length
+
+　　line_number_info表包含start_pc和line_number两个u2类型的数据项，前者是字节码行号，
+后者是Java源代码行号。
+
+- LocalVariableTable及LocalVariableTypeTable属性
+　　LocalVariableTable属性用于描述栈帧中局部变量表的变量和Java源代码中定义的变量
+之间的关系，它也不是运行时必需的属性，但默认会生成到Class文件之中，可以在Javac中
+使用-g:none或-g:vars选项来取消或要求生成这项信息。如果没有生成这项属性，最大的影响
+就是当其他人引用这个方法时，所有的参数名称都将会丢失，譬如IDE将会使用诸如arg0、arg1
+之类的占位符代替原有的参数名，这对程序运行没有影响，但是对代码编写带来较大不便，
+而且在调试期间无法根据参数名称从上下文中获得参数值。
+　　LocalVariableTable属性结构：
+
+类型|名称|数量
+-|-|-
+u2|attribute_name_index|1
+u4|attribute_length|1
+u2|local_variable_table_length|1
+local_variable_info|local_variable_table|local_variable_table_length
+
+　　其中local_variable_info项目代表了一个栈帧与源码中的局部变量的关联，结构如下表所示：
+
+类型|名称|数量
+-|-|-
+u2|start_pc|1
+u2|length|1
+u2|name_index|1
+u2|descriptor_index|1
+u2|index|1
+
+　　start_pc和length属性分别代表了这个局部变量的声明周期开始的字节码偏移量及其作用
+范围覆盖的长度，两者结合起来就是这个局部变量在字节码之中的作用域范围。
+　　name_index和descriptor_index都是指向常量池中CONSTANT_Utf8_info型常量的索引，
+分别代表了局部变量的名称以及这个局部变量的描述符。
+　　index是这个局部变量在栈帧的局部变量表中变量槽的位置。
+　　在JDK5引入泛型之后，新增了LocalVariableTypeTable，其结构与LocalVariableTable
+非常相似，仅仅是把记录的字段描述符的descript_index替换成了字段的特征签名(Signature)。
+对于非泛型类型来说，描述符和特征签名能描述的信息是能吻合一致的，但是泛型引入之后，
+由于描述符中泛型的参数化类型被擦除掉，描述符就不能准确描述泛型类型了。因此出现了
+LocalVariableTypeTable属性，使用字段的特征签名来完成泛型的描述。
+
+- SourceFile及SourceDebugExtension属性
+　　SourceFile属性用于记录生成这个Class文件的源码文件名称。这个属性也是可选的，可以
+使用Javac的-g:none或-g:source选项来关闭或要求生成这项信息。在Java中，对于大多数的类
+来说，类名和文件名是一致的，但是有一些特殊情况（如内部类）例外。如果不生成这项属性，
+当抛出异常时，堆栈中将不会显示出错代码所属的文件名。这个属性是一个定长的属性，其结构
+如下表所示：
+
+类型|名称|数量
+-|-|-
+u2|attribute_name_index|1
+u4|attribute_length|1
+u2|sourcefile_index|1
+
+　　sourcefile_index数据项是指向常量池中CONSTANT_Utf8_info型常量的索引，常量值是
+源码文件的文件名。
+　　为了方便在编译器和动态生成的Class中加入供程序员使用的自定义内容，在JDK5时，新增
+了SourceDebugExtension属性用于存储额外的代码调试信息。
+
+类型|名称|数量
+-|-|-
+u2|attribute_name_index|1
+u4|attribute_lenght|1
+u1|debug_extension\[attribute_length\]|1
+
+　　其中debug_extension存储的就是额外的调试信息，是一组通过变长UTF-8格式来表示的
+字符串。一个类中最多允许存在一个SourceDebugExtension属性。
+
+- ConstantValue属性
+　　ConstantValue属性的作用是通知虚拟机自动为静态变量赋值。只有被static关键字修饰
+的变量（类变量）才可以使用这项属性。类似“int x = 123”和“static int x = 123”这样的
+变量定义在Java程序里面是非常常见的事情，但虚拟机对这两中变量赋值的方式和时刻都是
+有所不同的。对非static类型的变量（也就是实例变量）的赋值是在实例构造器<init>()方法
+中进行的；而对于类变量，则有两种方式可以选择：在类构造器<clinit>()方法中或者使用
+ConstantValue属性。目前Oracle公司实现的Javac编译器的选择是，如果同时使用final和static
+来修饰一个变量（常量），并且这个变量的数据类型是基本数据类型或者java.lang.String
+的话，就将生成ConstantValue属性进行初始化；如果这个变量没有被final修饰，或者并非
+基本类型及字符串，则将会选择在<clinit>()方法中进行初始化。
+　　ConstantValue属性结构：
+
+类型|名称|数量
+-|-|-
+u2|attribute_name_index|1
+u4|attribute_length|1
+u2|constantvalue_index|1
+
+　　constantvalue_index数据项代表了常量池中一个字面量常量的引用，根据字段类型的不同，
+字面量可以是CONSTANT_Long_info、CONSTANT_Float_info、CONSTANT_Double_info、
+CONSTANT_Integer_info和CONSTANT_String_info常量中的一种。
+
+- InnerClasses属性
+　　InnnerClasses属性用于记录内部类与宿主类之间的关联。如果一个类中定义了内部类，
+那编译器将会为它以及它所包含的内部类生成InnerClasses属性。InnerClasses属性的结构
+如下表所示：
+
+类型|名称|数量
+-|-|-
+u2|attribute_name_index|1
+u4|attribute_length|1
+u2|number_of_classes|1
+inner_classes_info|inner_classes|number_of_classes
+
+　　数据项number_of_classes代表需要记录多少个内部类信息，每一个内部类的信息都由一个
+inner_classes_info表进行描述。innner_classes_info表的结构如下表所示：
+
+类型|名称|数量
+-|-|-
+u2|inner_class_info_index|1
+u2|outer_class_info_index|1
+u2|inner_name_index|1
+u2|inner_class_access_flags|1
+
+　　inner_class_info_index和outer_class_info_index都是指向常量池中CONSTANT_Class_info
+型常量的索引，分别代表了内部类和宿主类的符号引用。
+　　inner_name_index是指向常量池中CONSTANT_Utf8_info型常量的索引，代表这个内部类的
+名称，如果是匿名内部类，这项值是0。
+　　inner_class_access_flags是内部类的访问标志，类似于类的access_flags，它的取值范围
+如下表所示：
+
+标志名称|标志值|含义
+-|-|-
+ACC_PUBLIC|0x0001|内部类是否为public
+ACC_PRIVATE|0x0002|内部类是否为private
+ACC_PROTECTED|0x0004|内部类是否为protected
+ACC_STATIC|0x0008|内部类是否为static
+ACC_FINAL|0x0010|内部类是否为final
+ACC_INTERFACE|0x0020|内部类是否为接口
+ACC_ABSTRACT|0x0400|内部类是否为abstract
+ACC_SYNTHETIC|0x1000|内部类是否并非由用户代码产生的
+ACC_ANNOTATION|0x2000|内部类是不是一个注解
+ACC_ENUM|0x4000|内部类是不是一个枚举
+
+- Deprecated及Synthetic属性
+　　Deprecated和Synthetic两个属性都属于标志类型的布尔属性，只存在有和没有的区别，
+没有属性值的概念。
+　　Deprecated属性用于表示某个类、字段或者方法，已经被程序作者定为不再推荐使用，
+它可以通过代码中使用“@deprecated”注解进行设置。
+　　Synthetic属性代表此字段或者方法并不是由Java源码直接产生的，而是由编译器自行添加
+的，在JDK5之后，标识一个类、字段或者方法是由编译器自动产生的，也可以设置它们的访问
+标志中的ACC_SYNTHETIC标志位。
+　　Deprecated和Synthetic属性结构：
+
+类型|名称|数量
+-|-|-
+u2|attribute_name_index|1
+u4|attribute_length|1
+
+　　其中attribute_length数据项的值必须为0x00000000，因为没有任何属性值需要设置。
+
+- StackMapTable属性
+　　StackMapTable属性在JDK6增加到Class文件规范之中，它是一个相当复杂的变长属性，
+位于Code属性的属性表中。这个属性会在虚拟机类加载的字节码验证阶段被新类型检查验证器
+(Type Checker)使用，目的在于代替以前比较消耗性能的基于数据流分析的类型推导验证器。
+　　StackMapTable属性中包含零至多个栈映射帧(Stack Map Frame)，每个栈映射桢都显式
+或隐式地代表了一个字节码偏移量，用于表示执行到该字节码时局部变量表和操作数栈的验证
+类型。类型检查验证器会通过检查目标方法的局部变量和操作数栈所需要的类型来确定一段
+字节码指令是否符合逻辑约束。StackMapTable属性的结构如下表所示：
+
+类型|名称|数量
+-|-|-
+u2|attribute_name_index|1
+u4|attribute_length|1
+u2|number_of_entries|1
+stack_map_frame|stack_map_frame_entries|number_of_entries
+
+- Signature属性
+　　Signature属性在JDK5增加到Class文件规范之中，它是一个可选的定长属性，可以出现于
+类、字段表和方法表结构的属性表中。在JDK5里面大幅增强了Java语言的语法，在此之后，
+任何类、接口、初始化方法或成员的泛型签名如果包含了类型变量(Tyoe Variable)或参数化
+类型(Parameterized Type)，则Signature属性会为它记录泛型签名信息。
+　　Signature属性结构如下表所示：
+
+类型|名称|数量
+-|-|-
+u2|attribute_name_index|1
+u4|attribute_length|1
+u2|signature_index|1
+
+　　其中signature_index项的值必须是一个对常量池的有效索引。常量池在该索引处的项必须
+是CONSTANT_Utf8_info结构，表示类签名或方法类型签名或字段类型签名。
+
+- BootstrapMethods属性
+　　BootstrapMethods属性在JDK7时增加到Class文件规范之中，它是一个复杂的变长属性，
+位于类文件的属性表中。这个属性用于保存invokedynamic指令引用的引导方法限定符。
+　　BootstrapMethods属性结构如下表所示：
+
+类型|名称|数量
+-|-|-
+u2|attribute_name_index|1
+u4|attribute_length|1
+u2|num_bootstrap_methods|1
+bootstrap_method|bootstrap_methods|num_bootstrap_methods
+
+　　其中引用到的bootstrap_method结构如下表所示：
+
+类型|名称|数量
+-|-|-
+u2|bootstrap_method_ref|1
+u2|num_bootstrap_arguments|1
+u2|bootstrap_arguments|num_bootstrap_arguments
+
+- MethodParameters属性
+　　MethodParameters是在JDK8时新加入到Class文件格式中的，它是一个用在方法表中的变长
+属性。MethodParameters的作用是记录方法的各个形参名称和信息。
+　　MethodParameters属性结构如下表所示：
+
+类型|名称|数量
+-|-|-
+u2|attribute_name_index|1
+u4|attribute_length|1
+u1|parameters_count|1
+parameter|parameters|parameters_count
+
+　　其中，引用到的parameter结构如下表所示：
+
+类型|名称|数量
+-|-|-
+u2|name_index|1
+u2|access_flags|1
+
+　　其中access_flag的取值范围为：
+
+标志名称|标志值|含义
+-|-|-
+ACC_FINAL|0x0010|表示该参数被final修饰
+ACC_SYNTHETIC|0x1000|表示该参数并未出现在源文件中，是编译器自动生成的
+ACC_MANDATED|0x8000|表示该参数是在源文件中隐式定义的，例如this关键字
+-->
       
       <!-- reward -->
       
