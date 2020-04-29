@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">4.3k字</span>
+            <span class="post-count">4.8k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">16分钟</span>
+            <span class="post-count">18分钟</span>
         </span>
     </span>
 </div>
@@ -851,7 +851,113 @@
 </tr>
 </tbody></table>
 <p>　　对于数组类型，每一维度将使用一个前置的“[”字符来描述，如一个定义为“java.lang.String[][]”<br>类型的二维数组将被记录成“[[Ljava/lang/String”，一个整型数组“int[]”将被记录成“[I”。<br>　　用描述符来描述方法时，按照先参数列表、后返回值的顺序描述，参数列表按照参照的<br>严格顺序放在一组小括号“()”之内。如方法void inc()的描述符为“()V”，方法java.lang.String toString()<br>的描述符为“()Ljava/lang/String”，方法int indexOf(char[] source, int sourceOffset,<br>int sourceCount, char[] target, int targetOffset, int targetCount, int fromIndex)<br>的描述符为“([CII[CIII)I”。<br>　　字段表集合中不会列出从父类或者父接口中继承而来的字段，但又可能出现原来Java代码<br>之中不存在的字段，譬如在内部类中为了保持对外部类的访问性，编译器就会自动添加指向<br>外部类实例的字段。另外，在Java语言中字段是无法重载的，两个字段的数据类型、修饰符<br>不管是否相同，都必须使用不一样的名称，但是对于Class文件格式来讲，只要两个字段的描述符<br>不是完全相同，那字段重名就是合法的。</p>
-<h3 id="方法表集合"><a href="#方法表集合" class="headerlink" title="方法表集合"></a>方法表集合</h3><h3 id="属性表集合"><a href="#属性表集合" class="headerlink" title="属性表集合"></a>属性表集合</h3>
+<h3 id="方法表集合"><a href="#方法表集合" class="headerlink" title="方法表集合"></a>方法表集合</h3><p>　　方法表结构：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u2</td>
+<td>access_flags</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>name_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>descriptor_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>attributes_count</td>
+<td>1</td>
+</tr>
+<tr>
+<td>attribute_info</td>
+<td>attributes</td>
+<td>attributes_count</td>
+</tr>
+</tbody></table>
+<p>　　方法访问标志：</p>
+<table>
+<thead>
+<tr>
+<th>标志名称</th>
+<th>标志值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ACC_PUBLIC</td>
+<td>0x0001</td>
+<td>方法是否为public</td>
+</tr>
+<tr>
+<td>ACC_PRIVATE</td>
+<td>0x0002</td>
+<td>方法是否为private</td>
+</tr>
+<tr>
+<td>ACC_PROTECTED</td>
+<td>0x0004</td>
+<td>方法是否为protected</td>
+</tr>
+<tr>
+<td>ACC_STATIC</td>
+<td>0x0008</td>
+<td>方法是否为static</td>
+</tr>
+<tr>
+<td>ACC_FINAL</td>
+<td>0x0010</td>
+<td>方法是否为final</td>
+</tr>
+<tr>
+<td>ACC_SYNCHRONIZED</td>
+<td>0x0020</td>
+<td>方法是否为synchronized</td>
+</tr>
+<tr>
+<td>ACC_BRIDGE</td>
+<td>0x0040</td>
+<td>方法是不是由编译器产生的桥接方法</td>
+</tr>
+<tr>
+<td>ACC_VARARGS</td>
+<td>0x0080</td>
+<td>方法是否接受不定参数</td>
+</tr>
+<tr>
+<td>ACC_NATIVE</td>
+<td>0x0100</td>
+<td>方法是否为native</td>
+</tr>
+<tr>
+<td>ACC_ABSTRACT</td>
+<td>0x0400</td>
+<td>方法是否为abstract</td>
+</tr>
+<tr>
+<td>ACC_STRICT</td>
+<td>0x0800</td>
+<td>方法是否为strictfp</td>
+</tr>
+<tr>
+<td>ACC_SYNTHETIC</td>
+<td>0x1000</td>
+<td>方法是否由编译器自动产生</td>
+</tr>
+</tbody></table>
+<p>　　与字段表集合相对应地，如果父类方法在子类中没有被重写(Override)，方法表集合中<br>就不会出现来自父类的方法信息。但同样地，有可能会出现由编译器自动添加的方法，最常见<br>的便是类构造器“<clinit>()”方法和实例构造器“<init>()”方法。<br>　　在Java语言中，要重载(Overload)一个方法，除了要与原方法具有相同的简单名称之外，<br>还要求必须拥有一个与原方法不同的特征签名。特征签名是指一个方法中各个参数在常量池<br>中的字段符号引用的集合，也正是因为返回值不会包含在特征签名之中，所以Java语言里面<br>是无法仅仅依靠返回值的不同来对一个已有方法进行重载的。但是在Class文件格式之中，特征<br>签名的范围明显要更大一些，只要描述符不是完全一致的两个方法就可以共存。也就是说，<br>如果两个方法有相同的名称和特征签名，但返回值不同，那么也是可以合法共存于同一个Class<br>文件中的。</p>
+<h3 id="属性表集合"><a href="#属性表集合" class="headerlink" title="属性表集合"></a>属性表集合</h3>
       
       <!-- reward -->
       
