@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">3.6k字</span>
+            <span class="post-count">4.1k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">13分钟</span>
+            <span class="post-count">15分钟</span>
         </span>
     </span>
 </div>
@@ -746,6 +746,111 @@
 <td>attributes_count</td>
 </tr>
 </tbody></table>
+<p>　　字段修饰符放在access_flags项目中，它与类中的access_flags项目是非常类似的，都<br>是一个u2的数据类型，其中可以设置的标志位和含义如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>标志名称</th>
+<th>标志值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ACC_PUBLIC</td>
+<td>0x0001</td>
+<td>字段是否public</td>
+</tr>
+<tr>
+<td>ACC_PRIVATE</td>
+<td>0x0002</td>
+<td>字段是否private</td>
+</tr>
+<tr>
+<td>ACC_PROTECTED</td>
+<td>0x0004</td>
+<td>字段是否protected</td>
+</tr>
+<tr>
+<td>ACC_STATIC</td>
+<td>0x0008</td>
+<td>字段是否static</td>
+</tr>
+<tr>
+<td>ACC_FINAL</td>
+<td>0x0010</td>
+<td>字段是否final</td>
+</tr>
+<tr>
+<td>ACC_VOLATILE</td>
+<td>0x0040</td>
+<td>字段是否为volatile</td>
+</tr>
+<tr>
+<td>ACC_TRANSIENT</td>
+<td>0x0080</td>
+<td>字段是否transient</td>
+</tr>
+<tr>
+<td>ACC_SYNTHETIC</td>
+<td>0x1000</td>
+<td>字段是否有编译器自动产生</td>
+</tr>
+<tr>
+<td>ACC_ENUM</td>
+<td>0x4000</td>
+<td>字段是否enum</td>
+</tr>
+</tbody></table>
+<p>　　跟随着access_flags标志的是两项索引值：name_index和descript_index。它们都是对<br>常量池项的引用，分别代表着字段的简单名称以及字段和方法的描述符。<br>　　全限定名，仅仅是把类全名中的“.”替换成“/”，例如“org/fenixsoft/clazz/TestClass”；<br>简单名称则是指没有类型和参数修饰的方法或者字段名称，例如类中的inc()方法和m字段的<br>简单名称分别就是“inc”和“m”；相比于全限定名和简单名称，方法和字段的描述符要复杂一些。<br>描述符的作用是用来描述字段的数据类型、方法的参数列表（包括数量、类型以及顺序）和<br>返回值。<br>　　描述符标识字符含义：</p>
+<table>
+<thead>
+<tr>
+<th>标识字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>B</td>
+<td>基本类型byte</td>
+</tr>
+<tr>
+<td>C</td>
+<td>基本类型char</td>
+</tr>
+<tr>
+<td>D</td>
+<td>基本类型double</td>
+</tr>
+<tr>
+<td>F</td>
+<td>基本类型float</td>
+</tr>
+<tr>
+<td>I</td>
+<td>基本类型int</td>
+</tr>
+<tr>
+<td>J</td>
+<td>基本类型long</td>
+</tr>
+<tr>
+<td>S</td>
+<td>基本类型short</td>
+</tr>
+<tr>
+<td>Z</td>
+<td>基本类型boolean</td>
+</tr>
+<tr>
+<td>V</td>
+<td>特殊类型void</td>
+</tr>
+<tr>
+<td>L</td>
+<td>对象类型，如Ljava/lang/Object</td>
+</tr>
+</tbody></table>
+<p>　　对于数组类型，每一维度将使用一个前置的“[”字符来描述，如一个定义为“java.lang.String[][]”<br>类型的二维数组将被记录成“[[Ljava/lang/String”，一个整型数组“int[]”将被记录成“[I”。</p>
 <h3 id="方法表集合"><a href="#方法表集合" class="headerlink" title="方法表集合"></a>方法表集合</h3><h3 id="属性表集合"><a href="#属性表集合" class="headerlink" title="属性表集合"></a>属性表集合</h3>
       
       <!-- reward -->
