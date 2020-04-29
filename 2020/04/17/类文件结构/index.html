@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">8.9k字</span>
+            <span class="post-count">9.2k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">33分钟</span>
+            <span class="post-count">34分钟</span>
         </span>
     </span>
 </div>
@@ -1646,14 +1646,142 @@
 </tbody></table>
 <p>　　其中signature_index项的值必须是一个对常量池的有效索引。常量池在该索引处的项必须<br>是CONSTANT_Utf8_info结构，表示类签名或方法类型签名或字段类型签名。</p>
 <ul>
-<li><p>BootstrapMethods属性<br>　　BootstrapMethods属性在JDK7时增加到Class文件规范之中，它是一个复杂的变长属性，<br>位于类文件的属性表中。这个属性用于保存invokedynamic指令引用的引导方法限定符。</p>
-</li>
-<li><p>MethodParameters属性</p>
-</li>
-<li><p>模块化相关属性</p>
-</li>
-<li><p>运行时注解相关属性</p>
-</li>
+<li>BootstrapMethods属性<br>　　BootstrapMethods属性在JDK7时增加到Class文件规范之中，它是一个复杂的变长属性，<br>位于类文件的属性表中。这个属性用于保存invokedynamic指令引用的引导方法限定符。<br>　　BootstrapMethods属性结构如下表所示：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u2</td>
+<td>attribute_name_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u4</td>
+<td>attribute_length</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>num_bootstrap_methods</td>
+<td>1</td>
+</tr>
+<tr>
+<td>bootstrap_method</td>
+<td>bootstrap_methods</td>
+<td>num_bootstrap_methods</td>
+</tr>
+</tbody></table>
+<p>　　其中引用到的bootstrap_method结构如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u2</td>
+<td>bootstrap_method_ref</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>num_bootstrap_arguments</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>bootstrap_arguments</td>
+<td>num_bootstrap_arguments</td>
+</tr>
+</tbody></table>
+<ul>
+<li>MethodParameters属性<br>　　MethodParameters是在JDK8时新加入到Class文件格式中的，它是一个用在方法表中的变长<br>属性。MethodParameters的作用是记录方法的各个形参名称和信息。<br>　　MethodParameters属性结构如下表所示：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u2</td>
+<td>attribute_name_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u4</td>
+<td>attribute_length</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u1</td>
+<td>parameters_count</td>
+<td>1</td>
+</tr>
+<tr>
+<td>parameter</td>
+<td>parameters</td>
+<td>parameters_count</td>
+</tr>
+</tbody></table>
+<p>　　其中，引用到的parameter结构如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u2</td>
+<td>name_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>access_flags</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>　　其中access_flag的取值范围为：</p>
+<table>
+<thead>
+<tr>
+<th>标志名称</th>
+<th>标志值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ACC_FINAL</td>
+<td>0x0010</td>
+<td>表示该参数被final修饰</td>
+</tr>
+<tr>
+<td>ACC_SYNTHETIC</td>
+<td>0x1000</td>
+<td>表示该参数并未出现在源文件中，是编译器自动生成的</td>
+</tr>
+<tr>
+<td>ACC_MANDATED</td>
+<td>0x8000</td>
+<td>表示该参数是在源文件中隐式定义的，例如this关键字</td>
+</tr>
+</tbody></table>
+<ul>
+<li>模块化相关属性</li>
+<li>运行时注解相关属性</li>
 </ul>
 
       
