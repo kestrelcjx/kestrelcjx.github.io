@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2.7k字</span>
+            <span class="post-count">3.1k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">9分钟</span>
+            <span class="post-count">10分钟</span>
         </span>
     </span>
 </div>
@@ -179,7 +179,52 @@
 </li>
 </ol>
 <p>　　符号引用验证的主要目的是确保解析行为能正常执行，如果无法通过符号引用验证，Java<br>虚拟机将会抛出一个java.lang.IncompatibleClassChangeError的子类异常，典型的如：<br>java.lang.IllegalAccessError、java.lang.NoSuchFieldError、java.lang.NoSuchMethodError等。</p>
-<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>　　</p>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>　　准备阶段是正式为类中定义的变量（即静态变量，被static修饰的变量）分配内存并设置<br>类变量初始值的阶段。<br>　　这时候进行内存分配的仅包括类变量，不包括实例变量，实例变量将会在对象实例化时<br>随着对象一起分配在Java堆中。同时，这里所说的初始值“通常情况”下是数据类型的零值，<br>假设一个类变量的定义为：<code>public static int value = 123;</code>那变量value在准备阶段过后<br>的初始值为0而不是123，因为这是尚未开始执行任何Java方法，而把value赋值为123的putstatic<br>指令是程序被编译后，存放于类构造器<clinit>()方法之中，所以把value赋值为123的动作<br>要到类的初始化阶段才会被执行。<br>　　基本数据类型的零值：</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>零值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td>long</td>
+<td>0L</td>
+</tr>
+<tr>
+<td>short</td>
+<td>(short)0</td>
+</tr>
+<tr>
+<td>char</td>
+<td>‘\u0000’</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>(byte)0</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>false</td>
+</tr>
+<tr>
+<td>float</td>
+<td>0.0f</td>
+</tr>
+<tr>
+<td>double</td>
+<td>0.0d</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>null</td>
+</tr>
+</tbody></table>
+<p>　　在“特殊情况”下，如果类字段的字段属性表中存在ConstantValue属性，那在准备阶段变量<br>值就会被初始化为ConstantValue属性所指定的初始值，假设变量value定义为<br><code>public statitc final int value = 123;</code>编译时Javac将会为value生成ConstantValue属性，<br>在准备阶段虚拟机将会根据ConstantValue的设置将value赋值为123。</p>
 <h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2><h2 id="Java模块化系统"><a href="#Java模块化系统" class="headerlink" title="Java模块化系统"></a>Java模块化系统</h2>
       
       <!-- reward -->
