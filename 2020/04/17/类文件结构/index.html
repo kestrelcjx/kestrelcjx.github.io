@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">6k字</span>
+            <span class="post-count">7.9k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">22分钟</span>
+            <span class="post-count">29分钟</span>
         </span>
     </span>
 </div>
@@ -1132,22 +1132,325 @@
 <td>attribute_length</td>
 </tr>
 </tbody></table>
-<!--
-- Code属性
-- Exceptions属性
-- LineNumberTable属性
-- LocalVaribleTable及LocalVariableTypeTable属性
-- SourceFile及SourceDebugExtension属性
-- ConstantValue属性
-- InnerClasses属性
-- Deprecated及Synthetic属性
-- StackMapTable属性
-- Signature属性
-- BootstrapMethods属性
-- MethodParameters属性
-- 模块化相关属性
-- 运行时注解相关属性
--->
+<ul>
+<li>Code属性<br>　　Java程序方法体里面的代码经过Javac编译器处理之后，最终变成为字节码指令存储在Code<br>属性内。Code属性出现在方法表的属性集合之中，但并非所有的方法表都必须存在这个属性，<br>譬如接口或者抽象类中的方法就不存在Code属性，如果方法表有Code属性存在，那么它的结构<br>如下表所示：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u2</td>
+<td>attribute_name_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u4</td>
+<td>attribute_length</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>max_stack</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>max_locals</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u4</td>
+<td>code_length</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u1</td>
+<td>code</td>
+<td>code_length</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>exception_table_length</td>
+<td>1</td>
+</tr>
+<tr>
+<td>exception_info</td>
+<td>exception_table</td>
+<td>exception_table_length</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>attributes_count</td>
+<td>1</td>
+</tr>
+<tr>
+<td>attribute_info</td>
+<td>attributes</td>
+<td>attributes_count</td>
+</tr>
+</tbody></table>
+<p>　　在字节码指令之后的是这个方法的显示异常处理表集合，如果存在异常表，那它的格式<br>应如下表所示，包含四个字段，这些字段的含义为：如果当字节码从第start_pc行（字节码<br>相对于方法体开始的偏移量）到第end_pc行之间（不含第end_pc行）出现了类型为catch_type<br>或者其子类的异常（catch_type为指向一个CONSTANT_Class_info型常量的索引），则转到第<br>handler_pc行继续处理。当catch_type的值为0时，代表任意异常情况都需要转到handler_pc<br>行进行处理。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u2</td>
+<td>start_pc</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>end_pc</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>handler</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>catch_type</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Exceptions属性<br>　　Exceptions属性结构：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u2</td>
+<td>attribute_name_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u4</td>
+<td>attribute_length</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>number_of_exceptions</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>exception_index_table</td>
+<td>number_of_exceptions</td>
+</tr>
+</tbody></table>
+<p>　　此属性中的number_of_exceptions项表示方法可能抛出number_of_exceptions种受查异常，<br>每一种受查异常使用一个exception_index_table项表示；exception_index_table是一个指向<br>常量池中CONSTANT_Class_info型常量的索引，代表了该受查异常的类型。</p>
+<ul>
+<li>LineNumberTable属性<br>　　LineNumberTable属性用于描述Java源代码行号与字节码行号（字节码的偏移量）之间的<br>对应关系。它并不是运行时必需的属性，但默认会生成到Class文件之中，可以在Javac中使用</li>
+<li>g:none或-g:lines选项来取消或要求生成这项信息。如果选择不生成LinuxNumberTable属性，<br>对程序运行时产生的最主要影响就是当抛出异常时，堆栈中将不会显示出错的行号，并且在<br>调试程序的时候，也无法按照源码行来设置断点。<br>　　LineNumberTable属性结构：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u2</td>
+<td>attribute_name_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u4</td>
+<td>attribute_length</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>line_number_table_length</td>
+<td>1</td>
+</tr>
+<tr>
+<td>line_number_info</td>
+<td>line_number_table</td>
+<td>line_number_table_length</td>
+</tr>
+</tbody></table>
+<p>　　line_number_info表包含start_pc和line_number两个u2类型的数据项，前者是字节码行号，<br>后者是Java源代码行号。</p>
+<ul>
+<li>LocalVariableTable及LocalVariableTypeTable属性<br>　　LocalVariableTable属性用于描述栈帧中局部变量表的变量和Java源代码中定义的变量<br>之间的关系，它也不是运行时必需的属性，但默认会生成到Class文件之中，可以在Javac中<br>使用-g:none或-g:vars选项来取消或要求生成这项信息。如果没有生成这项属性，最大的影响<br>就是当其他人引用这个方法时，所有的参数名称都将会丢失，譬如IDE将会使用诸如arg0、arg1<br>之类的占位符代替原有的参数名，这对程序运行没有影响，但是对代码编写带来较大不便，<br>而且在调试期间无法根据参数名称从上下文中获得参数值。<br>　　LocalVariableTable属性结构：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u2</td>
+<td>attribute_name_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u4</td>
+<td>attribute_length</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>local_variable_table_length</td>
+<td>1</td>
+</tr>
+<tr>
+<td>local_variable_info</td>
+<td>local_variable_table</td>
+<td>local_variable_table_length</td>
+</tr>
+</tbody></table>
+<p>　　其中local_variable_info项目代表了一个栈帧与源码中的局部变量的关联，结构如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u2</td>
+<td>start_pc</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>length</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>name_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>descriptor_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>index</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>　　start_pc和length属性分别代表了这个局部变量的声明周期开始的字节码偏移量及其作用<br>范围覆盖的长度，两者结合起来就是这个局部变量在字节码之中的作用域范围。<br>　　name_index和descriptor_index都是指向常量池中CONSTANT_Utf8_info型常量的索引，<br>分别代表了局部变量的名称以及这个局部变量的描述符。<br>　　index是这个局部变量在栈帧的局部变量表中变量槽的位置。<br>　　在JDK5引入泛型之后，新增了LocalVariableTypeTable，其结构与LocalVariableTable<br>非常相似，仅仅是把记录的字段描述符的descript_index替换成了字段的特征签名(Signature)。<br>对于非泛型类型来说，描述符和特征签名能描述的信息是能吻合一致的，但是泛型引入之后，<br>由于描述符中泛型的参数化类型被擦除掉，描述符就不能准确描述泛型类型了。因此出现了<br>LocalVariableTypeTable属性，使用字段的特征签名来完成泛型的描述。</p>
+<ul>
+<li>SourceFile及SourceDebugExtension属性<br>　　SourceFile属性用于记录生成这个Class文件的源码文件名称。这个属性也是可选的，可以<br>使用Javac的-g:none或-g:source选项来关闭或要求生成这项信息。在Java中，对于大多数的类<br>来说，类名和文件名是一致的，但是有一些特殊情况（如内部类）例外。如果不生成这项属性，<br>当抛出异常时，堆栈中将不会显示出错代码所属的文件名。这个属性是一个定长的属性，其结构<br>如下表所示：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u2</td>
+<td>attribute_name_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u4</td>
+<td>attribute_length</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>sourcefile_index</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>　　sourcefile_index数据项是指向常量池中CONSTANT_Utf8_info型常量的索引，常量值是<br>源码文件的文件名。<br>　　为了方便在编译器和动态生成的Class中加入供程序员使用的自定义内容，在JDK5时，新增<br>了SourceDebugExtension属性用于存储额外的代码调试信息。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u2</td>
+<td>attribute_name_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u4</td>
+<td>attribute_lenght</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u1</td>
+<td>debug_extension[attribute_length]</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>　　其中debug_extension存储的就是额外的调试信息，是一组通过变长UTF-8格式来表示的<br>字符串。一个类中最多允许存在一个SourceDebugExtension属性。</p>
+<ul>
+<li>ConstantValue属性<br>　　ConstantValue属性的作用是通知虚拟机自动为静态变量赋值。只有被static关键字修饰<br>的变量（类变量）才可以使用这项属性。类似“int x = 123”和“static int x = 123”这样的<br>变量定义在Java程序里面是非常常见的事情，但虚拟机对这两中变量赋值的方式和时刻都是<br>有所不同的。对非static类型的变量（也就是实例变量）的赋值是在实例构造器<init>()方法<br>中进行的；而对于类变量，则有两种方式可以选择：在类构造器<clinit>()方法中或者使用<br>ConstantValue属性。目前Oracle公司实现的Javac编译器的选择是，如果同时使用final和static<br>来修饰一个变量（常量），并且这个变量的数据类型是基本数据类型或者java.lang.String<br>的话，就将生成ConstantValue属性进行初始化；如果这个变量没有被final修饰，或者并非<br>基本类型及字符串，则将会选择在<clinit>()方法中进行初始化。<br>　　ConstantValue属性结构：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u2</td>
+<td>attribute_name_index</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u4</td>
+<td>attribute_length</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u2</td>
+<td>constantvalue_index</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>　　constantvalue_index数据项代表了常量池中一个字面量常量的引用，根据字段类型的不同，<br>字面量可以是CONSTANT_Long_info、CONSTANT_Float_info、CONSTANT_Double_info、CONSTANT_Integer_info<br>和CONSTANT_String_info常量中的一种。</p>
+<ul>
+<li>InnerClasses属性</li>
+<li>Deprecated及Synthetic属性</li>
+<li>StackMapTable属性</li>
+<li>Signature属性</li>
+<li>BootstrapMethods属性</li>
+<li>MethodParameters属性</li>
+<li>模块化相关属性</li>
+<li>运行时注解相关属性</li>
+</ul>
+
       
       <!-- reward -->
       
