@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>字节码指令</title>
-    <url>/2020/04/28/%E5%AD%97%E8%8A%82%E7%A0%81%E6%8C%87%E4%BB%A4/</url>
-    <content><![CDATA[<h2 id="字节码指令简介"><a href="#字节码指令简介" class="headerlink" title="字节码指令简介"></a>字节码指令简介</h2><h3 id="字节码与数据类型"><a href="#字节码与数据类型" class="headerlink" title="字节码与数据类型"></a>字节码与数据类型</h3><h3 id="加载与存储指令"><a href="#加载与存储指令" class="headerlink" title="加载与存储指令"></a>加载与存储指令</h3><h3 id="运算指令"><a href="#运算指令" class="headerlink" title="运算指令"></a>运算指令</h3><h3 id="类型转换指令"><a href="#类型转换指令" class="headerlink" title="类型转换指令"></a>类型转换指令</h3><h3 id="对象创建与访问指令"><a href="#对象创建与访问指令" class="headerlink" title="对象创建与访问指令"></a>对象创建与访问指令</h3><h3 id="操作数栈管理指令"><a href="#操作数栈管理指令" class="headerlink" title="操作数栈管理指令"></a>操作数栈管理指令</h3><h3 id="控制转移指令"><a href="#控制转移指令" class="headerlink" title="控制转移指令"></a>控制转移指令</h3><h3 id="方法调用与返回指令"><a href="#方法调用与返回指令" class="headerlink" title="方法调用与返回指令"></a>方法调用与返回指令</h3><h3 id="异常处理指令"><a href="#异常处理指令" class="headerlink" title="异常处理指令"></a>异常处理指令</h3><h3 id="同步指令"><a href="#同步指令" class="headerlink" title="同步指令"></a>同步指令</h3>]]></content>
-      <tags>
-        <tag>JVM</tag>
-        <tag>JAVA</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>类文件结构</title>
     <url>/2020/04/17/%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/</url>
     <content><![CDATA[<h2 id="无关性的基石"><a href="#无关性的基石" class="headerlink" title="无关性的基石"></a>无关性的基石</h2><p>　　实现语言无关性的基础是虚拟机与字节码存储格式。Java虚拟机不与包括Java语言在内<br>的任何程序语言绑定，它只与“Class文件”这种特定的二进制文件格式所绑定，Class文件中<br>包含了Java虚拟机指令集、符号表以及若干其他辅助信息。作为一个通用的、与机器无关的<br>执行平台，任何其他语言的实现都可以将Java虚拟机作为他们语言的运行基础，以Class文件<br>作为他们产品的交付媒介。</p>
