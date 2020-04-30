@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">6.3k字</span>
+            <span class="post-count">6.6k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">22分钟</span>
+            <span class="post-count">23分钟</span>
         </span>
     </span>
 </div>
@@ -286,7 +286,10 @@
 <li>接口中不能使用静态语句块，但仍然有变量初始化的赋值操作，因此接口与类一样都会生成<br>&lt;clinit&gt;()方法。但接口与类不同的是，执行接口中的&lt;clinit&gt;()方法不需要先执行父接口的<br>&lt;clinit&gt;()方法，因为只有当父接口中定义的变量被使用时，父接口才会被初始化。此外，<br>接口的实现类在初始化时也一样不会执行接口的&lt;clinit&gt;()方法。</li>
 <li>Java虚拟机必须保证一个类的&lt;clinit&gt;()方法在多线程环境中被正确地加锁同步，如果多个<br>线程同时去初始化一个类，那么只会有其中一个线程去执行这个类的&lt;clinit&gt;()方法，其他<br>线程都需要阻塞等待，直到活动线程执行完毕&lt;clinit&gt;()方法。如果在一个类的&lt;clinit&gt;()<br>方法中有很耗时很长的操作，那就可能造成多个进程阻塞，在实际应用中这种阻塞往往是很<br>隐蔽的。<h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2></li>
 </ul>
-<h2 id="Java模块化系统"><a href="#Java模块化系统" class="headerlink" title="Java模块化系统"></a>Java模块化系统</h2>
+<h3 id="类与类加载器"><a href="#类与类加载器" class="headerlink" title="类与类加载器"></a>类与类加载器</h3><p>　　对于任意一个类，都必须由加载它的类加载器和这个类本身一起共同确立其在Java虚拟机<br>中的唯一性，每一个加载器，都拥有一个独立的类名称空间。比较两个类是否“相等”，只有<br>在两个类是由同一个类加载器加载的前提下才有意义。<br>　　这里所指的“相等”，包括代表类的Class对象的equals()方法、isAssignableFrom()、<br>isInstance()方法的返回结果，也包括了使用instanceof关键字做对象所属关系判定等各种<br>情况。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassLoaderTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		ClassLoader myloader = <span class="keyword">new</span> ClassLoader() &#123;</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="keyword">public</span> Class&lt;?&gt; loadClass(String name) <span class="keyword">throws</span> ClassNotFoundException &#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					String fileName = name.substring(name.lastIndexOf(<span class="string">"."</span>)+<span class="number">1</span>)+<span class="string">".class"</span>;</span><br><span class="line">					InputStream is = getClass().getResourceAsStream(fileName);</span><br><span class="line">					<span class="keyword">if</span>(is == <span class="keyword">null</span>) &#123;</span><br><span class="line">						<span class="keyword">return</span> <span class="keyword">super</span>.loadClass(fileName);</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">byte</span>[] b = <span class="keyword">new</span> <span class="keyword">byte</span>[is.available()];</span><br><span class="line">					is.read(b);</span><br><span class="line">					<span class="keyword">return</span> defineClass(name, b, <span class="number">0</span>, b.length);</span><br><span class="line">				&#125; <span class="keyword">catch</span>(IOException e) &#123;</span><br><span class="line">					<span class="keyword">throw</span> <span class="keyword">new</span> ClassNotFoundException(name);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line">		Object obj = myloader.loadClass(<span class="string">"org.fenixsoft.classloading.ClassLoaderTest"</span>).newInstance();</span><br><span class="line">		System.out.println(obj.getClass());</span><br><span class="line">		System.out.println(obj <span class="keyword">instanceof</span> org.fenixsoft.classloading.ClassLoaderTest);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">运行结果：</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">org</span>.<span class="title">fenixsoft</span>.<span class="title">classloading</span>.<span class="title">ClassLoaderTest</span></span></span><br><span class="line"><span class="class"><span class="title">false</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h3><h3 id="破坏双亲委派模型"><a href="#破坏双亲委派模型" class="headerlink" title="破坏双亲委派模型"></a>破坏双亲委派模型</h3><h2 id="Java模块化系统"><a href="#Java模块化系统" class="headerlink" title="Java模块化系统"></a>Java模块化系统</h2>
       
       <!-- reward -->
       
