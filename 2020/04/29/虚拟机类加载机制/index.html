@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">5.6k字</span>
+            <span class="post-count">6.3k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">19分钟</span>
+            <span class="post-count">21分钟</span>
         </span>
     </span>
 </div>
@@ -263,8 +263,9 @@
 <li>如果通过了第一步，在类C中递归查找是否有简单名称和描述符都与目标相匹配的方法，<br>如果有则返回这个方法的直接引用，查找结束。</li>
 <li>否则，在类C的父类中递归查找是否有简单名称和描述符都与目标相匹配的方法，如果有<br>则返回这个方法的直接引用，查找结束。</li>
 <li>否则，在类C实现的接口列表及它们的父接口中递归查找是否有简单名称及描述符都与目标<br>相匹配的方法，如果存在匹配的方法，说明类C是一个抽象类，这时候查找结束，抛出<br>java.lang.AbstarctMethodError异常。</li>
-<li>否则，宣告方法查找失败，抛出java.lang.NoSuchMethodError异常。<br>　　最后，如果查找过程成功返回了直接引用，将会对这个方法进行权限验证，如果发现不具备<br>对此方法的访问权限，将抛出java.lang.IllegalAccessError异常。</li>
+<li>否则，宣告方法查找失败，抛出java.lang.NoSuchMethodError异常。</li>
 </ol>
+<p>　　最后，如果查找过程成功返回了直接引用，将会对这个方法进行权限验证，如果发现不具备<br>对此方法的访问权限，将抛出java.lang.IllegalAccessError异常。</p>
 <ul>
 <li>接口方法解析<br>　　接口方法也是需要先解析出接口方法表的class_index项中索引的方法所属的类或接口的<br>符号引用，如果解析成功，依然用C表示这个接口，接下来虚拟机将会按照如下步骤进行后续<br>的接口方法搜索：</li>
 </ul>
@@ -276,7 +277,16 @@
 <li>否则，宣告方法查找失败，抛出java.lang.NoSuchMethodError异常。</li>
 </ol>
 <p>　　在JDK9之前，Java接口中的所有方法都默认是public的，也没有模块化的访问约束，所以<br>不存在访问权限的问题，接口方法的符号解析就不可能抛出java.lang.IlleagelAccessError<br>异常。但在JDK9中增加了接口的静态私有方法，也有了模块化的访问约束，所以从JDK9起，<br>接口方法的访问也完全有可能因访问权限控制而出现java.lang.IllegalAccessError异常。</p>
-<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2><h2 id="Java模块化系统"><a href="#Java模块化系统" class="headerlink" title="Java模块化系统"></a>Java模块化系统</h2>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>　　进行准备阶段时，变量已经赋过一次系统要求的初始零值，而在初始化阶段，则会根据<br>程序员通过程序编码制定的主观计划去初始化类变量和其他资源。初始化阶段就是执行类构造器<br><clinit>()方法的过程。</p>
+<ul>
+<li><clinit>()方法是由编译器自动收集类中的所有变量的赋值动作和静态语句块（static{}块）<br>中的语句合并产生的，编译器收集的顺序是由语句在源文件中出现的顺序决定的，静态语句块<br>只能访问到定义在静态语句块之前的变量，定义在它之后的变量，在前面的静态语句块可以赋值，<br>但是不能访问。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> &#123;</span><br><span class="line">		i = <span class="number">0</span>;	<span class="comment">// 给变量赋值可以正常编译通过</span></span><br><span class="line">		System.out.print(i);	<span class="comment">// 这句编译器会提示“非法前向引用”</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><clinit>()方法与类的构造器（即在虚拟机视角中的实例构造器<init>()方法）不同，它<br>不需要显式地调用父类构造器，Java虚拟机会保证在子类的<clinit>()方法执行前，父类的<br><clinit>()方法已经执行完毕。因此在Java虚拟机中第一个被执行的<clinit>()方法的类型<br>肯定是java.lang.Object。</li>
+<li>由于父类方法的<clinit>()方法先执行，也就意味着父类中定义的静态语句块要优先于子类<br>的变量赋值操作。</li>
+<li><clinit>()方法对于类或接口来说并不是必需的，如果一个类中没有静态语句块，也没有<br>对类变量的赋值操作，那么编译器可以不为这个类生成<clinit>()方法。</li>
+<li>接口中不能使用静态语句块，但仍然有变量初始化的赋值操作，因此接口与类一样都会生成<br><clinit>()方法。但接口与类不同的是，执行接口中的<clinit>()方法不需要先执行父接口的<br><clinit>()方法，因为只有当父接口中定义的变量被使用时，父接口才会被初始化。此外，<br>接口的实现类在初始化时也一样不会执行接口的<clinit>()方法。</li>
+<li>Java虚拟机必须保证一个类的<clinit>()方法在多线程环境中被正确地加锁同步，如果多个<br>线程同时去初始化一个类，那么只会有其中一个线程去执行这个类的<clinit>()方法，其他<br>线程都需要阻塞等待，直到活动线程执行完毕<clinit>()方法。如果在一个类的<clinit>()<br>方法中有很耗时很长的操作，那就可能造成多个进程阻塞，在实际应用中这种阻塞往往是很<br>隐蔽的。<h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2></li>
+</ul>
+<h2 id="Java模块化系统"><a href="#Java模块化系统" class="headerlink" title="Java模块化系统"></a>Java模块化系统</h2>
       
       <!-- reward -->
       
