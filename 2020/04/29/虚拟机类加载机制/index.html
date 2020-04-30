@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">3.5k字</span>
+            <span class="post-count">4.1k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">12分钟</span>
+            <span class="post-count">14分钟</span>
         </span>
     </span>
 </div>
@@ -232,7 +232,20 @@
 </ul>
 <p>　　对方法或者字段的访问，也会在解析阶段中对它们的可访问性(public, protected, private,<br><package>)进行检查。<br>　　解析动作主要针对类或接口、字段、类方法、接口方法、方法类型、方法句柄和调用点<br>限定符这7类符号引用进行，分别对应于常量池的CONSTANT_Class_info、CONSTANT_Fieldref_info、<br>CONSTANT_Methodref_info、CONSTANT_InterfaceMethodref_info、CONSTANT_MethodType_info、<br>CONSTANT_MethodHandle_info、CONSTANT_Dynamic_info和CONSTANT_InvokeDynamic_info 8种<br>常量类型。</p>
 <ol>
-<li>类或接口的解析</li>
+<li>类或接口的解析<br>　　假设当前代码所处在的类为D，如果要把一个从未解析过的符号引用N解析为一个类或接口C<br>的直接引用，那虚拟机完成整个解析的过程需要包括以下3个步骤：<ul>
+<li>如果C不是一个数组类型，那虚拟机将会把代表N的全限定名传递给D的类加载器去加载<br>这个类C。在加载过程中，由于元数据验证、字节码验证的需要，有肯能触发其他相关类的加载<br>动作，例如加载这个类的父类或实现的接口。一旦这个加载过程出现了任何异常，解析过程<br>就将宣告失败。</li>
+<li>如果C是一个数组类型，并且数组的元素类型为对象，也就是N的描述符会是类似<br>“[Ljava/lang/Integer”的形式，那将会按照第一点的规则加载数组元素类型。如果N的描述符<br>如前面所假设的形式，需要加载的元素类型就是“java.lang.Integer”，接着由虚拟机生成一个<br>代表该数组维度和元素的数组对象。</li>
+<li>如果上面两步没有出现任何异常，那么C在虚拟机中实际上已经成为一个有效的类或接口了，<br>但在解析完成前还要进行符号引用验证，确认D是否具备对C的访问权限。如果发现不具备访问<br>权限，将抛出“java.lang.IllegalAccessError”异常。</li>
+</ul>
+</li>
+</ol>
+<p>针对访问权限验证，在JDK9引入了模块化以后，一个public类型也不再意味着程序任何位置<br>都有它的访问权限，我们还必须检查模块间的访问权限。如果我们说一个D拥有C的访问权限，<br>那就意味着一下3条规则中至少其中一条成立：</p>
+<ul>
+<li>被访问类C是public的，并且与访问类D处于同一个模块</li>
+<li>被访问类C是public的，不予访问类D处于同一个模块，但是被访问类C的模块允许访问类<br>D的模块进行访问</li>
+<li>被访问类C不是public的，但是它与访问类D处于同一个包中</li>
+</ul>
+<ol start="2">
 <li>字段解析</li>
 <li>方法解析</li>
 <li>接口方法解析</li>
