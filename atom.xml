@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kestrelcjx.github.io/"/>
-  <updated>2020-04-30T08:43:44.679Z</updated>
+  <updated>2020-04-30T08:50:47.878Z</updated>
   <id>https://kestrelcjx.github.io/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>运行时栈帧结构</title>
+    <link href="https://kestrelcjx.github.io/2020/04/30/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%A0%88%E5%B8%A7%E7%BB%93%E6%9E%84/"/>
+    <id>https://kestrelcjx.github.io/2020/04/30/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%A0%88%E5%B8%A7%E7%BB%93%E6%9E%84/</id>
+    <published>2020-04-30T08:50:47.000Z</published>
+    <updated>2020-04-30T08:50:47.878Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>虚拟机类加载机制</title>
@@ -495,31 +510,6 @@
         
         
           &lt;h2 id=&quot;持有对象&quot;&gt;&lt;a href=&quot;#持有对象&quot; class=&quot;headerlink&quot; title=&quot;持有对象&quot;&gt;&lt;/a&gt;持有对象&lt;/h2&gt;&lt;h3 id=&quot;泛型和类型安全的容器&quot;&gt;&lt;a href=&quot;#泛型和类型安全的容器&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《Thinking in Java》第十章</title>
-    <link href="https://kestrelcjx.github.io/2020/03/14/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E7%AB%A0/"/>
-    <id>https://kestrelcjx.github.io/2020/03/14/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E7%AB%A0/</id>
-    <published>2020-03-14T07:30:27.000Z</published>
-    <updated>2020-03-29T05:01:21.132Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;内部类&quot;&gt;&lt;a href=&quot;#内部类&quot; class=&quot;headerlink&quot; title=&quot;内部类&quot;&gt;&lt;/a&gt;内部类&lt;/h2&gt;&lt;h3 id=&quot;创建内部类&quot;&gt;&lt;a href=&quot;#创建内部类&quot; class=&quot;headerlink&quot;
         
       
     
