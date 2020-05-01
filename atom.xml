@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kestrelcjx.github.io/"/>
-  <updated>2020-04-30T08:50:47.878Z</updated>
+  <updated>2020-05-01T06:53:20.929Z</updated>
   <id>https://kestrelcjx.github.io/</id>
   
   <author>
@@ -21,13 +21,25 @@
     <link href="https://kestrelcjx.github.io/2020/04/30/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%A0%88%E5%B8%A7%E7%BB%93%E6%9E%84/"/>
     <id>https://kestrelcjx.github.io/2020/04/30/%E8%BF%90%E8%A1%8C%E6%97%B6%E6%A0%88%E5%B8%A7%E7%BB%93%E6%9E%84/</id>
     <published>2020-04-30T08:50:47.000Z</published>
-    <updated>2020-04-30T08:50:47.878Z</updated>
+    <updated>2020-05-01T06:53:20.929Z</updated>
     
     <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;运行时栈帧结构&quot;&gt;&lt;a href=&quot;#运行时栈帧结构&quot; class=&quot;headerlink&quot; title=&quot;运行时栈帧结构&quot;&gt;&lt;/a&gt;运行时栈帧结构&lt;/h2&gt;&lt;p&gt;　　Java虚拟机以方法作为最基本的执行单元，“栈帧”(Stack
+        
+      
     
     </summary>
     
     
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+      <category term="JVM" scheme="https://kestrelcjx.github.io/tags/JVM/"/>
     
   </entry>
   
