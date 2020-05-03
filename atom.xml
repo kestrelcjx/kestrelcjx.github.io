@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kestrelcjx.github.io/"/>
-  <updated>2020-05-02T16:15:02.627Z</updated>
+  <updated>2020-05-03T08:42:15.325Z</updated>
   <id>https://kestrelcjx.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>方法调用</title>
+    <link href="https://kestrelcjx.github.io/2020/05/03/%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8/"/>
+    <id>https://kestrelcjx.github.io/2020/05/03/%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8/</id>
+    <published>2020-05-03T08:19:09.000Z</published>
+    <updated>2020-05-03T08:42:15.325Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;方法调用&quot;&gt;&lt;a href=&quot;#方法调用&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+      <category term="JVM" scheme="https://kestrelcjx.github.io/tags/JVM/"/>
+    
+  </entry>
   
   <entry>
     <title>运行时栈帧结构</title>
@@ -497,31 +524,6 @@
         
         
           &lt;h2 id=&quot;通过异常处理错误&quot;&gt;&lt;a href=&quot;#通过异常处理错误&quot; class=&quot;headerlink&quot; title=&quot;通过异常处理错误&quot;&gt;&lt;/a&gt;通过异常处理错误&lt;/h2&gt;&lt;h3 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《Thinking in Java》第十一章</title>
-    <link href="https://kestrelcjx.github.io/2020/03/16/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0/"/>
-    <id>https://kestrelcjx.github.io/2020/03/16/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0/</id>
-    <published>2020-03-16T02:13:29.000Z</published>
-    <updated>2020-03-29T05:01:36.207Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;持有对象&quot;&gt;&lt;a href=&quot;#持有对象&quot; class=&quot;headerlink&quot; title=&quot;持有对象&quot;&gt;&lt;/a&gt;持有对象&lt;/h2&gt;&lt;h3 id=&quot;泛型和类型安全的容器&quot;&gt;&lt;a href=&quot;#泛型和类型安全的容器&quot; class=&quot;headerlink&quot;
         
       
     
