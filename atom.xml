@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kestrelcjx.github.io/"/>
-  <updated>2020-05-03T10:01:07.287Z</updated>
+  <updated>2020-05-03T14:14:22.695Z</updated>
   <id>https://kestrelcjx.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java内存模型</title>
+    <link href="https://kestrelcjx.github.io/2020/05/03/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/"/>
+    <id>https://kestrelcjx.github.io/2020/05/03/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</id>
+    <published>2020-05-03T12:41:13.000Z</published>
+    <updated>2020-05-03T14:14:22.695Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;硬件的效率与一致性&quot;&gt;&lt;a href=&quot;#硬件的效率与一致性&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+      <category term="JVM" scheme="https://kestrelcjx.github.io/tags/JVM/"/>
+    
+  </entry>
   
   <entry>
     <title>方法调用</title>
@@ -499,31 +526,6 @@
         
         
           &lt;h2 id=&quot;字符串&quot;&gt;&lt;a href=&quot;#字符串&quot; class=&quot;headerlink&quot; title=&quot;字符串&quot;&gt;&lt;/a&gt;字符串&lt;/h2&gt;&lt;h3 id=&quot;不可变String&quot;&gt;&lt;a href=&quot;#不可变String&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《Thinking in Java》第十二章</title>
-    <link href="https://kestrelcjx.github.io/2020/03/17/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0/"/>
-    <id>https://kestrelcjx.github.io/2020/03/17/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0/</id>
-    <published>2020-03-17T03:50:37.000Z</published>
-    <updated>2020-03-29T05:01:45.189Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;通过异常处理错误&quot;&gt;&lt;a href=&quot;#通过异常处理错误&quot; class=&quot;headerlink&quot; title=&quot;通过异常处理错误&quot;&gt;&lt;/a&gt;通过异常处理错误&lt;/h2&gt;&lt;h3 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot;
         
       
     
