@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kestrelcjx.github.io/"/>
-  <updated>2020-05-03T14:17:25.816Z</updated>
+  <updated>2020-05-03T15:38:16.983Z</updated>
   <id>https://kestrelcjx.github.io/</id>
   
   <author>
@@ -17,11 +17,49 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>线程安全与锁优化</title>
+    <link href="https://kestrelcjx.github.io/2020/05/03/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E4%B8%8E%E9%94%81%E4%BC%98%E5%8C%96/"/>
+    <id>https://kestrelcjx.github.io/2020/05/03/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E4%B8%8E%E9%94%81%E4%BC%98%E5%8C%96/</id>
+    <published>2020-05-03T15:35:14.000Z</published>
+    <updated>2020-05-03T15:38:16.983Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+      <category term="JVM" scheme="https://kestrelcjx.github.io/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java与线程</title>
+    <link href="https://kestrelcjx.github.io/2020/05/03/Java%E4%B8%8E%E7%BA%BF%E7%A8%8B/"/>
+    <id>https://kestrelcjx.github.io/2020/05/03/Java%E4%B8%8E%E7%BA%BF%E7%A8%8B/</id>
+    <published>2020-05-03T15:34:20.000Z</published>
+    <updated>2020-05-03T15:38:14.636Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+      <category term="JVM" scheme="https://kestrelcjx.github.io/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java内存模型</title>
     <link href="https://kestrelcjx.github.io/2020/05/03/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/"/>
     <id>https://kestrelcjx.github.io/2020/05/03/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</id>
     <published>2020-05-03T12:41:13.000Z</published>
-    <updated>2020-05-03T14:17:25.816Z</updated>
+    <updated>2020-05-04T02:41:36.574Z</updated>
     
     <summary type="html">
     
@@ -476,56 +514,6 @@
         
         
           &lt;h2 id=&quot;泛型&quot;&gt;&lt;a href=&quot;#泛型&quot; class=&quot;headerlink&quot; title=&quot;泛型&quot;&gt;&lt;/a&gt;泛型&lt;/h2&gt;&lt;h3 id=&quot;与C-的比较&quot;&gt;&lt;a href=&quot;#与C-的比较&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《Thinking in Java》第十四章</title>
-    <link href="https://kestrelcjx.github.io/2020/03/17/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0/"/>
-    <id>https://kestrelcjx.github.io/2020/03/17/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0/</id>
-    <published>2020-03-17T03:50:58.000Z</published>
-    <updated>2020-03-29T05:02:08.746Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;类型信息&quot;&gt;&lt;a href=&quot;#类型信息&quot; class=&quot;headerlink&quot; title=&quot;类型信息&quot;&gt;&lt;/a&gt;类型信息&lt;/h2&gt;&lt;h3 id=&quot;为什么需要RTTI&quot;&gt;&lt;a href=&quot;#为什么需要RTTI&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《Thinking in Java》第十三章</title>
-    <link href="https://kestrelcjx.github.io/2020/03/17/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0/"/>
-    <id>https://kestrelcjx.github.io/2020/03/17/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0/</id>
-    <published>2020-03-17T03:50:48.000Z</published>
-    <updated>2020-03-29T05:01:53.078Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;字符串&quot;&gt;&lt;a href=&quot;#字符串&quot; class=&quot;headerlink&quot; title=&quot;字符串&quot;&gt;&lt;/a&gt;字符串&lt;/h2&gt;&lt;h3 id=&quot;不可变String&quot;&gt;&lt;a href=&quot;#不可变String&quot; class=&quot;headerlink&quot;
         
       
     
