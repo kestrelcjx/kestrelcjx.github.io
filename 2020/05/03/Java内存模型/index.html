@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.8k字</span>
+            <span class="post-count">2.2k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">6分钟</span>
+            <span class="post-count">7分钟</span>
         </span>
     </span>
 </div>
@@ -115,14 +115,14 @@
 </ol>
 <p>　　如果要把一个变量从主内存拷贝到工作内存，那就要按顺序执行read和load操作，如果要把变量从工作内存同步回主内存，就要按顺序执行store和write操作。注意，Java内存模型只要求上述两个操作必须按顺序执行，但不要求是连续执行。除此之外，Java内存模型还规定了在执行上述8种基本操作时必须满足如下规则：</p>
 <ol>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
+<li>不允许read和load、store和write操作之一单独出现，即不允许一个变量从主内存读取了但工作内存不接受，或者工作内存发起回写了但主内存不接受的情况出现。</li>
+<li>不允许一个线程丢弃它最近的assign操作，即变量在工作内存中改变了之后必须把该变化同步回主内存。</li>
+<li>不允许一个线程无原因地（没有发生过任何assign操作）把数据从线程的工作内存同步回到主内存之中。</li>
+<li>一个新的变量只能在主内存中“诞生”，不允许在工作内存中直接使用一个未被初始化（load或assign）的变量，换句话说就是对一个变量实施use、store操作之前，必须先执行assign和load操作。</li>
+<li>一个变量在同一个时刻只允许一条线程对其进行lock操作，但lock操作可以被同一条线程重复执行多次，多次执行lock后，只有执行相同次数的unlock操作，变量才会被解锁。</li>
+<li>如果对一个变量执行lock操作，那将会清空工作内存中此变量的值，在执行引擎使用这个变量前，需要重新执行load或assign操作以初始化变量的值。</li>
+<li>如果一个变量事先没有被lock操作锁定，那就不允许对它执行unlock操作，也不允许unlock一个被其他线程锁定的变量。</li>
+<li>对一个变量执行unlock操作之前，必须先把此变量同步回主内存中（执行store、write操作）。</li>
 </ol>
 <p>　　后来Java设计团队将Java内存模型的操作简化为read、write、lock和unlock四种，但这只是语言描述上的等价化简，Java内存模型的基础设计并没有改变。</p>
 <h3 id="对于volatile型变量的特殊规则"><a href="#对于volatile型变量的特殊规则" class="headerlink" title="对于volatile型变量的特殊规则"></a>对于volatile型变量的特殊规则</h3><h3 id="针对long和double型变量的特殊规则"><a href="#针对long和double型变量的特殊规则" class="headerlink" title="针对long和double型变量的特殊规则"></a>针对long和double型变量的特殊规则</h3><h3 id="原子性、可见性与有序性"><a href="#原子性、可见性与有序性" class="headerlink" title="原子性、可见性与有序性"></a>原子性、可见性与有序性</h3><h3 id="先行发生规则"><a href="#先行发生规则" class="headerlink" title="先行发生规则"></a>先行发生规则</h3>
