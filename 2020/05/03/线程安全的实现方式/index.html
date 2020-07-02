@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">4分钟</span>
+            <span class="post-count">5分钟</span>
         </span>
     </span>
 </div>
@@ -108,9 +108,10 @@
 <ol>
 <li>等待中断：是指当持有锁的线程长期不释放锁的时候，正在等待的线程可以选择放弃等待，改为处理其他事情。可中断特性对处理执行时间非常长的同步块很有帮助。</li>
 <li>公平锁：是指多个线程在等待同一个锁时，必须按照申请锁的时间顺序来依次获得锁；而非公平锁则不保证这一点，在锁被释放时，任何一个等待锁的线程都有机会获得锁。synchronized中的锁是非公平的，ReentrantLock在默认情况下也是非公平的，但可以通过带布尔值的构造函数要求使用公平锁。不过一旦使用了公平锁，将会导致ReentrantLock的性能急剧下降，会影响明显的吞吐量。</li>
-<li>锁绑定多个条件：是指一个ReentrantLock对象可以同时绑定多个Condition对象。在synchronized中，锁对象的wait()跟它的notify()或者notifyAll()方法配合可以实现一个隐含的条件，如果要和多于一个的条件关联的时候，就不得不额外添加一个锁；而ReentrantLock则无须这样做，多次调用newCondition方法()即可。<h4 id="非阻塞同步"><a href="#非阻塞同步" class="headerlink" title="非阻塞同步"></a>非阻塞同步</h4><h4 id="无同步方案"><a href="#无同步方案" class="headerlink" title="无同步方案"></a>无同步方案</h4></li>
+<li>锁绑定多个条件：是指一个ReentrantLock对象可以同时绑定多个Condition对象。在synchronized中，锁对象的wait()跟它的notify()或者notifyAll()方法配合可以实现一个隐含的条件，如果要和多于一个的条件关联的时候，就不得不额外添加一个锁；而ReentrantLock则无须这样做，多次调用newCondition方法()即可。</li>
 </ol>
-
+<p>JDK5：synchronized和ReentrantLock的性能对比：<br>　　Throughput for synchronization and Lock, single CPU<br><img src="/images/SYNC_LOCK1.jpg" alt="single CPU"><br>　　Throughput (normalized) for synchronization and Lock, four CPUs<br><img src="/images/SYNC_LOCK2.jpg" alt="four CPUS"></p>
+<h4 id="非阻塞同步"><a href="#非阻塞同步" class="headerlink" title="非阻塞同步"></a>非阻塞同步</h4><h4 id="无同步方案"><a href="#无同步方案" class="headerlink" title="无同步方案"></a>无同步方案</h4>
       
       <!-- reward -->
       
