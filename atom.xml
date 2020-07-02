@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kestrelcjx.github.io/"/>
-  <updated>2020-05-04T07:37:15.425Z</updated>
+  <updated>2020-07-02T07:09:07.989Z</updated>
   <id>https://kestrelcjx.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>线程安全与锁优化</title>
-    <link href="https://kestrelcjx.github.io/2020/05/03/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E4%B8%8E%E9%94%81%E4%BC%98%E5%8C%96/"/>
-    <id>https://kestrelcjx.github.io/2020/05/03/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E4%B8%8E%E9%94%81%E4%BC%98%E5%8C%96/</id>
-    <published>2020-05-03T15:35:14.000Z</published>
-    <updated>2020-05-04T07:37:15.425Z</updated>
+    <title>锁优化</title>
+    <link href="https://kestrelcjx.github.io/2020/07/02/%E9%94%81%E4%BC%98%E5%8C%96/"/>
+    <id>https://kestrelcjx.github.io/2020/07/02/%E9%94%81%E4%BC%98%E5%8C%96/</id>
+    <published>2020-07-02T07:07:53.000Z</published>
+    <updated>2020-07-02T07:09:07.989Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,35 @@
       
         
         
-          &lt;h2 id=&quot;线程安全&quot;&gt;&lt;a href=&quot;#线程安全&quot; class=&quot;headerlink&quot; title=&quot;线程安全&quot;&gt;&lt;/a&gt;线程安全&lt;/h2&gt;&lt;h3 id=&quot;Java语言中的线程安全&quot;&gt;&lt;a href=&quot;#Java语言中的线程安全&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;锁优化&quot;&gt;&lt;a href=&quot;#锁优化&quot; class=&quot;headerlink&quot; title=&quot;锁优化&quot;&gt;&lt;/a&gt;锁优化&lt;/h2&gt;&lt;h3 id=&quot;自旋锁和自适应自旋&quot;&gt;&lt;a href=&quot;#自旋锁和自适应自旋&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
+    
+      <category term="JVM" scheme="https://kestrelcjx.github.io/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>线程安全的实现方式</title>
+    <link href="https://kestrelcjx.github.io/2020/05/03/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/"/>
+    <id>https://kestrelcjx.github.io/2020/05/03/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</id>
+    <published>2020-05-03T15:35:14.000Z</published>
+    <updated>2020-07-02T07:12:33.933Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;线程安全的是实现方式&quot;&gt;&lt;a href=&quot;#线程安全的是实现方式&quot; class=&quot;headerlink&quot; title=&quot;线程安全的是实现方式&quot;&gt;&lt;/a&gt;线程安全的是实现方式&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;互斥同步&lt;br&gt;　　互斥同步(Mutual Exclusion
         
       
     
@@ -505,31 +533,6 @@
         
         
           &lt;h2 id=&quot;数组&quot;&gt;&lt;a href=&quot;#数组&quot; class=&quot;headerlink&quot; title=&quot;数组&quot;&gt;&lt;/a&gt;数组&lt;/h2&gt;&lt;h3 id=&quot;数组为什么特殊&quot;&gt;&lt;a href=&quot;#数组为什么特殊&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-      <category term="Java" scheme="https://kestrelcjx.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《Thinking in Java》第十五章</title>
-    <link href="https://kestrelcjx.github.io/2020/03/18/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%BA%94%E7%AB%A0/"/>
-    <id>https://kestrelcjx.github.io/2020/03/18/%E3%80%8AThinking-in-Java%E3%80%8B%E7%AC%AC%E5%8D%81%E4%BA%94%E7%AB%A0/</id>
-    <published>2020-03-18T06:48:52.000Z</published>
-    <updated>2020-03-29T05:02:17.127Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;泛型&quot;&gt;&lt;a href=&quot;#泛型&quot; class=&quot;headerlink&quot; title=&quot;泛型&quot;&gt;&lt;/a&gt;泛型&lt;/h2&gt;&lt;h3 id=&quot;与C-的比较&quot;&gt;&lt;a href=&quot;#与C-的比较&quot; class=&quot;headerlink&quot;
         
       
     
