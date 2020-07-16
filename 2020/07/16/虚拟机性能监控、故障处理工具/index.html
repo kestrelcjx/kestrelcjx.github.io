@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">958字</span>
+            <span class="post-count">1.6k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3分钟</span>
+            <span class="post-count">5分钟</span>
         </span>
     </span>
 </div>
@@ -190,7 +190,46 @@
 <td>输出已经被即时编译的方法</td>
 </tr>
 </tbody></table>
-<h3 id="jinfo：Java配置信息工具"><a href="#jinfo：Java配置信息工具" class="headerlink" title="jinfo：Java配置信息工具"></a>jinfo：Java配置信息工具</h3><h3 id="jmap：Java内存映像工具"><a href="#jmap：Java内存映像工具" class="headerlink" title="jmap：Java内存映像工具"></a>jmap：Java内存映像工具</h3><h3 id="jhat：虚拟机堆转储快照分析工具"><a href="#jhat：虚拟机堆转储快照分析工具" class="headerlink" title="jhat：虚拟机堆转储快照分析工具"></a>jhat：虚拟机堆转储快照分析工具</h3><h3 id="jstack：Java堆栈跟踪工具"><a href="#jstack：Java堆栈跟踪工具" class="headerlink" title="jstack：Java堆栈跟踪工具"></a>jstack：Java堆栈跟踪工具</h3>
+<h3 id="jinfo：Java配置信息工具"><a href="#jinfo：Java配置信息工具" class="headerlink" title="jinfo：Java配置信息工具"></a>jinfo：Java配置信息工具</h3><p>　　jinfo(Configuration Info for Java)的作用是实时查看和调整虚拟机各项参数。使用jps命令的-v参数可以查看虚拟机启动时显示指定的参数列表，但如果想知道未被显式指定的参数的系统默认值，除了找资料外，就只能使用jinfo的-flag选项进行查询了（如果只限于JDK6或以上版本的话，使用java -XX:+PrintFlagsFInal查看参数默认值是一个很好的选择）。jinfo还可以使用-sysprops选项把虚拟机进程的System.getProperties()的内容打印出来。这个命令在JDK5时期已经随着Linux版的JDK发布，当时只提供了信息查询的功能，JDK6之后，jinfo在Windows和Linux平台都有提供，并且加入了在运行期修改部分参数值的能力（可以使用-flag [+|-]name 或者-flag name=value在运行期修改一部分运行期可写的虚拟机参数值）。在JDK6中，jinfo对于Windows平台仍然有较大限制，只提供了最基本的-flag选项。</p>
+<p>jinfo命令格式：</p>
+<p>　　jinfo [option] pid</p>
+<h3 id="jmap：Java内存映像工具"><a href="#jmap：Java内存映像工具" class="headerlink" title="jmap：Java内存映像工具"></a>jmap：Java内存映像工具</h3><p>　　jmap(Memory Map for Java)命令用于生成堆转储快照（一般称为headdump或dump文件），还可以查询finalize执行队列、Java堆和方法区的详细信息，如空间使用率、当前用的是哪种收集器等。</p>
+<p>　　和jinfo命令一样，jmap有部分功能在Windows平台下是受限的，除了生成堆转储快照的-dump选项和用于查看每个类的实例、空间占用统计的-histo选项在所有操作系统中都可以使用之外，其余选项都只能在Linux/Solaris中使用。</p>
+<p>jmap命令格式为：</p>
+<p>　　jmap [option] vmid</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-dump</td>
+<td>生成Java堆转储快照。格式为-dump:[live,]format=b,file=<filename>，其中live子参数说明是否只dump出存活的对象</td>
+</tr>
+<tr>
+<td>-finalizerinfo</td>
+<td>显示在F-Queue中等待Finalier线程执行finalize方法的对象。只在Linux/Solaris平台下有效</td>
+</tr>
+<tr>
+<td>-heap</td>
+<td>显示Java堆详细信息，如使用哪种回收器、参数配置、分代状况等。只在Linux/Solaris平台下有效</td>
+</tr>
+<tr>
+<td>-histo</td>
+<td>显示堆中对象统计信息，包括类、实例数量、合计容量等</td>
+</tr>
+<tr>
+<td>-permstat</td>
+<td>以ClassLoader为统计信息口径显示永久代内存状态。只在Linux/Solaris平台下有效</td>
+</tr>
+<tr>
+<td>-F</td>
+<td>当虚拟机进程对-dump选项没有响应时，可使用这个选项强制生成dump快照。只在Linux/Solaris平台下有效</td>
+</tr>
+</tbody></table>
+<h3 id="jhat：虚拟机堆转储快照分析工具"><a href="#jhat：虚拟机堆转储快照分析工具" class="headerlink" title="jhat：虚拟机堆转储快照分析工具"></a>jhat：虚拟机堆转储快照分析工具</h3><h3 id="jstack：Java堆栈跟踪工具"><a href="#jstack：Java堆栈跟踪工具" class="headerlink" title="jstack：Java堆栈跟踪工具"></a>jstack：Java堆栈跟踪工具</h3>
       
       <!-- reward -->
       
