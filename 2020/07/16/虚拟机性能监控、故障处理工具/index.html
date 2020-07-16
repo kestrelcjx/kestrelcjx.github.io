@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">606字</span>
+            <span class="post-count">958字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2分钟</span>
+            <span class="post-count">3分钟</span>
         </span>
     </span>
 </div>
@@ -132,6 +132,64 @@
 <p>　　jstat [option vmid [interval [s|ms] [count]] ]</p>
 <p>　　对于命令格式中的VMID与LVMID需要特别说明一下：如果是本地虚拟机进程，VMID与LVMID是一致的；如果是远程虚拟机进程，那VMID的格式应当是：</p>
 <p>　　[protocol] [//] lvmid [@hostname [:port]/servername]</p>
+<p>　　参数interval和count代表查询间隔和次数，如果省略这2个参数，说明之查询一次。</p>
+<p>　　选项option代表用户希望查询的虚拟机信息，主要分为三类：类加载、垃圾收集、运行期编译状态。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-class</td>
+<td>监视类加载、卸载数量、总空间以及类装载所耗费的时间</td>
+</tr>
+<tr>
+<td>-gc</td>
+<td>监视Java堆状态，包括Eden区、2个Survivor区、老年代、永久代等的容量，已用空间，垃圾收集时间合计等信息</td>
+</tr>
+<tr>
+<td>-gccapacity</td>
+<td>监视内容与-gc基本相同，但输出主要关注Java堆各个区域使用到的最大、最小空间</td>
+</tr>
+<tr>
+<td>-gcutil</td>
+<td>监视内容与-gc基本相同，但输出主要关注已使用空间占总空间的百分比</td>
+</tr>
+<tr>
+<td>-gccause</td>
+<td>与-gcutil功能一样，但是会额外输出导致上一次垃圾收集产生的原因</td>
+</tr>
+<tr>
+<td>-gcnew</td>
+<td>监视新生代垃圾收集状况</td>
+</tr>
+<tr>
+<td>-gcnewcapacity</td>
+<td>监视内容与-gcnew基本相同，输出主要关注使用到的最大、最小空间</td>
+</tr>
+<tr>
+<td>-gcold</td>
+<td>监视老年代垃圾收集状态</td>
+</tr>
+<tr>
+<td>-gcoldcapacity</td>
+<td>监视内容与-gcold基本相同，输出主要关注使用到的最大、最小空间</td>
+</tr>
+<tr>
+<td>-gcpermcapacity</td>
+<td>输出永久代使用到的最大、最小空间</td>
+</tr>
+<tr>
+<td>-compiler</td>
+<td>输出即时编译器编译过的方法、耗时等信息</td>
+</tr>
+<tr>
+<td>-printcompilation</td>
+<td>输出已经被即时编译的方法</td>
+</tr>
+</tbody></table>
 <h3 id="jinfo：Java配置信息工具"><a href="#jinfo：Java配置信息工具" class="headerlink" title="jinfo：Java配置信息工具"></a>jinfo：Java配置信息工具</h3><h3 id="jmap：Java内存映像工具"><a href="#jmap：Java内存映像工具" class="headerlink" title="jmap：Java内存映像工具"></a>jmap：Java内存映像工具</h3><h3 id="jhat：虚拟机堆转储快照分析工具"><a href="#jhat：虚拟机堆转储快照分析工具" class="headerlink" title="jhat：虚拟机堆转储快照分析工具"></a>jhat：虚拟机堆转储快照分析工具</h3><h3 id="jstack：Java堆栈跟踪工具"><a href="#jstack：Java堆栈跟踪工具" class="headerlink" title="jstack：Java堆栈跟踪工具"></a>jstack：Java堆栈跟踪工具</h3>
       
       <!-- reward -->
